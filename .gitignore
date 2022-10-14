@@ -1,4 +1,5 @@
-.env
+.env.local
 /node_modules/
 /portfolio/node_modules
 /portfolio/node_modules
+/ideas
