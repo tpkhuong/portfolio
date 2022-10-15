@@ -1,8 +1,13 @@
 import React from "react";
 import Head from "next/head";
-import Test from "../Components/Test/index";
+import HomeStyles from "../styles/Home.module.css";
+import LogoNavbarContainer from "../Components/Shared/LogoNavbar/index";
+import MobileMenu from "../Components/Shared/MobileMenu";
+import Footer from "../Components/Shared/Footer";
+import { useMediaQuery } from "../utils/Helpers";
 
 export default function Home({ children, ...props }) {
+  const isMobile = useMediaQuery("max", 375);
   return (
     <React.Fragment>
       <Head>
@@ -13,9 +18,17 @@ export default function Home({ children, ...props }) {
           type="image/x-icon"
         />
       </Head>
-      <header>
-        <Test>Hello Next!!</Test>
+      <a href="#main-content" className="skip-link">
+        Skip to Main Content
+      </a>
+      <header className={HomeStyles[`header`]} role="banner">
+        {/* Logo nav container */}
+        <LogoNavbarContainer />
       </header>
+      <main className={HomeStyles[`main`]} role="main"></main>
+      {/* {isMobile ? <MobileMenu /> : null} */}
+      {/* footer */}
+      <Footer />
     </React.Fragment>
   );
 }

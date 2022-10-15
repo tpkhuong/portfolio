@@ -1,0 +1,8 @@
+.logo-nav-container {
+  border: var(--border-lines);
+  border-radius: 8px 8px 0px 0px;
+  padding: 18px;
+  padding-inline-end: 28px;
+  display: flex;
+  justify-content: space-between;
+}

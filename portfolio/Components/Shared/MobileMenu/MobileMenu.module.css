@@ -1,0 +1,24 @@
+.mobile-menu-wrapper {
+  position: absolute;
+  inset: 2px;
+  top: 64px;
+  border: var(--border-lines);
+  border-top: 0px;
+  border-radius: 0px 0px 8px 8px;
+}
+
+.mobile-nav {
+  border-bottom: var(--border-lines);
+}
+
+.navlist > * + * a {
+  border-top: var(--border-lines);
+}
+
+.navlist a {
+  display: inline-block;
+  width: 100%;
+  padding: 18px;
+  padding-inline-end: 0px;
+  color: var(--color-neutral-white);
+}
