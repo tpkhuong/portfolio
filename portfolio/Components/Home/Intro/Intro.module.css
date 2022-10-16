@@ -1,0 +1,32 @@
+.location-icon {
+  display: block;
+}
+
+/* [data-ishover="true"] .location-icon {
+  animation-play-state: running;
+}
+
+[data-ishover="false"] .location-icon {
+  animation-play-state: paused;
+} */
+
+.btn:hover .location-icon {
+  animation-play-state: running;
+}
+
+.location-icon {
+  animation: jump 1s linear alternate infinite forwards;
+  animation-play-state: paused;
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

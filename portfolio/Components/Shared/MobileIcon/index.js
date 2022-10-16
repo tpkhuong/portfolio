@@ -6,7 +6,7 @@ export default function MobileIcon({ children, ...props }) {
     <button
       onClick={animateMobileIcon}
       aria-label="open mobile navigation menu"
-      data-isClicked=""
+      data-isclicked=""
       id="mobile-btn"
       className={MobileIconStyles[`mobile-menu-icon`]}
     >

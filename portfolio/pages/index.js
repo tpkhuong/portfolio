@@ -3,6 +3,7 @@ import Head from "next/head";
 import HomeStyles from "../styles/Home.module.css";
 import LogoNavbarContainer from "../Components/Shared/LogoNavbar/index";
 import MobileMenu from "../Components/Shared/MobileMenu";
+import Intro from "../Components/Home/Intro";
 import Footer from "../Components/Shared/Footer";
 import { useMediaQuery } from "../utils/Helpers";
 
@@ -25,7 +26,9 @@ export default function Home({ children, ...props }) {
         {/* Logo nav container */}
         <LogoNavbarContainer />
       </header>
-      <main className={HomeStyles[`main`]} role="main"></main>
+      <main className={HomeStyles[`main`]} role="main">
+        <Intro />
+      </main>
       {/* {isMobile ? <MobileMenu /> : null} */}
       {/* footer */}
       <Footer />
