@@ -18,14 +18,19 @@ export default function MobileIcon({ children, ...props }) {
 }
 
 function animateMobileIcon(event) {
+  // selector modal wrapper element
+  const modalWrapperElement = document.getElementById("mobile-menu-selector");
+
   event.target.closest("BUTTON").getAttribute("data-isclicked") == "false" ||
   event.target.closest("BUTTON").getAttribute("data-isclicked") === ""
     ? (event.target.closest("BUTTON").setAttribute("data-isclicked", "true"),
       event.target
         .closest("BUTTON")
-        .setAttribute("aria-label", "close mobile navigation menu"))
+        .setAttribute("aria-label", "close mobile navigation menu"),
+      modalWrapperElement.setAttribute("data-showmenu", "true"))
     : (event.target.closest("BUTTON").setAttribute("data-isclicked", "false"),
       event.target
         .closest("BUTTON")
-        .setAttribute("aria-label", "open mobile navigation menu"));
+        .setAttribute("aria-label", "open mobile navigation menu"),
+      modalWrapperElement.setAttribute("data-showmenu", "false"));
 }

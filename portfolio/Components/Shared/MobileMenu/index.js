@@ -7,8 +7,10 @@ export default function MobileMenu({ children, ...props }) {
   return (
     // height of viewport
     <div
+      id="mobile-menu-selector"
       aria-modal="true"
       role="dialog"
+      data-showmenu=""
       className={MobileMenuStyles[`mobile-menu-wrapper`]}
     >
       {/* height based on content */}

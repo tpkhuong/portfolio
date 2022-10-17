@@ -7,12 +7,14 @@ import { GoLocation } from "react-icons/go";
 export default function Intro({ children, ...props }) {
   return (
     <div className={IntroStyles[`intro-wrapper`]}>
-      <span>Hi all! I am</span>
-      <h1>Toan Khuong</h1>
-      <div>
+      <span className={IntroStyles[`greeting`]}>Hi all! I am</span>
+      <h1 className={IntroStyles[`name`]}>Toan Khuong</h1>
+      <div className={IntroStyles[`arrow-profession-wrapper`]}>
         {/* right arrow */}
-        <FaChevronRight />
-        <span>Web Inclusive Developer</span>
+        <FaChevronRight className={IntroStyles[`chevron-right`]} />
+        <span className={IntroStyles[`life-love`]}>
+          Web Inclusive Developer
+        </span>
       </div>
       <Link href="/">
         <a
@@ -28,23 +30,25 @@ export default function Intro({ children, ...props }) {
           //       : null;
           //   }}
           //   data-ishover=""
-          className={IntroStyles[`btn`]}
+          className={IntroStyles[`location-btn-icon-wrapper`]}
         >
           {/* location icon */}
-          <span className={IntroStyles[`location-icon`]}>
-            <GoLocation />
-          </span>
-          <span>Atlanta, Ga</span>
+          <GoLocation className={IntroStyles[`location-icon`]} />
+          <span className={IntroStyles[`location`]}>Atlanta, Ga</span>
         </a>
       </Link>
-      <p>// scroll through the projects I've built</p>
-      <p>// you can also see them on my Github page</p>
-      <p>
-        <span>const</span>
-        <span>githubLink</span>
-        <span>=</span>
+      <p className={IntroStyles[`comments`]}>
+        // scroll through the projects I've built.
+      </p>
+      <p className={IntroStyles[`comments`]}>
+        // you can also see them on my Github page.
+      </p>
+      <p className={IntroStyles[`statement-declaration`]}>
+        <span className={IntroStyles[`js-keyword`]}>const</span>
+        <span className={IntroStyles[`variable`]}>githubLink</span>
+        <span className={IntroStyles[`operator`]}>=</span>
         <Link href="/">
-          <a>"https://githuburl"</a>
+          <a className={IntroStyles[`github-link`]}>"https://githuburl"</a>
         </Link>
       </p>
     </div>

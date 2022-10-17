@@ -1,0 +1,48 @@
+.nav {
+  border-inline-end: var(--border-lines);
+}
+
+.navlist {
+  display: flex;
+}
+
+.navlink {
+  border-inline-start: var(--border-lines);
+  padding-block: 18px;
+  display: inline-block;
+  padding-inline: 32px;
+  position: relative;
+}
+
+.navlink:not([data-iscurrentpage=""]):hover,
+.navlink:not([data-iscurrentpage=""]):focus {
+  color: var(--color-neutral-white);
+}
+
+[data-iscurrentpage="true"].navlink {
+  color: var(--color-neutral-white);
+}
+
+[data-iscurrentpage="true"].navlink::before {
+  content: "";
+  display: inline-block;
+  height: 2px;
+  background-color: var(--color-accent-link-current-page);
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+}
+
+[data-iscurrentpage="true"] .underscore {
+  animation: blinking 1250ms ease-in-out alternate infinite;
+}
+
+@keyframes blinking {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

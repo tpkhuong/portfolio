@@ -1,14 +1,22 @@
+[data-showmenu="true"].mobile-menu-wrapper {
+  display: revert;
+}
+
 .mobile-menu-wrapper {
+  display: none;
   position: absolute;
+  background-color: var(--color-primary-dark-blue);
   inset: 2px;
   top: 64px;
+  bottom: 58px;
   border: var(--border-lines);
   border-top: 0px;
-  border-radius: 0px 0px 8px 8px;
+  /* border-radius: 0px 0px 8px 8px; */
 }
 
 .mobile-nav {
-  border-bottom: var(--border-lines);
+  border-block: var(--border-lines);
+  /* border-: var(--border-lines); */
 }
 
 .navlist > * + * a {

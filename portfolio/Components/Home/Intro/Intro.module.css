@@ -1,5 +1,91 @@
+.intro-wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-block: 85px;
+  padding-block-end: 55px;
+  padding-inline: 16px;
+  /* align-items: center; */
+}
+
+.greeting {
+  font-size: var(--body-text-18px);
+  color: var(--color-neutral-white);
+}
+
+.name {
+  color: var(--color-neutral-white);
+  font-size: var(--headline-text-62px);
+  margin-block: 8px;
+  font-weight: 500;
+}
+
+.arrow-profession-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.chevron-right {
+  color: var(--color-life);
+}
+
+.life-love {
+  font-size: var(--font-size-20px);
+  color: var(--color-life);
+}
+
+.location {
+  color: var(--color-neutral-white);
+  font-weight: 700;
+}
+
+.comments {
+  font-size: var(--font-size-14px);
+}
+
+.comments:nth-of-type(1) {
+  margin-block-start: auto;
+}
+
+.comments:nth-of-type(2) {
+  margin-block-start: 2px;
+}
+
+.statement-declaration {
+  margin-block-start: 16px;
+  font-size: var(--font-size-14px);
+}
+
+.js-keyword {
+  color: var(--color-life);
+}
+
+.variable {
+  margin-inline: 5px;
+  color: var(--color-github-link);
+}
+
+.operator {
+  color: var(--color-neutral-white);
+}
+
+.github-link {
+  color: var(--color-github-url);
+  margin-inline-start: 5px;
+}
+
+.location-btn-icon-wrapper {
+  margin-block-start: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .location-icon {
+  color: var(--color-neutral-white);
   display: block;
+  transform: translateY(-3px);
 }
 
 /* [data-ishover="true"] .location-icon {
@@ -10,18 +96,19 @@
   animation-play-state: paused;
 } */
 
-.btn:hover .location-icon {
+.location-btn-icon-wrapper:hover .location-icon,
+.location-btn-icon-wrapper:focus .location-icon {
   animation-play-state: running;
 }
 
 .location-icon {
-  animation: jump 1s linear alternate infinite forwards;
+  animation: jump 1200ms linear alternate infinite forwards;
   animation-play-state: paused;
 }
 
 @keyframes jump {
   0% {
-    transform: translateY(0px);
+    transform: translateY(-3px);
   }
   50% {
     transform: translateY(-10px);

@@ -5,7 +5,7 @@ import MobileIcon from "../MobileIcon";
 import FullNavMenu from "../FullNavMenu";
 import { useMediaQuery } from "../../../utils/Helpers";
 
-export default function LogoNavbarContainer({ children, ...props }) {
+export default function LogoNavbarContainer({ children, pageName }) {
   const isDesktop = useMediaQuery("min", 1440);
   return (
     <div className={LogoNavStyles[`logo-nav-container`]}>
@@ -15,7 +15,7 @@ export default function LogoNavbarContainer({ children, ...props }) {
         <a className={LogoNavStyles[`logo-text`]}>toan_khuong</a>
       </Link>
       {/* full nav bar */}
-      {isDesktop ? <FullNavMenu /> : null}
+      {isDesktop ? <FullNavMenu currentPage={pageName} /> : null}
       {/* mobile icon */}
       <MobileIcon />
     </div>

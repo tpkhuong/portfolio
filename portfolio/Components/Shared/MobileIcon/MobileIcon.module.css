@@ -1,7 +1,7 @@
 .mobile-menu-icon {
   background-color: transparent;
   /* margin-inline: auto; */
-  display: block;
+  display: none;
   height: 26px;
   /* transform: rotate(45deg); */
 }
@@ -193,5 +193,11 @@
   /* then right */
   100% {
     transform: translateX(-10px);
+  }
+}
+
+@media screen and (max-width: 378px) {
+  .mobile-menu-icon {
+    display: block;
   }
 }

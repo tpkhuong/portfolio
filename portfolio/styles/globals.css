@@ -9,9 +9,11 @@
   --color-primary-darker-blue: hsl(208, 87%, 3%);
   --color-primary-border: hsl(211, 34%, 18%);
   --color-main-text: hsl(210, 22%, 55%);
-  --color-github-link: hsl(74, 45%, 43%);
+  --color-github-link: hsl(162, 66%, 56%);
+  --color-github-url: hsl(7, 69%, 72%);
   --color-profession: hsl(33, 57%, 55%);
   /* --color-name: hsl(0,0%,100%); */
+  --color-life: hsl(233, 57%, 55%);
   --color-accent-link-current-page: hsl(26, 99%, 68%);
   --color-primary-button-text-color: hsl(208, 87%, 3%);
   --color-primary-button: hsl(26, 99%, 68%);
@@ -77,6 +79,7 @@
   --font-size-body: 1.125rem;
   /* --heading-xxsm: 0.9375rem; */
   --font-size-28px: 1.75rem;
+  --font-size-20px: 1.25rem;
   --font-size-14px: 0.875rem;
   --font-size-12px: 0.75rem;
   --font-size-9px: 0.5625rem;
@@ -375,7 +378,7 @@ button {
 [href="#main-content"] {
   position: absolute;
   top: 0;
-  left: 100%; /* move of the screen */
+  left: -100%; /* move of the screen */
 }
 
 [href="#main-content"]:focus {

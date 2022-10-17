@@ -1,6 +1,5 @@
 .footer {
   display: flex;
-  justify-content: space-between;
   border: var(--border-lines);
   border-radius: 0px 0px 8px 8px;
 }
@@ -36,4 +35,16 @@
 
 .icon {
   width: 24px;
+}
+
+@media screen and (max-width: 378px) {
+  .footer {
+    justify-content: space-between;
+  }
+}
+
+@media screen and (min-width: 48rem) {
+  .social-icon-link:nth-child(3) {
+    border-right: var(--border-lines);
+  }
 }

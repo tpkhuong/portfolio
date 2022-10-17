@@ -24,12 +24,12 @@ export default function Home({ children, ...props }) {
       </a>
       <header className={HomeStyles[`header`]} role="banner">
         {/* Logo nav container */}
-        <LogoNavbarContainer />
+        <LogoNavbarContainer pageName="home" />
       </header>
       <main className={HomeStyles[`main`]} role="main">
         <Intro />
       </main>
-      {/* {isMobile ? <MobileMenu /> : null} */}
+      {isMobile ? <MobileMenu /> : null}
       {/* footer */}
       <Footer />
     </React.Fragment>
