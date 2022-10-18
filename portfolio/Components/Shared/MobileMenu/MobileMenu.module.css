@@ -1,5 +1,7 @@
 [data-showmenu="true"].mobile-menu-wrapper {
-  display: revert;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .mobile-menu-wrapper {
@@ -8,9 +10,9 @@
   background-color: var(--color-primary-dark-blue);
   inset: 2px;
   top: 64px;
-  bottom: 58px;
+  bottom: 2px;
   border: var(--border-lines);
-  border-top: 0px;
+  border-block: 0px;
   /* border-radius: 0px 0px 8px 8px; */
 }
 

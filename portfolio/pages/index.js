@@ -4,6 +4,8 @@ import HomeStyles from "../styles/Home.module.css";
 import LogoNavbarContainer from "../Components/Shared/LogoNavbar/index";
 import MobileMenu from "../Components/Shared/MobileMenu";
 import Intro from "../Components/Home/Intro";
+import Carousel from "../Components/Home/Carousel";
+import Main from "../Components/Shared/Main";
 import Footer from "../Components/Shared/Footer";
 import { useMediaQuery } from "../utils/Helpers";
 
@@ -26,9 +28,12 @@ export default function Home({ children, ...props }) {
         {/* Logo nav container */}
         <LogoNavbarContainer pageName="home" />
       </header>
-      <main className={HomeStyles[`main`]} role="main">
-        <Intro />
-      </main>
+      <Main>
+        <div className={HomeStyles[`intro-carousel-container`]}>
+          <Intro />
+          {/* <Carousel /> */}
+        </div>
+      </Main>
       {isMobile ? <MobileMenu /> : null}
       {/* footer */}
       <Footer />

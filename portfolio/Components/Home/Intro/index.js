@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import IntroStyles from "./Intro.module.css";
-import { FaChevronRight } from "react-icons/fa";
+import { FaChevronRight, FaArrowLeft } from "react-icons/fa";
 import { GoLocation } from "react-icons/go";
 
 export default function Intro({ children, ...props }) {
@@ -38,19 +38,26 @@ export default function Intro({ children, ...props }) {
         </a>
       </Link>
       <p className={IntroStyles[`comments`]}>
-        // scroll through the projects I've built.
+        // on the right scroll through the projects I've built.
       </p>
       <p className={IntroStyles[`comments`]}>
-        // you can also see them on my Github page.
+        // you can also see them on my github page.
       </p>
       <p className={IntroStyles[`statement-declaration`]}>
         <span className={IntroStyles[`js-keyword`]}>const</span>
         <span className={IntroStyles[`variable`]}>githubLink</span>
         <span className={IntroStyles[`operator`]}>=</span>
         <Link href="/">
-          <a className={IntroStyles[`github-link`]}>"https://githuburl"</a>
+          <a className={IntroStyles[`github-link`]}>
+            "https://github.com/tpkhuong"
+          </a>
         </Link>
       </p>
+      {/* scroll up */}
+      <button className={IntroStyles[`attention`]}>
+        <FaArrowLeft className={IntroStyles[`arrow-left`]} />
+        <span>swipe left to see projects.</span>
+      </button>
     </div>
   );
 }

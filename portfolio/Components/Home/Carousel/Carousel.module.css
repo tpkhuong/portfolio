@@ -1,0 +1,19 @@
+.snap-items-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  scroll-snap-type: y mandatory;
+  overflow-y: auto;
+  position: relative;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.snap-items-container::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.control-buttons {
+  position: absolute;
+}

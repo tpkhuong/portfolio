@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import MobileMenuStyles from "./MobileMenu.module.css";
+import SocialMedia from "./SocialMediaLink";
 import { arrayOfLinkTexts, arrayOfHref } from "../../../utils/storage";
 
 export default function MobileMenu({ children, ...props }) {
@@ -40,6 +41,7 @@ export default function MobileMenu({ children, ...props }) {
           })}
         </ul>
       </nav>
+      <SocialMedia />
     </div>
   );
 }

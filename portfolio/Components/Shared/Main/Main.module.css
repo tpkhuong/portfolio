@@ -1,0 +1,5 @@
+.main {
+  position: relative;
+  /* height: calc(100% * 1 - 124px); */
+  border-inline: var(--border-lines);
+}
