@@ -1,12 +1,13 @@
 import React from "react";
 import Link from "next/link";
 import IntroStyles from "./Intro.module.css";
+import { swipeLeftBtn } from "./introHelpers";
 import { FaChevronRight, FaArrowLeft } from "react-icons/fa";
 import { GoLocation } from "react-icons/go";
 
 export default function Intro({ children, ...props }) {
   return (
-    <div className={IntroStyles[`intro-wrapper`]}>
+    <div id="intro-snap-item" className={IntroStyles[`intro-wrapper`]}>
       <span className={IntroStyles[`greeting`]}>Hi all! I am</span>
       <h1 className={IntroStyles[`name`]}>Toan Khuong</h1>
       <div className={IntroStyles[`arrow-profession-wrapper`]}>
@@ -53,10 +54,17 @@ export default function Intro({ children, ...props }) {
           </a>
         </Link>
       </p>
-      {/* scroll up */}
-      <button className={IntroStyles[`attention`]}>
-        <FaArrowLeft className={IntroStyles[`arrow-left`]} />
-        <span>swipe left to see projects.</span>
+      {/* swipe left */}
+      <button
+        data-introbtnclicked="false"
+        id="show-carousel"
+        className={IntroStyles[`swipe-left-btn`]}
+        onClick={swipeLeftBtn}
+      >
+        <snap className={IntroStyles[`btn-content-wrapper`]}>
+          <FaArrowLeft className={IntroStyles[`arrow-left`]} />
+          <span className={IntroStyles[`btn-text`]}>swipe left projects.</span>
+        </snap>
       </button>
     </div>
   );

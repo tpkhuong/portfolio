@@ -7,10 +7,22 @@ import Intro from "../Components/Home/Intro";
 import Carousel from "../Components/Home/Carousel";
 import Main from "../Components/Shared/Main";
 import Footer from "../Components/Shared/Footer";
+import { observeIntroCarouselContainer } from "../utils/Helpers";
 import { useMediaQuery } from "../utils/Helpers";
 
 export default function Home({ children, ...props }) {
   const isMobile = useMediaQuery("max", 375);
+  React.useEffect(() => {
+    const introCarouselParent = document.getElementById(
+      "intro-carousel-component-parent"
+    );
+    const childrenElements = [...introCarouselParent.children];
+    console.log(introCarouselParent);
+    console.log(childrenElements);
+    introCarouselParent.getBoundingClientRect().width <= 375
+      ? observeIntroCarouselContainer(introCarouselParent, childrenElements)
+      : null;
+  }, []);
   return (
     <React.Fragment>
       <Head>
@@ -29,9 +41,12 @@ export default function Home({ children, ...props }) {
         <LogoNavbarContainer pageName="home" />
       </header>
       <Main>
-        <div className={HomeStyles[`intro-carousel-container`]}>
+        <div
+          id="intro-carousel-component-parent"
+          className={HomeStyles[`intro-carousel-container`]}
+        >
           <Intro />
-          {/* <Carousel /> */}
+          <Carousel />
         </div>
       </Main>
       {isMobile ? <MobileMenu /> : null}

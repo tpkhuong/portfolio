@@ -28,3 +28,58 @@ export function useMediaQuery(minMax, width) {
 
   return targetReached;
 }
+
+// carousel-snap-item
+// intro-snap-item
+
+const methodsForObserver = {
+  "carousel-snap-item": () => {
+    // show-intro
+    document
+      .getElementById("show-intro")
+      .getAttribute("data-carouselbtnclicked") == "true"
+      ? document
+          .getElementById("show-intro")
+          .setAttribute("data-carouselbtnclicked", "false")
+      : null;
+  },
+  "intro-snap-item": () => {
+    // show-carousel
+    document
+      .getElementById("show-carousel")
+      .getAttribute("data-introbtnclicked") == "true"
+      ? document
+          .getElementById("show-carousel")
+          .setAttribute("data-introbtnclicked", "false")
+      : null;
+  },
+};
+
+export function observeIntroCarouselContainer(rootElement, children) {
+  // callback
+  function changeSwipeBtnsClickedAttr(entries, observer) {
+    // loop through entries
+    entries.forEach(function observeEachComponent(entry, index) {
+      if (!entry.isIntersecting) {
+        return;
+      }
+      // we want to assign "false" to data-carouselbtnclicked and data-introbtnclicked based on entry target
+      methodsForObserver[entry.target.getAttribute("id")]();
+    });
+  }
+  // options
+  const options = {
+    root: rootElement,
+    threshold: 0.5,
+    rootMargin: "0px",
+  };
+  // passed into func call/invoke/execute to intersection observer
+  const observer = new IntersectionObserver(
+    changeSwipeBtnsClickedAttr,
+    options
+  );
+  // loop through children and observe the element in the children array
+  children.forEach(function addObserverToEachChild(element) {
+    observer.observe(element);
+  });
+}

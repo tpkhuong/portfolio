@@ -1,5 +1,7 @@
 import React from "react";
 import CarouselStyles from "./Carousel.module.css";
+import { swipeRightBtn } from "./carouselHelpers";
+import { FaArrowRight } from "react-icons/fa";
 import Project from "./Project";
 
 export default function Carousel({ children, ...props }) {
@@ -14,10 +16,15 @@ export default function Carousel({ children, ...props }) {
     memoizedInitialValues
   );
   return (
-    <section className={CarouselStyles[`controller-project-wrapper`]}>
+    <section
+      id="carousel-snap-item"
+      className={CarouselStyles[`project-wrapper`]}
+    >
       <h2 className="visually-hidden">Completed Projects</h2>
       {/* position relative on controller-project-wrapper */}
       <div className={CarouselStyles[`controller-project-wrapper`]}>
+        {/* centered vertically because of declaration align-self: center on parent element */}
+        {/* .project-wrapper which is a grid item */}
         {/* controller button container */}
         <div className={CarouselStyles[`control-buttons`]}>
           {/* up arrow */}
@@ -72,6 +79,20 @@ export default function Carousel({ children, ...props }) {
             })
           )}
         </div>
+        {/* swipe right */}
+        <button
+          data-carouselbtnclicked="false"
+          id="show-intro"
+          className={CarouselStyles[`swipe-right-btn`]}
+          onClick={swipeRightBtn}
+        >
+          <span className={CarouselStyles[`btn-content-wrapper`]}>
+            <span className={CarouselStyles[`btn-text`]}>
+              swipe right go back.
+            </span>
+            <FaArrowRight className={CarouselStyles[`arrow-right`]} />
+          </span>
+        </button>
       </div>
     </section>
   );
