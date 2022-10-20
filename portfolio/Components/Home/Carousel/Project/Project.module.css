@@ -1,3 +1,7 @@
+/* declare pointer-event non on all snap items. we dont want user to click on div element
+but we want to allow them to click on <a> buttons
+*/
+
 .snap-item {
   /* --size: 300px;
   width: calc(var(--size) * 2.5);

@@ -8,6 +8,8 @@ export default function Project({
   pos,
   spanContent,
   forKey,
+  hidden,
+  label,
 }) {
   return (
     <div
@@ -15,6 +17,10 @@ export default function Project({
       tabIndex={tab}
       data-pos-index={pos}
       key={Math.random() * forKey}
+      aria-hidden={hidden}
+      aria-label={label}
+      role="group"
+      aria-roledescription="slide"
     >
       <span>{spanContent}</span>
     </div>

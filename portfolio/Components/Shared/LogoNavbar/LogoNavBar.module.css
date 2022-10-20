@@ -4,7 +4,7 @@
   display: flex;
 }
 
-@media screen and (max-width: 378px) {
+@media screen and (max-width: 430px) {
   .logo-nav-container {
     padding: 18px;
     padding-inline-end: 28px;

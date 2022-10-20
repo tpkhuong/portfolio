@@ -1,5 +1,6 @@
 .project-wrapper {
-  align-self: center;
+  margin-block-end: 62px;
+  align-self: end;
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
@@ -7,6 +8,7 @@
 .controller-project-wrapper {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .snap-items-container {
@@ -15,7 +17,7 @@
   gap: 16px;
   scroll-snap-type: y mandatory;
   overflow-y: auto;
-  position: relative;
+  /* position: relative; */
   scrollbar-width: none;
   -ms-overflow-style: none;
   padding-inline: 16px;
@@ -27,9 +29,35 @@
   height: 0;
 }
 
-.control-buttons {
+.control-buttons-wrapper {
   position: absolute;
+  top: -72px;
+  left: 16px;
 }
+
+.previous-btn {
+  margin-inline-end: 16px;
+}
+
+.control-buttons-wrapper button {
+  background-color: var(--color-main-text);
+  border-radius: 3px;
+  padding: 6px;
+}
+
+.control-buttons-wrapper svg {
+  width: 32px;
+  fill: var(--color-neutral-white);
+  /* stroke: white; */
+}
+
+/* .control-buttons-wrapper svg path {
+  stroke: white;
+}
+
+.up {
+  stroke: white;
+} */
 
 .swipe-right-btn {
   margin-block-start: 110px;

@@ -8,10 +8,8 @@ import Carousel from "../Components/Home/Carousel";
 import Main from "../Components/Shared/Main";
 import Footer from "../Components/Shared/Footer";
 import { observeIntroCarouselContainer } from "../utils/Helpers";
-import { useMediaQuery } from "../utils/Helpers";
 
 export default function Home({ children, ...props }) {
-  const isMobile = useMediaQuery("max", 375);
   React.useEffect(() => {
     const introCarouselParent = document.getElementById(
       "intro-carousel-component-parent"
@@ -49,7 +47,7 @@ export default function Home({ children, ...props }) {
           <Carousel />
         </div>
       </Main>
-      {isMobile ? <MobileMenu /> : null}
+      <MobileMenu />
       {/* footer */}
       <Footer />
     </React.Fragment>
