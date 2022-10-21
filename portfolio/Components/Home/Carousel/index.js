@@ -29,23 +29,35 @@ export default function Carousel({ children, ...props }) {
     const scrollChildren = scrollContainer.children;
     // assigning tabindex, aria hidden to first and second children of snap items container
     const [firstChild, secondChild] = [...scrollChildren];
-    window.innerWidth <= 375
-      ? (firstChild.setAttribute("tabindex", "0"),
-        firstChild.setAttribute("aria-hidden", "false"),
-        secondChild.setAttribute("tabindex", "-1"))
-      : (firstChild.setAttribute("tabindex", "-1"),
-        secondChild.setAttribute("tabindex", "0"),
-        secondChild.setAttribute("aria-hidden", "false"));
+    // run algorithm below when array in initialValuesObj are null
+    !initialValuesObj.upArrowArray
+      ? window.innerWidth <= 375
+        ? (firstChild.setAttribute("tabindex", "0"),
+          firstChild.setAttribute("aria-hidden", "false"),
+          secondChild.setAttribute("tabindex", "-1"))
+        : (firstChild.setAttribute("tabindex", "-1"),
+          secondChild.setAttribute("tabindex", "0"),
+          secondChild.setAttribute("aria-hidden", "false"))
+      : null;
     // call intersection observer func based on screen size
     // call observeSnapItemsContainerMobile if .innerWidth is <= 375
     window.innerWidth <= 375
-      ? observeSnapItemsContainerMobile(scrollContainer, [...scrollChildren])
+      ? observeSnapItemsContainerMobile(
+          scrollContainer,
+          [...scrollChildren],
+          setSnapArray
+        )
       : null;
     // call observeSnapItemsContainerDesktop if .innerWidth is >= 1440
     window.innerWidth >= 1440
       ? observeSnapItemsContainerDesktop(scrollContainer, [...scrollChildren])
       : null;
-  }, []);
+    // focus element with id currentFocused
+    initialValuesObj.upArrowArray
+      ? (document.getElementById("currentFocused").scrollIntoView(),
+        document.getElementById("currentFocused").focus())
+      : null;
+  }, [initialValuesObj]);
 
   return (
     <section
@@ -94,7 +106,7 @@ export default function Carousel({ children, ...props }) {
                 hidden="true"
                 label="1 of 9"
                 classText="snap-item"
-                pos="1"
+                pos="one"
                 tab=""
                 spanContent="1"
               />
@@ -102,7 +114,7 @@ export default function Carousel({ children, ...props }) {
                 hidden="true"
                 label="2 of 9"
                 classText="snap-item"
-                pos="2"
+                pos="two"
                 tab=""
                 spanContent="2"
               />
@@ -110,7 +122,7 @@ export default function Carousel({ children, ...props }) {
                 hidden="true"
                 label="3 of 9"
                 classText="snap-item"
-                pos="3"
+                pos="three"
                 tab="-1"
                 spanContent="3"
               />
@@ -118,7 +130,7 @@ export default function Carousel({ children, ...props }) {
                 hidden="true"
                 label="4 of 9"
                 classText="snap-item"
-                pos="4"
+                pos="four"
                 tab="-1"
                 spanContent="4"
               />
@@ -126,7 +138,7 @@ export default function Carousel({ children, ...props }) {
                 hidden="true"
                 label="5 of 9"
                 classText="snap-item"
-                pos="5"
+                pos="five"
                 tab="-1"
                 spanContent="5"
               />
@@ -134,7 +146,7 @@ export default function Carousel({ children, ...props }) {
                 hidden="true"
                 label="6 of 9"
                 classText="snap-item"
-                pos="6"
+                pos="six"
                 tab="-1"
                 spanContent="6"
               />
@@ -142,7 +154,7 @@ export default function Carousel({ children, ...props }) {
                 hidden="true"
                 label="7 of 9"
                 classText="snap-item"
-                pos="7"
+                pos="seven"
                 tab="-1"
                 spanContent="7"
               />
@@ -150,7 +162,7 @@ export default function Carousel({ children, ...props }) {
                 hidden="true"
                 label="8 of 9"
                 classText="snap-item"
-                pos="8"
+                pos="eight"
                 tab="-1"
                 spanContent="8"
               />
@@ -158,7 +170,7 @@ export default function Carousel({ children, ...props }) {
                 hidden="true"
                 label="9 of 9"
                 classText="snap-item"
-                pos="9"
+                pos="nine"
                 tab="-1"
                 spanContent="9"
               />
@@ -175,16 +187,20 @@ export default function Carousel({ children, ...props }) {
                 tabindex,
                 ariaHidden,
                 ariaLabel,
+                focusId,
               } = element;
-              <Project
-                classText={classText}
-                pos={posIndex}
-                tab={tabindex}
-                forKey={index}
-                hidden={ariaHidden}
-                label={ariaLabel}
-                spanContent={spanText}
-              />;
+              return (
+                <Project
+                  classText={classText}
+                  pos={posIndex}
+                  tab={tabindex}
+                  key={Math.random() * index}
+                  hidden={ariaHidden}
+                  label={ariaLabel}
+                  idAttr={focusId ? focusId : null}
+                  spanContent={spanText}
+                />
+              );
             })
           ) : (
             initialValuesObj.downArrowArray.map(function renderProjects(
@@ -192,15 +208,17 @@ export default function Carousel({ children, ...props }) {
               index
             ) {
               const { classText, posIndex, spanText, tabindex } = element;
-              <Project
-                forKey={index}
-                classText={classText}
-                pos={posIndex}
-                tab={tabindex}
-                hidden={ariaHidden}
-                label={ariaLabel}
-                spanContent={spanText}
-              />;
+              return (
+                <Project
+                  key={Math.random() * index}
+                  classText={classText}
+                  pos={posIndex}
+                  tab={tabindex}
+                  hidden={ariaHidden}
+                  label={ariaLabel}
+                  spanContent={spanText}
+                />
+              );
             })
           )}
         </div>

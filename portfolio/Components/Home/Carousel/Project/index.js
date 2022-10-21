@@ -10,13 +10,26 @@ export default function Project({
   forKey,
   hidden,
   label,
+  idAttr,
 }) {
-  return (
+  return idAttr ? (
     <div
       className={`${ProjectStyle[`${classText}`]}`}
       tabIndex={tab}
       data-pos-index={pos}
-      key={Math.random() * forKey}
+      aria-hidden={hidden}
+      aria-label={label}
+      role="group"
+      id={idAttr}
+      aria-roledescription="slide"
+    >
+      <span>{spanContent}</span>
+    </div>
+  ) : (
+    <div
+      className={`${ProjectStyle[`${classText}`]}`}
+      tabIndex={tab}
+      data-pos-index={pos}
       aria-hidden={hidden}
       aria-label={label}
       role="group"

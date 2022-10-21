@@ -15,8 +15,6 @@ export default function Home({ children, ...props }) {
       "intro-carousel-component-parent"
     );
     const childrenElements = [...introCarouselParent.children];
-    console.log(introCarouselParent);
-    console.log(childrenElements);
     introCarouselParent.getBoundingClientRect().width <= 375
       ? observeIntroCarouselContainer(introCarouselParent, childrenElements)
       : null;
