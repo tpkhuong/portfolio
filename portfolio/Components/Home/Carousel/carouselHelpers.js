@@ -111,6 +111,10 @@ function nextSnapSibling(event, element) {
 
 // intersection observer
 
+/**
+ * mobile
+ * **/
+
 // use getElementById in .useEffect() to select snap items container and its children
 // pass those variables to funcs below
 export function observeSnapItemsContainerMobile(
@@ -120,46 +124,19 @@ export function observeSnapItemsContainerMobile(
 ) {
   // offsetTop 2928
   const mobileScrollHelper = {
-    top: { one: "", nine: "" },
+    top: { one: "", two: "", nine: "" },
     bottom: {
       one: (target) => {},
+      eight: (target) => {},
       nine: (target) => {
         target.previousElementSibling.setAttribute("tabindex", "-1");
         // get target parent children
         const [firstElement, ...restOfItems] = [
           ...target.parentElement.children,
         ];
-        const reorderArray = [...restOfItems, firstElement].map(
-          function createNewOrderedList(element, index) {
-            /** 
-                         * classText,
-                        posIndex,
-                        spanText,
-                        tabindex,
-                        ariaHidden,
-                        ariaLabel,
-                         * **/
-            const objOfValues =
-              index == 7
-                ? {
-                    classText: "snap-item",
-                    posIndex: element.getAttribute("data-pos-index"),
-                    spanText: element.firstElementChild.innerText,
-                    tabindex: "0",
-                    ariaHidden: "false",
-                    ariaLabel: `9 of 9`,
-                    focusId: "currentFocused",
-                  }
-                : {
-                    classText: "snap-item",
-                    posIndex: element.getAttribute("data-pos-index"),
-                    spanText: element.firstElementChild.innerText,
-                    tabindex: "-1",
-                    ariaHidden: "true",
-                    ariaLabel: element.getAttribute("aria-label"),
-                  };
-            return objOfValues;
-          }
+        const reorderArray = createNewOrderedArrayIndexSeven(
+          [...restOfItems, firstElement],
+          "9"
         );
         console.log(reorderArray);
         callFuncToRenderNewArray((prevValues) => {
@@ -226,10 +203,17 @@ export function observeSnapItemsContainerMobile(
       console.log("mobile");
       console.log(entry);
       console.log(entry.target.offsetTop);
+      // top position 1 element offsetTop is 0
+      // top position 2 element offsetTop is 366
+      // bottom position 8 element offsetTop is 2562
+      // bottom position 9 element offsetTop is 2928
       console.log(document.activeElement);
       /**
        * when we call setSnapItem func which will render carousel component
        * document.activeElement will be the element with id="currentFocused"
+       * **/
+      /**
+       * one solution
        * **/
       // find current focus element using document.activeElement
       // then find the pos index of that focus element
@@ -237,9 +221,47 @@ export function observeSnapItemsContainerMobile(
       // compare the two
       // if focus element pos index is less than pos index of intersecting element user is scrolling down
       // if focus element pos index is greater pos index of intersecting element user is scrolling up
+      /**
+       * another solution
+       * **/
+      // check where the user is by getting offsetTop of snap item
+      /**
+       * working at top:0,366,732
+       * **/
+      if (entry.target.offsetTop <= 732) {
+        // when target posindex is one && offsetTop == 0 && target.previousElementSibling == null,
+        // take element with posindex of nine and placed it at the beginning of array
+        // when target posindex is nine && offsetTop == 0 && target.previousElementSibling == null,
+        // take elements with posindex of nine and one placed them at end of array
+        // when target posindex is two && offsetTop == 732 && target.previousElementSibling.getAttribute("data-pos-index") == "nine"
+        // take element with posindex of nine and placed at end of array
+      }
+      /**
+       * working at bottom: 2195,2562,2928
+       * **/
+      if (entry.target.offsetTop >= 2195) {
+        // when target posindex is nine && offsetTop == 2928 && target.nextElementSibling is null,
+        // take element with posindex of one and placed it at the end of array
+        // when target posindex is one && offsetTop == 2928 && target.nextElementSibling is null,
+        // take elements with posindex of nine and one placed them at beginning of array
+        // when target posindex is eight && offsetTop == 2195 && target.nextElementSibling.getAttribute("data-pos-index") == one,
+        // take element with posindex of one and placed it at the beginning of array
+      }
       const targetPosindex = entry.target.getAttribute("data-pos-index");
       if (targetPosindex != "one" && targetPosindex != "nine") {
         observerHelper(entry.target);
+        if (
+          targetPosindex == "eight" &&
+          document.activeElement.getAttribute("data-pos-index") == "nine"
+        ) {
+          console.log("hello this is eight last focus was nine");
+        }
+        if (
+          targetPosindex == "two" &&
+          document.activeElement.getAttribute("data-pos-index") == "one"
+        ) {
+          console.log("hello this is two last focus was one");
+        }
         return;
       }
       // if entry target pos is one or nine and we're at the bottom of scroll
@@ -273,6 +295,79 @@ export function observeSnapItemsContainerMobile(
     mobileObserver.observe(item);
   });
 }
+
+/**
+ * working with element at index 1 or 7
+ * **/
+
+function createNewOrderedArrayIndexOne(array, quantityOf) {
+  return array.map(function createNewOrderedList(element, index) {
+    /** 
+                         * classText,
+                        posIndex,
+                        spanText,
+                        tabindex,
+                        ariaHidden,
+                        ariaLabel,
+                         * **/
+    const objOfValues =
+      index == 1
+        ? {
+            classText: "snap-item",
+            posIndex: element.getAttribute("data-pos-index"),
+            spanText: element.firstElementChild.innerText,
+            tabindex: "0",
+            ariaHidden: "false",
+            ariaLabel: `${quantityOf} of 9`,
+            focusId: "currentFocused",
+          }
+        : {
+            classText: "snap-item",
+            posIndex: element.getAttribute("data-pos-index"),
+            spanText: element.firstElementChild.innerText,
+            tabindex: "-1",
+            ariaHidden: "true",
+            ariaLabel: element.getAttribute("aria-label"),
+          };
+    return objOfValues;
+  });
+}
+function createNewOrderedArrayIndexSeven(array, quantityOf) {
+  return array.map(function createNewOrderedList(element, index) {
+    /** 
+                         * classText,
+                        posIndex,
+                        spanText,
+                        tabindex,
+                        ariaHidden,
+                        ariaLabel,
+                         * **/
+    const objOfValues =
+      index == 7
+        ? {
+            classText: "snap-item",
+            posIndex: element.getAttribute("data-pos-index"),
+            spanText: element.firstElementChild.innerText,
+            tabindex: "0",
+            ariaHidden: "false",
+            ariaLabel: `${quantityOf} of 9`,
+            focusId: "currentFocused",
+          }
+        : {
+            classText: "snap-item",
+            posIndex: element.getAttribute("data-pos-index"),
+            spanText: element.firstElementChild.innerText,
+            tabindex: "-1",
+            ariaHidden: "true",
+            ariaLabel: element.getAttribute("aria-label"),
+          };
+    return objOfValues;
+  });
+}
+
+/**
+ * desktop
+ * **/
 
 export function observeSnapItemsContainerDesktop(rootElement, children) {
   // callback
@@ -324,7 +419,9 @@ function observerHelper(target) {
       ? afterElement.setAttribute("tabindex", "-1")
       : null
     : null;
-  target.focus();
+  setTimeout(() => {
+    target.focus();
+  }, 150);
 }
 
 function mobileReorderedSnapItems() {}
@@ -334,3 +431,19 @@ function carouselMobile() {
 }
 
 function carouselDesktop() {}
+
+function makeArrays(arr) {
+  return arr.reduce(
+    function makeStuff(buildingUp, currentValue) {
+      const firstArr = buildingUp[0];
+      const secondArr = buildingUp[1];
+      if (currentValue == 1 || currentValue == 9) {
+        firstArr.push(currentValue);
+      } else {
+        secondArr.push(currentValue);
+      }
+      return buildingUp;
+    },
+    [[], []]
+  );
+}

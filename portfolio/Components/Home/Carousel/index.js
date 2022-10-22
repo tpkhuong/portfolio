@@ -31,14 +31,12 @@ export default function Carousel({ children, ...props }) {
     const [firstChild, secondChild] = [...scrollChildren];
     // run algorithm below when array in initialValuesObj are null
     !initialValuesObj.upArrowArray
-      ? window.innerWidth <= 375
-        ? (firstChild.setAttribute("tabindex", "0"),
-          firstChild.setAttribute("aria-hidden", "false"),
-          secondChild.setAttribute("tabindex", "-1"))
-        : (firstChild.setAttribute("tabindex", "-1"),
-          secondChild.setAttribute("tabindex", "0"),
-          secondChild.setAttribute("aria-hidden", "false"))
+      ? (firstChild.setAttribute("tabindex", "-1"),
+        secondChild.setAttribute("aria-hidden", "false"),
+        secondChild.setAttribute("tabindex", "0"),
+        scrollContainer.scrollBy(0, 1))
       : null;
+
     // call intersection observer func based on screen size
     // call observeSnapItemsContainerMobile if .innerWidth is <= 375
     window.innerWidth <= 375
@@ -104,6 +102,14 @@ export default function Carousel({ children, ...props }) {
             <React.Fragment>
               <Project
                 hidden="true"
+                label="9 of 9"
+                classText="snap-item"
+                pos="nine"
+                tab="-1"
+                spanContent="9"
+              />
+              <Project
+                hidden="true"
                 label="1 of 9"
                 classText="snap-item"
                 pos="one"
@@ -165,14 +171,6 @@ export default function Carousel({ children, ...props }) {
                 pos="eight"
                 tab="-1"
                 spanContent="8"
-              />
-              <Project
-                hidden="true"
-                label="9 of 9"
-                classText="snap-item"
-                pos="nine"
-                tab="-1"
-                spanContent="9"
               />
             </React.Fragment>
           ) : initialValuesObj.upArrowArray ? (
