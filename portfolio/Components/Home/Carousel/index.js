@@ -12,16 +12,13 @@ import { FaArrowRight, FaArrowUp, FaArrowDown } from "react-icons/fa";
 import Project from "./Project";
 
 export default function Carousel({ children, ...props }) {
-  const memoizedInitialValues = React.useMemo(() => {
-    return {
-      upArrowArray: null,
-      downArrowArray: null,
-    };
-  });
+  // const memoizedInitialValues = React.useMemo(() => {
+  //   return {
+  //     bottomOrTopArray: null,
+  //   };
+  // });
 
-  const [initialValuesObj, setSnapArray] = React.useState(
-    memoizedInitialValues
-  );
+  const [initialValuesObj, setSnapArray] = React.useState(null);
   React.useEffect(() => {
     // scroll container
     const scrollContainer = document.getElementById("scroll-container");
@@ -30,7 +27,7 @@ export default function Carousel({ children, ...props }) {
     // assigning tabindex, aria hidden to first and second children of snap items container
     const [firstChild, secondChild] = [...scrollChildren];
     // run algorithm below when array in initialValuesObj are null
-    !initialValuesObj.upArrowArray
+    !initialValuesObj
       ? (firstChild.setAttribute("tabindex", "-1"),
         secondChild.setAttribute("aria-hidden", "false"),
         secondChild.setAttribute("tabindex", "0"),
@@ -51,7 +48,7 @@ export default function Carousel({ children, ...props }) {
       ? observeSnapItemsContainerDesktop(scrollContainer, [...scrollChildren])
       : null;
     // focus element with id currentFocused
-    initialValuesObj.upArrowArray
+    initialValuesObj
       ? (document.getElementById("currentFocused").scrollIntoView(),
         document.getElementById("currentFocused").focus())
       : null;
@@ -97,8 +94,7 @@ export default function Carousel({ children, ...props }) {
           onKeyDown={keyboardScrollThroughSnapItems}
         >
           {/* aria-hidden all on projects except project with tabindex 0 */}
-          {!initialValuesObj.upArrowArray &&
-          !initialValuesObj.downArrowArray ? (
+          {!initialValuesObj ? (
             <React.Fragment>
               <Project
                 hidden="true"
@@ -173,11 +169,8 @@ export default function Carousel({ children, ...props }) {
                 spanContent="8"
               />
             </React.Fragment>
-          ) : initialValuesObj.upArrowArray ? (
-            initialValuesObj.upArrowArray.map(function renderProjects(
-              element,
-              index
-            ) {
+          ) : (
+            initialValuesObj.map(function renderProjects(element, index) {
               const {
                 classText,
                 posIndex,
@@ -196,24 +189,6 @@ export default function Carousel({ children, ...props }) {
                   hidden={ariaHidden}
                   label={ariaLabel}
                   idAttr={focusId ? focusId : null}
-                  spanContent={spanText}
-                />
-              );
-            })
-          ) : (
-            initialValuesObj.downArrowArray.map(function renderProjects(
-              element,
-              index
-            ) {
-              const { classText, posIndex, spanText, tabindex } = element;
-              return (
-                <Project
-                  key={Math.random() * index}
-                  classText={classText}
-                  pos={posIndex}
-                  tab={tabindex}
-                  hidden={ariaHidden}
-                  label={ariaLabel}
                   spanContent={spanText}
                 />
               );
