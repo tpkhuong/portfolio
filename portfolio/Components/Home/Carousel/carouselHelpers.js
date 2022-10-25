@@ -127,7 +127,7 @@ export function observeSnapItemsContainerMobile(
     top: {
       one: (target) => {
         target.nextElementSibling.setAttribute("tabindex", "-1");
-        const arr = [...children];
+        const arr = [...target.parentElement.children];
         const lastItem = arr[arr.length - 1];
         const beforeLastItem = arr.slice(0, -1);
         const reorderItems = createNewOrderedArrayIndexOne(
@@ -145,7 +145,7 @@ export function observeSnapItemsContainerMobile(
       two: (target) => {
         target.previousElementSibling.setAttribute("tabindex", "-1");
 
-        const [firstItem, ...restOfArray] = [...children];
+        const [firstItem, ...restOfArray] = [...target.parentElement.children];
         const newOrderedItems = createNewOrderedArrayIndexOne(
           [...restOfArray, firstItem],
           "2"
@@ -161,7 +161,7 @@ export function observeSnapItemsContainerMobile(
       nine: (target) => {
         target.nextElementSibling.setAttribute("tabindex", "-1");
 
-        const scrollChildren = [...children];
+        const scrollChildren = [...target.parentElement.children];
         const firstItem = scrollChildren[0];
         const secondItem = scrollChildren[1];
         const restOfItems = scrollChildren.slice(2);
@@ -181,7 +181,7 @@ export function observeSnapItemsContainerMobile(
     bottom: {
       one: (target) => {
         target.previousElementSibling.setAttribute("tabindex", "-1");
-        const snapItems = [...children];
+        const snapItems = [...target.parentElement.children];
         const secondToLast = snapItems[snapItems.length - 2];
         const lastItem = snapItems[snapItems.length - 1];
         const beforeLastTwo = snapItems.slice(0, -2);
@@ -199,7 +199,7 @@ export function observeSnapItemsContainerMobile(
       },
       eight: (target) => {
         target.nextElementSibling.setAttribute("tabindex", "-1");
-        const snapChildren = [...children];
+        const snapChildren = [...target.parentElement.children];
         const lastItem = snapChildren[snapChildren.length - 1];
         const beforeLastItem = snapChildren.slice(0, -1);
         const reordernSnapItem = createNewOrderedArrayIndexSeven(
@@ -218,7 +218,9 @@ export function observeSnapItemsContainerMobile(
       nine: (target) => {
         target.previousElementSibling.setAttribute("tabindex", "-1");
         // get target parent children
-        const [firstElement, ...restOfItems] = [...children];
+        const [firstElement, ...restOfItems] = [
+          ...target.parentElement.children,
+        ];
         const reorderArray = createNewOrderedArrayIndexSeven(
           [...restOfItems, firstElement],
           "9"
@@ -286,6 +288,7 @@ export function observeSnapItemsContainerMobile(
         return;
       }
       const targetPosindex = entry.target.getAttribute("data-pos-index");
+      console.log(targetPosindex);
       console.log("mobile");
       console.log(entry);
       console.log(entry.target.offsetTop);
@@ -297,6 +300,7 @@ export function observeSnapItemsContainerMobile(
       console.log("previousFocused", previousFocused);
       console.log(previousFocused == entry.target);
       if (previousFocused == entry.target) {
+        console.log("return");
         return;
       }
 
@@ -323,11 +327,12 @@ export function observeSnapItemsContainerMobile(
       if (
         targetPosindex == "nine" &&
         entry.target.previousElementSibling == null &&
-        entry.target.nextElementSibling.getAttribute("data-pos-index") == "one"
+        previousFocused !== entry.target
       ) {
+        console.log("hello, this is nine");
         // when target posindex is nine && target.previousElementSibling == null && target.nextElementSibling.getAttribute("data-pos-index") == "one"
         // take elements with posindex of nine and one placed them at end of array
-        mobileScrollHelper["top"][targetPosindex](entry.target, observer);
+        mobileScrollHelper["top"][targetPosindex](entry.target);
         return;
       }
       // when target posindex is one && target.previousElementSibling == null && target.nextElementSibling.getAttribute("data-pos-index") == "two"
@@ -335,22 +340,24 @@ export function observeSnapItemsContainerMobile(
       if (
         targetPosindex == "one" &&
         entry.target.previousElementSibling == null &&
-        entry.target.nextElementSibling.getAttribute("data-pos-index") == "two"
+        previousFocused !== entry.target
       ) {
-        mobileScrollHelper["top"][targetPosindex](entry.target, observer);
+        mobileScrollHelper["top"][targetPosindex](entry.target);
         return;
       }
       // when target posindex is two && target.previousElementSibling.getAttribute("data-pos-index") == "nine" && target.previousElementSibling.previousElementSibling.getAttritebu("data-pos-index") == "nine"
       // take element with posindex of nine and placed at end of array
-      if (
-        targetPosindex == "two" &&
-        entry.target.previousElementSibling.getAttribute("data-pos-index") ==
-          "one" &&
-        previousFocused !== entry.target
-      ) {
-        console.log("hello this is two prev is one prev prev is nine");
-        mobileScrollHelper["top"][targetPosindex](entry.target, observer);
-        return;
+      if (targetPosindex == "two" && previousFocused !== entry.target) {
+        if (
+          entry.target.previousElementSibling.previousElementSibling &&
+          entry.target.previousElementSibling.previousElementSibling.getAttribute(
+            "data-pos-index"
+          ) == "nine"
+        ) {
+          console.log("hello this is two prev is one prev prev is nine");
+          mobileScrollHelper["top"][targetPosindex](entry.target);
+          return;
+        }
       }
       /**
        * working at bottom: 2195,2562,2928
@@ -359,9 +366,7 @@ export function observeSnapItemsContainerMobile(
       // take element with posindex of one and placed it at the beginning of array
       if (
         targetPosindex == "eight" &&
-        entry.target.nextElementSibling.getAttribute("data-pos-index") ==
-          "nine" &&
-        previousFocused !== entry.target
+        previousFocused.getAttribute("data-pos-index") == "nine"
       ) {
         console.log("this is eight bottom");
         mobileScrollHelper["bottom"][targetPosindex](entry.target);
@@ -552,9 +557,7 @@ function observerHelper(target) {
       ? afterElement.setAttribute("tabindex", "-1")
       : null
     : null;
-  setTimeout(() => {
-    target.focus();
-  }, 150);
+  target.focus();
 }
 
 function mobileReorderedSnapItems() {}

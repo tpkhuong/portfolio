@@ -23,9 +23,10 @@ export default function Carousel({ children, ...props }) {
     // scroll container
     const scrollContainer = document.getElementById("scroll-container");
     // scroll children
-    const scrollChildren = scrollContainer.children;
+    const scrollChildren = [...scrollContainer.children];
     // assigning tabindex, aria hidden to first and second children of snap items container
-    const [firstChild, secondChild] = [...scrollChildren];
+    const firstChild = scrollChildren[0];
+    const secondChild = scrollChildren[1];
     // run algorithm below when array in initialValuesObj are null
     !initialValuesObj
       ? (firstChild.setAttribute("tabindex", "-1"),
@@ -33,19 +34,19 @@ export default function Carousel({ children, ...props }) {
         secondChild.setAttribute("tabindex", "0"),
         scrollContainer.scrollBy(0, 1))
       : null;
-
+    console.log("scrollChildren", scrollChildren);
     // call intersection observer func based on screen size
     // call observeSnapItemsContainerMobile if .innerWidth is <= 375
     window.innerWidth <= 375
       ? observeSnapItemsContainerMobile(
           scrollContainer,
-          [...scrollChildren],
+          scrollChildren,
           setSnapArray
         )
       : null;
     // call observeSnapItemsContainerDesktop if .innerWidth is >= 1440
     window.innerWidth >= 1440
-      ? observeSnapItemsContainerDesktop(scrollContainer, [...scrollChildren])
+      ? observeSnapItemsContainerDesktop(scrollContainer, scrollChildren)
       : null;
     // focus element with id currentFocused
     initialValuesObj
