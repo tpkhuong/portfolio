@@ -60,9 +60,9 @@ but we want to allow them to click on <a> buttons
 
 @media screen and (min-width: 90rem) {
   .snap-item {
-    --size: 300px;
+    /* --size: 300px;
     width: calc(var(--size) * 2.5);
-    height: calc(var(--size) + 100px);
+    height: calc(var(--size) + 100px); */
     flex-shrink: 0;
     /* flex-basis: 450px; */
     /* snap to the snap container */

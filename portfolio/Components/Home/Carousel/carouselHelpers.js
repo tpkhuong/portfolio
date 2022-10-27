@@ -24,9 +24,12 @@ export function clickPreviousSnapItem(event) {
   // find snap item with tabindex === "0"
   if (event.target.closest("BUTTON")) {
     console.log("prev btn");
-    const currentFocusedElement = document.querySelector(
-      "div[id='scroll-container'] div[tabindex='0']"
-    );
+    const windowWidth = window.innerWidth;
+    const currentFocusedElement = document.getElementById("currentFocused");
+    previousSnapSibling(currentFocusedElement, windowWidth);
+    setTimeout(() => {
+      event.target.closest("BUTTON").focus();
+    }, 50);
   }
 }
 
@@ -34,9 +37,12 @@ export function clickNextSnapItem(event) {
   // find snap item with tabindex === "0"
   if (event.target.closest("BUTTON")) {
     console.log("next btn");
-    const currentFocusedItem = document.querySelector(
-      "div[id='scroll-container'] div[tabindex='0']"
-    );
+    const windowWidth = window.innerWidth;
+    const currentFocusedItem = document.getElementById("currentFocused");
+    nextSnapSibling(currentFocusedItem, windowWidth);
+    setTimeout(() => {
+      event.target.closest("BUTTON").focus();
+    }, 50);
   }
 }
 
@@ -44,69 +50,100 @@ export function clickNextSnapItem(event) {
 
 const methodsForKeyboardScroll = {
   // up arrow
-  ArrowUp: (event, element) => {
+  ArrowUp: (event, element, width) => {
+    event.preventDefault();
+    previousSnapSibling(element, width);
     console.log("up");
   },
   // left arrow
-  ArrowLeft: (event, element) => {
+  ArrowLeft: (event, element, width) => {
+    event.preventDefault();
+    previousSnapSibling(element, width);
     console.log("left");
   },
   // down arrow
-  ArrowDown: (event, element) => {
+  ArrowDown: (event, element, width) => {
+    event.preventDefault();
+    nextSnapSibling(element, width);
     console.log("down");
   },
   // right arrow
-  ArrowRight: (event, element) => {
+  ArrowRight: (event, element, width) => {
+    event.preventDefault();
+    nextSnapSibling(element, width);
     console.log("right");
   },
   // home
-  Home: (event, element) => {
+  Home: (event, element, width) => {
+    event.preventDefault();
+
     console.log("home");
   },
   // end
-  End: (event, element) => {
+  End: (event, element, width) => {
+    event.preventDefault();
+
     console.log("end");
   },
   // page up
-  PageUp: (event, element) => {
+  PageUp: (event, element, width) => {
+    event.preventDefault();
+
     console.log("up");
   },
   // page down
-  PageDown: (event, element) => {
+  PageDown: (event, element, width) => {
+    event.preventDefault();
+
     console.log("down");
   },
 };
 
 export function keyboardScrollThroughSnapItems(event) {
   // event.code
+  const windowWidth = window.innerWidth;
   // pass in event and element to methodsForKeyboardScroll[key]()
   // console.log(event.target.closest("div[aria-roledescription='slide']"));
-  const currentFocusedSnapItem = event.target.closest(
-    "div[aria-roledescription='slide']"
-  );
+  const currentFocusedSnapItem = document.getElementById("currentFocused");
   // if (event.target.closest("DIV") && event.target.closest("DIV").getAttribute("aria-roledescription") == "slide") {
-  //     // methodsForKeyboardScroll[event.code]()
   // }
+  if (
+    event.code == "Space" &&
+    document.activeElement == currentFocusedSnapItem
+  ) {
+    event.preventDefault();
+  }
+  if (methodsForKeyboardScroll[event.code]) {
+    methodsForKeyboardScroll[event.code](
+      event,
+      currentFocusedSnapItem,
+      windowWidth
+    );
+  }
 }
 
 // up and left arrow
 
-function previousSnapSibling(event, element) {
+function previousSnapSibling(element, width) {
+  const negativeVerticalScroll = width <= 375 ? -1 : -50;
   // instead of working with document.activeElement which will give us the curent focused element
   // we will use event.target.closest("div[aria-roledescription='slide']") or work with snap item
   // for both keyboard and clicking on previous and next btn
   // pass in the div with aria-roledescription='slide' as the element parameter
   // algorithm to assign value string "0" to tabindex attr will be handled by our intersection observer func
+  element.parentElement.scrollBy(0, negativeVerticalScroll);
 }
 
 // down and right arrow
 
-function nextSnapSibling(event, element) {
+function nextSnapSibling(element, width) {
+  const positiveVerticalScroll = width <= 375 ? 1 : 50;
   // instead of working with document.activeElement which will give us the curent focused element
   // we will use event.target.closest("div[aria-roledescription='slide']") or work with snap item
   // for both keyboard and clicking on previous and next btn
   // pass in the div with aria-roledescription='slide' as the element parameter
   // algorithm to assign value string "0" to tabindex attr will be handled by our intersection observer func
+  element.parentElement.scrollBy(0, positiveVerticalScroll);
 }
 
 // intersection observer
@@ -130,6 +167,7 @@ export function observeSnapItemsContainerMobile(
         console.log("ob", ob);
 
         target.nextElementSibling.setAttribute("tabindex", "-1");
+        target.nextElementSibling.setAttribute("aria-hidden", "true");
         console.log(target.parentElement.children);
         const parentChildren = [...target.parentElement.children];
         const arr = [...parentChildren];
@@ -157,6 +195,7 @@ export function observeSnapItemsContainerMobile(
         console.log("ob", ob);
 
         target.previousElementSibling.setAttribute("tabindex", "-1");
+        target.previousElementSibling.setAttribute("aria-hidden", "true");
         console.log(target.parentElement.children);
         const parentChildren = [...target.parentElement.children];
         const copyOfArr = [...parentChildren];
@@ -184,6 +223,7 @@ export function observeSnapItemsContainerMobile(
         console.log("ob", ob);
 
         target.nextElementSibling.setAttribute("tabindex", "-1");
+        target.nextElementSibling.setAttribute("aria-hidden", "true");
         console.log(target.parentElement.children);
 
         const scrollChildren = [...target.parentElement.children];
@@ -216,6 +256,7 @@ export function observeSnapItemsContainerMobile(
         console.log(target);
         console.log("ob", ob);
         target.previousElementSibling.setAttribute("tabindex", "-1");
+        target.previousElementSibling.setAttribute("aria-hidden", "true");
         console.log(target.parentElement.children);
 
         const snapItems = [...target.parentElement.children];
@@ -246,6 +287,7 @@ export function observeSnapItemsContainerMobile(
         console.log("ob", ob);
 
         target.nextElementSibling.setAttribute("tabindex", "-1");
+        target.nextElementSibling.setAttribute("aria-hidden", "true");
         console.log(target.parentElement.children);
 
         const snapChildren = [...target.parentElement.children];
@@ -276,6 +318,7 @@ export function observeSnapItemsContainerMobile(
         console.log("ob", ob);
 
         target.previousElementSibling.setAttribute("tabindex", "-1");
+        target.previousElementSibling.setAttribute("aria-hidden", "true");
         console.log(target.parentElement.children);
 
         const parentChildren = [...target.parentElement.children];
@@ -614,7 +657,7 @@ export function observeSnapItemsContainerDesktop(rootElement, children) {
   const desktopOptions = {
     root: rootElement,
     threshold: 1,
-    rootMargin: "0px",
+    rootMargin: "-216px 0px -216px 0px",
   };
   // call IntersectionObserver
   const desktopObserver = new IntersectionObserver(
@@ -633,26 +676,23 @@ function observerHelper(target) {
   // we are calling .focus() in our React.useEffect()
   const targetTabindex = target.getAttribute("tabindex");
   const elementID = target.getAttribute("id");
+  const elementAriaHidden = target.getAttribute("aria-hidden");
   if (targetTabindex === "0") {
     return;
   }
 
   !elementID ? target.setAttribute("id", "currentFocused") : null;
+
+  setTimeout(() => {
+    elementAriaHidden == "true"
+      ? target.setAttribute("aria-hidden", "false")
+      : null;
+  }, 150);
+
   // if current target element tabindex == "-1" assign "0" to tabindex of target
   const beforeElement = target.previousElementSibling;
   const afterElement = target.nextElementSibling;
   targetTabindex == "-1" ? target.setAttribute("tabindex", "0") : null;
-
-  beforeElement
-    ? beforeElement.getAttribute("tabindex") === "0"
-      ? beforeElement.setAttribute("tabindex", "-1")
-      : null
-    : null;
-  afterElement
-    ? afterElement.getAttribute("tabindex") === "0"
-      ? afterElement.setAttribute("tabindex", "-1")
-      : null
-    : null;
 
   if (beforeElement) {
     beforeElement.getAttribute("tabindex") === "0"
@@ -661,6 +701,10 @@ function observerHelper(target) {
 
     beforeElement.getAttribute("id") == "currentFocused"
       ? beforeElement.setAttribute("id", "")
+      : null;
+
+    beforeElement.getAttribute("aria-hidden") == "false"
+      ? beforeElement.setAttribute("aria-hidden", "true")
       : null;
   }
 
@@ -671,6 +715,10 @@ function observerHelper(target) {
 
     afterElement.getAttribute("id") == "currentFocused"
       ? afterElement.setAttribute("id", "")
+      : null;
+
+    afterElement.getAttribute("aria-hidden") == "false"
+      ? afterElement.setAttribute("aria-hidden", "true")
       : null;
   }
   target.focus();

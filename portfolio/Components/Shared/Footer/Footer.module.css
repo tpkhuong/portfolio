@@ -48,3 +48,9 @@
     border-right: var(--border-lines);
   }
 }
+
+@media screen and (min-width: 90rem) {
+  .text {
+    margin-inline-end: 52px;
+  }
+}
