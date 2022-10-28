@@ -98,6 +98,17 @@
 }
 
 @media screen and (min-width: 90rem) {
+  .control-buttons-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    left: -62px;
+    top: 216px;
+    /* gap: 20px; left: -62px;top:216px */
+  }
+  .previous-btn {
+    margin-inline-end: 0px;
+  }
   .swipe-right-btn {
     display: none;
   }
@@ -105,6 +116,21 @@
     min-height: calc(100vh - 64px - 58px);
     margin-block-end: 0px;
   }
+
+  .previous-btn:hover,
+  .previous-btn:focus,
+  .next-btn:hover,
+  .next-btn:focus {
+    background-color: var(--color-neutral-white);
+  }
+
+  .previous-btn:hover svg,
+  .previous-btn:focus svg,
+  .next-btn:hover svg,
+  .next-btn:focus svg {
+    fill: var(--color-cssfileicon);
+  }
+
   .snap-items-container {
     padding-inline: 0;
     flex-basis: 778px;

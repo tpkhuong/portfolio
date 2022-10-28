@@ -27,34 +27,53 @@ export default function Carousel({ children, ...props }) {
     const scrollContainer = document.getElementById("scroll-container");
     // scroll children
     const scrollChildren = [...scrollContainer.children];
-    // assigning tabindex, aria hidden to first and second children of snap items container
-    const firstChild = scrollChildren[0];
-    const secondChild = scrollChildren[1];
-    // run algorithm below when array in initialValuesObj are null
-    !initialValuesObj.bottomOrTopArray
-      ? (firstChild.setAttribute("tabindex", "-1"),
-        secondChild.setAttribute("aria-hidden", "false"),
-        secondChild.setAttribute("tabindex", "0"),
-        scrollContainer.scrollBy(0, 1))
-      : null;
+    /**
+     * mobile
+     * **/
+    if (window.innerWidth <= 375) {
+      // assigning tabindex, aria hidden to first and second children of snap items container
+      const secondChild = scrollChildren[1];
+      // run algorithm below when array in initialValuesObj are null
+      !initialValuesObj.bottomOrTopArray
+        ? (secondChild.setAttribute("aria-hidden", "false"),
+          secondChild.setAttribute("tabindex", "0"),
+          secondChild.setAttribute("id", "currentFocused"),
+          scrollContainer.scrollBy(0, 1))
+        : null;
+      // call intersection observer func based on screen size
+      // call observeSnapItemsContainerMobile if .innerWidth is <= 375
+      observeSnapItemsContainerMobile(
+        scrollContainer,
+        scrollChildren,
+        setSnapArray
+      );
+      // focus element with id currentFocused
+      initialValuesObj.bottomOrTopArray
+        ? document.getElementById("currentFocused").focus()
+        : null;
+    }
     console.log("scrollChildren", scrollChildren);
-    // call intersection observer func based on screen size
-    // call observeSnapItemsContainerMobile if .innerWidth is <= 375
-    window.innerWidth <= 375
-      ? observeSnapItemsContainerMobile(
-          scrollContainer,
-          scrollChildren,
-          setSnapArray
-        )
-      : null;
-    // call observeSnapItemsContainerDesktop if .innerWidth is >= 1440
-    window.innerWidth >= 1440
-      ? observeSnapItemsContainerDesktop(scrollContainer, scrollChildren)
-      : null;
-    // focus element with id currentFocused
-    initialValuesObj.bottomOrTopArray
-      ? document.getElementById("currentFocused").focus()
-      : null;
+    if (window.innerWidth >= 1440) {
+      // assigning tabindex, aria hidden to first,second and third children of snap items container
+      const thirdChild = scrollChildren[2];
+
+      !initialValuesObj.bottomOrTopArray
+        ? (thirdChild.setAttribute("aria-hidden", "false"),
+          thirdChild.setAttribute("tabindex", "0"),
+          thirdChild.setAttribute("id", "currentFocused"))
+        : null;
+
+      // call observeSnapItemsContainerDesktop if .innerWidth is >= 1440
+      observeSnapItemsContainerDesktop(
+        scrollContainer,
+        scrollChildren,
+        setSnapArray
+      );
+
+      !initialValuesObj.bottomOrTopArray
+        ? (thirdChild.focus(), thirdChild.scrollIntoView())
+        : null;
+    }
   }, [initialValuesObj.targetElement]);
 
   return (
@@ -112,16 +131,15 @@ export default function Carousel({ children, ...props }) {
                 label="1 of 9"
                 classText="snap-item"
                 pos="one"
-                tab=""
+                tab="-1"
                 spanContent="1"
-                idAttr="currentFocused"
               />
               <Project
                 hidden="true"
                 label="2 of 9"
                 classText="snap-item"
                 pos="two"
-                tab=""
+                tab="-1"
                 spanContent="2"
               />
               <Project

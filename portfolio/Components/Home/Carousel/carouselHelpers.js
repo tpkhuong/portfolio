@@ -149,6 +149,22 @@ function nextSnapSibling(element, width) {
 // intersection observer
 
 /**
+ * create func to create arrays for mobile and desktop
+ * **/
+
+// working with index 1 and 7 mobile
+
+const createNewOrderedArrayIndexOne = factoryFuncCreateArray(1);
+
+const createNewOrderedArrayIndexSeven = factoryFuncCreateArray(7);
+
+// working with index 2 and 6 desktop
+
+const createNewOrderedArrayIndexTwo = factoryFuncCreateArray(2);
+
+const createNewOrderedArrayIndexSix = factoryFuncCreateArray(6);
+
+/**
  * mobile
  * **/
 
@@ -162,9 +178,9 @@ export function observeSnapItemsContainerMobile(
   // offsetTop 2928
   const mobileScrollHelper = {
     top: {
-      one: (target, ob) => {
+      one: (target, observer) => {
         console.log(target);
-        console.log("ob", ob);
+        console.log("observer", observer);
 
         target.nextElementSibling.setAttribute("tabindex", "-1");
         target.nextElementSibling.setAttribute("aria-hidden", "true");
@@ -179,7 +195,7 @@ export function observeSnapItemsContainerMobile(
           "1"
         );
         console.log(reorderItems);
-        ob.disconnect();
+        observer.disconnect();
 
         // callFuncToRenderNewArray(reorderItems);
         callFuncToRenderNewArray((prev) => {
@@ -190,12 +206,24 @@ export function observeSnapItemsContainerMobile(
           };
         });
       },
-      two: (target, ob) => {
+      two: (target, observer, prevFocused) => {
         console.log(target);
-        console.log("ob", ob);
+        console.log("observer", observer);
 
-        target.previousElementSibling.setAttribute("tabindex", "-1");
-        target.previousElementSibling.setAttribute("aria-hidden", "true");
+        prevFocused.getAttribute("data-pos-index") == "one"
+          ? (target.previousElementSibling.setAttribute("tabindex", "-1"),
+            target.previousElementSibling.setAttribute("aria-hidden", "true"))
+          : null;
+        prevFocused.getAttribute("data-pos-index") == "three"
+          ? (target.nextElementSibling.setAttribute("tabindex", "-1"),
+            target.nextElementSibling.setAttribute("aria-hidden", "true"))
+          : null;
+
+        // target.previousElementSibling.setAttribute("tabindex", "-1");
+        // target.previousElementSibling.setAttribute("aria-hidden", "true");
+
+        // target.nextElementSibling.setAttribute("tabindex", "-1");
+        // target.nextElementSibling.setAttribute("aria-hidden", "true");
         console.log(target.parentElement.children);
         const parentChildren = [...target.parentElement.children];
         const copyOfArr = [...parentChildren];
@@ -207,7 +235,7 @@ export function observeSnapItemsContainerMobile(
           "2"
         );
         console.log(newOrderedItems);
-        ob.disconnect();
+        observer.disconnect();
 
         // callFuncToRenderNewArray(newOrderedItems);
         callFuncToRenderNewArray((values) => {
@@ -218,9 +246,9 @@ export function observeSnapItemsContainerMobile(
           };
         });
       },
-      nine: (target, ob) => {
+      nine: (target, observer) => {
         console.log(target);
-        console.log("ob", ob);
+        console.log("observer", observer);
 
         target.nextElementSibling.setAttribute("tabindex", "-1");
         target.nextElementSibling.setAttribute("aria-hidden", "true");
@@ -239,7 +267,7 @@ export function observeSnapItemsContainerMobile(
           "9"
         );
         console.log(reorderedChildren);
-        ob.disconnect();
+        observer.disconnect();
 
         // callFuncToRenderNewArray(reorderedChildren);
         callFuncToRenderNewArray((values) => {
@@ -252,9 +280,9 @@ export function observeSnapItemsContainerMobile(
       },
     },
     bottom: {
-      one: (target, ob) => {
+      one: (target, observer) => {
         console.log(target);
-        console.log("ob", ob);
+        console.log("observer", observer);
         target.previousElementSibling.setAttribute("tabindex", "-1");
         target.previousElementSibling.setAttribute("aria-hidden", "true");
         console.log(target.parentElement.children);
@@ -272,7 +300,7 @@ export function observeSnapItemsContainerMobile(
           "1"
         );
         console.log(reorderedItems);
-        ob.disconnect();
+        observer.disconnect();
         // callFuncToRenderNewArray(reorderedItems);
         callFuncToRenderNewArray((prevValues) => {
           return {
@@ -282,12 +310,25 @@ export function observeSnapItemsContainerMobile(
           };
         });
       },
-      eight: (target, ob) => {
+      eight: (target, observer, prevFocus) => {
         console.log(target);
-        console.log("ob", ob);
+        console.log("observer", observer);
 
-        target.nextElementSibling.setAttribute("tabindex", "-1");
-        target.nextElementSibling.setAttribute("aria-hidden", "true");
+        prevFocus.getAttribute("data-pos-index") == "seven"
+          ? (target.previousElementSibling.setAttribute("tabindex", "-1"),
+            target.previousElementSibling.setAttribute("aria-hidden", "true"))
+          : null;
+        prevFocus.getAttribute("data-pos-index") == "nine"
+          ? (target.nextElementSibling.setAttribute("tabindex", "-1"),
+            target.nextElementSibling.setAttribute("aria-hidden", "true"))
+          : null;
+
+        //         target.nextElementSibling.setAttribute("tabindex", "-1");
+        //         target.nextElementSibling.setAttribute("aria-hidden", "true");
+
+        // target.previousElementSibling.setAttribute("tabindex", "-1");
+        //         target.previousElementSibling.setAttribute("aria-hidden", "true");
+
         console.log(target.parentElement.children);
 
         const snapChildren = [...target.parentElement.children];
@@ -301,7 +342,7 @@ export function observeSnapItemsContainerMobile(
           "8"
         );
         console.log(reordernSnapItem);
-        ob.disconnect();
+        observer.disconnect();
 
         // callFuncToRenderNewArray(reordernSnapItem);
         // debugger;
@@ -313,9 +354,9 @@ export function observeSnapItemsContainerMobile(
           };
         });
       },
-      nine: (target, ob) => {
+      nine: (target, observer) => {
         console.log(target);
-        console.log("ob", ob);
+        console.log("observer", observer);
 
         target.previousElementSibling.setAttribute("tabindex", "-1");
         target.previousElementSibling.setAttribute("aria-hidden", "true");
@@ -332,7 +373,7 @@ export function observeSnapItemsContainerMobile(
           "9"
         );
         console.log(reorderArray);
-        ob.disconnect();
+        observer.disconnect();
 
         // callFuncToRenderNewArray(reorderArray);
         callFuncToRenderNewArray((prevValues) => {
@@ -479,7 +520,11 @@ export function observeSnapItemsContainerMobile(
           );
           console.log("hello this is two prev is one prev prev is nine");
           console.log(observer);
-          mobileScrollHelper["top"][targetPosindex](entry.target, observer);
+          mobileScrollHelper["top"][targetPosindex](
+            entry.target,
+            observer,
+            previousFocused
+          );
           return;
         }
       }
@@ -497,7 +542,11 @@ export function observeSnapItemsContainerMobile(
           document.getElementById("currentFocused").parentElement.children
         );
         console.log("this is eight bottom");
-        mobileScrollHelper["bottom"][targetPosindex](entry.target, observer);
+        mobileScrollHelper["bottom"][targetPosindex](
+          entry.target,
+          observer,
+          previousFocused
+        );
         return;
       }
       // when target posindex is nine && target.nextElementSibling is null && target.previousElementSibling.getAttribute("data-pos-index") == "eight"
@@ -573,41 +622,84 @@ export function observeSnapItemsContainerMobile(
  * working with element at index 1 or 7
  * **/
 
-function createNewOrderedArrayIndexOne(array, quantity) {
-  return array.map(function createNewOrderedList(element, index) {
-    /** 
-     * classText,
-    posIndex,
-    spanText,
-    tabindex,
-    ariaHidden,
-    ariaLabel,
-     * **/
-    const objOfValues =
-      index == 1
-        ? {
-            classText: "snap-item",
-            posIndex: element.getAttribute("data-pos-index"),
-            spanText: element.firstElementChild.innerText,
-            tabindex: "0",
-            ariaHidden: "false",
-            ariaLabel: `${quantity} of 9`,
-            focusId: "currentFocused",
-          }
-        : {
-            classText: "snap-item",
-            posIndex: element.getAttribute("data-pos-index"),
-            spanText: element.firstElementChild.innerText,
-            tabindex: "-1",
-            ariaHidden: "true",
-            ariaLabel: element.getAttribute("aria-label"),
-          };
-    return objOfValues;
-  });
-}
-function createNewOrderedArrayIndexSeven(array, quantity) {
-  return array.map(function createNewOrderedList(element, index) {
-    /** 
+/**
+ * DELETE LATER!!!
+ * **/
+
+// function createNewOrderedArrayIndexOne(array, quantity) {
+//   return array.map(function createNewOrderedList(element, index) {
+//     /**
+//      * classText,
+//     posIndex,
+//     spanText,
+//     tabindex,
+//     ariaHidden,
+//     ariaLabel,
+//      * **/
+//     const objOfValues =
+//       index == 1
+//         ? {
+//             classText: "snap-item",
+//             posIndex: element.getAttribute("data-pos-index"),
+//             spanText: element.firstElementChild.innerText,
+//             tabindex: "0",
+//             ariaHidden: "false",
+//             ariaLabel: `${quantity} of 9`,
+//             focusId: "currentFocused",
+//           }
+//         : {
+//             classText: "snap-item",
+//             posIndex: element.getAttribute("data-pos-index"),
+//             spanText: element.firstElementChild.innerText,
+//             tabindex: "-1",
+//             ariaHidden: "true",
+//             ariaLabel: element.getAttribute("aria-label"),
+//           };
+//     return objOfValues;
+//   });
+// }
+
+// function createNewOrderedArrayIndexSeven(array, quantity) {
+//   return array.map(function createNewOrderedList(element, index) {
+//     /**
+//      * classText,
+//         posIndex,
+//         spanText,
+//         tabindex,
+//         ariaHidden,
+//         ariaLabel,
+//      * **/
+//     const objOfValues =
+//       index == 7
+//         ? {
+//             classText: "snap-item",
+//             posIndex: element.getAttribute("data-pos-index"),
+//             spanText: element.firstElementChild.innerText,
+//             tabindex: "0",
+//             ariaHidden: "false",
+//             ariaLabel: `${quantity} of 9`,
+//             focusId: "currentFocused",
+//           }
+//         : {
+//             classText: "snap-item",
+//             posIndex: element.getAttribute("data-pos-index"),
+//             spanText: element.firstElementChild.innerText,
+//             tabindex: "-1",
+//             ariaHidden: "true",
+//             ariaLabel: element.getAttribute("aria-label"),
+//           };
+//     return objOfValues;
+//   });
+// }
+
+/**
+ * DELETE LATER!!!
+ * **/
+
+function factoryFuncCreateArray(indexOfArray) {
+  return function innerFunc(array, quantity) {
+    return array.map(function createNewOrderedList(element, index) {
+      /** 
      * classText,
         posIndex,
         spanText,
@@ -615,35 +707,231 @@ function createNewOrderedArrayIndexSeven(array, quantity) {
         ariaHidden,
         ariaLabel,
      * **/
-    const objOfValues =
-      index == 7
-        ? {
-            classText: "snap-item",
-            posIndex: element.getAttribute("data-pos-index"),
-            spanText: element.firstElementChild.innerText,
-            tabindex: "0",
-            ariaHidden: "false",
-            ariaLabel: `${quantity} of 9`,
-            focusId: "currentFocused",
-          }
-        : {
-            classText: "snap-item",
-            posIndex: element.getAttribute("data-pos-index"),
-            spanText: element.firstElementChild.innerText,
-            tabindex: "-1",
-            ariaHidden: "true",
-            ariaLabel: element.getAttribute("aria-label"),
-          };
-    return objOfValues;
-  });
+      const objOfValues =
+        index == indexOfArray
+          ? {
+              classText: "snap-item",
+              posIndex: element.getAttribute("data-pos-index"),
+              spanText: element.firstElementChild.innerText,
+              tabindex: "0",
+              ariaHidden: "false",
+              ariaLabel: `${quantity} of 9`,
+              focusId: "currentFocused",
+            }
+          : {
+              classText: "snap-item",
+              posIndex: element.getAttribute("data-pos-index"),
+              spanText: element.firstElementChild.innerText,
+              tabindex: "-1",
+              ariaHidden: "true",
+              ariaLabel: element.getAttribute("aria-label"),
+            };
+      return objOfValues;
+    });
+  };
 }
 
 /**
  * desktop
  * **/
 
-export function observeSnapItemsContainerDesktop(rootElement, children) {
-  // callback
+export function observeSnapItemsContainerDesktop(
+  rootElement,
+  children,
+  callFuncToRenderNewArray
+) {
+  const desktopScrollHelper = {
+    top: {
+      one: (target, observer, renderNewArray, prevFocused) => {
+        console.log(target);
+        console.log("observer", observer);
+
+        target.nextElementSibling.setAttribute("tabindex", "-1");
+        target.nextElementSibling.setAttribute("aria-hidden", "true");
+        console.log(target.parentElement.children);
+        const parentChildren = [...target.parentElement.children];
+        const arr = [...parentChildren];
+        const lastItem = arr[arr.length - 1];
+        const beforeLastItem = arr.slice(0, -1);
+        console.log(lastItem), console.log(beforeLastItem);
+        const reorderItems = createNewOrderedArrayIndexOne(
+          [lastItem, ...beforeLastItem],
+          "1"
+        );
+        console.log(reorderItems);
+        observer.disconnect();
+
+        // renderNewArray(reorderItems);
+        renderNewArray((prev) => {
+          return {
+            ...prev,
+            bottomOrTopArray: reorderItems,
+            targetElement: "one",
+          };
+        });
+      },
+      two: (target, observer, renderNewArray, prevFocused) => {
+        console.log(target);
+        console.log("observer", observer);
+
+        target.previousElementSibling.setAttribute("tabindex", "-1");
+        target.previousElementSibling.setAttribute("aria-hidden", "true");
+        console.log(target.parentElement.children);
+        const parentChildren = [...target.parentElement.children];
+        const copyOfArr = [...parentChildren];
+        const [firstItem, ...restOfArray] = copyOfArr;
+        console.log(firstItem);
+        console.log(restOfArray);
+        const newOrderedItems = createNewOrderedArrayIndexOne(
+          [...restOfArray, firstItem],
+          "2"
+        );
+        console.log(newOrderedItems);
+        observer.disconnect();
+
+        // renderNewArray(newOrderedItems);
+        renderNewArray((values) => {
+          return {
+            ...values,
+            bottomOrTopArray: newOrderedItems,
+            targetElement: "two",
+          };
+        });
+      },
+      three: (target, observer, renderNewArray, prevFocused) => {},
+      nine: (target, observer, renderNewArray, prevFocused) => {
+        console.log(target);
+        console.log("observer", observer);
+
+        target.nextElementSibling.setAttribute("tabindex", "-1");
+        target.nextElementSibling.setAttribute("aria-hidden", "true");
+        console.log(target.parentElement.children);
+
+        const scrollChildren = [...target.parentElement.children];
+        const copyOfArray = [...scrollChildren];
+        const firstItem = copyOfArray[0];
+        const secondItem = copyOfArray[1];
+        const restOfItems = copyOfArray.slice(2);
+        console.log(firstItem);
+        console.log(secondItem);
+        console.log(restOfItems);
+        const reorderedChildren = createNewOrderedArrayIndexSeven(
+          [...restOfItems, firstItem, secondItem],
+          "9"
+        );
+        console.log(reorderedChildren);
+        observer.disconnect();
+
+        // renderNewArray(reorderedChildren);
+        renderNewArray((values) => {
+          return {
+            ...values,
+            bottomOrTopArray: reorderedChildren,
+            targetElement: "nine",
+          };
+        });
+      },
+    },
+    bottom: {
+      one: (target, observer, renderNewArray, prevFocused) => {
+        console.log(target);
+        console.log("observer", observer);
+        target.previousElementSibling.setAttribute("tabindex", "-1");
+        target.previousElementSibling.setAttribute("aria-hidden", "true");
+        console.log(target.parentElement.children);
+
+        const snapItems = [...target.parentElement.children];
+        const copyOfSnapItems = [...snapItems];
+        const secondToLast = copyOfSnapItems[copyOfSnapItems.length - 2];
+        const lastItem = copyOfSnapItems[copyOfSnapItems.length - 1];
+        const beforeLastTwo = copyOfSnapItems.slice(0, -2);
+        console.log(secondToLast);
+        console.log(lastItem);
+        console.log(beforeLastTwo);
+        const reorderedItems = createNewOrderedArrayIndexOne(
+          [secondToLast, lastItem, ...beforeLastTwo],
+          "1"
+        );
+        console.log(reorderedItems);
+        observer.disconnect();
+        // renderNewArray(reorderedItems);
+        renderNewArray((prevValues) => {
+          return {
+            ...prevValues,
+            bottomOrTopArray: reorderedItems,
+            targetElement: "one",
+          };
+        });
+      },
+      seven: (target, observer, renderNewArray, prevFocused) => {},
+      eight: (target, observer, renderNewArray, prevFocused) => {
+        console.log(target);
+        console.log("observer", observer);
+
+        target.nextElementSibling.setAttribute("tabindex", "-1");
+        target.nextElementSibling.setAttribute("aria-hidden", "true");
+        console.log(target.parentElement.children);
+
+        const snapChildren = [...target.parentElement.children];
+        const copyOfSnapChildren = [].concat(snapChildren);
+        const lastItem = copyOfSnapChildren[copyOfSnapChildren.length - 1];
+        const beforeLastItem = copyOfSnapChildren.slice(0, -1);
+        console.log(lastItem);
+        console.log(beforeLastItem);
+        const reordernSnapItem = createNewOrderedArrayIndexSeven(
+          [lastItem, ...beforeLastItem],
+          "8"
+        );
+        console.log(reordernSnapItem);
+        observer.disconnect();
+
+        // renderNewArray(reordernSnapItem);
+        // debugger;
+        renderNewArray((prevValues) => {
+          return {
+            ...prevValues,
+            bottomOrTopArray: reordernSnapItem,
+            targetElement: "eight",
+          };
+        });
+      },
+      nine: (target, observer, renderNewArray, prevFocused) => {
+        console.log(target);
+        console.log("observer", observer);
+
+        target.previousElementSibling.setAttribute("tabindex", "-1");
+        target.previousElementSibling.setAttribute("aria-hidden", "true");
+        console.log(target.parentElement.children);
+
+        const parentChildren = [...target.parentElement.children];
+        const copyOfArray = parentChildren.slice();
+        // get target parent children
+        const [firstElement, ...restOfItems] = copyOfArray;
+        console.log(firstElement);
+        console.log(restOfItems);
+        const reorderArray = createNewOrderedArrayIndexSeven(
+          [...restOfItems, firstElement],
+          "9"
+        );
+        console.log(reorderArray);
+        observer.disconnect();
+
+        // renderNewArray(reorderArray);
+        renderNewArray((prevValues) => {
+          return {
+            ...prevValues,
+            bottomOrTopArray: reorderArray,
+            targetElement: "nine",
+          };
+        });
+      },
+    },
+  };
+
+  /**
+   * observer callback
+   * **/
+
   function assignValuesToElementAttrDesktop(entries, observer) {
     entries.forEach(function loopThroughItemsDesktop(entry) {
       if (!entry.isIntersecting) {
@@ -651,13 +939,168 @@ export function observeSnapItemsContainerDesktop(rootElement, children) {
       }
       console.log("desktop");
       console.log(entry);
+
+      console.log("previous", entry.target.previousElementSibling);
+      console.log("next", entry.target.nextElementSibling);
+      const targetPosindex = entry.target.getAttribute("data-pos-index");
+      console.log(targetPosindex);
+      console.log(entry.target);
+      console.log(entry.target.offsetTop);
+      // top position 1 element offsetTop is 0
+      // top position 2 element offsetTop is 366
+      // bottom position 8 element offsetTop is 2562
+      // bottom position 9 element offsetTop is 2928
+      const previousFocused = document.activeElement;
+      console.log("previousFocused", previousFocused);
+      console.log(previousFocused == entry.target);
+      if (previousFocused == entry.target) {
+        console.log("return");
+        return;
+      }
+
+      /**
+       * when we call setSnapItem func which will render carousel component
+       * document.activeElement will be the element with id="currentFocused"
+       * **/
+      /**
+       * one solution
+       * **/
+      // find current focus element using document.activeElement
+      // then find the pos index of that focus element
+      // then find pos index of intersecting element
+      // compare the two
+      // if focus element pos index is less than pos index of intersecting element user is scrolling down
+      // if focus element pos index is greater pos index of intersecting element user is scrolling up
+      /**
+       * another solution
+       * **/
+      // check where the user is by getting offsetTop of snap item
+      /**
+       * working at top:0,366,732
+       * **/
+      if (targetPosindex == "nine" && previousFocused !== entry.target) {
+        console.log("hello, this is nine");
+        console.log(
+          "document.getElementByIdcurrentFocused.parentElement.children",
+          document.getElementById("currentFocused").parentElement.children
+        );
+        // when previousFocused data pos index is "one" when top
+        // when previousFocused data pos index is "eight" when bottom
+        desktopScrollHelper["top"][targetPosindex](
+          entry.target,
+          observer,
+          callFuncToRenderNewArray
+        );
+        return;
+      }
+      if (targetPosindex == "one" && previousFocused !== entry.target) {
+        // when previousFocused data pos index is "two" run top
+        // when previousFocused data pos index is "nine" run bottom
+        console.log(
+          "document.getElementByIdcurrentFocused.parentElement.children",
+          document.getElementById("currentFocused").parentElement.children
+        );
+        desktopScrollHelper["top"][targetPosindex](
+          entry.target,
+          observer,
+          callFuncToRenderNewArray
+        );
+        return;
+      }
+
+      if (targetPosindex == "two" && previousFocused !== entry.target) {
+        if (
+          entry.target.previousElementSibling.previousElementSibling &&
+          entry.target.previousElementSibling.previousElementSibling.getAttribute(
+            "data-pos-index"
+          ) == "nine"
+        ) {
+          // when previousFocused data pos index is "three" run moveUp
+          // when previousFocused data pos index is "one" run moveDown
+          console.log(
+            "document.getElementByIdcurrentFocused.parentElement.children",
+            document.getElementById("currentFocused").parentElement.children
+          );
+          console.log("hello this is two prev is one prev prev is nine");
+          console.log(observer);
+          desktopScrollHelper["top"][targetPosindex](
+            entry.target,
+            observer,
+            callFuncToRenderNewArray
+          );
+          return;
+        }
+      }
+
+      if (targetPosindex == "three" && previousFocused !== entry.target) {
+        // when previousFocused data pos index is "two" run top
+      }
+      /**
+       * working at bottom: 2195,2562,2928
+       * **/
+      // when target posindex is eight && target.nextElementSibling.getAttribute("data-pos-index") == "nine" && target.nextElementSibling.nextElementSibling.getAttribute("data-pos-index") == "one"
+      // take element with posindex of one and placed it at the beginning of array
+
+      if (targetPosindex == "seven" && previousFocused !== entry.target) {
+        // when previousFocused data pos index is "eight" run bottom
+      }
+
+      if (targetPosindex == "eight" && previousFocused !== entry.target) {
+        console.log(
+          "document.getElementByIdcurrentFocused.parentElement.children",
+          document.getElementById("currentFocused").parentElement.children
+        );
+        // when previousFocused data pos index is "nine" run moveUp
+        // when previousFocused data pos index is "seven" run moveDown
+        console.log("this is eight bottom");
+        desktopScrollHelper["bottom"][targetPosindex](
+          entry.target,
+          observer,
+          callFuncToRenderNewArray
+        );
+        return;
+      }
+      // when target posindex is nine && target.nextElementSibling is null && target.previousElementSibling.getAttribute("data-pos-index") == "eight"
+      // take element with posindex of one and placed it at the end of array
+      if (targetPosindex == "nine" && previousFocused !== entry.target) {
+        console.log(
+          "document.getElementByIdcurrentFocused.parentElement.children",
+          document.getElementById("currentFocused").parentElement.children
+        );
+        // when previousFocused data pos index is "one" run top
+        // when previousFocused data pos index is "eight" run bottom
+        desktopScrollHelper["bottom"][targetPosindex](
+          entry.target,
+          observer,
+          callFuncToRenderNewArray
+        );
+        return;
+      }
+      // when target posindex is one && target.nextElementSibling is null && target.previousElementSibling.getAttribute("data-pos-index") == "nine"
+      // take elements with posindex of nine and one placed them at beginning of array
+      if (targetPosindex == "one" && previousFocused !== entry.target) {
+        console.log(
+          "document.getElementByIdcurrentFocused.parentElement.children",
+          document.getElementById("currentFocused").parentElement.children
+        );
+        // when previousFocused data pos index is "two" run top
+        // when previousFocused data pos index is "nine" run bottom
+        desktopScrollHelper["bottom"][targetPosindex](
+          entry.target,
+          observer,
+          callFuncToRenderNewArray
+        );
+        return;
+      }
+      observerHelper(entry.target);
     });
   }
+
   // options
   const desktopOptions = {
     root: rootElement,
     threshold: 1,
-    rootMargin: "-216px 0px -216px 0px",
+    rootMargin: "-200px 0px -200px 0px",
   };
   // call IntersectionObserver
   const desktopObserver = new IntersectionObserver(

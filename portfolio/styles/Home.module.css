@@ -13,16 +13,19 @@
 @media screen and (min-width: 90rem) {
   .intro-carousel-container {
     /* height: 100%; */
-    max-width: 1050px;
+    max-width: 1125px;
     margin-inline: auto;
     display: grid;
     grid-auto-flow: revert;
     grid-auto-columns: revert;
     grid-template-columns: 445px 1fr;
+    /* gap: 0px 65px */
+    gap: 0px 70px;
     /* grid-template-columns: repeat(2,370px); */
     scroll-snap-type: revert;
     overflow-x: revert;
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
+  /* snap item was 615px width */
 }
