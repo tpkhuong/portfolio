@@ -53,7 +53,8 @@ export default function Carousel({ children, ...props }) {
         : null;
     }
     console.log("scrollChildren", scrollChildren);
-    if (window.innerWidth >= 1440) {
+    if (window.innerWidth >= 1435) {
+      console.log("inside scrollChildren", scrollChildren);
       // assigning tabindex, aria hidden to first,second and third children of snap items container
       const thirdChild = scrollChildren[2];
 
@@ -70,8 +71,10 @@ export default function Carousel({ children, ...props }) {
         setSnapArray
       );
 
-      !initialValuesObj.bottomOrTopArray
-        ? (thirdChild.focus(), thirdChild.scrollIntoView())
+      !initialValuesObj.bottomOrTopArray ? thirdChild.scrollIntoView() : null;
+
+      initialValuesObj.bottomOrTopArray
+        ? document.getElementById("currentFocused").scrollIntoView()
         : null;
     }
   }, [initialValuesObj.targetElement]);
