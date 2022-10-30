@@ -68,13 +68,15 @@ export default function Carousel({ children, ...props }) {
       observeSnapItemsContainerDesktop(
         scrollContainer,
         scrollChildren,
-        setSnapArray
+        setSnapArray,
+        initialValuesObj.bottomOrTopArray
       );
 
       !initialValuesObj.bottomOrTopArray ? thirdChild.scrollIntoView() : null;
 
       initialValuesObj.bottomOrTopArray
-        ? document.getElementById("currentFocused").scrollIntoView()
+        ? (document.getElementById("currentFocused").scrollIntoView(),
+          document.getElementById("currentFocused").focus())
         : null;
     }
   }, [initialValuesObj.targetElement]);

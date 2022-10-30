@@ -738,7 +738,8 @@ function factoryFuncCreateArray(indexOfArray) {
 export function observeSnapItemsContainerDesktop(
   rootElement,
   children,
-  callFuncToRenderNewArray
+  callFuncToRenderNewArray,
+  initialArrayValue
 ) {
   const desktopScrollHelper = {
     moveUp: {
@@ -1056,7 +1057,6 @@ export function observeSnapItemsContainerDesktop(
         console.log("return");
         return;
       }
-
       /**
        * when we call setSnapItem func which will render carousel component
        * document.activeElement will be the element with id="currentFocused"
@@ -1110,11 +1110,9 @@ export function observeSnapItemsContainerDesktop(
           "document.getElementByIdcurrentFocused.parentElement.children",
           document.getElementById("currentFocused").parentElement.children
         );
-        const parentChildBeforeFirstItem =
-          entry.target.parentElement.children[0].previousElementSibling;
         // when previousFocused data pos index is "two" run top
         if (
-          !parentChildBeforeFirstItem ||
+          !initialArrayValue ||
           previousFocused.getAttribute("data-pos-index") == "two"
         ) {
           console.log("one top");
@@ -1141,8 +1139,12 @@ export function observeSnapItemsContainerDesktop(
       }
 
       if (targetPosindex == "two" && previousFocused !== entry.target) {
+        if (!initialArrayValue) {
+          return;
+        }
         // when previousFocused data pos index is "three" run moveUp
-        if (previousFocused.getAttribute("data-pos-idex") == "three") {
+        console.log(previousFocused.getAttribute("data-pos-index"), "data");
+        if (previousFocused.getAttribute("data-pos-index") == "three") {
           console.log("last was three");
           desktopScrollHelper["moveUp"][targetPosindex](
             entry.target,
@@ -1154,7 +1156,7 @@ export function observeSnapItemsContainerDesktop(
           return;
         }
         // when previousFocused data pos index is "one" run moveDown
-        if (previousFocused.getAttribute("data-pos-idex") == "one") {
+        if (previousFocused.getAttribute("data-pos-index") == "one") {
           console.log("last was one");
           desktopScrollHelper["moveDown"][targetPosindex](
             entry.target,
@@ -1175,11 +1177,10 @@ export function observeSnapItemsContainerDesktop(
       }
 
       if (targetPosindex == "three" && previousFocused !== entry.target) {
-        const parentChildBeforeFirstElement =
-          entry.target.parentElement.children[0].previousElementSibling;
+        console.log("initialArrayValue", initialArrayValue);
         // when previousFocused data pos index is "two" run top
         if (
-          !parentChildBeforeFirstElement ||
+          !initialArrayValue ||
           previousFocused.getAttribute("data-pos-index") == "two"
         ) {
           console.log("last was two");
