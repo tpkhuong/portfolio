@@ -118,7 +118,10 @@ export default function Carousel({ children, ...props }) {
           tabIndex="-1"
           id="scroll-container"
           aria-live="polite"
-          onKeyDown={keyboardScrollThroughSnapItems}
+          onKeyDown={keyboardScrollThroughSnapItems.bind({
+            initialValuesObj,
+            setSnapArray,
+          })}
         >
           {/* aria-hidden all on projects except project with tabindex 0 */}
           {!initialValuesObj.bottomOrTopArray ? (

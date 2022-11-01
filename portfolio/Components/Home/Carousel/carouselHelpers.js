@@ -73,35 +73,270 @@ const methodsForKeyboardScroll = {
     nextSnapSibling(element, width);
     console.log("right");
   },
+  originalSnapitems: [
+    {
+      classText: "snap-item",
+      posIndex: "one",
+      spanText: "1",
+      tabindex: "-1",
+      ariaHidden: "true",
+      ariaLabel: "1 of 9",
+    },
+    {
+      classText: "snap-item",
+      posIndex: "two",
+      spanText: "2",
+      tabindex: "-1",
+      ariaHidden: "true",
+      ariaLabel: "2 of 9",
+    },
+    {
+      classText: "snap-item",
+      posIndex: "three",
+      spanText: "3",
+      tabindex: "-1",
+      ariaHidden: "true",
+      ariaLabel: "3 of 9",
+    },
+    {
+      classText: "snap-item",
+      posIndex: "four",
+      spanText: "4",
+      tabindex: "-1",
+      ariaHidden: "true",
+      ariaLabel: "4 of 9",
+    },
+    {
+      classText: "snap-item",
+      posIndex: "five",
+      spanText: "5",
+      tabindex: "-1",
+      ariaHidden: "true",
+      ariaLabel: "5 of 9",
+    },
+    {
+      classText: "snap-item",
+      posIndex: "six",
+      spanText: "6",
+      tabindex: "-1",
+      ariaHidden: "true",
+      ariaLabel: "6 of 9",
+    },
+    {
+      classText: "snap-item",
+      posIndex: "seven",
+      spanText: "7",
+      tabindex: "-1",
+      ariaHidden: "true",
+      ariaLabel: "7 of 9",
+    },
+    {
+      classText: "snap-item",
+      posIndex: "eight",
+      spanText: "8",
+      tabindex: "-1",
+      ariaHidden: "true",
+      ariaLabel: "8 of 9",
+    },
+    {
+      classText: "snap-item",
+      posIndex: "nine",
+      spanText: "9",
+      tabindex: "-1",
+      ariaHidden: "true",
+      ariaLabel: "9 of 9",
+    },
+  ],
   // home
-  Home: (event, element, width) => {
+  mobileHome: (event, element, funcToRenderArray) => {
     event.preventDefault();
-
     console.log("home");
   },
   // end
-  End: (event, element, width) => {
+  mobileEnd: (event, element, funcToRenderArray) => {
     event.preventDefault();
 
     console.log("end");
   },
   // page up
-  PageUp: (event, element, width) => {
+  mobilePageUp: function mobilePageUp(event, element, funcToRenderArray) {
     event.preventDefault();
+    // check if event.target data-pos-index is "nine" or "two"
 
+    console.log(this.originalSnapitems, "snapitems");
     console.log("up");
   },
   // page down
-  PageDown: (event, element, width) => {
+  mobilePageDown: function mobilePageDown(event, element, funcToRenderArray) {
     event.preventDefault();
+    console.log(this.originalSnapitems, "snapitems");
 
     console.log("down");
+  },
+  // home
+  desktopHome: (event, element, funcToRenderArray) => {
+    event.preventDefault();
+    console.log("home");
+  },
+  // end
+  desktopEnd: (event, element, funcToRenderArray) => {
+    event.preventDefault();
+
+    console.log("end");
+  },
+  // page up
+  desktopPageUp: function mobilePageUp(event, element, funcToRenderArray) {
+    event.preventDefault();
+    // check if event.target data-pos-index is "nine" or "two"
+
+    console.log(this.originalSnapitems, "snapitems");
+    console.log("up");
+  },
+  // page down
+  desktopPageDown: function mobilePageDown(event, element, funcToRenderArray) {
+    event.preventDefault();
+    console.log(this.originalSnapitems, "snapitems");
+
+    console.log("down");
+  },
+  nonArrowKeys: {},
+  mobile: {
+    originalSnapitems: [
+      {
+        classText: "snap-item",
+        posIndex: "one",
+        spanText: "1",
+        tabindex: "-1",
+        ariaHidden: "true",
+        ariaLabel: "1 of 9",
+      },
+      {
+        classText: "snap-item",
+        posIndex: "two",
+        spanText: "2",
+        tabindex: "-1",
+        ariaHidden: "true",
+        ariaLabel: "2 of 9",
+      },
+      {
+        classText: "snap-item",
+        posIndex: "three",
+        spanText: "3",
+        tabindex: "-1",
+        ariaHidden: "true",
+        ariaLabel: "3 of 9",
+      },
+      {
+        classText: "snap-item",
+        posIndex: "four",
+        spanText: "4",
+        tabindex: "-1",
+        ariaHidden: "true",
+        ariaLabel: "4 of 9",
+      },
+      {
+        classText: "snap-item",
+        posIndex: "five",
+        spanText: "5",
+        tabindex: "-1",
+        ariaHidden: "true",
+        ariaLabel: "5 of 9",
+      },
+      {
+        classText: "snap-item",
+        posIndex: "six",
+        spanText: "6",
+        tabindex: "-1",
+        ariaHidden: "true",
+        ariaLabel: "6 of 9",
+      },
+      {
+        classText: "snap-item",
+        posIndex: "seven",
+        spanText: "7",
+        tabindex: "-1",
+        ariaHidden: "true",
+        ariaLabel: "7 of 9",
+      },
+      {
+        classText: "snap-item",
+        posIndex: "eight",
+        spanText: "8",
+        tabindex: "-1",
+        ariaHidden: "true",
+        ariaLabel: "8 of 9",
+      },
+      {
+        classText: "snap-item",
+        posIndex: "nine",
+        spanText: "9",
+        tabindex: "-1",
+        ariaHidden: "true",
+        ariaLabel: "9 of 9",
+      },
+    ],
+    // home
+    Home: (event, element, funcToRenderArray) => {
+      event.preventDefault();
+      console.log("home");
+    },
+    // end
+    End: (event, element, funcToRenderArray) => {
+      event.preventDefault();
+
+      console.log("end");
+    },
+    // page up
+    PageUp: function mobilePageUp(event, element, funcToRenderArray) {
+      event.preventDefault();
+      // check if event.target data-pos-index is "nine" or "two"
+
+      console.log(this.originalSnapitems, "snapitems");
+      console.log("up");
+    },
+    // page down
+    PageDown: function mobilePageDown(event, element, funcToRenderArray) {
+      event.preventDefault();
+      console.log(this.originalSnapitems, "snapitems");
+
+      console.log("down");
+    },
+  },
+  desktop: {
+    // home
+    Home: (event, element, funcToRenderArray) => {
+      event.preventDefault();
+
+      console.log("home");
+    },
+    // end
+    End: (event, element, funcToRenderArray) => {
+      event.preventDefault();
+
+      console.log("end");
+    },
+    // page up
+    PageUp: function desktopPageUp(event, element, funcToRenderArray) {
+      event.preventDefault();
+      console.log(this.originalSnapitems, "snapitems");
+
+      console.log("up");
+    },
+    // page down
+    PageDown: function desktopPageDown(event, element, funcToRenderArray) {
+      event.preventDefault();
+      console.log(this.originalSnapitems, "snapitems");
+
+      console.log("down");
+    },
   },
 };
 
 export function keyboardScrollThroughSnapItems(event) {
+  console.log(this, "this");
   // event.code
   const windowWidth = window.innerWidth;
+  const keyPropForMobileAndDesktop = windowWidth <= 375 ? "mobile" : "desktop";
   // pass in event and element to methodsForKeyboardScroll[key]()
   // console.log(event.target.closest("div[aria-roledescription='slide']"));
   const currentFocusedSnapItem = document.getElementById("currentFocused");
@@ -113,11 +348,30 @@ export function keyboardScrollThroughSnapItems(event) {
   ) {
     event.preventDefault();
   }
+  /**
+   * up, right, down and left arrow keys
+   * **/
   if (methodsForKeyboardScroll[event.code]) {
     methodsForKeyboardScroll[event.code](
       event,
       currentFocusedSnapItem,
       windowWidth
+    );
+  }
+  /**
+   * pageup,pagedown,home and end
+   * **/
+  if (methodsForKeyboardScroll[`${keyPropForMobileAndDesktop}${event.code}`]) {
+    // set current event target's tabindex to "-1" and aria-hidden "true";
+    // remove id attr currentFocused
+    currentFocusedSnapItem.setAttribute("tabindex", "-1");
+    currentFocusedSnapItem.setAttribute("aria-hidden", "true");
+    currentFocusedSnapItem.removeAttribute("id");
+
+    methodsForKeyboardScroll[`${keyPropForMobileAndDesktop}${event.code}`](
+      event,
+      currentFocusedSnapItem,
+      this.setSnapArray
     );
   }
 }
@@ -145,6 +399,10 @@ function nextSnapSibling(element, width) {
   // algorithm to assign value string "0" to tabindex attr will be handled by our intersection observer func
   element.parentElement.scrollBy(0, positiveVerticalScroll);
 }
+
+function goUpTwo() {}
+
+function goDownTwo() {}
 
 // intersection observer
 
@@ -533,21 +791,25 @@ export function observeSnapItemsContainerMobile(
        * **/
       // when target posindex is eight && target.nextElementSibling.getAttribute("data-pos-index") == "nine" && target.nextElementSibling.nextElementSibling.getAttribute("data-pos-index") == "one"
       // take element with posindex of one and placed it at the beginning of array
-      if (
-        targetPosindex == "eight" &&
-        previousFocused.getAttribute("data-pos-index") == "nine"
-      ) {
-        console.log(
-          "document.getElementByIdcurrentFocused.parentElement.children",
-          document.getElementById("currentFocused").parentElement.children
-        );
-        console.log("this is eight bottom");
-        mobileScrollHelper["bottom"][targetPosindex](
-          entry.target,
-          observer,
-          previousFocused
-        );
-        return;
+      if (targetPosindex == "eight" && previousFocused !== entry.target) {
+        if (
+          entry.target.nextElementSibling.nextElementSibling &&
+          entry.target.nextElementSibling.nextElementSibling.getAttribute(
+            "data-pos-index"
+          ) == "one"
+        ) {
+          console.log(
+            "document.getElementByIdcurrentFocused.parentElement.children",
+            document.getElementById("currentFocused").parentElement.children
+          );
+          console.log("this is eight bottom");
+          mobileScrollHelper["bottom"][targetPosindex](
+            entry.target,
+            observer,
+            previousFocused
+          );
+          return;
+        }
       }
       // when target posindex is nine && target.nextElementSibling is null && target.previousElementSibling.getAttribute("data-pos-index") == "eight"
       // take element with posindex of one and placed it at the end of array
@@ -812,7 +1074,7 @@ export function observeSnapItemsContainerDesktop(
 
         const reorderedSnapItems = createNewArray(
           [...restOfArray, firstItem],
-          "two"
+          "2"
         );
 
         observer.disconnect();
@@ -1010,8 +1272,8 @@ export function observeSnapItemsContainerDesktop(
         console.log(target.parentElement.children);
 
         const { firstItem, restOfArray } = rearrangeArrayItems(target);
-        console.log(firstElement);
-        console.log(restOfItems);
+        console.log(firstItem);
+        console.log(restOfArray);
         const reorderArray = createNewArray([...restOfArray, firstItem], "9");
         console.log(reorderArray);
         observer.disconnect();
@@ -1105,16 +1367,16 @@ export function observeSnapItemsContainerDesktop(
       //     return;
       //   }
       // }
+
+      const parentChildren = [...entry.target.parentElement.children];
+
       if (targetPosindex == "one" && previousFocused !== entry.target) {
         console.log(
           "document.getElementByIdcurrentFocused.parentElement.children",
           document.getElementById("currentFocused").parentElement.children
         );
-        // when previousFocused data pos index is "two" run top
-        if (
-          !initialArrayValue ||
-          previousFocused.getAttribute("data-pos-index") == "two"
-        ) {
+        // when parent children[0].getAttribute("data-pos-index") == "nine" run top or when initialArrayValue is null
+        if (!initialArrayValue) {
           console.log("one top");
           desktopScrollHelper["top"][targetPosindex](
             entry.target,
@@ -1125,8 +1387,24 @@ export function observeSnapItemsContainerDesktop(
           );
           return;
         }
-        // when previousFocused data pos index is "nine" run bottom
-        if (previousFocused.getAttribute("data-pos-index") == "nine") {
+
+        if (parentChildren[0].getAttribute("data-pos-index") == "nine") {
+          console.log("one top");
+          desktopScrollHelper["top"][targetPosindex](
+            entry.target,
+            observer,
+            callFuncToRenderNewArray,
+            createNewOrderedArrayIndexTwo,
+            moveLastItemToBeginningOfList
+          );
+          return;
+        }
+        // // when parent children[children.length - 1].getAttribute("data-pos-index") == "two" run bottom
+        if (
+          parentChildren[parentChildren.length - 1].getAttribute(
+            "data-pos-index"
+          ) == "two"
+        ) {
           console.log("one bottom");
           desktopScrollHelper["bottom"][targetPosindex](
             entry.target,
@@ -1142,9 +1420,9 @@ export function observeSnapItemsContainerDesktop(
         if (!initialArrayValue) {
           return;
         }
-        // when previousFocused data pos index is "three" run moveUp
+        // when parentChildren[0].getAttribute("data-pos-index") == "one" run moveUp
         console.log(previousFocused.getAttribute("data-pos-index"), "data");
-        if (previousFocused.getAttribute("data-pos-index") == "three") {
+        if (parentChildren[0].getAttribute("data-pos-index") == "one") {
           console.log("last was three");
           desktopScrollHelper["moveUp"][targetPosindex](
             entry.target,
@@ -1155,8 +1433,8 @@ export function observeSnapItemsContainerDesktop(
           );
           return;
         }
-        // when previousFocused data pos index is "one" run moveDown
-        if (previousFocused.getAttribute("data-pos-index") == "one") {
+        // when parentChildren[0].getAttribute("data-pos-index") == "eight" run moveDown
+        if (parentChildren[0].getAttribute("data-pos-index") == "eight") {
           console.log("last was one");
           desktopScrollHelper["moveDown"][targetPosindex](
             entry.target,
@@ -1178,10 +1456,10 @@ export function observeSnapItemsContainerDesktop(
 
       if (targetPosindex == "three" && previousFocused !== entry.target) {
         console.log("initialArrayValue", initialArrayValue);
-        // when previousFocused data pos index is "two" run top
+        // when parentChildren[0].getAttribute("data-pos-index") == "nine" or !initialArrayValue run top
         if (
           !initialArrayValue ||
-          previousFocused.getAttribute("data-pos-index") == "two"
+          parentChildren[0].getAttribute("data-pos-index") == "nine"
         ) {
           console.log("last was two");
           desktopScrollHelper["top"][targetPosindex](
@@ -1201,8 +1479,12 @@ export function observeSnapItemsContainerDesktop(
       // take element with posindex of one and placed it at the beginning of array
 
       if (targetPosindex == "seven" && previousFocused !== entry.target) {
-        // when previousFocused data pos index is "eight" run bottom
-        if (previousFocused.getAttribute("data-pos-index") == "eight") {
+        // when parentChildren[parentChildren.length - 1].getAttribute("data-pos-index") == "one"
+        if (
+          parentChildren[parentChildren.length - 1].getAttribute(
+            "data-pos-index"
+          ) == "one"
+        ) {
           desktopScrollHelper["bottom"][targetPosindex](
             entry.target,
             observer,
@@ -1219,8 +1501,12 @@ export function observeSnapItemsContainerDesktop(
           "document.getElementByIdcurrentFocused.parentElement.children",
           document.getElementById("currentFocused").parentElement.children
         );
-        // when previousFocused data pos index is "nine" run moveUp
-        if (previousFocused.getAttribute("data-pos-index") == "nine") {
+        // when parentChildren[parentChildren.length - 1].getAttribute("data-pos-index") == "two" run moveUp
+        if (
+          parentChildren[parentChildren.length - 1].getAttribute(
+            "data-pos-index"
+          ) == "two"
+        ) {
           desktopScrollHelper["moveUp"][targetPosindex](
             entry.target,
             observer,
@@ -1230,8 +1516,12 @@ export function observeSnapItemsContainerDesktop(
           );
           return;
         }
-        // when previousFocused data pos index is "seven" run moveDown
-        if (previousFocused.getAttribute("data-pos-index") == "seven") {
+        // when parentChildren[parentChildren.length - 1].getAttribute("data-pos-index") == "nine" run moveDown
+        if (
+          parentChildren[parentChildren.length - 1].getAttribute(
+            "data-pos-index"
+          ) == "nine"
+        ) {
           desktopScrollHelper["moveDown"][targetPosindex](
             entry.target,
             observer,
@@ -1244,24 +1534,27 @@ export function observeSnapItemsContainerDesktop(
         console.log("this is eight bottom");
         return;
       }
-      // when target posindex is nine && target.nextElementSibling is null && target.previousElementSibling.getAttribute("data-pos-index") == "eight"
-      // take element with posindex of one and placed it at the end of array
       if (targetPosindex == "nine" && previousFocused !== entry.target) {
         console.log(
           "document.getElementByIdcurrentFocused.parentElement.children",
           document.getElementById("currentFocused").parentElement.children
         );
-        // when previousFocused data pos index is "one" run top
-        if (previousFocused.getAttribute("data-pos-index") == "one") {
+        // when parentChildren[0].getAttribute("data-pos-index") == "eight" run top
+        if (parentChildren[0].getAttribute("data-pos-index") == "eight") {
           desktopScrollHelper["top"][targetPosindex](
             entry.target,
             observer,
             callFuncToRenderNewArray,
             createNewOrderedArrayIndexSix
           );
+          return;
         }
-        // when previousFocused data pos index is "eight" run bottom
-        if (previousFocused.getAttribute("data-pos-index") == "eight") {
+        // when parentChildren[parentChildren.length - 1].getAttribute("data-pos-index") == "one" run bottom
+        if (
+          parentChildren[parentChildren.length - 1].getAttribute(
+            "data-pos-index"
+          ) == "one"
+        ) {
           desktopScrollHelper["bottom"][targetPosindex](
             entry.target,
             observer,
@@ -1326,7 +1619,7 @@ function moveFirstItemToEndOfList(target) {
   return result;
 }
 
-function observerHelper(target) {
+function observerHelper(target, desktopHelper) {
   // if current target element tabindex === "0" return
   // when we rerender our items the target element tabindex will be "0"
   // we are calling .focus() in our React.useEffect()
@@ -1378,6 +1671,17 @@ function observerHelper(target) {
       : null;
   }
   target.focus();
+}
+
+function desktopPreviousFocusedHelper(target) {
+  const focusedItem = document.activeElement;
+  const dataFromLocalStorage = !localStorage.getItem("cachedValues")
+    ? null
+    : JSON.parse(localStorage.getItem("cachedValues"));
+  const cachedObj = dataFromLocalStorage
+    ? dataFromLocalStorage
+    : { prevFocused: focusedItem };
+  console.log(cachedObj);
 }
 
 function mobileReorderedSnapItems() {}
