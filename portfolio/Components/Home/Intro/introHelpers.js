@@ -11,7 +11,7 @@ export function swipeLeftBtn(event) {
   const carouselBtnElement = document.getElementById("show-intro");
   event.target.closest("BUTTON").getAttribute("data-introbtnclicked") == "true"
     ? setTimeout(() => {
-        introSnapElement.parentElement.scrollBy(5, 0);
+        introSnapElement.parentElement.scrollBy(20, 0);
       }, 350)
     : null;
   carouselBtnElement.getAttribute("data-carouselbtnclicked") == "true"

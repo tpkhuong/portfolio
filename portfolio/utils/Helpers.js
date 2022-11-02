@@ -55,7 +55,11 @@ const methodsForObserver = {
   },
 };
 
-export function observeIntroCarouselContainer(rootElement, children) {
+export function observeIntroCarouselContainer(
+  rootElement,
+  children,
+  isDesktop
+) {
   // callback
   function changeSwipeBtnsClickedAttr(entries, observer) {
     // loop through entries
@@ -78,6 +82,10 @@ export function observeIntroCarouselContainer(rootElement, children) {
     changeSwipeBtnsClickedAttr,
     options
   );
+  if (isDesktop) {
+    console.log("this is desktop size");
+    observer.disconnect();
+  }
   // loop through children and observe the element in the children array
   children.forEach(function addObserverToEachChild(element) {
     observer.observe(element);

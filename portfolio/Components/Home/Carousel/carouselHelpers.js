@@ -73,133 +73,138 @@ const methodsForKeyboardScroll = {
     nextSnapSibling(element, width);
     console.log("right");
   },
-  originalSnapitems: [
-    {
-      classText: "snap-item",
-      posIndex: "one",
-      spanText: "1",
-      tabindex: "-1",
-      ariaHidden: "true",
-      ariaLabel: "1 of 9",
+  nonArrowKeys: {
+    originalSnapitems: [
+      {
+        classText: "snap-item",
+        posIndex: "one",
+        spanText: "1",
+        tabindex: "-1",
+        ariaHidden: "true",
+        ariaLabel: "1 of 9",
+      },
+      {
+        classText: "snap-item",
+        posIndex: "two",
+        spanText: "2",
+        tabindex: "-1",
+        ariaHidden: "true",
+        ariaLabel: "2 of 9",
+      },
+      {
+        classText: "snap-item",
+        posIndex: "three",
+        spanText: "3",
+        tabindex: "-1",
+        ariaHidden: "true",
+        ariaLabel: "3 of 9",
+      },
+      {
+        classText: "snap-item",
+        posIndex: "four",
+        spanText: "4",
+        tabindex: "-1",
+        ariaHidden: "true",
+        ariaLabel: "4 of 9",
+      },
+      {
+        classText: "snap-item",
+        posIndex: "five",
+        spanText: "5",
+        tabindex: "-1",
+        ariaHidden: "true",
+        ariaLabel: "5 of 9",
+      },
+      {
+        classText: "snap-item",
+        posIndex: "six",
+        spanText: "6",
+        tabindex: "-1",
+        ariaHidden: "true",
+        ariaLabel: "6 of 9",
+      },
+      {
+        classText: "snap-item",
+        posIndex: "seven",
+        spanText: "7",
+        tabindex: "-1",
+        ariaHidden: "true",
+        ariaLabel: "7 of 9",
+      },
+      {
+        classText: "snap-item",
+        posIndex: "eight",
+        spanText: "8",
+        tabindex: "-1",
+        ariaHidden: "true",
+        ariaLabel: "8 of 9",
+      },
+      {
+        classText: "snap-item",
+        posIndex: "nine",
+        spanText: "9",
+        tabindex: "-1",
+        ariaHidden: "true",
+        ariaLabel: "9 of 9",
+      },
+    ],
+    // home
+    mobileHome: (event, element, funcToRenderArray) => {
+      event.preventDefault();
+      console.log("home");
     },
-    {
-      classText: "snap-item",
-      posIndex: "two",
-      spanText: "2",
-      tabindex: "-1",
-      ariaHidden: "true",
-      ariaLabel: "2 of 9",
-    },
-    {
-      classText: "snap-item",
-      posIndex: "three",
-      spanText: "3",
-      tabindex: "-1",
-      ariaHidden: "true",
-      ariaLabel: "3 of 9",
-    },
-    {
-      classText: "snap-item",
-      posIndex: "four",
-      spanText: "4",
-      tabindex: "-1",
-      ariaHidden: "true",
-      ariaLabel: "4 of 9",
-    },
-    {
-      classText: "snap-item",
-      posIndex: "five",
-      spanText: "5",
-      tabindex: "-1",
-      ariaHidden: "true",
-      ariaLabel: "5 of 9",
-    },
-    {
-      classText: "snap-item",
-      posIndex: "six",
-      spanText: "6",
-      tabindex: "-1",
-      ariaHidden: "true",
-      ariaLabel: "6 of 9",
-    },
-    {
-      classText: "snap-item",
-      posIndex: "seven",
-      spanText: "7",
-      tabindex: "-1",
-      ariaHidden: "true",
-      ariaLabel: "7 of 9",
-    },
-    {
-      classText: "snap-item",
-      posIndex: "eight",
-      spanText: "8",
-      tabindex: "-1",
-      ariaHidden: "true",
-      ariaLabel: "8 of 9",
-    },
-    {
-      classText: "snap-item",
-      posIndex: "nine",
-      spanText: "9",
-      tabindex: "-1",
-      ariaHidden: "true",
-      ariaLabel: "9 of 9",
-    },
-  ],
-  // home
-  mobileHome: (event, element, funcToRenderArray) => {
-    event.preventDefault();
-    console.log("home");
-  },
-  // end
-  mobileEnd: (event, element, funcToRenderArray) => {
-    event.preventDefault();
+    // end
+    mobileEnd: (event, element, funcToRenderArray) => {
+      event.preventDefault();
 
-    console.log("end");
-  },
-  // page up
-  mobilePageUp: function mobilePageUp(event, element, funcToRenderArray) {
-    event.preventDefault();
-    // check if event.target data-pos-index is "nine" or "two"
+      console.log("end");
+    },
+    // page up
+    mobilePageUp: function mobilePageUp(event, element, funcToRenderArray) {
+      event.preventDefault();
+      // check if event.target data-pos-index is "nine" or "two"
 
-    console.log(this.originalSnapitems, "snapitems");
-    console.log("up");
-  },
-  // page down
-  mobilePageDown: function mobilePageDown(event, element, funcToRenderArray) {
-    event.preventDefault();
-    console.log(this.originalSnapitems, "snapitems");
+      console.log(this.originalSnapitems, "snapitems");
+      console.log("up");
+    },
+    // page down
+    mobilePageDown: function mobilePageDown(event, element, funcToRenderArray) {
+      event.preventDefault();
+      console.log(this.originalSnapitems, "snapitems");
 
-    console.log("down");
-  },
-  // home
-  desktopHome: (event, element, funcToRenderArray) => {
-    event.preventDefault();
-    console.log("home");
-  },
-  // end
-  desktopEnd: (event, element, funcToRenderArray) => {
-    event.preventDefault();
+      console.log("down");
+    },
+    // home
+    desktopHome: (event, element, funcToRenderArray) => {
+      event.preventDefault();
+      console.log("home");
+    },
+    // end
+    desktopEnd: (event, element, funcToRenderArray) => {
+      event.preventDefault();
 
-    console.log("end");
-  },
-  // page up
-  desktopPageUp: function mobilePageUp(event, element, funcToRenderArray) {
-    event.preventDefault();
-    // check if event.target data-pos-index is "nine" or "two"
+      console.log("end");
+    },
+    // page up
+    desktopPageUp: function mobilePageUp(event, element, funcToRenderArray) {
+      event.preventDefault();
+      // check if event.target data-pos-index is "nine" or "two"
 
-    console.log(this.originalSnapitems, "snapitems");
-    console.log("up");
-  },
-  // page down
-  desktopPageDown: function mobilePageDown(event, element, funcToRenderArray) {
-    event.preventDefault();
-    console.log(this.originalSnapitems, "snapitems");
+      console.log(this.originalSnapitems, "snapitems");
+      console.log("up");
+    },
+    // page down
+    desktopPageDown: function mobilePageDown(
+      event,
+      element,
+      funcToRenderArray
+    ) {
+      event.preventDefault();
+      console.log(this.originalSnapitems, "snapitems");
 
-    console.log("down");
+      console.log("down");
+    },
   },
-  nonArrowKeys: {},
   mobile: {
     originalSnapitems: [
       {
@@ -431,9 +436,27 @@ const createNewOrderedArrayIndexSix = factoryFuncCreateArray(6);
 export function observeSnapItemsContainerMobile(
   rootElement,
   children,
-  callFuncToRenderNewArray
+  callFuncToRenderNewArray,
+  isDesktop
 ) {
   // offsetTop 2928
+  // options
+  const mobileOptions = {
+    root: rootElement,
+    //
+    threshold: 1,
+    rootMargin: "0px",
+  };
+  // call IntersectionObserver
+  const mobileObserver = new IntersectionObserver(
+    assignValuesToElementAttrMobile,
+    mobileOptions
+  );
+  // disconnect observer at desktop size
+  if (isDesktop) {
+    console.log("isDesktop is true scrollsnapitem mobileobserver");
+    mobileObserver.disconnect();
+  }
   const mobileScrollHelper = {
     top: {
       one: (target, observer) => {
@@ -862,18 +885,6 @@ export function observeSnapItemsContainerMobile(
       //   }
     });
   }
-  // options
-  const mobileOptions = {
-    root: rootElement,
-    //
-    threshold: 1,
-    rootMargin: "0px",
-  };
-  // call IntersectionObserver
-  const mobileObserver = new IntersectionObserver(
-    assignValuesToElementAttrMobile,
-    mobileOptions
-  );
   // loop through children elements and call oberser.observe on those elements
   children.forEach(function observeEachItem(item) {
     mobileObserver.observe(item);
@@ -1001,8 +1012,29 @@ export function observeSnapItemsContainerDesktop(
   rootElement,
   children,
   callFuncToRenderNewArray,
-  initialArrayValue
+  initialArrayValue,
+  isMobile
 ) {
+  // options
+  const desktopOptions = {
+    root: rootElement,
+    threshold: 1,
+    rootMargin: "-200px 0px -200px 0px",
+  };
+  // call IntersectionObserver
+  const desktopObserver = new IntersectionObserver(
+    assignValuesToElementAttrDesktop,
+    desktopOptions
+  );
+
+  // disconnect observer at mobile size
+
+  if (isMobile) {
+    console.log("isMobile true disconnect desktop scrollsnapitem observer");
+
+    desktopObserver.disconnect();
+  }
+
   const desktopScrollHelper = {
     moveUp: {
       two: (
@@ -1568,18 +1600,6 @@ export function observeSnapItemsContainerDesktop(
       observerHelper(entry.target);
     });
   }
-
-  // options
-  const desktopOptions = {
-    root: rootElement,
-    threshold: 1,
-    rootMargin: "-200px 0px -200px 0px",
-  };
-  // call IntersectionObserver
-  const desktopObserver = new IntersectionObserver(
-    assignValuesToElementAttrDesktop,
-    desktopOptions
-  );
   // loop through children elements and call oberser.observe on those elements
   children.forEach(function obserbeEachChild(child) {
     desktopObserver.observe(child);

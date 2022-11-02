@@ -23,6 +23,14 @@ export default function Carousel({ children, ...props }) {
   };
   const [initialValuesObj, setSnapArray] = React.useState(initialValues);
   React.useEffect(() => {
+    const dataFromLocalStorage = !localStorage.getItem("cachedObserverValues")
+      ? null
+      : JSON.parse(localStorage.getItem("cachedObserverValues"));
+
+    const objFromLocalData = dataFromLocalStorage
+      ? dataFromLocalStorage
+      : { resizeIndicator: null };
+
     // scroll container
     const scrollContainer = document.getElementById("scroll-container");
     // scroll children
@@ -53,7 +61,10 @@ export default function Carousel({ children, ...props }) {
         : null;
     }
     console.log("scrollChildren", scrollChildren);
-    if (window.innerWidth >= 1435) {
+    /**
+     * desktop
+     * **/
+    if (window.innerWidth >= 1440) {
       console.log("inside scrollChildren", scrollChildren);
       // assigning tabindex, aria hidden to first,second and third children of snap items container
       const thirdChild = scrollChildren[2];
@@ -79,6 +90,86 @@ export default function Carousel({ children, ...props }) {
           document.getElementById("currentFocused").focus())
         : null;
     }
+
+    /**
+     * Resize observer
+     * **/
+
+    const resizeSnapitems = new ResizeObserver((entries) => {
+      console.log(window.innerWidth);
+      // mobile
+      if (window.innerWidth <= 375) {
+        if (!objFromLocalData.resizeIndicator) {
+          console.log("scrollSnap: mobile resize is null");
+          objFromLocalData.resizeIndicator = "mobile";
+          localStorage.setItem(
+            "cachedObserverValues",
+            JSON.stringify(objFromLocalData)
+          );
+          return;
+        }
+        if (objFromLocalData.resizeIndicator == "desktop") {
+          console.log("scrollSnap: mobile resize is desktop");
+          // disconnect desktop
+          observeSnapItemsContainerDesktop(
+            scrollContainer,
+            scrollChildren,
+            setSnapArray,
+            initialValuesObj.bottomOrTopArray,
+            true
+          );
+          // observe mobile
+          observeSnapItemsContainerMobile(
+            scrollContainer,
+            scrollChildren,
+            setSnapArray
+          );
+          objFromLocalData.resizeIndicator = "mobile";
+          localStorage.setItem(
+            "cachedObserverValues",
+            JSON.stringify(objFromLocalData)
+          );
+          return;
+        }
+      }
+      // desktop
+      if (window.innerWidth >= 1440) {
+        if (!objFromLocalData.resizeIndicator) {
+          console.log("scrollSnap: desktop resize is null");
+          objFromLocalData.resizeIndicator = "desktop";
+          localStorage.setItem(
+            "cachedObserverValues",
+            JSON.stringify(objFromLocalData)
+          );
+          return;
+        }
+        if (objFromLocalData.resizeIndicator == "mobile") {
+          console.log("scrollSnap: desktop resize is mobile");
+          // disconnect mobile observer
+          observeSnapItemsContainerMobile(
+            scrollContainer,
+            scrollChildren,
+            setSnapArray,
+            true
+          );
+          // observe desktop
+
+          observeSnapItemsContainerDesktop(
+            scrollContainer,
+            scrollChildren,
+            setSnapArray,
+            initialValuesObj.bottomOrTopArray
+          );
+          objFromLocalData.resizeIndicator = "desktop";
+          localStorage.setItem(
+            "cachedObserverValues",
+            JSON.stringify(objFromLocalData)
+          );
+          return;
+        }
+      }
+    });
+    // call .observe()
   }, [initialValuesObj.targetElement]);
 
   return (
