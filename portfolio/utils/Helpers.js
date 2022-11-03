@@ -85,6 +85,7 @@ export function observeIntroCarouselContainer(
   if (isDesktop) {
     console.log("this is desktop size");
     observer.disconnect();
+    return;
   }
   // loop through children and observe the element in the children array
   children.forEach(function addObserverToEachChild(element) {

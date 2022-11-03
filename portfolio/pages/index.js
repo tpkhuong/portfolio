@@ -11,15 +11,6 @@ import { observeIntroCarouselContainer } from "../utils/Helpers";
 
 export default function Home({ children, ...props }) {
   React.useEffect(() => {
-    // local storage
-    const dataFromStorage = !localStorage.getItem("cachedObserverValues")
-      ? null
-      : JSON.parse(localStorage.getItem("cachedObserverValues"));
-
-    const dataObj = dataFromStorage
-      ? dataFromStorage
-      : { resizeIndicator: null };
-
     const introCarouselParent = document.getElementById(
       "intro-carousel-component-parent"
     );
@@ -34,6 +25,15 @@ export default function Home({ children, ...props }) {
      * **/
 
     const resizeIntroCarousel = new ResizeObserver((entries) => {
+      // local storage
+      const dataFromStorage = !localStorage.getItem("cachedObserverValues")
+        ? null
+        : JSON.parse(localStorage.getItem("cachedObserverValues"));
+
+      const dataObj = dataFromStorage
+        ? dataFromStorage
+        : { resizeIndicator: null };
+      console.log(dataObj);
       if (window.innerWidth <= 375 && dataObj.resizeIndicator == "mobile") {
         console.log("return mobile");
         return;
@@ -73,7 +73,7 @@ export default function Home({ children, ...props }) {
           return;
         }
         if (dataObj.resizeIndicator == "mobile") {
-          console.log("desktop: resize is desktop");
+          console.log("desktop: resize is mobile");
           observeIntroCarouselContainer(
             introCarouselParent,
             childrenElements,
@@ -86,7 +86,7 @@ export default function Home({ children, ...props }) {
       }
     });
 
-    resizeIntroCarousel.observe(introCarouselParent);
+    // resizeIntroCarousel.observe(introCarouselParent);
 
     // introCarouselParent.getBoundingClientRect().width <= 375
     //   ? observeIntroCarouselContainer(introCarouselParent, childrenElements)

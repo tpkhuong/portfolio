@@ -47,7 +47,6 @@ export function clickNextSnapItem(event) {
 }
 
 // keyboard
-
 const methodsForKeyboardScroll = {
   // up arrow
   ArrowUp: (event, element, width) => {
@@ -75,6 +74,14 @@ const methodsForKeyboardScroll = {
   },
   nonArrowKeys: {
     originalSnapitems: [
+      {
+        classText: "snap-item",
+        posIndex: "nine",
+        spanText: "9",
+        tabindex: "-1",
+        ariaHidden: "true",
+        ariaLabel: "9 of 9",
+      },
       {
         classText: "snap-item",
         posIndex: "one",
@@ -138,14 +145,6 @@ const methodsForKeyboardScroll = {
         tabindex: "-1",
         ariaHidden: "true",
         ariaLabel: "8 of 9",
-      },
-      {
-        classText: "snap-item",
-        posIndex: "nine",
-        spanText: "9",
-        tabindex: "-1",
-        ariaHidden: "true",
-        ariaLabel: "9 of 9",
       },
     ],
     // home
@@ -456,7 +455,22 @@ export function observeSnapItemsContainerMobile(
   if (isDesktop) {
     console.log("isDesktop is true scrollsnapitem mobileobserver");
     mobileObserver.disconnect();
+    // go back to orginal snap item order for desktop
+    console.log(
+      document.getElementById("currentFocused").parentElement.children
+    );
+    console.log("before rerender desktop");
+    console.log("callFuncToRenderNewArray", callFuncToRenderNewArray);
+    // callFuncToRenderNewArray((prevValues) => {
+    //   return {
+    //     ...prevValues,
+    //     bottomOrTopArray: copyArray,
+    //     targetElement: "desktop",
+    //   };
+    // });
+    return;
   }
+
   const mobileScrollHelper = {
     top: {
       one: (target, observer) => {
@@ -723,6 +737,8 @@ export function observeSnapItemsContainerMobile(
       const targetPosindex = entry.target.getAttribute("data-pos-index");
       console.log(targetPosindex);
       console.log("mobile");
+      console.log(entry);
+      console.log(document.getElementById("currentFocused"), "currentFocused");
       console.log(entry.target);
       console.log(entry.target.offsetTop);
       // top position 1 element offsetTop is 0
@@ -779,9 +795,10 @@ export function observeSnapItemsContainerMobile(
         entry.target.previousElementSibling == null &&
         previousFocused !== entry.target
       ) {
+        console.log(entry.target, "entry.target");
         console.log(
           "document.getElementByIdcurrentFocused.parentElement.children",
-          document.getElementById("currentFocused").parentElement.children
+          entry.target.parentElement.children
         );
         mobileScrollHelper["top"][targetPosindex](entry.target, observer);
         return;
@@ -846,7 +863,10 @@ export function observeSnapItemsContainerMobile(
       }
       // when target posindex is one && target.nextElementSibling is null && target.previousElementSibling.getAttribute("data-pos-index") == "nine"
       // take elements with posindex of nine and one placed them at beginning of array
-      if (targetPosindex == "one" && entry.target.nextElementSibling == null) {
+      if (
+        targetPosindex == "one" &&
+        document.getElementById("currentFocused").nextElementSibling == null
+      ) {
         console.log(
           "document.getElementByIdcurrentFocused.parentElement.children",
           document.getElementById("currentFocused").parentElement.children
@@ -1031,8 +1051,45 @@ export function observeSnapItemsContainerDesktop(
 
   if (isMobile) {
     console.log("isMobile true disconnect desktop scrollsnapitem observer");
-
     desktopObserver.disconnect();
+    // go back to original snap item order mobile
+    // const copyArrayForMobile = [];
+    // copyArrayForMobile.push.apply(
+    //   copyArrayForMobile,
+    //   methodsForKeyboardScroll.nonArrowKeys.originalSnapitems
+    // );
+
+    // copyArrayForMobile[1].focusId = "currentFocused";
+
+    const sortItems = [
+      ...document.getElementById("currentFocused").parentElement.children,
+    ].sort(function reorderItems(first, second) {
+      const firstLabel = Number(first.getAttribute("aria-label").charAt(0));
+      const secondLabel = Number(second.getAttribute("aria-label").charAt(0));
+      if (secondLabel < firstLabel) return 1;
+      if (firstLabel < secondLabel) return -1;
+      return 0;
+    });
+
+    const lastItem = sortItems[sortItems.length - 1];
+    const beforeLast = sortItems.slice(0, -1);
+
+    const reorderArray = createNewOrderedArrayIndexOne(
+      [lastItem, ...beforeLast],
+      "1"
+    );
+
+    console.log("before rerender mobile");
+    console.log("reorderArray", reorderArray);
+
+    callFuncToRenderNewArray((values) => {
+      return {
+        ...values,
+        bottomOrTopArray: reorderArray,
+        targetElement: "mobile",
+      };
+    });
+    return;
   }
 
   const desktopScrollHelper = {
@@ -1333,7 +1390,6 @@ export function observeSnapItemsContainerDesktop(
       }
       console.log("desktop");
       console.log(entry);
-
       console.log("previous", entry.target.previousElementSibling);
       console.log("next", entry.target.nextElementSibling);
       const targetPosindex = entry.target.getAttribute("data-pos-index");

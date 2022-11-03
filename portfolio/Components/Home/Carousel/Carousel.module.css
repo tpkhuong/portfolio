@@ -133,6 +133,6 @@
 
   .snap-items-container {
     padding-inline: 0;
-    flex-basis: 778px;
+    flex-basis: calc(100vh - 64px - 58px);
   }
 }

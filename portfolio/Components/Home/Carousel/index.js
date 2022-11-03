@@ -23,14 +23,6 @@ export default function Carousel({ children, ...props }) {
   };
   const [initialValuesObj, setSnapArray] = React.useState(initialValues);
   React.useEffect(() => {
-    const dataFromLocalStorage = !localStorage.getItem("cachedObserverValues")
-      ? null
-      : JSON.parse(localStorage.getItem("cachedObserverValues"));
-
-    const objFromLocalData = dataFromLocalStorage
-      ? dataFromLocalStorage
-      : { resizeIndicator: null };
-
     // scroll container
     const scrollContainer = document.getElementById("scroll-container");
     // scroll children
@@ -96,7 +88,15 @@ export default function Carousel({ children, ...props }) {
      * **/
 
     const resizeSnapitems = new ResizeObserver((entries) => {
-      console.log(window.innerWidth);
+      const dataFromLocalStorage = !localStorage.getItem("cachedObserverValues")
+        ? null
+        : JSON.parse(localStorage.getItem("cachedObserverValues"));
+
+      const objFromLocalData = dataFromLocalStorage
+        ? dataFromLocalStorage
+        : { resizeIndicator: null };
+      console.log(objFromLocalData, "objFromLocalData");
+      console.log(window.innerWidth, "innerWidth resizeSnapItems");
       // mobile
       if (window.innerWidth <= 375) {
         if (!objFromLocalData.resizeIndicator) {
@@ -118,6 +118,7 @@ export default function Carousel({ children, ...props }) {
             initialValuesObj.bottomOrTopArray,
             true
           );
+          console.log("break");
           // observe mobile
           observeSnapItemsContainerMobile(
             scrollContainer,
@@ -153,7 +154,7 @@ export default function Carousel({ children, ...props }) {
             true
           );
           // observe desktop
-
+          console.log("break desktop");
           observeSnapItemsContainerDesktop(
             scrollContainer,
             scrollChildren,
@@ -170,6 +171,7 @@ export default function Carousel({ children, ...props }) {
       }
     });
     // call .observe()
+    resizeSnapitems.observe(document.getElementsByTagName("body")[0]);
   }, [initialValuesObj.targetElement]);
 
   return (
