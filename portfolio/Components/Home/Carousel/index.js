@@ -45,7 +45,9 @@ export default function Carousel({ children, ...props }) {
       observeSnapItemsContainerMobile(
         scrollContainer,
         scrollChildren,
-        setSnapArray
+        setSnapArray,
+        false,
+        "this is mobile test"
       );
       // focus element with id currentFocused
       initialValuesObj.bottomOrTopArray
@@ -72,7 +74,9 @@ export default function Carousel({ children, ...props }) {
         scrollContainer,
         scrollChildren,
         setSnapArray,
-        initialValuesObj.bottomOrTopArray
+        initialValuesObj.bottomOrTopArray,
+        false,
+        "is resize desktop ob"
       );
 
       !initialValuesObj.bottomOrTopArray ? thirdChild.scrollIntoView() : null;
@@ -123,7 +127,9 @@ export default function Carousel({ children, ...props }) {
           observeSnapItemsContainerMobile(
             scrollContainer,
             scrollChildren,
-            setSnapArray
+            setSnapArray,
+            false,
+            true
           );
           objFromLocalData.resizeIndicator = "mobile";
           localStorage.setItem(
@@ -151,15 +157,21 @@ export default function Carousel({ children, ...props }) {
             scrollContainer,
             scrollChildren,
             setSnapArray,
-            true
+            true,
+            "this is a test"
           );
+          // code outside callback of mobile observer is called
+          // then when the element is in the rootMargin/threshold
+          // code in the callback is called
           // observe desktop
           console.log("break desktop");
           observeSnapItemsContainerDesktop(
             scrollContainer,
             scrollChildren,
             setSnapArray,
-            initialValuesObj.bottomOrTopArray
+            initialValuesObj.bottomOrTopArray,
+            true,
+            true
           );
           objFromLocalData.resizeIndicator = "desktop";
           localStorage.setItem(
@@ -171,7 +183,7 @@ export default function Carousel({ children, ...props }) {
       }
     });
     // call .observe()
-    resizeSnapitems.observe(document.getElementsByTagName("body")[0]);
+    // resizeSnapitems.observe(document.getElementsByTagName("body")[0]);
   }, [initialValuesObj.targetElement]);
 
   return (

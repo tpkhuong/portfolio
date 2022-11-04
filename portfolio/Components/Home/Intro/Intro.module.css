@@ -82,7 +82,8 @@
 
 .github-link:hover,
 .github-link:focus {
-  color: hsl(0, 87.3%, 66.1%);
+  /* color: hsl(0, 87.3%, 66.1%); */
+  color: ivory;
 }
 
 .location-btn-icon-wrapper {

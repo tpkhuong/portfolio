@@ -436,7 +436,8 @@ export function observeSnapItemsContainerMobile(
   rootElement,
   children,
   callFuncToRenderNewArray,
-  isDesktop
+  isDesktop,
+  isResize
 ) {
   // offsetTop 2928
   // options
@@ -451,10 +452,14 @@ export function observeSnapItemsContainerMobile(
     assignValuesToElementAttrMobile,
     mobileOptions
   );
+  console.log(mobileObserver);
+  console.log("isDesktop", isDesktop);
+  console.log(localStorage.getItem("cachedObserverValues"));
   // disconnect observer at desktop size
   if (isDesktop) {
     console.log("isDesktop is true scrollsnapitem mobileobserver");
-    mobileObserver.disconnect();
+    console.log(mobileObserver);
+    mobileObserver.unobserve(rootElement);
     // go back to orginal snap item order for desktop
     console.log(
       document.getElementById("currentFocused").parentElement.children
@@ -471,9 +476,12 @@ export function observeSnapItemsContainerMobile(
     return;
   }
 
+  console.log("another test mobile");
+
   const mobileScrollHelper = {
     top: {
       one: (target, observer) => {
+        console.log("resize", isResize);
         console.log(target);
         console.log("observer", observer);
 
@@ -502,6 +510,8 @@ export function observeSnapItemsContainerMobile(
         });
       },
       two: (target, observer, prevFocused) => {
+        console.log("resize", isResize);
+
         console.log(target);
         console.log("observer", observer);
 
@@ -542,6 +552,8 @@ export function observeSnapItemsContainerMobile(
         });
       },
       nine: (target, observer) => {
+        console.log("resize", isResize);
+
         console.log(target);
         console.log("observer", observer);
 
@@ -576,6 +588,8 @@ export function observeSnapItemsContainerMobile(
     },
     bottom: {
       one: (target, observer) => {
+        console.log("resize", isResize);
+
         console.log(target);
         console.log("observer", observer);
         target.previousElementSibling.setAttribute("tabindex", "-1");
@@ -606,6 +620,8 @@ export function observeSnapItemsContainerMobile(
         });
       },
       eight: (target, observer, prevFocus) => {
+        console.log("resize", isResize);
+
         console.log(target);
         console.log("observer", observer);
 
@@ -650,6 +666,8 @@ export function observeSnapItemsContainerMobile(
         });
       },
       nine: (target, observer) => {
+        console.log("resize", isResize);
+
         console.log(target);
         console.log("observer", observer);
 
@@ -732,6 +750,22 @@ export function observeSnapItemsContainerMobile(
       if (!entry.isIntersecting) {
         return;
       }
+      console.log(localStorage.getItem("cachedObserverValues"));
+      /**
+       * one solution check if localStorage.getItem("cachedObserverValues") is desktop
+       * if it is desktop return
+       * **/
+      console.log(isResize);
+      if (isResize) {
+        console.log(
+          "inside callback to mobile observer callback resize if statement"
+        );
+        return;
+      }
+      console.log(isResize);
+      console.log(
+        "outside callback to mobile observer callback resize if statement"
+      );
       console.log("previous", entry.target.previousElementSibling);
       console.log("next", entry.target.nextElementSibling);
       const targetPosindex = entry.target.getAttribute("data-pos-index");
@@ -1033,7 +1067,8 @@ export function observeSnapItemsContainerDesktop(
   children,
   callFuncToRenderNewArray,
   initialArrayValue,
-  isMobile
+  isMobile,
+  isResize
 ) {
   // options
   const desktopOptions = {
@@ -1046,12 +1081,15 @@ export function observeSnapItemsContainerDesktop(
     assignValuesToElementAttrDesktop,
     desktopOptions
   );
+  console.log("desktop observer", desktopObserver);
+  console.log(localStorage.getItem("cachedObserverValues"));
 
   // disconnect observer at mobile size
 
   if (isMobile) {
     console.log("isMobile true disconnect desktop scrollsnapitem observer");
-    desktopObserver.disconnect();
+    console.log(desktopObserver);
+    desktopObserver.unobserve(rootElement);
     // go back to original snap item order mobile
     // const copyArrayForMobile = [];
     // copyArrayForMobile.push.apply(
@@ -1061,37 +1099,37 @@ export function observeSnapItemsContainerDesktop(
 
     // copyArrayForMobile[1].focusId = "currentFocused";
 
-    const sortItems = [
-      ...document.getElementById("currentFocused").parentElement.children,
-    ].sort(function reorderItems(first, second) {
-      const firstLabel = Number(first.getAttribute("aria-label").charAt(0));
-      const secondLabel = Number(second.getAttribute("aria-label").charAt(0));
-      if (secondLabel < firstLabel) return 1;
-      if (firstLabel < secondLabel) return -1;
-      return 0;
-    });
+    // const sortItems = [
+    //   ...document.getElementById("currentFocused").parentElement.children,
+    // ].sort(function reorderItems(first, second) {
+    //   const firstLabel = Number(first.getAttribute("aria-label").charAt(0));
+    //   const secondLabel = Number(second.getAttribute("aria-label").charAt(0));
+    //   if (secondLabel < firstLabel) return 1;
+    //   if (firstLabel < secondLabel) return -1;
+    //   return 0;
+    // });
 
-    const lastItem = sortItems[sortItems.length - 1];
-    const beforeLast = sortItems.slice(0, -1);
+    // const lastItem = sortItems[sortItems.length - 1];
+    // const beforeLast = sortItems.slice(0, -1);
 
-    const reorderArray = createNewOrderedArrayIndexOne(
-      [lastItem, ...beforeLast],
-      "1"
-    );
+    // const reorderArray = createNewOrderedArrayIndexOne(
+    //   [lastItem, ...beforeLast],
+    //   "1"
+    // );
 
-    console.log("before rerender mobile");
-    console.log("reorderArray", reorderArray);
+    // console.log("before rerender mobile");
+    // console.log("reorderArray", reorderArray);
 
-    callFuncToRenderNewArray((values) => {
-      return {
-        ...values,
-        bottomOrTopArray: reorderArray,
-        targetElement: "mobile",
-      };
-    });
+    // callFuncToRenderNewArray((values) => {
+    //   return {
+    //     ...values,
+    //     bottomOrTopArray: reorderArray,
+    //     targetElement: "mobile",
+    //   };
+    // });
     return;
   }
-
+  console.log("testing");
   const desktopScrollHelper = {
     moveUp: {
       two: (
@@ -1388,6 +1426,19 @@ export function observeSnapItemsContainerDesktop(
       if (!entry.isIntersecting) {
         return;
       }
+      console.log(isMobile, "isMobile");
+      console.log(isResize, "isResize");
+      if (isResize) {
+        console.log(
+          "inside callback to desktop observer callback resize if statement"
+        );
+        return;
+      }
+      console.log(isResize, "isResize");
+      console.log(isMobile, "isMobile");
+      console.log(
+        "outside callback to desktop observer callback resize if statement"
+      );
       console.log("desktop");
       console.log(entry);
       console.log("previous", entry.target.previousElementSibling);
