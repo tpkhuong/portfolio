@@ -22,6 +22,12 @@ export default function Project({
       role="group"
       id={idAttr}
       aria-roledescription="slide"
+      onTouchEnd={(event) => {
+        console.log(event);
+      }}
+      onTouchStart={(event) => {
+        console.log(event);
+      }}
     >
       <span>{spanContent}</span>
     </div>
@@ -34,6 +40,12 @@ export default function Project({
       aria-label={label}
       role="group"
       aria-roledescription="slide"
+      onTouchEnd={(event) => {
+        console.log(event);
+      }}
+      onTouchStart={(event) => {
+        console.log(event);
+      }}
     >
       <span>{spanContent}</span>
     </div>

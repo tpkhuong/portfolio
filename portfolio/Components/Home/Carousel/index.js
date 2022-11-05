@@ -4,6 +4,7 @@ import {
   swipeRightBtn,
   clickPreviousSnapItem,
   clickNextSnapItem,
+  focusCenteredSnapItemOnWheelScroll,
   keyboardScrollThroughSnapItems,
   observeSnapItemsContainerMobile,
   observeSnapItemsContainerDesktop,
@@ -23,6 +24,7 @@ export default function Carousel({ children, ...props }) {
   };
   const [initialValuesObj, setSnapArray] = React.useState(initialValues);
   React.useEffect(() => {
+    console.log(window.innerWidth);
     // scroll container
     const scrollContainer = document.getElementById("scroll-container");
     // scroll children
@@ -30,30 +32,32 @@ export default function Carousel({ children, ...props }) {
     /**
      * mobile
      * **/
-    if (window.innerWidth <= 375) {
-      // assigning tabindex, aria hidden to first and second children of snap items container
-      const secondChild = scrollChildren[1];
-      // run algorithm below when array in initialValuesObj are null
-      !initialValuesObj.bottomOrTopArray
-        ? (secondChild.setAttribute("aria-hidden", "false"),
-          secondChild.setAttribute("tabindex", "0"),
-          secondChild.setAttribute("id", "currentFocused"),
-          scrollContainer.scrollBy(0, 1))
-        : null;
-      // call intersection observer func based on screen size
-      // call observeSnapItemsContainerMobile if .innerWidth is <= 375
-      observeSnapItemsContainerMobile(
-        scrollContainer,
-        scrollChildren,
-        setSnapArray,
-        false,
-        "this is mobile test"
-      );
-      // focus element with id currentFocused
-      initialValuesObj.bottomOrTopArray
-        ? document.getElementById("currentFocused").focus()
-        : null;
-    }
+    // if (window.innerWidth <= 375) {
+    //   // assigning tabindex, aria hidden to first and second children of snap items container
+    //   const secondChild = scrollChildren[1];
+    //   // run algorithm below when array in initialValuesObj are null
+    //   !initialValuesObj.bottomOrTopArray
+    //     ? (secondChild.setAttribute("aria-hidden", "false"),
+    //       secondChild.setAttribute("tabindex", "0"),
+    //       secondChild.setAttribute("id", "currentFocused"),
+    //       scrollContainer.scrollBy(0, 1))
+    //     : null;
+    //   // call intersection observer func based on screen size
+    //   // call observeSnapItemsContainerMobile if .innerWidth is <= 375
+    //   observeSnapItemsContainerMobile(
+    //     scrollContainer,
+    //     scrollChildren,
+    //     setSnapArray,
+    //     false,
+    //     false
+    //     // false,
+    //     // "this is mobile test"
+    //   );
+    //   // focus element with id currentFocused
+    //   initialValuesObj.bottomOrTopArray
+    //     ? document.getElementById("currentFocused").focus()
+    //     : null;
+    // }
     console.log("scrollChildren", scrollChildren);
     /**
      * desktop
@@ -61,25 +65,35 @@ export default function Carousel({ children, ...props }) {
     if (window.innerWidth >= 1440) {
       console.log("inside scrollChildren", scrollChildren);
       // assigning tabindex, aria hidden to first,second and third children of snap items container
-      const thirdChild = scrollChildren[2];
+      const secondChild = scrollChildren[1];
 
       !initialValuesObj.bottomOrTopArray
-        ? (thirdChild.setAttribute("aria-hidden", "false"),
-          thirdChild.setAttribute("tabindex", "0"),
-          thirdChild.setAttribute("id", "currentFocused"))
+        ? (secondChild.setAttribute("aria-hidden", "false"),
+          secondChild.setAttribute("tabindex", "0"),
+          secondChild.setAttribute("id", "currentFocused"))
         : null;
 
-      // call observeSnapItemsContainerDesktop if .innerWidth is >= 1440
-      observeSnapItemsContainerDesktop(
-        scrollContainer,
-        scrollChildren,
-        setSnapArray,
-        initialValuesObj.bottomOrTopArray,
-        false,
-        "is resize desktop ob"
-      );
+      // const thirdChild = scrollChildren[2];
 
-      !initialValuesObj.bottomOrTopArray ? thirdChild.scrollIntoView() : null;
+      // !initialValuesObj.bottomOrTopArray
+      //   ? (thirdChild.setAttribute("aria-hidden", "false"),
+      //     thirdChild.setAttribute("tabindex", "0"),
+      //     thirdChild.setAttribute("id", "currentFocused"))
+      //   : null;
+
+      // call observeSnapItemsContainerDesktop if .innerWidth is >= 1440
+      // observeSnapItemsContainerDesktop(
+      //   scrollContainer,
+      //   scrollChildren,
+      //   setSnapArray,
+      //   initialValuesObj.bottomOrTopArray,
+      //   false,
+      //   false
+      //   // false,
+      //   // "is resize desktop ob"
+      // );
+
+      !initialValuesObj.bottomOrTopArray ? secondChild.scrollIntoView() : null;
 
       initialValuesObj.bottomOrTopArray
         ? (document.getElementById("currentFocused").scrollIntoView(),
@@ -127,9 +141,9 @@ export default function Carousel({ children, ...props }) {
           observeSnapItemsContainerMobile(
             scrollContainer,
             scrollChildren,
-            setSnapArray,
-            false,
-            true
+            setSnapArray
+            // false,
+            // true
           );
           objFromLocalData.resizeIndicator = "mobile";
           localStorage.setItem(
@@ -157,8 +171,8 @@ export default function Carousel({ children, ...props }) {
             scrollContainer,
             scrollChildren,
             setSnapArray,
-            true,
-            "this is a test"
+            true
+            // "this is a test"
           );
           // code outside callback of mobile observer is called
           // then when the element is in the rootMargin/threshold
@@ -169,9 +183,9 @@ export default function Carousel({ children, ...props }) {
             scrollContainer,
             scrollChildren,
             setSnapArray,
-            initialValuesObj.bottomOrTopArray,
-            true,
-            true
+            initialValuesObj.bottomOrTopArray
+            // true,
+            // true
           );
           objFromLocalData.resizeIndicator = "desktop";
           localStorage.setItem(
@@ -223,6 +237,7 @@ export default function Carousel({ children, ...props }) {
           tabIndex="-1"
           id="scroll-container"
           aria-live="polite"
+          onWheel={focusCenteredSnapItemOnWheelScroll}
           onKeyDown={keyboardScrollThroughSnapItems.bind({
             initialValuesObj,
             setSnapArray,

@@ -18,6 +18,37 @@ export function swipeRightBtn(event) {
     : null;
 }
 
+/**
+ * scroll methods
+ * **/
+
+const scrollHelper = {
+  // going up
+  up: {
+    // top
+    top: {
+      one: (target, renderComponent, reorderArray, createArray) => {},
+    },
+    // bottom
+    bottom: {
+      nine: (target, renderComponent, reorderArray, createArray) => {},
+    },
+  },
+  // going down
+  down: {
+    // top
+    top: {
+      one: (target, renderComponent, reorderArray, createArray) => {},
+    },
+    // bottom
+    bottom: {
+      nine: (target, renderComponent, reorderArray, createArray) => {},
+    },
+  },
+};
+
+// call Object.freeze on our method obj so we can't mutate it
+
 // on click
 
 export function clickPreviousSnapItem(event) {
@@ -49,25 +80,93 @@ export function clickNextSnapItem(event) {
 // keyboard
 const methodsForKeyboardScroll = {
   // up arrow
-  ArrowUp: (event, element, width) => {
+  ArrowUp: (
+    event,
+    element,
+    width,
+    callToRender,
+    methodObj,
+    reorderArrayFuncsObj,
+    createArrayFuncsObj
+  ) => {
+    const {
+      moveFirstItemToEndOfList,
+      moveFirstTwoItemsToEnd,
+      moveLastItemToBeginningOfList,
+      moveLastTwoItemsToBeginning,
+    } = reorderArrayFuncsObj;
+    const { createNewOrderedArrayIndexOne, createNewOrderedArrayIndexSeven } =
+      createArrayFuncsObj;
+    // func to move two top items to bottom
+    // func to move one bottom item to top
     event.preventDefault();
     previousSnapSibling(element, width);
     console.log("up");
   },
   // left arrow
-  ArrowLeft: (event, element, width) => {
+  ArrowLeft: (
+    event,
+    element,
+    width,
+    callToRender,
+    methodObj,
+    reorderArrayFuncsObj,
+    createArrayFuncsObj
+  ) => {
+    const {
+      moveFirstItemToEndOfList,
+      moveFirstTwoItemsToEnd,
+      moveLastItemToBeginningOfList,
+      moveLastTwoItemsToBeginning,
+    } = reorderArrayFuncsObj;
+    const { createNewOrderedArrayIndexOne, createNewOrderedArrayIndexSeven } =
+      createArrayFuncsObj;
     event.preventDefault();
     previousSnapSibling(element, width);
     console.log("left");
   },
   // down arrow
-  ArrowDown: (event, element, width) => {
+  ArrowDown: (
+    event,
+    element,
+    width,
+    callToRender,
+    methodObj,
+    reorderArrayFuncsObj,
+    createArrayFuncsObj
+  ) => {
+    const {
+      moveFirstItemToEndOfList,
+      moveFirstTwoItemsToEnd,
+      moveLastItemToBeginningOfList,
+      moveLastTwoItemsToBeginning,
+    } = reorderArrayFuncsObj;
+    const { createNewOrderedArrayIndexOne, createNewOrderedArrayIndexSeven } =
+      createArrayFuncsObj;
+    // func to move two bottom items to top
+    // func to move one top item to bottom
     event.preventDefault();
     nextSnapSibling(element, width);
     console.log("down");
   },
   // right arrow
-  ArrowRight: (event, element, width) => {
+  ArrowRight: (
+    event,
+    element,
+    width,
+    callToRender,
+    methodObj,
+    reorderArrayFuncsObj,
+    createArrayFuncsObj
+  ) => {
+    const {
+      moveFirstItemToEndOfList,
+      moveFirstTwoItemsToEnd,
+      moveLastItemToBeginningOfList,
+      moveLastTwoItemsToBeginning,
+    } = reorderArrayFuncsObj;
+    const { createNewOrderedArrayIndexOne, createNewOrderedArrayIndexSeven } =
+      createArrayFuncsObj;
     event.preventDefault();
     nextSnapSibling(element, width);
     console.log("right");
@@ -359,7 +458,19 @@ export function keyboardScrollThroughSnapItems(event) {
     methodsForKeyboardScroll[event.code](
       event,
       currentFocusedSnapItem,
-      windowWidth
+      windowWidth,
+      this.setSnapArray,
+      scrollHelper,
+      {
+        moveFirstItemToEndOfList,
+        moveFirstTwoItemsToEnd,
+        moveLastItemToBeginningOfList,
+        moveLastTwoItemsToBeginning,
+      },
+      {
+        createNewOrderedArrayIndexOne,
+        createNewOrderedArrayIndexSeven,
+      }
     );
   }
   /**
@@ -1723,10 +1834,11 @@ function moveLastItemToBeginningOfList(target) {
   const lastItem = arr[arr.length - 1];
   const beforeLastItem = arr.slice(0, -1);
   console.log(lastItem), console.log(beforeLastItem);
-  const result = {
-    lastItem,
-    beforeLastItem,
-  };
+  // const result = {
+  //   lastItem,
+  //   beforeLastItem,
+  // };
+  const result = [lastItem, ...beforeLastItem];
   return result;
 }
 
@@ -1739,10 +1851,39 @@ function moveFirstItemToEndOfList(target) {
   const arr = [...parentChildren];
   const firstItem = arr[0];
   const restOfArray = arr.slice(1);
-  const result = {
-    firstItem,
-    restOfArray,
-  };
+  // const result = {
+  //   firstItem,
+  //   restOfArray,
+  // };
+  const result = [...restOfArray, firstItem];
+  return result;
+}
+
+/**
+ * move two items to top of list
+ * **/
+
+function moveLastTwoItemsToBeginning(target) {
+  const parentChildren = [...target.parentElement.children];
+  const copiedArr = [...parentChildren];
+  const lastItem = copiedArr[copiedArr.length - 1];
+  const secondToLastItem = copiedArr[copiedArr.length - 2];
+  const beforeLastItems = copiedArr.slice(0, -2);
+  const result = [secondToLastItem, lastItem, ...beforeLastItems];
+  return result;
+}
+
+/**
+ * move two items to bottom of list
+ * **/
+
+function moveFirstTwoItemsToEnd(target) {
+  const parentChildren = [...target.parentElement.children];
+  const copiedArray = [].concat(parentChildren);
+  const firstItem = copiedArray[0];
+  const secondItem = copiedArray[1];
+  const restOfArray = copiedArray.slice(2);
+  const result = [...restOfArray, firstItem, secondItem];
   return result;
 }
 
@@ -1818,3 +1959,78 @@ function carouselMobile() {
 }
 
 function carouselDesktop() {}
+
+/**
+ * wheel event instead of intersection observer to work with desktop/mobile screen size
+ * when use zoom in
+ * **/
+
+export function focusCenteredSnapItemOnWheelScroll(event) {
+  const { deltaY } = event;
+  const currentFocused = document.getElementById("currentFocused");
+  const targetPosIndex = currentFocused.getAttribute("data-pos-index");
+  console.log(currentFocused, "currentFocused");
+  // get element with id currentFocused
+  // set tabindex to "-1"
+  currentFocused.setAttribute("tabindex", "-1");
+  // aria-hidden "true"
+  currentFocused.setAttribute("aria-hidden", "true");
+  // remove id attribute
+  currentFocused.removeAttribute("id");
+  // when deltaY is negative run scrollingUpHelper
+  if (deltaY < 0) {
+    // top one
+    if (targetPosIndex == "one") {
+      return;
+    }
+    // bottom nine
+    if (targetPosIndex == "nine") {
+      return;
+    }
+    scrollingUpHelper(currentFocused);
+    console.log("scrolling up");
+  }
+  // when deltaY is positive run scrollingDownHelper
+  if (deltaY > 0) {
+    // top one
+    if (targetPosIndex == "one") {
+    }
+    // bottom nine
+    if (targetPosIndex == "nine") {
+    }
+    scrollingDownHelper(currentFocused);
+    console.log("scrolling down");
+  }
+}
+
+/**
+ * scrolling up helper
+ * **/
+
+function scrollingUpHelper(target) {
+  const previousSnapItem = target.previousElementSibling;
+  // set tabindex to "0"
+  previousSnapItem.setAttribute("tabindex", "0");
+  // aria-hidden "false"
+  previousSnapItem.setAttribute("aria-hidden", "false");
+  // add id attribute "currentFocused"
+  previousSnapItem.setAttribute("id", "currentFocused");
+  // focus snap item
+  previousSnapItem.focus();
+}
+
+/**
+ * scrolling down helper
+ * **/
+
+function scrollingDownHelper(target) {
+  const nextSnapItem = target.nextElementSibling;
+  // set tabindex to "0"
+  nextSnapItem.setAttribute("tabindex", "0");
+  // aria-hidden "false"
+  nextSnapItem.setAttribute("aria-hidden", "false");
+  // add id attribute "currentFocused"
+  nextSnapItem.setAttribute("id", "currentFocused");
+  // focus snap item
+  nextSnapItem.focus();
+}
