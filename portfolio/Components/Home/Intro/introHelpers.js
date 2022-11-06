@@ -1,4 +1,5 @@
 export function swipeLeftBtn(event) {
+  console.log(event.detail);
   event.target.closest("BUTTON").getAttribute("data-introbtnclicked") == "false"
     ? event.target
         .closest("BUTTON")

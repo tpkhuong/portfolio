@@ -29,6 +29,35 @@ export default function Carousel({ children, ...props }) {
     const scrollContainer = document.getElementById("scroll-container");
     // scroll children
     const scrollChildren = [...scrollContainer.children];
+    const secondChild = scrollChildren[1];
+
+    !initialValuesObj.bottomOrTopArray
+      ? (secondChild.setAttribute("aria-hidden", "false"),
+        secondChild.setAttribute("tabindex", "0"),
+        secondChild.setAttribute("id", "currentFocused"))
+      : null;
+
+    if (window.innerWidth <= 375) {
+      console.log("hello");
+      console.log(initialValuesObj.bottomOrTopArray);
+      !initialValuesObj.bottomOrTopArray
+        ? scrollContainer.scrollBy(0, 1)
+        : null;
+
+      initialValuesObj.bottomOrTopArray
+        ? document.getElementById("currentFocused").focus()
+        : null;
+    }
+
+    if (window.innerWidth >= 1440) {
+      !initialValuesObj.bottomOrTopArray ? secondChild.scrollIntoView() : null;
+
+      initialValuesObj.bottomOrTopArray
+        ? (document.getElementById("currentFocused").scrollIntoView(),
+          document.getElementById("currentFocused").focus())
+        : null;
+    }
+
     /**
      * mobile
      * **/
@@ -62,44 +91,44 @@ export default function Carousel({ children, ...props }) {
     /**
      * desktop
      * **/
-    if (window.innerWidth >= 1440) {
-      console.log("inside scrollChildren", scrollChildren);
-      // assigning tabindex, aria hidden to first,second and third children of snap items container
-      const secondChild = scrollChildren[1];
+    // if (window.innerWidth >= 1440) {
+    //   console.log("inside scrollChildren", scrollChildren);
+    //   // assigning tabindex, aria hidden to first,second and third children of snap items container
+    //   const secondChild = scrollChildren[1];
 
-      !initialValuesObj.bottomOrTopArray
-        ? (secondChild.setAttribute("aria-hidden", "false"),
-          secondChild.setAttribute("tabindex", "0"),
-          secondChild.setAttribute("id", "currentFocused"))
-        : null;
+    //   !initialValuesObj.bottomOrTopArray
+    //     ? (secondChild.setAttribute("aria-hidden", "false"),
+    //       secondChild.setAttribute("tabindex", "0"),
+    //       secondChild.setAttribute("id", "currentFocused"))
+    //     : null;
 
-      // const thirdChild = scrollChildren[2];
+    //   // const thirdChild = scrollChildren[2];
 
-      // !initialValuesObj.bottomOrTopArray
-      //   ? (thirdChild.setAttribute("aria-hidden", "false"),
-      //     thirdChild.setAttribute("tabindex", "0"),
-      //     thirdChild.setAttribute("id", "currentFocused"))
-      //   : null;
+    //   // !initialValuesObj.bottomOrTopArray
+    //   //   ? (thirdChild.setAttribute("aria-hidden", "false"),
+    //   //     thirdChild.setAttribute("tabindex", "0"),
+    //   //     thirdChild.setAttribute("id", "currentFocused"))
+    //   //   : null;
 
-      // call observeSnapItemsContainerDesktop if .innerWidth is >= 1440
-      // observeSnapItemsContainerDesktop(
-      //   scrollContainer,
-      //   scrollChildren,
-      //   setSnapArray,
-      //   initialValuesObj.bottomOrTopArray,
-      //   false,
-      //   false
-      //   // false,
-      //   // "is resize desktop ob"
-      // );
+    //   // call observeSnapItemsContainerDesktop if .innerWidth is >= 1440
+    //   // observeSnapItemsContainerDesktop(
+    //   //   scrollContainer,
+    //   //   scrollChildren,
+    //   //   setSnapArray,
+    //   //   initialValuesObj.bottomOrTopArray,
+    //   //   false,
+    //   //   false
+    //   //   // false,
+    //   //   // "is resize desktop ob"
+    //   // );
 
-      !initialValuesObj.bottomOrTopArray ? secondChild.scrollIntoView() : null;
+    //   !initialValuesObj.bottomOrTopArray ? secondChild.scrollIntoView() : null;
 
-      initialValuesObj.bottomOrTopArray
-        ? (document.getElementById("currentFocused").scrollIntoView(),
-          document.getElementById("currentFocused").focus())
-        : null;
-    }
+    //   initialValuesObj.bottomOrTopArray
+    //     ? (document.getElementById("currentFocused").scrollIntoView(),
+    //       document.getElementById("currentFocused").focus())
+    //     : null;
+    // }
 
     /**
      * Resize observer
@@ -237,7 +266,10 @@ export default function Carousel({ children, ...props }) {
           tabIndex="-1"
           id="scroll-container"
           aria-live="polite"
-          onWheel={focusCenteredSnapItemOnWheelScroll}
+          onWheel={focusCenteredSnapItemOnWheelScroll.bind({
+            initialValuesObj,
+            setSnapArray,
+          })}
           onKeyDown={keyboardScrollThroughSnapItems.bind({
             initialValuesObj,
             setSnapArray,

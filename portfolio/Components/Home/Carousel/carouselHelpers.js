@@ -27,22 +27,78 @@ const scrollHelper = {
   up: {
     // top
     top: {
-      one: (target, renderComponent, reorderArray, createArray) => {},
+      one: (target, renderComponent, reorderArray, createArray) => {
+        // reorder array
+        const topItemsToBottom = reorderArray(target);
+        // create array of objs
+        const arrayForTopOneUp = createArray(topItemsToBottom, "9");
+        // render component
+        renderComponent((prev) => {
+          return {
+            ...prev,
+            bottomOrTopArray: arrayForTopOneUp,
+            targetElement: "uptopone",
+          };
+        });
+      },
     },
     // bottom
     bottom: {
-      nine: (target, renderComponent, reorderArray, createArray) => {},
+      nine: (target, renderComponent, reorderArray, createArray) => {
+        // reorder array
+        const bottomItemToBeginning = reorderArray(target);
+        // create array of objs
+        const arrayForBottomNineUp = createArray(bottomItemToBeginning, "8");
+        // render component
+        setTimeout(() => {
+          renderComponent((values) => {
+            return {
+              ...values,
+              bottomOrTopArray: arrayForBottomNineUp,
+              targetElement: "upbottomnine",
+            };
+          });
+        }, 500);
+      },
     },
   },
   // going down
   down: {
     // top
     top: {
-      one: (target, renderComponent, reorderArray, createArray) => {},
+      one: (target, renderComponent, reorderArray, createArray) => {
+        // reorder array
+        const topItemToBottom = reorderArray(target);
+        // create array of objs
+        const arrayForTopOneDown = createArray(topItemToBottom, "2");
+        // render component
+        setTimeout(() => {
+          renderComponent((prevValues) => {
+            return {
+              ...prevValues,
+              bottomOrTopArray: arrayForTopOneDown,
+              targetElement: "downtopone",
+            };
+          });
+        }, 500);
+      },
     },
     // bottom
     bottom: {
-      nine: (target, renderComponent, reorderArray, createArray) => {},
+      nine: (target, renderComponent, reorderArray, createArray) => {
+        // reorder array
+        const bottomItemsToBeginning = reorderArray(target);
+        // create array of objs
+        const arrayForBottomNineDown = createArray(bottomItemsToBeginning, "1");
+        // render component
+        renderComponent((val) => {
+          return {
+            ...val,
+            bottomOrTopArray: arrayForBottomNineDown,
+            targetElement: "downbottomnine",
+          };
+        });
+      },
     },
   },
 };
@@ -57,6 +113,16 @@ export function clickPreviousSnapItem(event) {
     console.log("prev btn");
     const windowWidth = window.innerWidth;
     const currentFocusedElement = document.getElementById("currentFocused");
+    // set tabindex to "-1"
+    currentFocusedElement.setAttribute("tabindex", "-1");
+    // remove id attribute
+    currentFocusedElement.removeAttribute("id");
+    // aria-hidden "true"
+    currentFocusedElement.setAttribute("aria-hidden", "false");
+    // setTimeout(() => {
+    // }, 100);
+    // scroll up
+    scrollingUpHelper(currentFocusedElement);
     previousSnapSibling(currentFocusedElement, windowWidth);
     setTimeout(() => {
       event.target.closest("BUTTON").focus();
@@ -70,6 +136,16 @@ export function clickNextSnapItem(event) {
     console.log("next btn");
     const windowWidth = window.innerWidth;
     const currentFocusedItem = document.getElementById("currentFocused");
+    // set tabindex to "-1"
+    currentFocusedItem.setAttribute("tabindex", "-1");
+    // remove id attribute
+    currentFocusedItem.removeAttribute("id");
+    // aria-hidden "true"
+    currentFocusedItem.setAttribute("aria-hidden", "false");
+    // setTimeout(() => {
+    // }, 100);
+    // scroll down
+    scrollingDownHelper(currentFocusedItem);
     nextSnapSibling(currentFocusedItem, windowWidth);
     setTimeout(() => {
       event.target.closest("BUTTON").focus();
@@ -84,22 +160,46 @@ const methodsForKeyboardScroll = {
     event,
     element,
     width,
+    posindex,
     callToRender,
     methodObj,
     reorderArrayFuncsObj,
-    createArrayFuncsObj
+    createArrayFuncsObj,
+    defaultActionFuncsObj
   ) => {
-    const {
-      moveFirstItemToEndOfList,
-      moveFirstTwoItemsToEnd,
-      moveLastItemToBeginningOfList,
-      moveLastTwoItemsToBeginning,
-    } = reorderArrayFuncsObj;
-    const { createNewOrderedArrayIndexOne, createNewOrderedArrayIndexSeven } =
-      createArrayFuncsObj;
+    event.preventDefault();
+
+    const { moveFirstTwoItemsToEnd, moveLastItemToBeginningOfList } =
+      reorderArrayFuncsObj;
+
+    const { createNewOrderedArrayIndexSeven } = createArrayFuncsObj;
+
+    const { scrollingUpHelper, previousSnapSibling } = defaultActionFuncsObj;
+
+    if (posindex == "one") {
+      methodObj["up"]["top"][posindex](
+        element,
+        callToRender,
+        moveFirstTwoItemsToEnd,
+        createNewOrderedArrayIndexSeven
+      );
+      return;
+    }
+
+    if (posindex == "nine") {
+      methodObj["up"]["bottom"][posindex](
+        element,
+        callToRender,
+        moveLastItemToBeginningOfList,
+        createNewOrderedArrayIndexSeven
+      );
+      return;
+    }
+
     // func to move two top items to bottom
     // func to move one bottom item to top
-    event.preventDefault();
+
+    scrollingUpHelper(element);
     previousSnapSibling(element, width);
     console.log("up");
   },
@@ -108,20 +208,43 @@ const methodsForKeyboardScroll = {
     event,
     element,
     width,
+    posindex,
     callToRender,
     methodObj,
     reorderArrayFuncsObj,
-    createArrayFuncsObj
+    createArrayFuncsObj,
+    defaultActionFuncsObj
   ) => {
-    const {
-      moveFirstItemToEndOfList,
-      moveFirstTwoItemsToEnd,
-      moveLastItemToBeginningOfList,
-      moveLastTwoItemsToBeginning,
-    } = reorderArrayFuncsObj;
-    const { createNewOrderedArrayIndexOne, createNewOrderedArrayIndexSeven } =
-      createArrayFuncsObj;
     event.preventDefault();
+
+    const { moveFirstTwoItemsToEnd, moveLastItemToBeginningOfList } =
+      reorderArrayFuncsObj;
+
+    const { createNewOrderedArrayIndexSeven } = createArrayFuncsObj;
+
+    const { scrollingUpHelper, previousSnapSibling } = defaultActionFuncsObj;
+
+    if (posindex == "one") {
+      methodObj["up"]["top"][posindex](
+        element,
+        callToRender,
+        moveFirstTwoItemsToEnd,
+        createNewOrderedArrayIndexSeven
+      );
+      return;
+    }
+
+    if (posindex == "nine") {
+      methodObj["up"]["bottom"][posindex](
+        element,
+        callToRender,
+        moveLastItemToBeginningOfList,
+        createNewOrderedArrayIndexSeven
+      );
+      return;
+    }
+
+    scrollingUpHelper(element);
     previousSnapSibling(element, width);
     console.log("left");
   },
@@ -130,22 +253,44 @@ const methodsForKeyboardScroll = {
     event,
     element,
     width,
+    posindex,
     callToRender,
     methodObj,
     reorderArrayFuncsObj,
-    createArrayFuncsObj
+    createArrayFuncsObj,
+    defaultActionFuncsObj
   ) => {
-    const {
-      moveFirstItemToEndOfList,
-      moveFirstTwoItemsToEnd,
-      moveLastItemToBeginningOfList,
-      moveLastTwoItemsToBeginning,
-    } = reorderArrayFuncsObj;
-    const { createNewOrderedArrayIndexOne, createNewOrderedArrayIndexSeven } =
-      createArrayFuncsObj;
+    event.preventDefault();
+
+    const { moveFirstItemToEndOfList, moveLastTwoItemsToBeginning } =
+      reorderArrayFuncsObj;
+
+    const { createNewOrderedArrayIndexOne } = createArrayFuncsObj;
+
+    const { scrollingDownHelper, nextSnapSibling } = defaultActionFuncsObj;
+
+    if (posindex == "one") {
+      methodObj["down"]["top"][posindex](
+        element,
+        callToRender,
+        moveFirstItemToEndOfList,
+        createNewOrderedArrayIndexOne
+      );
+      return;
+    }
+
+    if (posindex == "nine") {
+      methodObj["down"]["bottom"][posindex](
+        element,
+        callToRender,
+        moveLastTwoItemsToBeginning,
+        createNewOrderedArrayIndexOne
+      );
+      return;
+    }
     // func to move two bottom items to top
     // func to move one top item to bottom
-    event.preventDefault();
+    scrollingDownHelper(element);
     nextSnapSibling(element, width);
     console.log("down");
   },
@@ -154,284 +299,186 @@ const methodsForKeyboardScroll = {
     event,
     element,
     width,
+    posindex,
     callToRender,
     methodObj,
     reorderArrayFuncsObj,
-    createArrayFuncsObj
+    createArrayFuncsObj,
+    defaultActionFuncsObj
   ) => {
-    const {
-      moveFirstItemToEndOfList,
-      moveFirstTwoItemsToEnd,
-      moveLastItemToBeginningOfList,
-      moveLastTwoItemsToBeginning,
-    } = reorderArrayFuncsObj;
-    const { createNewOrderedArrayIndexOne, createNewOrderedArrayIndexSeven } =
-      createArrayFuncsObj;
     event.preventDefault();
+
+    const { moveFirstItemToEndOfList, moveLastTwoItemsToBeginning } =
+      reorderArrayFuncsObj;
+
+    const { createNewOrderedArrayIndexOne } = createArrayFuncsObj;
+
+    const { scrollingDownHelper, nextSnapSibling } = defaultActionFuncsObj;
+
+    if (posindex == "one") {
+      methodObj["down"]["top"][posindex](
+        element,
+        callToRender,
+        moveFirstItemToEndOfList,
+        createNewOrderedArrayIndexOne
+      );
+      return;
+    }
+
+    if (posindex == "nine") {
+      methodObj["down"]["bottom"][posindex](
+        element,
+        callToRender,
+        moveLastTwoItemsToBeginning,
+        createNewOrderedArrayIndexOne
+      );
+      return;
+    }
+
+    scrollingDownHelper(element);
     nextSnapSibling(element, width);
     console.log("right");
   },
-  nonArrowKeys: {
-    originalSnapitems: [
-      {
-        classText: "snap-item",
-        posIndex: "nine",
-        spanText: "9",
-        tabindex: "-1",
-        ariaHidden: "true",
-        ariaLabel: "9 of 9",
-      },
-      {
-        classText: "snap-item",
-        posIndex: "one",
-        spanText: "1",
-        tabindex: "-1",
-        ariaHidden: "true",
-        ariaLabel: "1 of 9",
-      },
-      {
-        classText: "snap-item",
-        posIndex: "two",
-        spanText: "2",
-        tabindex: "-1",
-        ariaHidden: "true",
-        ariaLabel: "2 of 9",
-      },
-      {
-        classText: "snap-item",
-        posIndex: "three",
-        spanText: "3",
-        tabindex: "-1",
-        ariaHidden: "true",
-        ariaLabel: "3 of 9",
-      },
-      {
-        classText: "snap-item",
-        posIndex: "four",
-        spanText: "4",
-        tabindex: "-1",
-        ariaHidden: "true",
-        ariaLabel: "4 of 9",
-      },
-      {
-        classText: "snap-item",
-        posIndex: "five",
-        spanText: "5",
-        tabindex: "-1",
-        ariaHidden: "true",
-        ariaLabel: "5 of 9",
-      },
-      {
-        classText: "snap-item",
-        posIndex: "six",
-        spanText: "6",
-        tabindex: "-1",
-        ariaHidden: "true",
-        ariaLabel: "6 of 9",
-      },
-      {
-        classText: "snap-item",
-        posIndex: "seven",
-        spanText: "7",
-        tabindex: "-1",
-        ariaHidden: "true",
-        ariaLabel: "7 of 9",
-      },
-      {
-        classText: "snap-item",
-        posIndex: "eight",
-        spanText: "8",
-        tabindex: "-1",
-        ariaHidden: "true",
-        ariaLabel: "8 of 9",
-      },
-    ],
-    // home
-    mobileHome: (event, element, funcToRenderArray) => {
-      event.preventDefault();
-      console.log("home");
-    },
-    // end
-    mobileEnd: (event, element, funcToRenderArray) => {
-      event.preventDefault();
+  // home
+  Home: (
+    event,
+    element,
+    width,
+    posindex,
+    callToRender,
+    methodObj,
+    reorderArrayFuncsObj,
+    createArrayFuncsObj,
+    defaultActionFuncsObj
+  ) => {
+    event.preventDefault();
 
-      console.log("end");
-    },
-    // page up
-    mobilePageUp: function mobilePageUp(event, element, funcToRenderArray) {
-      event.preventDefault();
-      // check if event.target data-pos-index is "nine" or "two"
+    if (posindex != "one") {
+      if (posindex == "nine") {
+        const { moveLastTwoItemsToBeginning } = reorderArrayFuncsObj;
 
-      console.log(this.originalSnapitems, "snapitems");
-      console.log("up");
-    },
-    // page down
-    mobilePageDown: function mobilePageDown(event, element, funcToRenderArray) {
-      event.preventDefault();
-      console.log(this.originalSnapitems, "snapitems");
+        const { createNewOrderedArrayIndexOne } = createArrayFuncsObj;
 
-      console.log("down");
-    },
-    // home
-    desktopHome: (event, element, funcToRenderArray) => {
-      event.preventDefault();
-      console.log("home");
-    },
-    // end
-    desktopEnd: (event, element, funcToRenderArray) => {
-      event.preventDefault();
+        changeCurrentSnapItemAttr(element);
 
-      console.log("end");
-    },
-    // page up
-    desktopPageUp: function mobilePageUp(event, element, funcToRenderArray) {
-      event.preventDefault();
-      // check if event.target data-pos-index is "nine" or "two"
+        const lastTwoItemsToBeginning = moveLastTwoItemsToBeginning(element);
 
-      console.log(this.originalSnapitems, "snapitems");
-      console.log("up");
-    },
-    // page down
-    desktopPageDown: function mobilePageDown(
-      event,
-      element,
-      funcToRenderArray
-    ) {
-      event.preventDefault();
-      console.log(this.originalSnapitems, "snapitems");
+        const arrayOfObjHomeBtn = createNewOrderedArrayIndexOne(
+          lastTwoItemsToBeginning,
+          "1"
+        );
 
-      console.log("down");
-    },
+        callToRender((prevValues) => {
+          return {
+            ...prevValues,
+            bottomOrTopArray: arrayOfObjHomeBtn,
+            targetElement: "homebtn",
+          };
+        });
+      }
+
+      changeCurrentSnapItemAttr(element);
+
+      const parentChildren = [...element.parentElement.children];
+      const firstItem = parentChildren[0];
+
+      applyFocusSnapItemAttr(firstItem);
+
+      firstItem.focus();
+      // firstItem.scrollIntoView();
+
+      return;
+    }
+
+    console.log("home");
   },
-  mobile: {
-    originalSnapitems: [
-      {
-        classText: "snap-item",
-        posIndex: "one",
-        spanText: "1",
-        tabindex: "-1",
-        ariaHidden: "true",
-        ariaLabel: "1 of 9",
-      },
-      {
-        classText: "snap-item",
-        posIndex: "two",
-        spanText: "2",
-        tabindex: "-1",
-        ariaHidden: "true",
-        ariaLabel: "2 of 9",
-      },
-      {
-        classText: "snap-item",
-        posIndex: "three",
-        spanText: "3",
-        tabindex: "-1",
-        ariaHidden: "true",
-        ariaLabel: "3 of 9",
-      },
-      {
-        classText: "snap-item",
-        posIndex: "four",
-        spanText: "4",
-        tabindex: "-1",
-        ariaHidden: "true",
-        ariaLabel: "4 of 9",
-      },
-      {
-        classText: "snap-item",
-        posIndex: "five",
-        spanText: "5",
-        tabindex: "-1",
-        ariaHidden: "true",
-        ariaLabel: "5 of 9",
-      },
-      {
-        classText: "snap-item",
-        posIndex: "six",
-        spanText: "6",
-        tabindex: "-1",
-        ariaHidden: "true",
-        ariaLabel: "6 of 9",
-      },
-      {
-        classText: "snap-item",
-        posIndex: "seven",
-        spanText: "7",
-        tabindex: "-1",
-        ariaHidden: "true",
-        ariaLabel: "7 of 9",
-      },
-      {
-        classText: "snap-item",
-        posIndex: "eight",
-        spanText: "8",
-        tabindex: "-1",
-        ariaHidden: "true",
-        ariaLabel: "8 of 9",
-      },
-      {
-        classText: "snap-item",
-        posIndex: "nine",
-        spanText: "9",
-        tabindex: "-1",
-        ariaHidden: "true",
-        ariaLabel: "9 of 9",
-      },
-    ],
-    // home
-    Home: (event, element, funcToRenderArray) => {
-      event.preventDefault();
-      console.log("home");
-    },
-    // end
-    End: (event, element, funcToRenderArray) => {
-      event.preventDefault();
+  // end
+  End: (
+    event,
+    element,
+    width,
+    posindex,
+    callToRender,
+    methodObj,
+    reorderArrayFuncsObj,
+    createArrayFuncsObj,
+    defaultActionFuncsObj
+  ) => {
+    event.preventDefault();
 
-      console.log("end");
-    },
-    // page up
-    PageUp: function mobilePageUp(event, element, funcToRenderArray) {
-      event.preventDefault();
-      // check if event.target data-pos-index is "nine" or "two"
+    if (posindex != "nine") {
+      if (posindex == "one") {
+        const { moveFirstTwoItemsToEnd, moveLastItemToBeginningOfList } =
+          reorderArrayFuncsObj;
 
-      console.log(this.originalSnapitems, "snapitems");
-      console.log("up");
-    },
-    // page down
-    PageDown: function mobilePageDown(event, element, funcToRenderArray) {
-      event.preventDefault();
-      console.log(this.originalSnapitems, "snapitems");
+        const { createNewOrderedArrayIndexSeven } = createArrayFuncsObj;
 
-      console.log("down");
-    },
+        changeCurrentSnapItemAttr(element);
+
+        const firstTwoItemsToBottom = moveFirstTwoItemsToEnd(element);
+
+        const arrayOfObjEndBtn = createNewOrderedArrayIndexSeven(
+          firstTwoItemsToBottom,
+          "9"
+        );
+
+        callToRender((values) => {
+          return {
+            ...values,
+            bottomOrTopArray: arrayOfObjEndBtn,
+            targetElement: "endbtn",
+          };
+        });
+      }
+
+      changeCurrentSnapItemAttr(element);
+
+      const snapItems = [...element.parentElement.children];
+      const lastItem = snapItems[snapItems.length - 1];
+
+      applyFocusSnapItemAttr(lastItem);
+
+      lastItem.focus();
+
+      return;
+    }
+
+    console.log("end");
   },
-  desktop: {
-    // home
-    Home: (event, element, funcToRenderArray) => {
-      event.preventDefault();
+  // page up
+  PageUp: (
+    event,
+    element,
+    width,
+    posindex,
+    callToRender,
+    methodObj,
+    reorderArrayFuncsObj,
+    createArrayFuncsObj,
+    defaultActionFuncsObj
+  ) => {
+    event.preventDefault();
+    // check if event.target data-pos-index is "nine" or "two"
 
-      console.log("home");
-    },
-    // end
-    End: (event, element, funcToRenderArray) => {
-      event.preventDefault();
+    console.log(this.originalSnapitems, "snapitems");
+    console.log("up");
+  },
+  // page down
+  PageDown: (
+    event,
+    element,
+    width,
+    posindex,
+    callToRender,
+    methodObj,
+    reorderArrayFuncsObj,
+    createArrayFuncsObj,
+    defaultActionFuncsObj
+  ) => {
+    event.preventDefault();
+    console.log(this.originalSnapitems, "snapitems");
 
-      console.log("end");
-    },
-    // page up
-    PageUp: function desktopPageUp(event, element, funcToRenderArray) {
-      event.preventDefault();
-      console.log(this.originalSnapitems, "snapitems");
-
-      console.log("up");
-    },
-    // page down
-    PageDown: function desktopPageDown(event, element, funcToRenderArray) {
-      event.preventDefault();
-      console.log(this.originalSnapitems, "snapitems");
-
-      console.log("down");
-    },
+    console.log("down");
   },
 };
 
@@ -443,8 +490,15 @@ export function keyboardScrollThroughSnapItems(event) {
   // pass in event and element to methodsForKeyboardScroll[key]()
   // console.log(event.target.closest("div[aria-roledescription='slide']"));
   const currentFocusedSnapItem = document.getElementById("currentFocused");
-  // if (event.target.closest("DIV") && event.target.closest("DIV").getAttribute("aria-roledescription") == "slide") {
-  // }
+  const targetPosIndex = currentFocusedSnapItem.getAttribute("data-pos-index");
+
+  // set tabindex to "-1"
+  currentFocusedSnapItem.setAttribute("tabindex", "-1");
+  // aria-hidden "true"
+  currentFocusedSnapItem.setAttribute("aria-hidden", "true");
+  // remove id attribute
+  currentFocusedSnapItem.removeAttribute("id");
+
   if (
     event.code == "Space" &&
     document.activeElement == currentFocusedSnapItem
@@ -459,6 +513,7 @@ export function keyboardScrollThroughSnapItems(event) {
       event,
       currentFocusedSnapItem,
       windowWidth,
+      targetPosIndex,
       this.setSnapArray,
       scrollHelper,
       {
@@ -470,6 +525,12 @@ export function keyboardScrollThroughSnapItems(event) {
       {
         createNewOrderedArrayIndexOne,
         createNewOrderedArrayIndexSeven,
+      },
+      {
+        scrollingUpHelper,
+        scrollingDownHelper,
+        previousSnapSibling,
+        nextSnapSibling,
       }
     );
   }
@@ -1973,32 +2034,65 @@ export function focusCenteredSnapItemOnWheelScroll(event) {
   // get element with id currentFocused
   // set tabindex to "-1"
   currentFocused.setAttribute("tabindex", "-1");
-  // aria-hidden "true"
-  currentFocused.setAttribute("aria-hidden", "true");
   // remove id attribute
   currentFocused.removeAttribute("id");
+  // aria-hidden "true"
+  currentFocused.setAttribute("aria-hidden", "true");
+
   // when deltaY is negative run scrollingUpHelper
   if (deltaY < 0) {
     // top one
     if (targetPosIndex == "one") {
+      scrollHelper["up"]["top"][targetPosIndex](
+        currentFocused,
+        this.setSnapArray,
+        moveFirstTwoItemsToEnd,
+        createNewOrderedArrayIndexSeven
+      );
       return;
     }
     // bottom nine
     if (targetPosIndex == "nine") {
+      scrollHelper["up"]["bottom"][targetPosIndex](
+        currentFocused,
+        this.setSnapArray,
+        moveLastItemToBeginningOfList,
+        createNewOrderedArrayIndexSeven
+      );
       return;
     }
-    scrollingUpHelper(currentFocused);
+    setTimeout(() => {
+      scrollingUpHelper(currentFocused);
+    }, 500);
+
     console.log("scrolling up");
   }
   // when deltaY is positive run scrollingDownHelper
   if (deltaY > 0) {
     // top one
     if (targetPosIndex == "one") {
+      scrollHelper["down"]["top"][targetPosIndex](
+        currentFocused,
+        this.setSnapArray,
+        moveFirstItemToEndOfList,
+        createNewOrderedArrayIndexOne
+      );
+      return;
     }
     // bottom nine
     if (targetPosIndex == "nine") {
+      scrollHelper["down"]["bottom"][targetPosIndex](
+        currentFocused,
+        this.setSnapArray,
+        moveLastTwoItemsToBeginning,
+        createNewOrderedArrayIndexOne
+      );
+      return;
     }
-    scrollingDownHelper(currentFocused);
+    setTimeout(() => {
+      scrollingDownHelper(currentFocused);
+    }, 500);
+
     console.log("scrolling down");
   }
 }
@@ -2007,7 +2101,7 @@ export function focusCenteredSnapItemOnWheelScroll(event) {
  * scrolling up helper
  * **/
 
-function scrollingUpHelper(target) {
+function scrollingUpHelper(target, btnUpClicked) {
   const previousSnapItem = target.previousElementSibling;
   // set tabindex to "0"
   previousSnapItem.setAttribute("tabindex", "0");
@@ -2023,7 +2117,7 @@ function scrollingUpHelper(target) {
  * scrolling down helper
  * **/
 
-function scrollingDownHelper(target) {
+function scrollingDownHelper(target, btnDownClicked) {
   const nextSnapItem = target.nextElementSibling;
   // set tabindex to "0"
   nextSnapItem.setAttribute("tabindex", "0");
@@ -2033,4 +2127,30 @@ function scrollingDownHelper(target) {
   nextSnapItem.setAttribute("id", "currentFocused");
   // focus snap item
   nextSnapItem.focus();
+}
+
+/**
+ * change current snap item attr
+ * **/
+
+function changeCurrentSnapItemAttr(target) {
+  // set tabindex to "-1"
+  target.setAttribute("tabindex", "-1");
+  // remove id attribute
+  target.removeAttribute("id");
+  // aria-hidden "true"
+  target.setAttribute("aria-hidden", "true");
+}
+
+/**
+ * apply focus snap item attr
+ * **/
+
+function applyFocusSnapItemAttr(target) {
+  // set tabindex to "0"
+  target.setAttribute("tabindex", "0");
+  // aria-hidden "false"
+  target.setAttribute("id", "currentFocused");
+  // add id attribute "currentFocused"
+  target.setAttribute("aria-hidden", "false");
 }
