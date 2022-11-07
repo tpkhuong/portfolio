@@ -408,8 +408,7 @@ const methodsForKeyboardScroll = {
 
     if (posindex != "nine") {
       if (posindex == "one") {
-        const { moveFirstTwoItemsToEnd, moveLastItemToBeginningOfList } =
-          reorderArrayFuncsObj;
+        const { moveFirstTwoItemsToEnd } = reorderArrayFuncsObj;
 
         const { createNewOrderedArrayIndexSeven } = createArrayFuncsObj;
 
@@ -458,7 +457,59 @@ const methodsForKeyboardScroll = {
     defaultActionFuncsObj
   ) => {
     event.preventDefault();
+
+    const { moveLastItemToBeginningOfList } = reorderArrayFuncsObj;
+    const { createNewOrderedArrayIndexOne, createNewOrderedArrayIndexSix } =
+      createArrayFuncsObj;
+
+    changeCurrentSnapItemAttr(element);
+
     // check if event.target data-pos-index is "nine" or "two"
+    if (posindex == "nine") {
+      const lastItemToBeginningIndexNine =
+        moveLastItemToBeginningOfList(element);
+      const arrayForPageUpNineIndex = createNewOrderedArrayIndexSix(
+        lastItemToBeginningIndexNine,
+        "7"
+      );
+
+      callToRender((prev) => {
+        return {
+          ...prev,
+          bottomOrTopArray: arrayForPageUpNineIndex,
+          targetElement: "pageupnine",
+        };
+      });
+      return;
+    }
+
+    if (posindex == "two" || posindex == "three") {
+      const lastItemToBeginningIndexTwoThree =
+        moveLastItemToBeginningOfList(element);
+
+      const arrayForPageUpIndexTwoThree = createNewOrderedArrayIndexOne(
+        lastItemToBeginningIndexTwoThree,
+        "1"
+      );
+
+      callToRender((values) => {
+        return {
+          ...values,
+          bottomOrTopArray: arrayForPageUpIndexTwoThree,
+          targetElement: "pageuptwothree",
+        };
+      });
+      return;
+    }
+
+    // select previous previous sibling element
+
+    const twoItemsAboveCurrent =
+      element.previousElementSibling.previousElementSibling;
+
+    applyFocusSnapItemAttr(twoItemsAboveCurrent);
+
+    twoItemsAboveCurrent.focus();
 
     console.log(this.originalSnapitems, "snapitems");
     console.log("up");
@@ -476,6 +527,59 @@ const methodsForKeyboardScroll = {
     defaultActionFuncsObj
   ) => {
     event.preventDefault();
+    const { moveFirstItemToEndOfList } = reorderArrayFuncsObj;
+    const { createNewOrderedArrayIndexTwo, createNewOrderedArrayIndexSeven } =
+      createArrayFuncsObj;
+    // check if posindex is "one", "seven" or "eight"
+
+    changeCurrentSnapItemAttr(element);
+
+    if (posindex == "one") {
+      const firstItemToBottomPosindexOne = moveFirstItemToEndOfList(element);
+      const arrayForPageDownOneIndex = createNewOrderedArrayIndexTwo(
+        firstItemToBottomPosindexOne,
+        "3"
+      );
+
+      callToRender((prevValues) => {
+        return {
+          ...prevValues,
+          bottomOrTopArray: arrayForPageDownOneIndex,
+          targetElement: "pagedownone",
+        };
+      });
+
+      return;
+    }
+
+    if (posindex == "seven" || posindex == "eight") {
+      const firstItemToBottomPosindexSevenOrEight =
+        moveFirstItemToEndOfList(element);
+
+      const arrayForPageDownSevenOrEightIndex = createNewOrderedArrayIndexSeven(
+        firstItemToBottomPosindexSevenOrEight,
+        "9"
+      );
+
+      callToRender((values) => {
+        return {
+          ...values,
+          bottomOrTopArray: arrayForPageDownSevenOrEightIndex,
+          targetElement: "pagedownseveneight",
+        };
+      });
+
+      return;
+    }
+
+    // select next next sibling element
+
+    const twoItemsBelowCurrent = element.nextElementSibling.nextElementSibling;
+
+    applyFocusSnapItemAttr(twoItemsBelowCurrent);
+
+    twoItemsBelowCurrent.focus();
+
     console.log(this.originalSnapitems, "snapitems");
 
     console.log("down");
