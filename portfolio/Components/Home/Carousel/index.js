@@ -21,6 +21,7 @@ export default function Carousel({ children, ...props }) {
   const initialValues = {
     bottomOrTopArray: null,
     targetElement: null,
+    clickedBtn: null,
   };
   const [initialValuesObj, setSnapArray] = React.useState(initialValues);
   React.useEffect(() => {
@@ -31,7 +32,7 @@ export default function Carousel({ children, ...props }) {
     const scrollChildren = [...scrollContainer.children];
     const secondChild = scrollChildren[1];
 
-    !initialValuesObj.bottomOrTopArray
+    !initialValuesObj.targetElement
       ? (secondChild.setAttribute("aria-hidden", "false"),
         secondChild.setAttribute("tabindex", "0"),
         secondChild.setAttribute("id", "currentFocused"))
@@ -40,22 +41,36 @@ export default function Carousel({ children, ...props }) {
     if (window.innerWidth <= 375) {
       console.log("hello");
       console.log(initialValuesObj.bottomOrTopArray);
-      !initialValuesObj.bottomOrTopArray
-        ? scrollContainer.scrollBy(0, 1)
-        : null;
+      console.log(initialValuesObj.targetElement);
+      !initialValuesObj.targetElement ? scrollContainer.scrollBy(0, 1) : null;
 
-      initialValuesObj.bottomOrTopArray
-        ? document.getElementById("currentFocused").focus()
-        : null;
+      if (initialValuesObj.targetElement) {
+        if (initialValuesObj.clickedBtn) {
+          document.getElementById("currentFocused").focus();
+          setTimeout(() => {
+            document.getElementById(initialValuesObj.clickedBtn).focus();
+          }, 100);
+
+          return;
+        }
+        document.getElementById("currentFocused").focus();
+      }
     }
 
     if (window.innerWidth >= 1440) {
-      !initialValuesObj.bottomOrTopArray ? secondChild.scrollIntoView() : null;
+      !initialValuesObj.targetElement ? secondChild.scrollIntoView() : null;
 
-      initialValuesObj.bottomOrTopArray
-        ? (document.getElementById("currentFocused").scrollIntoView(),
-          document.getElementById("currentFocused").focus())
-        : null;
+      if (initialValuesObj.targetElement) {
+        if (initialValuesObj.clickedBtn) {
+          document.getElementById("currentFocused").scrollIntoView();
+          setTimeout(() => {
+            document.getElementById(initialValuesObj.clickedBtn).focus();
+          }, 100);
+          return;
+        }
+        document.getElementById("currentFocused").scrollIntoView();
+        document.getElementById("currentFocused").focus();
+      }
     }
 
     /**
@@ -246,8 +261,9 @@ export default function Carousel({ children, ...props }) {
           <button
             className={CarouselStyles[`previous-btn`]}
             aria-label="previous project"
-            onClick={clickPreviousSnapItem}
+            onClick={clickPreviousSnapItem.bind({ setSnapArray })}
             aria-controls="scroll-container"
+            id="upBtn"
           >
             <FaArrowUp />
           </button>
@@ -255,8 +271,9 @@ export default function Carousel({ children, ...props }) {
           <button
             className={CarouselStyles[`next-btn`]}
             aria-label="next project"
-            onClick={clickNextSnapItem}
+            onClick={clickNextSnapItem.bind({ setSnapArray })}
             aria-controls="scroll-container"
+            id="downBtn"
           >
             <FaArrowDown />
           </button>

@@ -27,38 +27,110 @@ const scrollHelper = {
   up: {
     // top
     top: {
-      one: (target, renderComponent, reorderArray, createArray) => {
+      one: (
+        target,
+        renderComponent,
+        reorderArray,
+        createArray,
+        typeOfScroll,
+        upDownArrow
+      ) => {
         // reorder array
         const topItemsToBottom = reorderArray(target);
         // create array of objs
         const arrayForTopOneUp = createArray(topItemsToBottom, "9");
         // render component
-        renderComponent((prev) => {
-          return {
-            ...prev,
-            bottomOrTopArray: arrayForTopOneUp,
-            targetElement: "uptopone",
-          };
-        });
+        typeOfScroll == "mouse"
+          ? setTimeout(() => {
+              renderComponent((prev) => {
+                return {
+                  ...prev,
+                  bottomOrTopArray: arrayForTopOneUp,
+                  targetElement: "uptopone",
+                };
+              });
+            }, 500)
+          : setTimeout(() => {
+              renderComponent((prev) => {
+                return {
+                  ...prev,
+                  bottomOrTopArray: arrayForTopOneUp,
+                  targetElement: "uptopone",
+                  clickedBtn: upDownArrow,
+                };
+              });
+            }, 100);
+      },
+      two: (
+        target,
+        renderComponent,
+        reorderArray,
+        createArray,
+        typeOfScroll,
+        upDownArrow
+      ) => {
+        // reorder array
+        const bottomSnapItemToBeginning = reorderArray(target);
+        // create array of objs
+        const arrayForTopTwoUp = createArray(bottomSnapItemToBeginning, "1");
+        // render component
+        typeOfScroll == "mouse"
+          ? setTimeout(() => {
+              renderComponent((prevVals) => {
+                return {
+                  ...prevVals,
+                  bottomOrTopArray: arrayForTopTwoUp,
+                  targetElement: "uptoptwo",
+                };
+              });
+            }, 500)
+          : setTimeout(() => {
+              renderComponent((prevVals) => {
+                return {
+                  ...prevVals,
+                  bottomOrTopArray: arrayForTopTwoUp,
+                  targetElement: "uptoptwo",
+                  clickedBtn: upDownArrow,
+                };
+              });
+            }, 100);
       },
     },
     // bottom
     bottom: {
-      nine: (target, renderComponent, reorderArray, createArray) => {
+      nine: (
+        target,
+        renderComponent,
+        reorderArray,
+        createArray,
+        typeOfScroll,
+        upDownArrow
+      ) => {
         // reorder array
         const bottomItemToBeginning = reorderArray(target);
         // create array of objs
         const arrayForBottomNineUp = createArray(bottomItemToBeginning, "8");
         // render component
-        setTimeout(() => {
-          renderComponent((values) => {
-            return {
-              ...values,
-              bottomOrTopArray: arrayForBottomNineUp,
-              targetElement: "upbottomnine",
-            };
-          });
-        }, 500);
+        typeOfScroll == "mouse"
+          ? setTimeout(() => {
+              renderComponent((values) => {
+                return {
+                  ...values,
+                  bottomOrTopArray: arrayForBottomNineUp,
+                  targetElement: "upbottomnine",
+                };
+              });
+            }, 500)
+          : setTimeout(() => {
+              renderComponent((values) => {
+                return {
+                  ...values,
+                  bottomOrTopArray: arrayForBottomNineUp,
+                  targetElement: "upbottomnine",
+                  clickedBtn: upDownArrow,
+                };
+              });
+            }, 100);
       },
     },
   },
@@ -66,38 +138,110 @@ const scrollHelper = {
   down: {
     // top
     top: {
-      one: (target, renderComponent, reorderArray, createArray) => {
+      one: (
+        target,
+        renderComponent,
+        reorderArray,
+        createArray,
+        typeOfScroll,
+        upDownArrow
+      ) => {
         // reorder array
         const topItemToBottom = reorderArray(target);
         // create array of objs
         const arrayForTopOneDown = createArray(topItemToBottom, "2");
         // render component
-        setTimeout(() => {
-          renderComponent((prevValues) => {
-            return {
-              ...prevValues,
-              bottomOrTopArray: arrayForTopOneDown,
-              targetElement: "downtopone",
-            };
-          });
-        }, 500);
+        typeOfScroll == "mouse"
+          ? setTimeout(() => {
+              renderComponent((prevValues) => {
+                return {
+                  ...prevValues,
+                  bottomOrTopArray: arrayForTopOneDown,
+                  targetElement: "downtopone",
+                };
+              });
+            }, 500)
+          : setTimeout(() => {
+              renderComponent((prevValues) => {
+                return {
+                  ...prevValues,
+                  bottomOrTopArray: arrayForTopOneDown,
+                  targetElement: "downtopone",
+                  clickedBtn: upDownArrow,
+                };
+              });
+            }, 100);
       },
     },
     // bottom
     bottom: {
-      nine: (target, renderComponent, reorderArray, createArray) => {
+      eight: (
+        target,
+        renderComponent,
+        reorderArray,
+        createArray,
+        typeOfScroll,
+        upDownArrow
+      ) => {
+        // reorder array
+        const topItemToEnd = reorderArray(target);
+        // create array of objs
+        const arrayForBottomEightDown = createArray(topItemToEnd, "9");
+        // render component
+        typeOfScroll == "mouse"
+          ? setTimeout(() => {
+              renderComponent((values) => {
+                return {
+                  ...values,
+                  bottomOrTopArray: arrayForBottomEightDown,
+                  targetElement: "downbottomeight",
+                };
+              });
+            }, 500)
+          : setTimeout(() => {
+              renderComponent((values) => {
+                return {
+                  ...values,
+                  bottomOrTopArray: arrayForBottomEightDown,
+                  targetElement: "downbottomeight",
+                  clickedBtn: upDownArrow,
+                };
+              });
+            }, 100);
+      },
+      nine: (
+        target,
+        renderComponent,
+        reorderArray,
+        createArray,
+        typeOfScroll,
+        upDownArrow
+      ) => {
         // reorder array
         const bottomItemsToBeginning = reorderArray(target);
         // create array of objs
         const arrayForBottomNineDown = createArray(bottomItemsToBeginning, "1");
         // render component
-        renderComponent((val) => {
-          return {
-            ...val,
-            bottomOrTopArray: arrayForBottomNineDown,
-            targetElement: "downbottomnine",
-          };
-        });
+        typeOfScroll == "mouse"
+          ? setTimeout(() => {
+              renderComponent((val) => {
+                return {
+                  ...val,
+                  bottomOrTopArray: arrayForBottomNineDown,
+                  targetElement: "downbottomnine",
+                };
+              });
+            }, 500)
+          : setTimeout(() => {
+              renderComponent((val) => {
+                return {
+                  ...val,
+                  bottomOrTopArray: arrayForBottomNineDown,
+                  targetElement: "downbottomnine",
+                  clickedBtn: upDownArrow,
+                };
+              });
+            }, 100);
       },
     },
   },
@@ -113,20 +257,58 @@ export function clickPreviousSnapItem(event) {
     console.log("prev btn");
     const windowWidth = window.innerWidth;
     const currentFocusedElement = document.getElementById("currentFocused");
+    const posindexUpArrowBtn =
+      currentFocusedElement.getAttribute("data-pos-index");
     // set tabindex to "-1"
     currentFocusedElement.setAttribute("tabindex", "-1");
     // remove id attribute
     currentFocusedElement.removeAttribute("id");
     // aria-hidden "true"
     currentFocusedElement.setAttribute("aria-hidden", "false");
-    // setTimeout(() => {
-    // }, 100);
+
+    // top one
+    if (posindexUpArrowBtn == "one") {
+      scrollHelper["up"]["top"][posindexUpArrowBtn](
+        currentFocusedElement,
+        this.setSnapArray,
+        moveFirstTwoItemsToEnd,
+        createNewOrderedArrayIndexSeven,
+        null,
+        "upBtn"
+      );
+      return;
+    }
+    // top eight
+    if (posindexUpArrowBtn == "two") {
+      scrollHelper["up"]["top"][posindexUpArrowBtn](
+        currentFocusedElement,
+        this.setSnapArray,
+        moveLastItemToBeginningOfList,
+        createNewOrderedArrayIndexOne,
+        null,
+        "upBtn"
+      );
+      return;
+    }
+    // bottom nine
+    if (posindexUpArrowBtn == "nine") {
+      scrollHelper["up"]["bottom"][posindexUpArrowBtn](
+        currentFocusedElement,
+        this.setSnapArray,
+        moveLastItemToBeginningOfList,
+        createNewOrderedArrayIndexSeven,
+        null,
+        "upBtn"
+      );
+      return;
+    }
+
     // scroll up
     scrollingUpHelper(currentFocusedElement);
     previousSnapSibling(currentFocusedElement, windowWidth);
-    setTimeout(() => {
-      event.target.closest("BUTTON").focus();
-    }, 50);
+    // setTimeout(() => {
+    //   event.target.closest("BUTTON").focus();
+    // }, 50);
   }
 }
 
@@ -136,20 +318,57 @@ export function clickNextSnapItem(event) {
     console.log("next btn");
     const windowWidth = window.innerWidth;
     const currentFocusedItem = document.getElementById("currentFocused");
+    const posindexDownArrowBtn =
+      currentFocusedItem.getAttribute("data-pos-index");
     // set tabindex to "-1"
     currentFocusedItem.setAttribute("tabindex", "-1");
     // remove id attribute
     currentFocusedItem.removeAttribute("id");
     // aria-hidden "true"
     currentFocusedItem.setAttribute("aria-hidden", "false");
-    // setTimeout(() => {
-    // }, 100);
-    // scroll down
+
+    // top one
+    if (posindexDownArrowBtn == "one") {
+      scrollHelper["down"]["top"][posindexDownArrowBtn](
+        currentFocusedItem,
+        this.setSnapArray,
+        moveFirstItemToEndOfList,
+        createNewOrderedArrayIndexOne,
+        null,
+        "downBtn"
+      );
+      return;
+    }
+    // bottom eight
+    if (posindexDownArrowBtn == "eight") {
+      scrollHelper["down"]["bottom"][posindexDownArrowBtn](
+        currentFocusedItem,
+        this.setSnapArray,
+        moveFirstItemToEndOfList,
+        createNewOrderedArrayIndexSeven,
+        null,
+        "downBtn"
+      );
+      return;
+    }
+    // bottom nine
+    if (posindexDownArrowBtn == "nine") {
+      scrollHelper["down"]["bottom"][posindexDownArrowBtn](
+        currentFocusedItem,
+        this.setSnapArray,
+        moveLastTwoItemsToBeginning,
+        createNewOrderedArrayIndexOne,
+        null,
+        "downBtn"
+      );
+      return;
+    }
+
     scrollingDownHelper(currentFocusedItem);
     nextSnapSibling(currentFocusedItem, windowWidth);
-    setTimeout(() => {
-      event.target.closest("BUTTON").focus();
-    }, 50);
+    // setTimeout(() => {
+    //   event.target.closest("BUTTON").focus();
+    // }, 50);
   }
 }
 
@@ -172,7 +391,8 @@ const methodsForKeyboardScroll = {
     const { moveFirstTwoItemsToEnd, moveLastItemToBeginningOfList } =
       reorderArrayFuncsObj;
 
-    const { createNewOrderedArrayIndexSeven } = createArrayFuncsObj;
+    const { createNewOrderedArrayIndexSeven, createNewOrderedArrayIndexOne } =
+      createArrayFuncsObj;
 
     const { scrollingUpHelper, previousSnapSibling } = defaultActionFuncsObj;
 
@@ -181,7 +401,21 @@ const methodsForKeyboardScroll = {
         element,
         callToRender,
         moveFirstTwoItemsToEnd,
-        createNewOrderedArrayIndexSeven
+        createNewOrderedArrayIndexSeven,
+        null,
+        null
+      );
+      return;
+    }
+
+    if (posindex == "two") {
+      methodObj["up"]["top"][posindex](
+        element,
+        callToRender,
+        moveLastItemToBeginningOfList,
+        createNewOrderedArrayIndexOne,
+        null,
+        null
       );
       return;
     }
@@ -191,7 +425,9 @@ const methodsForKeyboardScroll = {
         element,
         callToRender,
         moveLastItemToBeginningOfList,
-        createNewOrderedArrayIndexSeven
+        createNewOrderedArrayIndexSeven,
+        null,
+        null
       );
       return;
     }
@@ -201,6 +437,7 @@ const methodsForKeyboardScroll = {
 
     scrollingUpHelper(element);
     previousSnapSibling(element, width);
+    document.getElementById("currentFocused").focus();
     console.log("up");
   },
   // left arrow
@@ -229,7 +466,21 @@ const methodsForKeyboardScroll = {
         element,
         callToRender,
         moveFirstTwoItemsToEnd,
-        createNewOrderedArrayIndexSeven
+        createNewOrderedArrayIndexSeven,
+        null,
+        null
+      );
+      return;
+    }
+
+    if (posindex == "two") {
+      methodObj["up"]["top"][posindex](
+        element,
+        callToRender,
+        moveLastItemToBeginningOfList,
+        createNewOrderedArrayIndexOne,
+        null,
+        null
       );
       return;
     }
@@ -239,13 +490,16 @@ const methodsForKeyboardScroll = {
         element,
         callToRender,
         moveLastItemToBeginningOfList,
-        createNewOrderedArrayIndexSeven
+        createNewOrderedArrayIndexSeven,
+        null,
+        null
       );
       return;
     }
 
     scrollingUpHelper(element);
     previousSnapSibling(element, width);
+    document.getElementById("currentFocused").focus();
     console.log("left");
   },
   // down arrow
@@ -265,7 +519,8 @@ const methodsForKeyboardScroll = {
     const { moveFirstItemToEndOfList, moveLastTwoItemsToBeginning } =
       reorderArrayFuncsObj;
 
-    const { createNewOrderedArrayIndexOne } = createArrayFuncsObj;
+    const { createNewOrderedArrayIndexOne, createNewOrderedArrayIndexSeven } =
+      createArrayFuncsObj;
 
     const { scrollingDownHelper, nextSnapSibling } = defaultActionFuncsObj;
 
@@ -274,9 +529,22 @@ const methodsForKeyboardScroll = {
         element,
         callToRender,
         moveFirstItemToEndOfList,
-        createNewOrderedArrayIndexOne
+        createNewOrderedArrayIndexOne,
+        null,
+        null
       );
       return;
+    }
+
+    if (posindex == "eight") {
+      methodObj["down"]["bottom"][posindex](
+        element,
+        callToRender,
+        moveFirstItemToEndOfList,
+        createNewOrderedArrayIndexSeven,
+        null,
+        null
+      );
     }
 
     if (posindex == "nine") {
@@ -284,7 +552,9 @@ const methodsForKeyboardScroll = {
         element,
         callToRender,
         moveLastTwoItemsToBeginning,
-        createNewOrderedArrayIndexOne
+        createNewOrderedArrayIndexOne,
+        null,
+        null
       );
       return;
     }
@@ -292,6 +562,7 @@ const methodsForKeyboardScroll = {
     // func to move one top item to bottom
     scrollingDownHelper(element);
     nextSnapSibling(element, width);
+    document.getElementById("currentFocused").focus();
     console.log("down");
   },
   // right arrow
@@ -320,9 +591,22 @@ const methodsForKeyboardScroll = {
         element,
         callToRender,
         moveFirstItemToEndOfList,
-        createNewOrderedArrayIndexOne
+        createNewOrderedArrayIndexOne,
+        null,
+        null
       );
       return;
+    }
+
+    if (posindex == "eight") {
+      methodObj["down"]["bottom"][posindex](
+        element,
+        callToRender,
+        moveFirstItemToEndOfList,
+        createNewOrderedArrayIndexSeven,
+        null,
+        null
+      );
     }
 
     if (posindex == "nine") {
@@ -330,13 +614,16 @@ const methodsForKeyboardScroll = {
         element,
         callToRender,
         moveLastTwoItemsToBeginning,
-        createNewOrderedArrayIndexOne
+        createNewOrderedArrayIndexOne,
+        null,
+        null
       );
       return;
     }
 
     scrollingDownHelper(element);
     nextSnapSibling(element, width);
+    document.getElementById("currentFocused").focus();
     console.log("right");
   },
   // home
@@ -373,6 +660,7 @@ const methodsForKeyboardScroll = {
             ...prevValues,
             bottomOrTopArray: arrayOfObjHomeBtn,
             targetElement: "homebtn",
+            clickedBtn: null,
           };
         });
       }
@@ -426,6 +714,7 @@ const methodsForKeyboardScroll = {
             ...values,
             bottomOrTopArray: arrayOfObjEndBtn,
             targetElement: "endbtn",
+            clickedBtn: null,
           };
         });
       }
@@ -458,61 +747,64 @@ const methodsForKeyboardScroll = {
   ) => {
     event.preventDefault();
 
-    const { moveLastItemToBeginningOfList } = reorderArrayFuncsObj;
-    const { createNewOrderedArrayIndexOne, createNewOrderedArrayIndexSix } =
-      createArrayFuncsObj;
+    if (posindex != "one") {
+      const { moveLastItemToBeginningOfList } = reorderArrayFuncsObj;
+      const { createNewOrderedArrayIndexOne, createNewOrderedArrayIndexSix } =
+        createArrayFuncsObj;
 
-    changeCurrentSnapItemAttr(element);
+      changeCurrentSnapItemAttr(element);
 
-    // check if event.target data-pos-index is "nine" or "two"
-    if (posindex == "nine") {
-      const lastItemToBeginningIndexNine =
-        moveLastItemToBeginningOfList(element);
-      const arrayForPageUpNineIndex = createNewOrderedArrayIndexSix(
-        lastItemToBeginningIndexNine,
-        "7"
-      );
+      // check if event.target data-pos-index is "nine" or "two"
+      if (posindex == "nine") {
+        const lastItemToBeginningIndexNine =
+          moveLastItemToBeginningOfList(element);
+        const arrayForPageUpNineIndex = createNewOrderedArrayIndexSix(
+          lastItemToBeginningIndexNine,
+          "7"
+        );
 
-      callToRender((prev) => {
-        return {
-          ...prev,
-          bottomOrTopArray: arrayForPageUpNineIndex,
-          targetElement: "pageupnine",
-        };
-      });
-      return;
+        callToRender((prev) => {
+          return {
+            ...prev,
+            bottomOrTopArray: arrayForPageUpNineIndex,
+            targetElement: "pageupnine",
+            clickedBtn: null,
+          };
+        });
+        return;
+      }
+
+      if (posindex == "two" || posindex == "three") {
+        const lastItemToBeginningIndexTwoThree =
+          moveLastItemToBeginningOfList(element);
+
+        const arrayForPageUpIndexTwoThree = createNewOrderedArrayIndexOne(
+          lastItemToBeginningIndexTwoThree,
+          "1"
+        );
+
+        callToRender((values) => {
+          return {
+            ...values,
+            bottomOrTopArray: arrayForPageUpIndexTwoThree,
+            targetElement: "pageuptwothree",
+            clickedBtn: null,
+          };
+        });
+        return;
+      }
+
+      // select previous previous sibling element
+
+      const twoItemsAboveCurrent =
+        element.previousElementSibling.previousElementSibling;
+
+      applyFocusSnapItemAttr(twoItemsAboveCurrent);
+
+      twoItemsAboveCurrent.focus();
+
+      console.log("pageup");
     }
-
-    if (posindex == "two" || posindex == "three") {
-      const lastItemToBeginningIndexTwoThree =
-        moveLastItemToBeginningOfList(element);
-
-      const arrayForPageUpIndexTwoThree = createNewOrderedArrayIndexOne(
-        lastItemToBeginningIndexTwoThree,
-        "1"
-      );
-
-      callToRender((values) => {
-        return {
-          ...values,
-          bottomOrTopArray: arrayForPageUpIndexTwoThree,
-          targetElement: "pageuptwothree",
-        };
-      });
-      return;
-    }
-
-    // select previous previous sibling element
-
-    const twoItemsAboveCurrent =
-      element.previousElementSibling.previousElementSibling;
-
-    applyFocusSnapItemAttr(twoItemsAboveCurrent);
-
-    twoItemsAboveCurrent.focus();
-
-    console.log(this.originalSnapitems, "snapitems");
-    console.log("up");
   },
   // page down
   PageDown: (
@@ -527,62 +819,71 @@ const methodsForKeyboardScroll = {
     defaultActionFuncsObj
   ) => {
     event.preventDefault();
-    const { moveFirstItemToEndOfList } = reorderArrayFuncsObj;
-    const { createNewOrderedArrayIndexTwo, createNewOrderedArrayIndexSeven } =
-      createArrayFuncsObj;
-    // check if posindex is "one", "seven" or "eight"
 
-    changeCurrentSnapItemAttr(element);
-
-    if (posindex == "one") {
-      const firstItemToBottomPosindexOne = moveFirstItemToEndOfList(element);
-      const arrayForPageDownOneIndex = createNewOrderedArrayIndexTwo(
-        firstItemToBottomPosindexOne,
-        "3"
-      );
-
-      callToRender((prevValues) => {
-        return {
-          ...prevValues,
-          bottomOrTopArray: arrayForPageDownOneIndex,
-          targetElement: "pagedownone",
-        };
-      });
-
+    if (posindex == "nine") {
       return;
     }
 
-    if (posindex == "seven" || posindex == "eight") {
-      const firstItemToBottomPosindexSevenOrEight =
-        moveFirstItemToEndOfList(element);
+    if (posindex != "nine") {
+      const { moveFirstItemToEndOfList } = reorderArrayFuncsObj;
+      const { createNewOrderedArrayIndexTwo, createNewOrderedArrayIndexSeven } =
+        createArrayFuncsObj;
+      // check if posindex is "one", "seven" or "eight"
 
-      const arrayForPageDownSevenOrEightIndex = createNewOrderedArrayIndexSeven(
-        firstItemToBottomPosindexSevenOrEight,
-        "9"
-      );
+      changeCurrentSnapItemAttr(element);
 
-      callToRender((values) => {
-        return {
-          ...values,
-          bottomOrTopArray: arrayForPageDownSevenOrEightIndex,
-          targetElement: "pagedownseveneight",
-        };
-      });
+      if (posindex == "one") {
+        const firstItemToBottomPosindexOne = moveFirstItemToEndOfList(element);
+        const arrayForPageDownOneIndex = createNewOrderedArrayIndexTwo(
+          firstItemToBottomPosindexOne,
+          "3"
+        );
 
-      return;
+        callToRender((prevValues) => {
+          return {
+            ...prevValues,
+            bottomOrTopArray: arrayForPageDownOneIndex,
+            targetElement: "pagedownone",
+            clickedBtn: null,
+          };
+        });
+
+        return;
+      }
+
+      if (posindex == "seven" || posindex == "eight") {
+        const firstItemToBottomPosindexSevenOrEight =
+          moveFirstItemToEndOfList(element);
+
+        const arrayForPageDownSevenOrEightIndex =
+          createNewOrderedArrayIndexSeven(
+            firstItemToBottomPosindexSevenOrEight,
+            "9"
+          );
+
+        callToRender((values) => {
+          return {
+            ...values,
+            bottomOrTopArray: arrayForPageDownSevenOrEightIndex,
+            targetElement: "pagedownseveneight",
+            clickedBtn: null,
+          };
+        });
+
+        return;
+      }
+
+      // select next next sibling element
+
+      const twoItemsBelowCurrent =
+        element.nextElementSibling.nextElementSibling;
+
+      applyFocusSnapItemAttr(twoItemsBelowCurrent);
+
+      twoItemsBelowCurrent.focus();
+
+      console.log("pagedown");
     }
-
-    // select next next sibling element
-
-    const twoItemsBelowCurrent = element.nextElementSibling.nextElementSibling;
-
-    applyFocusSnapItemAttr(twoItemsBelowCurrent);
-
-    twoItemsBelowCurrent.focus();
-
-    console.log(this.originalSnapitems, "snapitems");
-
-    console.log("down");
   },
 };
 
@@ -596,13 +897,6 @@ export function keyboardScrollThroughSnapItems(event) {
   const currentFocusedSnapItem = document.getElementById("currentFocused");
   const targetPosIndex = currentFocusedSnapItem.getAttribute("data-pos-index");
 
-  // set tabindex to "-1"
-  currentFocusedSnapItem.setAttribute("tabindex", "-1");
-  // aria-hidden "true"
-  currentFocusedSnapItem.setAttribute("aria-hidden", "true");
-  // remove id attribute
-  currentFocusedSnapItem.removeAttribute("id");
-
   if (
     event.code == "Space" &&
     document.activeElement == currentFocusedSnapItem
@@ -613,6 +907,14 @@ export function keyboardScrollThroughSnapItems(event) {
    * up, right, down and left arrow keys
    * **/
   if (methodsForKeyboardScroll[event.code]) {
+    alert("refactor this");
+    // set tabindex to "-1"
+    currentFocusedSnapItem.setAttribute("tabindex", "-1");
+    // aria-hidden "true"
+    currentFocusedSnapItem.setAttribute("aria-hidden", "true");
+    // remove id attribute
+    currentFocusedSnapItem.removeAttribute("id");
+
     methodsForKeyboardScroll[event.code](
       event,
       currentFocusedSnapItem,
@@ -629,6 +931,8 @@ export function keyboardScrollThroughSnapItems(event) {
       {
         createNewOrderedArrayIndexOne,
         createNewOrderedArrayIndexSeven,
+        createNewOrderedArrayIndexTwo,
+        createNewOrderedArrayIndexSix,
       },
       {
         scrollingUpHelper,
@@ -2117,14 +2421,6 @@ function desktopPreviousFocusedHelper(target) {
   console.log(cachedObj);
 }
 
-function mobileReorderedSnapItems() {}
-
-function carouselMobile() {
-  // we can just call focus on prev/next sibling
-}
-
-function carouselDesktop() {}
-
 /**
  * wheel event instead of intersection observer to work with desktop/mobile screen size
  * when use zoom in
@@ -2151,7 +2447,19 @@ export function focusCenteredSnapItemOnWheelScroll(event) {
         currentFocused,
         this.setSnapArray,
         moveFirstTwoItemsToEnd,
-        createNewOrderedArrayIndexSeven
+        createNewOrderedArrayIndexSeven,
+        "mouse"
+      );
+      return;
+    }
+    // top eight
+    if (targetPosIndex == "two") {
+      scrollHelper["up"]["top"][targetPosIndex](
+        currentFocused,
+        this.setSnapArray,
+        moveLastItemToBeginningOfList,
+        createNewOrderedArrayIndexOne,
+        "mouse"
       );
       return;
     }
@@ -2161,12 +2469,15 @@ export function focusCenteredSnapItemOnWheelScroll(event) {
         currentFocused,
         this.setSnapArray,
         moveLastItemToBeginningOfList,
-        createNewOrderedArrayIndexSeven
+        createNewOrderedArrayIndexSeven,
+        "mouse"
       );
       return;
     }
+
+    scrollingUpHelper(currentFocused);
     setTimeout(() => {
-      scrollingUpHelper(currentFocused);
+      document.getElementById("currentFocused").focus();
     }, 500);
 
     console.log("scrolling up");
@@ -2179,7 +2490,19 @@ export function focusCenteredSnapItemOnWheelScroll(event) {
         currentFocused,
         this.setSnapArray,
         moveFirstItemToEndOfList,
-        createNewOrderedArrayIndexOne
+        createNewOrderedArrayIndexOne,
+        "mouse"
+      );
+      return;
+    }
+    // bottom eight
+    if (targetPosIndex == "eight") {
+      scrollHelper["down"]["bottom"][targetPosIndex](
+        currentFocused,
+        this.setSnapArray,
+        moveFirstItemToEndOfList,
+        createNewOrderedArrayIndexSeven,
+        "mouse"
       );
       return;
     }
@@ -2189,14 +2512,16 @@ export function focusCenteredSnapItemOnWheelScroll(event) {
         currentFocused,
         this.setSnapArray,
         moveLastTwoItemsToBeginning,
-        createNewOrderedArrayIndexOne
+        createNewOrderedArrayIndexOne,
+        "mouse"
       );
       return;
     }
-    setTimeout(() => {
-      scrollingDownHelper(currentFocused);
-    }, 500);
 
+    scrollingDownHelper(currentFocused);
+    setTimeout(() => {
+      document.getElementById("currentFocused").focus();
+    }, 500);
     console.log("scrolling down");
   }
 }
@@ -2213,8 +2538,6 @@ function scrollingUpHelper(target, btnUpClicked) {
   previousSnapItem.setAttribute("aria-hidden", "false");
   // add id attribute "currentFocused"
   previousSnapItem.setAttribute("id", "currentFocused");
-  // focus snap item
-  previousSnapItem.focus();
 }
 
 /**
@@ -2229,8 +2552,6 @@ function scrollingDownHelper(target, btnDownClicked) {
   nextSnapItem.setAttribute("aria-hidden", "false");
   // add id attribute "currentFocused"
   nextSnapItem.setAttribute("id", "currentFocused");
-  // focus snap item
-  nextSnapItem.focus();
 }
 
 /**
