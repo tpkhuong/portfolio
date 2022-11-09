@@ -4,7 +4,7 @@ import {
   swipeRightBtn,
   clickPreviousSnapItem,
   clickNextSnapItem,
-  focusCenteredSnapItemOnWheelScroll,
+  focusCenteredSnapItemOnWheelScrollDesktopMobile,
   keyboardScrollThroughSnapItems,
   observeSnapItemsContainerMobile,
   observeSnapItemsContainerDesktop,
@@ -283,7 +283,7 @@ export default function Carousel({ children, ...props }) {
           tabIndex="-1"
           id="scroll-container"
           aria-live="polite"
-          onWheel={focusCenteredSnapItemOnWheelScroll.bind({
+          onWheel={focusCenteredSnapItemOnWheelScrollDesktopMobile.bind({
             initialValuesObj,
             setSnapArray,
           })}
@@ -302,6 +302,7 @@ export default function Carousel({ children, ...props }) {
                 pos="nine"
                 tab="-1"
                 spanContent="9"
+                renderSnapItems={setSnapArray}
               />
               <Project
                 hidden="true"
@@ -310,6 +311,7 @@ export default function Carousel({ children, ...props }) {
                 pos="one"
                 tab="-1"
                 spanContent="1"
+                renderSnapItems={setSnapArray}
               />
               <Project
                 hidden="true"
@@ -318,6 +320,7 @@ export default function Carousel({ children, ...props }) {
                 pos="two"
                 tab="-1"
                 spanContent="2"
+                renderSnapItems={setSnapArray}
               />
               <Project
                 hidden="true"
@@ -326,6 +329,7 @@ export default function Carousel({ children, ...props }) {
                 pos="three"
                 tab="-1"
                 spanContent="3"
+                renderSnapItems={setSnapArray}
               />
               <Project
                 hidden="true"
@@ -334,6 +338,7 @@ export default function Carousel({ children, ...props }) {
                 pos="four"
                 tab="-1"
                 spanContent="4"
+                renderSnapItems={setSnapArray}
               />
               <Project
                 hidden="true"
@@ -342,6 +347,7 @@ export default function Carousel({ children, ...props }) {
                 pos="five"
                 tab="-1"
                 spanContent="5"
+                renderSnapItems={setSnapArray}
               />
               <Project
                 hidden="true"
@@ -350,6 +356,7 @@ export default function Carousel({ children, ...props }) {
                 pos="six"
                 tab="-1"
                 spanContent="6"
+                renderSnapItems={setSnapArray}
               />
               <Project
                 hidden="true"
@@ -358,6 +365,7 @@ export default function Carousel({ children, ...props }) {
                 pos="seven"
                 tab="-1"
                 spanContent="7"
+                renderSnapItems={setSnapArray}
               />
               <Project
                 hidden="true"
@@ -366,6 +374,7 @@ export default function Carousel({ children, ...props }) {
                 pos="eight"
                 tab="-1"
                 spanContent="8"
+                renderSnapItems={setSnapArray}
               />
             </React.Fragment>
           ) : (
@@ -381,6 +390,7 @@ export default function Carousel({ children, ...props }) {
                 ariaHidden,
                 ariaLabel,
                 focusId,
+                stateFunc,
               } = element;
               return (
                 <Project
@@ -392,6 +402,7 @@ export default function Carousel({ children, ...props }) {
                   label={ariaLabel}
                   idAttr={focusId ? focusId : null}
                   spanContent={spanText}
+                  renderSnapItems={stateFunc}
                 />
               );
             })

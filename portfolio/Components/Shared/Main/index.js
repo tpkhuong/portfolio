@@ -3,7 +3,7 @@ import MainStyles from "./Main.module.css";
 
 export default function Main({ children, ...props }) {
   return (
-    <main className={MainStyles[`main`]} role="main">
+    <main id="main-content" className={MainStyles[`main`]} role="main">
       {children}
     </main>
   );
