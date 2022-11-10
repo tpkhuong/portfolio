@@ -26,132 +26,9 @@ const touchEventCreateNewOrderedArrayIndexSix = factoryFuncCreateArray(6);
  * scroll methods for touch event
  * **/
 
-const touchEventScrollHelper = {
+const touchEventVerticalMovementHelper = {
   // going up
   up: {
-    // top
-    top: {
-      one: (
-        target,
-        renderComponent,
-        reorderArray,
-        createArray,
-        typeOfScroll,
-        upDownArrow
-      ) => {
-        // reorder array
-        const topItemsToBottom = reorderArray(target);
-        // create array of objs
-        const arrayForTopOneUp = createArray(
-          topItemsToBottom,
-          "9",
-          renderComponent
-        );
-        // render component
-        typeOfScroll == "mouse"
-          ? setTimeout(() => {
-              renderComponent((prev) => {
-                return {
-                  ...prev,
-                  bottomOrTopArray: arrayForTopOneUp,
-                  targetElement: "uptopone",
-                };
-              });
-            }, 500)
-          : setTimeout(() => {
-              renderComponent((prev) => {
-                return {
-                  ...prev,
-                  bottomOrTopArray: arrayForTopOneUp,
-                  targetElement: "uptopone",
-                  clickedBtn: upDownArrow,
-                };
-              });
-            }, 100);
-      },
-      two: (
-        target,
-        renderComponent,
-        reorderArray,
-        createArray,
-        typeOfScroll,
-        upDownArrow
-      ) => {
-        // reorder array
-        const bottomSnapItemToBeginning = reorderArray(target);
-        // create array of objs
-        const arrayForTopTwoUp = createArray(
-          bottomSnapItemToBeginning,
-          "1",
-          renderComponent
-        );
-        // render component
-        typeOfScroll == "mouse"
-          ? setTimeout(() => {
-              renderComponent((prevVals) => {
-                return {
-                  ...prevVals,
-                  bottomOrTopArray: arrayForTopTwoUp,
-                  targetElement: "uptoptwo",
-                };
-              });
-            }, 500)
-          : setTimeout(() => {
-              renderComponent((prevVals) => {
-                return {
-                  ...prevVals,
-                  bottomOrTopArray: arrayForTopTwoUp,
-                  targetElement: "uptoptwo",
-                  clickedBtn: upDownArrow,
-                };
-              });
-            }, 100);
-      },
-    },
-    // bottom
-    bottom: {
-      nine: (
-        target,
-        renderComponent,
-        reorderArray,
-        createArray,
-        typeOfScroll,
-        upDownArrow
-      ) => {
-        // reorder array
-        const bottomItemToBeginning = reorderArray(target);
-        // create array of objs
-        const arrayForBottomNineUp = createArray(
-          bottomItemToBeginning,
-          "8",
-          renderComponent
-        );
-        // render component
-        typeOfScroll == "mouse"
-          ? setTimeout(() => {
-              renderComponent((values) => {
-                return {
-                  ...values,
-                  bottomOrTopArray: arrayForBottomNineUp,
-                  targetElement: "upbottomnine",
-                };
-              });
-            }, 500)
-          : setTimeout(() => {
-              renderComponent((values) => {
-                return {
-                  ...values,
-                  bottomOrTopArray: arrayForBottomNineUp,
-                  targetElement: "upbottomnine",
-                  clickedBtn: upDownArrow,
-                };
-              });
-            }, 100);
-      },
-    },
-  },
-  // going down
-  down: {
     // top
     top: {
       one: (
@@ -273,6 +150,129 @@ const touchEventScrollHelper = {
       },
     },
   },
+  // going down
+  down: {
+    // top
+    top: {
+      one: (
+        target,
+        renderComponent,
+        reorderArray,
+        createArray,
+        typeOfScroll,
+        upDownArrow
+      ) => {
+        // reorder array
+        const topItemsToBottom = reorderArray(target);
+        // create array of objs
+        const arrayForTopOneUp = createArray(
+          topItemsToBottom,
+          "9",
+          renderComponent
+        );
+        // render component
+        typeOfScroll == "mouse"
+          ? setTimeout(() => {
+              renderComponent((prev) => {
+                return {
+                  ...prev,
+                  bottomOrTopArray: arrayForTopOneUp,
+                  targetElement: "uptopone",
+                };
+              });
+            }, 500)
+          : setTimeout(() => {
+              renderComponent((prev) => {
+                return {
+                  ...prev,
+                  bottomOrTopArray: arrayForTopOneUp,
+                  targetElement: "uptopone",
+                  clickedBtn: upDownArrow,
+                };
+              });
+            }, 100);
+      },
+      two: (
+        target,
+        renderComponent,
+        reorderArray,
+        createArray,
+        typeOfScroll,
+        upDownArrow
+      ) => {
+        // reorder array
+        const bottomSnapItemToBeginning = reorderArray(target);
+        // create array of objs
+        const arrayForTopTwoUp = createArray(
+          bottomSnapItemToBeginning,
+          "1",
+          renderComponent
+        );
+        // render component
+        typeOfScroll == "mouse"
+          ? setTimeout(() => {
+              renderComponent((prevVals) => {
+                return {
+                  ...prevVals,
+                  bottomOrTopArray: arrayForTopTwoUp,
+                  targetElement: "uptoptwo",
+                };
+              });
+            }, 500)
+          : setTimeout(() => {
+              renderComponent((prevVals) => {
+                return {
+                  ...prevVals,
+                  bottomOrTopArray: arrayForTopTwoUp,
+                  targetElement: "uptoptwo",
+                  clickedBtn: upDownArrow,
+                };
+              });
+            }, 100);
+      },
+    },
+    // bottom
+    bottom: {
+      nine: (
+        target,
+        renderComponent,
+        reorderArray,
+        createArray,
+        typeOfScroll,
+        upDownArrow
+      ) => {
+        // reorder array
+        const bottomItemToBeginning = reorderArray(target);
+        // create array of objs
+        const arrayForBottomNineUp = createArray(
+          bottomItemToBeginning,
+          "8",
+          renderComponent
+        );
+        // render component
+        typeOfScroll == "mouse"
+          ? setTimeout(() => {
+              renderComponent((values) => {
+                return {
+                  ...values,
+                  bottomOrTopArray: arrayForBottomNineUp,
+                  targetElement: "upbottomnine",
+                };
+              });
+            }, 500)
+          : setTimeout(() => {
+              renderComponent((values) => {
+                return {
+                  ...values,
+                  bottomOrTopArray: arrayForBottomNineUp,
+                  targetElement: "upbottomnine",
+                  clickedBtn: upDownArrow,
+                };
+              });
+            }, 100);
+      },
+    },
+  },
 };
 
 export function touchStartForMobile(event) {
@@ -339,45 +339,49 @@ export function touchEndForMobile(event) {
       objOfTouchStartValues.clientRectY > event.target.getBoundingClientRect().y
     ) {
       console.log("scrolling up");
-
       touchEventChangeCurrentSnapItemAttr(currentFocusedSnapItem);
 
       // one
       if (targetPosIndex == "one") {
-        touchEventScrollHelper["up"]["top"][targetPosIndex](
+        touchEventVerticalMovementHelper["up"]["top"][targetPosIndex](
           currentFocusedSnapItem,
           this.renderSnapItems,
-          moveFirstTwoItemsToEnd,
-          touchEventCreateNewOrderedArrayIndexSeven,
-          null,
-          null
-        );
-      }
-      // two
-      if (targetPosIndex == "two") {
-        touchEventScrollHelper["up"]["top"][targetPosIndex](
-          currentFocusedSnapItem,
-          this.renderSnapItems,
-          moveLastItemToBeginningOfList,
+          moveFirstItemToEndOfList,
           touchEventCreateNewOrderedArrayIndexOne,
           null,
           null
         );
+        return;
       }
-      // nine
-      if (targetPosIndex == "nine") {
-        touchEventScrollHelper["up"]["bottom"][targetPosIndex](
+
+      // eight
+      if (targetPosIndex == "eight") {
+        touchEventVerticalMovementHelper["up"]["bottom"][targetPosIndex](
           currentFocusedSnapItem,
           this.renderSnapItems,
-          moveLastItemToBeginningOfList,
+          moveFirstItemToEndOfList,
           touchEventCreateNewOrderedArrayIndexSeven,
           null,
           null
         );
+        return;
+      }
+
+      // nine
+      if (targetPosIndex == "nine") {
+        touchEventVerticalMovementHelper["up"]["bottom"][targetPosIndex](
+          currentFocusedSnapItem,
+          this.renderSnapItems,
+          moveLastTwoItemsToBeginning,
+          touchEventCreateNewOrderedArrayIndexOne,
+          null,
+          null
+        );
+        return;
       }
 
       // default action
-      touchEventScrollingUpHelper(currentFocusedSnapItem);
+      touchEventMovingUpHelper(currentFocusedSnapItem);
       document.getElementById("currentFocused");
     }
     // touchend clientRect.y is greater than touchstart clientRect.y going down
@@ -390,40 +394,45 @@ export function touchEndForMobile(event) {
 
       // one
       if (targetPosIndex == "one") {
-        touchEventScrollHelper["down"]["top"][targetPosIndex](
+        touchEventVerticalMovementHelper["down"]["top"][targetPosIndex](
           currentFocusedSnapItem,
           this.renderSnapItems,
-          moveFirstItemToEndOfList,
-          touchEventCreateNewOrderedArrayIndexOne,
-          null,
-          null
-        );
-      }
-      // eight
-      if (targetPosIndex == "eight") {
-        touchEventScrollHelper["down"]["bottom"][targetPosIndex](
-          currentFocusedSnapItem,
-          this.renderSnapItems,
-          moveFirstItemToEndOfList,
+          moveFirstTwoItemsToEnd,
           touchEventCreateNewOrderedArrayIndexSeven,
           null,
           null
         );
+        return;
       }
-      // nine
-      if (targetPosIndex == "nine") {
-        touchEventScrollHelper["down"]["bottom"][targetPosIndex](
+
+      // two
+      if (targetPosIndex == "two") {
+        touchEventVerticalMovementHelper["down"]["top"][targetPosIndex](
           currentFocusedSnapItem,
           this.renderSnapItems,
-          moveLastTwoItemsToBeginning,
+          moveLastItemToBeginningOfList,
           touchEventCreateNewOrderedArrayIndexOne,
           null,
           null
         );
+        return;
+      }
+
+      // nine
+      if (targetPosIndex == "nine") {
+        touchEventVerticalMovementHelper["down"]["bottom"][targetPosIndex](
+          currentFocusedSnapItem,
+          this.renderSnapItems,
+          moveLastItemToBeginningOfList,
+          touchEventCreateNewOrderedArrayIndexSeven,
+          null,
+          null
+        );
+        return;
       }
 
       // default action
-      touchEventScrollingDownHelper(currentFocusedSnapItem);
+      touchEventMovingDownHelper(currentFocusedSnapItem);
       document.getElementById("currentFocused");
     }
     console.log("end", event.target.getBoundingClientRect().y);
@@ -435,21 +444,7 @@ export function touchEndForMobile(event) {
  * scrolling up helper touch event
  * **/
 
-function touchEventScrollingUpHelper(target) {
-  const previousSnapItem = target.previousElementSibling;
-  // set tabindex to "0"
-  previousSnapItem.setAttribute("tabindex", "0");
-  // aria-hidden "false"
-  previousSnapItem.setAttribute("aria-hidden", "false");
-  // add id attribute "currentFocused"
-  previousSnapItem.setAttribute("id", "currentFocused");
-}
-
-/**
- * scrolling down helper touch event
- * **/
-
-function touchEventScrollingDownHelper(target) {
+function touchEventMovingUpHelper(target) {
   const nextSnapItem = target.nextElementSibling;
   // set tabindex to "0"
   nextSnapItem.setAttribute("tabindex", "0");
@@ -457,6 +452,20 @@ function touchEventScrollingDownHelper(target) {
   nextSnapItem.setAttribute("aria-hidden", "false");
   // add id attribute "currentFocused"
   nextSnapItem.setAttribute("id", "currentFocused");
+}
+
+/**
+ * scrolling down helper touch event
+ * **/
+
+function touchEventMovingDownHelper(target) {
+  const previousSnapItem = target.previousElementSibling;
+  // set tabindex to "0"
+  previousSnapItem.setAttribute("tabindex", "0");
+  // aria-hidden "false"
+  previousSnapItem.setAttribute("aria-hidden", "false");
+  // add id attribute "currentFocused"
+  previousSnapItem.setAttribute("id", "currentFocused");
 }
 
 /**

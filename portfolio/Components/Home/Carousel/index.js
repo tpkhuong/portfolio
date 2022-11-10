@@ -58,7 +58,27 @@ export default function Carousel({ children, ...props }) {
     }
 
     if (window.innerWidth >= 1440) {
-      !initialValuesObj.targetElement ? secondChild.scrollIntoView() : null;
+      if (!initialValuesObj.targetElement) {
+        // secondChild.setAttribute("aria-hidden", "false");
+        // secondChild.setAttribute("tabindex", "0");
+        // secondChild.setAttribute("id", "currentFocused");
+
+        const lastSnapItem = scrollChildren[scrollChildren.length - 1];
+        const snapItemBeforeLast = scrollChildren.slice(0, -1);
+        const positionEightIndexAtBeginning = [
+          lastSnapItem,
+          ...snapItemBeforeLast,
+        ];
+
+        console.log(positionEightIndexAtBeginning);
+        const appendElementToScrollContainer =
+          createChildrenForScrollContainerDesktop(
+            positionEightIndexAtBeginning
+          );
+        console.log(appendElementToScrollContainer);
+        scrollContainer.append(appendElementToScrollContainer);
+        document.getElementById("currentFocused").scrollIntoView();
+      }
 
       if (initialValuesObj.targetElement) {
         if (initialValuesObj.clickedBtn) {
@@ -425,4 +445,14 @@ export default function Carousel({ children, ...props }) {
       </div>
     </section>
   );
+}
+
+function createChildrenForScrollContainerDesktop(array) {
+  const fragment = new DocumentFragment();
+
+  array.forEach(function appendElement(element) {
+    fragment.appendChild(element);
+  });
+
+  return fragment;
 }

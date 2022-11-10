@@ -2492,6 +2492,8 @@ function desktopPreviousFocusedHelper(target) {
  * **/
 
 export function focusCenteredSnapItemOnWheelScrollDesktopMobile(event) {
+  const screenSize = window.innerWidth <= 375 ? "mobile" : "desktop";
+  console.log("screenSize", screenSize);
   const { deltaY } = event;
   const currentFocused = document.getElementById("currentFocused");
   const targetPosIndex = currentFocused.getAttribute("data-pos-index");
