@@ -19,26 +19,10 @@ export function swipeRightBtn(event) {
 }
 
 /**
- * create func to create arrays for mobile and desktop
+ * mobile scroll methods
  * **/
 
-// working with index 1 and 7 mobile
-
-const createNewOrderedArrayIndexOne = factoryFuncCreateArray(1);
-
-const createNewOrderedArrayIndexSeven = factoryFuncCreateArray(7);
-
-// working with index 2 and 6 desktop
-
-const createNewOrderedArrayIndexTwo = factoryFuncCreateArray(2);
-
-const createNewOrderedArrayIndexSix = factoryFuncCreateArray(6);
-
-/**
- * scroll methods
- * **/
-
-const scrollHelper = {
+const mobileScrollHelper = {
   // going up
   up: {
     // top
@@ -287,6 +271,492 @@ const scrollHelper = {
   },
 };
 
+/**
+ * desktop scroll methods
+ * **/
+
+const desktopScrollHelper = {
+  // up
+  up: {
+    top: {
+      one: (
+        target,
+        renderComponent,
+        reorderArray,
+        createArray,
+        typeOfScroll,
+        upDownArrow
+      ) => {
+        // reorder array
+        const topFourItemsToBottom = reorderArray(target);
+        // create array of objs
+        const arrayForDesktopUpTopOne = createArray(
+          topFourItemsToBottom,
+          "9",
+          renderComponent
+        );
+        // render component
+        typeOfScroll == "mouse"
+          ? setTimeout(() => {
+              renderComponent((prev) => {
+                return {
+                  ...prev,
+                  bottomOrTopArray: arrayForDesktopUpTopOne,
+                  targetElement: "desktopuptopone",
+                };
+              });
+            }, 500)
+          : setTimeout(() => {
+              renderComponent((prev) => {
+                return {
+                  ...prev,
+                  bottomOrTopArray: arrayForDesktopUpTopOne,
+                  targetElement: "desktopuptopone",
+                  clickedBtn: upDownArrow,
+                };
+              });
+            }, 100);
+      },
+      two: (
+        target,
+        renderComponent,
+        reorderArray,
+        createArray,
+        typeOfScroll,
+        upDownArrow
+      ) => {
+        // reorder array
+        const bottomItemToBeginningUpTwo = reorderArray(target);
+        // create array of objs
+        const arrayForDesktopUpTopTwo = createArray(
+          bottomItemToBeginningUpTwo,
+          "1",
+          renderComponent
+        );
+        // render component
+        typeOfScroll == "mouse"
+          ? setTimeout(() => {
+              renderComponent((prev) => {
+                return {
+                  ...prev,
+                  bottomOrTopArray: arrayForDesktopUpTopTwo,
+                  targetElement: "desktopuptoptwo",
+                };
+              });
+            }, 500)
+          : setTimeout(() => {
+              renderComponent((prev) => {
+                return {
+                  ...prev,
+                  bottomOrTopArray: arrayForDesktopUpTopTwo,
+                  targetElement: "desktopuptoptwo",
+                  clickedBtn: upDownArrow,
+                };
+              });
+            }, 100);
+      },
+      three: (
+        target,
+        renderComponent,
+        reorderArray,
+        createArray,
+        typeOfScroll,
+        upDownArrow
+      ) => {
+        // reorder array
+        const bottomItemToBeginningThree = reorderArray(target);
+        // create array of objs
+        const arrayForDesktopUpTopThree = createArray(
+          bottomItemToBeginningThree,
+          "2",
+          renderComponent
+        );
+        // render component
+        typeOfScroll == "mouse"
+          ? setTimeout(() => {
+              renderComponent((prev) => {
+                return {
+                  ...prev,
+                  bottomOrTopArray: arrayForDesktopUpTopThree,
+                  targetElement: "desktopuptopthree",
+                };
+              });
+            }, 500)
+          : setTimeout(() => {
+              renderComponent((prev) => {
+                return {
+                  ...prev,
+                  bottomOrTopArray: arrayForDesktopUpTopThree,
+                  targetElement: "desktopuptopthree",
+                  clickedBtn: upDownArrow,
+                };
+              });
+            }, 100);
+      },
+    },
+    bottom: {
+      eight: (
+        target,
+        renderComponent,
+        reorderArray,
+        createArray,
+        typeOfScroll,
+        upDownArrow
+      ) => {
+        // reorder array
+        const bottomToBeginningEight = reorderArray(target);
+        // create array of objs
+        const arrayForDesktopUpBottomEight = createArray(
+          bottomToBeginningEight,
+          "7",
+          renderComponent
+        );
+        // render component
+        typeOfScroll == "mouse"
+          ? setTimeout(() => {
+              renderComponent((prev) => {
+                return {
+                  ...prev,
+                  bottomOrTopArray: arrayForDesktopUpBottomEight,
+                  targetElement: "desktopupbottomeight",
+                };
+              });
+            }, 500)
+          : setTimeout(() => {
+              renderComponent((prev) => {
+                return {
+                  ...prev,
+                  bottomOrTopArray: arrayForDesktopUpBottomEight,
+                  targetElement: "desktopupbottomeight",
+                  clickedBtn: upDownArrow,
+                };
+              });
+            }, 100);
+      },
+      nine: (
+        target,
+        renderComponent,
+        reorderArray,
+        createArray,
+        typeOfScroll,
+        upDownArrow
+      ) => {
+        // reorder array
+        const bottomItemToBeginningNine = reorderArray(target);
+        // create array of objs
+        const arrayForDesktopUpBottomNine = createArray(
+          bottomItemToBeginningNine,
+          "8",
+          renderComponent
+        );
+        // render component
+        typeOfScroll == "mouse"
+          ? setTimeout(() => {
+              renderComponent((prev) => {
+                return {
+                  ...prev,
+                  bottomOrTopArray: arrayForDesktopUpBottomNine,
+                  targetElement: "desktopupbottomnine",
+                };
+              });
+            }, 500)
+          : setTimeout(() => {
+              renderComponent((prev) => {
+                return {
+                  ...prev,
+                  bottomOrTopArray: arrayForDesktopUpBottomNine,
+                  targetElement: "desktopupbottomnine",
+                  clickedBtn: upDownArrow,
+                };
+              });
+            }, 100);
+      },
+    },
+  },
+  // down
+  down: {
+    top: {
+      one: (
+        target,
+        renderComponent,
+        reorderArray,
+        createArray,
+        typeOfScroll,
+        upDownArrow
+      ) => {
+        // reorder array
+        const topItemToBottomOne = reorderArray(target);
+        // create array of objs
+        const arrayForDesktopDownTopOne = createArray(
+          topItemToBottomOne,
+          "2",
+          renderComponent
+        );
+        // render component
+        typeOfScroll == "mouse"
+          ? setTimeout(() => {
+              renderComponent((prev) => {
+                return {
+                  ...prev,
+                  bottomOrTopArray: arrayForDesktopDownTopOne,
+                  targetElement: "desktopdowntopone",
+                };
+              });
+            }, 500)
+          : setTimeout(() => {
+              renderComponent((prev) => {
+                return {
+                  ...prev,
+                  bottomOrTopArray: arrayForDesktopDownTopOne,
+                  targetElement: "desktopdowntopone",
+                  clickedBtn: upDownArrow,
+                };
+              });
+            }, 100);
+      },
+      two: (
+        target,
+        renderComponent,
+        reorderArray,
+        createArray,
+        typeOfScroll,
+        upDownArrow
+      ) => {
+        // reorder array
+        const topItemToBottomTwo = reorderArray(target);
+        // create array of objs
+        const arrayForDesktopDownTopTwo = createArray(
+          topItemToBottomTwo,
+          "3",
+          renderComponent
+        );
+        // render component
+        typeOfScroll == "mouse"
+          ? setTimeout(() => {
+              renderComponent((prev) => {
+                return {
+                  ...prev,
+                  bottomOrTopArray: arrayForDesktopDownTopTwo,
+                  targetElement: "desktopdowntoptwo",
+                };
+              });
+            }, 500)
+          : setTimeout(() => {
+              renderComponent((prev) => {
+                return {
+                  ...prev,
+                  bottomOrTopArray: arrayForDesktopDownTopTwo,
+                  targetElement: "desktopdowntoptwo",
+                  clickedBtn: upDownArrow,
+                };
+              });
+            }, 100);
+      },
+    },
+    bottom: {
+      seven: (
+        target,
+        renderComponent,
+        reorderArray,
+        createArray,
+        typeOfScroll,
+        upDownArrow
+      ) => {
+        // reorder array
+        const topItemToBottomSeven = reorderArray(target);
+        // create array of objs
+        const arrayForDesktopDownBottomSeven = createArray(
+          topItemToBottomSeven,
+          "8",
+          renderComponent
+        );
+        // render component
+        typeOfScroll == "mouse"
+          ? setTimeout(() => {
+              renderComponent((prev) => {
+                return {
+                  ...prev,
+                  bottomOrTopArray: arrayForDesktopDownBottomSeven,
+                  targetElement: "desktopdownbottomseven",
+                };
+              });
+            }, 500)
+          : setTimeout(() => {
+              renderComponent((prev) => {
+                return {
+                  ...prev,
+                  bottomOrTopArray: arrayForDesktopDownBottomSeven,
+                  targetElement: "desktopdownbottomseven",
+                  clickedBtn: upDownArrow,
+                };
+              });
+            }, 100);
+      },
+      eight: (
+        target,
+        renderComponent,
+        reorderArray,
+        createArray,
+        typeOfScroll,
+        upDownArrow
+      ) => {
+        // reorder array
+        const topItemToBottomEight = reorderArray(targett);
+        // create array of objs
+        const arrayForDesktopDownBottomEight = createArray(
+          topItemToBottomEight,
+          "9",
+          renderComponent
+        );
+        // render component
+        typeOfScroll == "mouse"
+          ? setTimeout(() => {
+              renderComponent((prev) => {
+                return {
+                  ...prev,
+                  bottomOrTopArray: arrayForDesktopDownBottomEight,
+                  targetElement: "desktopdownbottomeight",
+                };
+              });
+            }, 500)
+          : setTimeout(() => {
+              renderComponent((prev) => {
+                return {
+                  ...prev,
+                  bottomOrTopArray: arrayForDesktopDownBottomEight,
+                  targetElement: "desktopdownbottomeight",
+                  clickedBtn: upDownArrow,
+                };
+              });
+            }, 100);
+      },
+      nine: (
+        target,
+        renderComponent,
+        reorderArray,
+        createArray,
+        typeOfScroll,
+        upDownArrow
+      ) => {
+        // reorder array
+        const lastFourToBeginning = reorderArray(target);
+        // create array of objs
+        const arrayForDesktopDownBottomNine = createArray(
+          lastFourToBeginning,
+          "1",
+          renderComponent
+        );
+        // render component
+        typeOfScroll == "mouse"
+          ? setTimeout(() => {
+              renderComponent((prev) => {
+                return {
+                  ...prev,
+                  bottomOrTopArray: arrayForDesktopDownBottomNine,
+                  targetElement: "desktopdownbottomnine",
+                };
+              });
+            }, 500)
+          : setTimeout(() => {
+              renderComponent((prev) => {
+                return {
+                  ...prev,
+                  bottomOrTopArray: arrayForDesktopDownBottomNine,
+                  targetElement: "desktopdownbottomnine",
+                  clickedBtn: upDownArrow,
+                };
+              });
+            }, 100);
+      },
+    },
+  },
+};
+
+/**
+ * create func to create arrays for mobile and desktop
+ * **/
+
+// working with index 1 and 7 mobile
+
+const createNewOrderedArrayIndexOne = factoryFuncCreateArray(1);
+
+const createNewOrderedArrayIndexSeven = factoryFuncCreateArray(7);
+
+// working with index 2 and 6 desktop
+
+const createNewOrderedArrayIndexTwo = factoryFuncCreateArray(2);
+
+const createNewOrderedArrayIndexSix = factoryFuncCreateArray(6);
+
+/**
+ * create func for mouse scroll, arrow key scroll, arrow button scroll
+ * **/
+
+// mobile scroll up
+
+const mobileMouseScrollUp = mobileScrollUpFactoryFunc(
+  mobileScrollHelper,
+  {
+    moveFirstTwoItemsToEnd,
+    moveLastItemToBeginningOfList,
+  },
+  { createNewOrderedArrayIndexSeven, createNewOrderedArrayIndexOne }
+);
+
+const arrowKeyScrollUp = mobileScrollUpFactoryFunc(
+  mobileScrollHelper,
+  {
+    moveFirstTwoItemsToEnd,
+    moveLastItemToBeginningOfList,
+  },
+  { createNewOrderedArrayIndexSeven, createNewOrderedArrayIndexOne }
+);
+
+const arrowBtnScrollUp = mobileScrollUpFactoryFunc(
+  mobileScrollHelper,
+  {
+    moveFirstTwoItemsToEnd,
+    moveLastItemToBeginningOfList,
+  },
+  { createNewOrderedArrayIndexSeven, createNewOrderedArrayIndexOne }
+);
+
+// mobile scroll down
+
+const mobileMouseScrollDown = mobileScrollDownFactoryFunc(
+  mobileScrollHelper,
+  {
+    moveFirstItemToEndOfList,
+    moveLastTwoItemsToBeginning,
+  },
+  {
+    createNewOrderedArrayIndexOne,
+    createNewOrderedArrayIndexSeven,
+  }
+);
+const arrowKeyScrollDown = mobileScrollDownFactoryFunc(
+  mobileScrollHelper,
+  {
+    moveFirstItemToEndOfList,
+    moveLastTwoItemsToBeginning,
+  },
+  {
+    createNewOrderedArrayIndexOne,
+    createNewOrderedArrayIndexSeven,
+  }
+);
+const arrowBtnScrollDown = mobileScrollDownFactoryFunc(
+  mobileScrollHelper,
+  {
+    moveFirstItemToEndOfList,
+    moveLastTwoItemsToBeginning,
+  },
+  {
+    createNewOrderedArrayIndexOne,
+    createNewOrderedArrayIndexSeven,
+  }
+);
+
 // call Object.freeze on our method obj so we can't mutate it
 
 // on click
@@ -306,41 +776,113 @@ export function clickPreviousSnapItem(event) {
     // aria-hidden "true"
     currentFocusedElement.setAttribute("aria-hidden", "false");
 
-    // top one
-    if (posindexUpArrowBtn == "one") {
-      scrollHelper["up"]["top"][posindexUpArrowBtn](
-        currentFocusedElement,
-        this.setSnapArray,
-        moveFirstTwoItemsToEnd,
-        createNewOrderedArrayIndexSeven,
-        null,
-        "upBtn"
-      );
-      return;
+    /**
+     * mobile
+     * **/
+    if (windowWidth <= 375) {
+      // top one
+      if (posindexUpArrowBtn == "one") {
+        mobileScrollHelper["up"]["top"][posindexUpArrowBtn](
+          currentFocusedElement,
+          this.setSnapArray,
+          moveFirstTwoItemsToEnd,
+          createNewOrderedArrayIndexSeven,
+          null,
+          "upBtn"
+        );
+        return;
+      }
+      // top eight
+      if (posindexUpArrowBtn == "two") {
+        mobileScrollHelper["up"]["top"][posindexUpArrowBtn](
+          currentFocusedElement,
+          this.setSnapArray,
+          moveLastItemToBeginningOfList,
+          createNewOrderedArrayIndexOne,
+          null,
+          "upBtn"
+        );
+        return;
+      }
+      // bottom nine
+      if (posindexUpArrowBtn == "nine") {
+        mobileScrollHelper["up"]["bottom"][posindexUpArrowBtn](
+          currentFocusedElement,
+          this.setSnapArray,
+          moveLastItemToBeginningOfList,
+          createNewOrderedArrayIndexSeven,
+          null,
+          "upBtn"
+        );
+        return;
+      }
     }
-    // top eight
-    if (posindexUpArrowBtn == "two") {
-      scrollHelper["up"]["top"][posindexUpArrowBtn](
-        currentFocusedElement,
-        this.setSnapArray,
-        moveLastItemToBeginningOfList,
-        createNewOrderedArrayIndexOne,
-        null,
-        "upBtn"
-      );
-      return;
-    }
-    // bottom nine
-    if (posindexUpArrowBtn == "nine") {
-      scrollHelper["up"]["bottom"][posindexUpArrowBtn](
-        currentFocusedElement,
-        this.setSnapArray,
-        moveLastItemToBeginningOfList,
-        createNewOrderedArrayIndexSeven,
-        null,
-        "upBtn"
-      );
-      return;
+
+    /**
+     * desktop
+     * **/
+
+    if (windowWidth >= 1440) {
+      // top one
+      if (posindexUpArrowBtn == "one") {
+        desktopScrollHelper["up"]["top"][posindexUpArrowBtn](
+          currentFocusedElement,
+          this.setSnapArray,
+          moveTopFourItemsToBottom,
+          createNewOrderedArrayIndexSix,
+          null,
+          "upBtn"
+        );
+        return;
+      }
+      // top two
+      if (posindexUpArrowBtn == "two") {
+        desktopScrollHelper["up"]["top"][posindexUpArrowBtn](
+          currentFocusedElement,
+          this.setSnapArray,
+          moveLastItemToBeginningOfList,
+          createNewOrderedArrayIndexTwo,
+          null,
+          "upBtn"
+        );
+        return;
+      }
+      // top three
+      if (posindexUpArrowBtn == "three") {
+        desktopScrollHelper["up"]["top"][posindexUpArrowBtn](
+          currentFocusedElement,
+          this.setSnapArray,
+          moveLastItemToBeginningOfList,
+          createNewOrderedArrayIndexTwo,
+          null,
+          "upBtn"
+        );
+        return;
+      }
+      // bottom eight
+      if (posindexUpArrowBtn == "eight") {
+        desktopScrollHelper["up"]["bottom"][posindexUpArrowBtn](
+          currentFocusedElement,
+          this.setSnapArray,
+          moveLastItemToBeginningOfList,
+          createNewOrderedArrayIndexSix,
+          null,
+          "upBtn"
+        );
+        return;
+      }
+      // bottom nine
+      if (posindexUpArrowBtn == "nine") {
+        desktopScrollHelper["up"]["bottom"][posindexUpArrowBtn](
+          currentFocusedElement,
+          this.setSnapArray,
+          moveLastItemToBeginningOfList,
+          createNewOrderedArrayIndexSix,
+          null,
+          "upBtn"
+        );
+        return;
+      }
     }
 
     // scroll up
@@ -367,41 +909,114 @@ export function clickNextSnapItem(event) {
     // aria-hidden "true"
     currentFocusedItem.setAttribute("aria-hidden", "false");
 
-    // top one
-    if (posindexDownArrowBtn == "one") {
-      scrollHelper["down"]["top"][posindexDownArrowBtn](
-        currentFocusedItem,
-        this.setSnapArray,
-        moveFirstItemToEndOfList,
-        createNewOrderedArrayIndexOne,
-        null,
-        "downBtn"
-      );
-      return;
+    /**
+     * mobile
+     * **/
+
+    if (windowWidth <= 375) {
+      // top one
+      if (posindexDownArrowBtn == "one") {
+        mobileScrollHelper["down"]["top"][posindexDownArrowBtn](
+          currentFocusedItem,
+          this.setSnapArray,
+          moveFirstItemToEndOfList,
+          createNewOrderedArrayIndexOne,
+          null,
+          "downBtn"
+        );
+        return;
+      }
+      // bottom eight
+      if (posindexDownArrowBtn == "eight") {
+        mobileScrollHelper["down"]["bottom"][posindexDownArrowBtn](
+          currentFocusedItem,
+          this.setSnapArray,
+          moveFirstItemToEndOfList,
+          createNewOrderedArrayIndexSeven,
+          null,
+          "downBtn"
+        );
+        return;
+      }
+      // bottom nine
+      if (posindexDownArrowBtn == "nine") {
+        mobileScrollHelper["down"]["bottom"][posindexDownArrowBtn](
+          currentFocusedItem,
+          this.setSnapArray,
+          moveLastTwoItemsToBeginning,
+          createNewOrderedArrayIndexOne,
+          null,
+          "downBtn"
+        );
+        return;
+      }
     }
-    // bottom eight
-    if (posindexDownArrowBtn == "eight") {
-      scrollHelper["down"]["bottom"][posindexDownArrowBtn](
-        currentFocusedItem,
-        this.setSnapArray,
-        moveFirstItemToEndOfList,
-        createNewOrderedArrayIndexSeven,
-        null,
-        "downBtn"
-      );
-      return;
-    }
-    // bottom nine
-    if (posindexDownArrowBtn == "nine") {
-      scrollHelper["down"]["bottom"][posindexDownArrowBtn](
-        currentFocusedItem,
-        this.setSnapArray,
-        moveLastTwoItemsToBeginning,
-        createNewOrderedArrayIndexOne,
-        null,
-        "downBtn"
-      );
-      return;
+
+    /**
+     * desktop
+     * **/
+
+    if (windowWidth >= 1440) {
+      // top one
+      if (posindexDownArrowBtn == "one") {
+        desktopScrollHelper["down"]["top"][posindexDownArrowBtn](
+          currentFocusedItem,
+          this.setSnapArray,
+          moveFirstItemToEndOfList,
+          createNewOrderedArrayIndexTwo,
+          null,
+          "downBtn"
+        );
+        return;
+      }
+      // top two
+      if (posindexDownArrowBtn == "two") {
+        desktopScrollHelper["down"]["top"][posindexDownArrowBtn](
+          currentFocusedItem,
+          this.setSnapArray,
+          moveFirstItemToEndOfList,
+          createNewOrderedArrayIndexTwo,
+          null,
+          "downBtn"
+        );
+        return;
+      }
+      // bottom seven
+      if (posindexDownArrowBtn == "seven") {
+        desktopScrollHelper["down"]["bottom"][posindexDownArrowBtn](
+          currentFocusedItem,
+          this.setSnapArray,
+          moveFirstItemToEndOfList,
+          createNewOrderedArrayIndexSix,
+          null,
+          "downBtn"
+        );
+        return;
+      }
+      // bottom eight
+      if (posindexDownArrowBtn == "eight") {
+        desktopScrollHelper["down"]["bottom"][posindexDownArrowBtn](
+          currentFocusedItem,
+          this.setSnapArray,
+          moveFirstItemToEndOfList,
+          createNewOrderedArrayIndexSix,
+          null,
+          "downBtn"
+        );
+        return;
+      }
+      // bottom nine
+      if (posindexDownArrowBtn == "nine") {
+        desktopScrollHelper["down"]["bottom"][posindexDownArrowBtn](
+          currentFocusedItem,
+          this.setSnapArray,
+          moveBottomFourItemsToBeginning,
+          createNewOrderedArrayIndexTwo,
+          null,
+          "downBtn"
+        );
+        return;
+      }
     }
 
     scrollingDownHelper(currentFocusedItem);
@@ -428,50 +1043,130 @@ const methodsForKeyboardScroll = {
   ) => {
     event.preventDefault();
 
-    const { moveFirstTwoItemsToEnd, moveLastItemToBeginningOfList } =
-      reorderArrayFuncsObj;
+    const {
+      moveFirstTwoItemsToEnd,
+      moveLastItemToBeginningOfList,
+      moveTopFourItemsToBottom,
+    } = reorderArrayFuncsObj;
 
-    const { createNewOrderedArrayIndexSeven, createNewOrderedArrayIndexOne } =
-      createArrayFuncsObj;
+    const {
+      createNewOrderedArrayIndexOne,
+      createNewOrderedArrayIndexTwo,
+      createNewOrderedArrayIndexSix,
+      createNewOrderedArrayIndexSeven,
+    } = createArrayFuncsObj;
 
     const { scrollingUpHelper, previousSnapSibling } = defaultActionFuncsObj;
 
     const { changeCurrentSnapItemAttr } = defaultActionFuncsObj;
 
-    if (posindex == "one") {
-      methodObj["up"]["top"][posindex](
-        element,
-        callToRender,
-        moveFirstTwoItemsToEnd,
-        createNewOrderedArrayIndexSeven,
-        null,
-        null
-      );
-      return;
+    /**
+     * mobile
+     * **/
+
+    if (width <= 375) {
+      if (posindex == "one") {
+        methodObj["up"]["top"][posindex](
+          element,
+          callToRender,
+          moveFirstTwoItemsToEnd,
+          createNewOrderedArrayIndexSeven,
+          null,
+          null
+        );
+        return;
+      }
+
+      if (posindex == "two") {
+        methodObj["up"]["top"][posindex](
+          element,
+          callToRender,
+          moveLastItemToBeginningOfList,
+          createNewOrderedArrayIndexOne,
+          null,
+          null
+        );
+        return;
+      }
+
+      if (posindex == "nine") {
+        methodObj["up"]["bottom"][posindex](
+          element,
+          callToRender,
+          moveLastItemToBeginningOfList,
+          createNewOrderedArrayIndexSeven,
+          null,
+          null
+        );
+        return;
+      }
     }
 
-    if (posindex == "two") {
-      methodObj["up"]["top"][posindex](
-        element,
-        callToRender,
-        moveLastItemToBeginningOfList,
-        createNewOrderedArrayIndexOne,
-        null,
-        null
-      );
-      return;
-    }
+    /**
+     * desktop
+     * **/
 
-    if (posindex == "nine") {
-      methodObj["up"]["bottom"][posindex](
-        element,
-        callToRender,
-        moveLastItemToBeginningOfList,
-        createNewOrderedArrayIndexSeven,
-        null,
-        null
-      );
-      return;
+    if (width >= 1440) {
+      // top one
+      if (targetPosIndex == "one") {
+        desktopScrollHelper["up"]["top"][targetPosIndex](
+          target,
+          callToRender,
+          moveTopFourItemsToBottom,
+          createNewOrderedArrayIndexSix,
+          null,
+          null
+        );
+        return;
+      }
+      // top two
+      if (targetPosIndex == "two") {
+        desktopScrollHelper["up"]["top"][targetPosIndex](
+          target,
+          callToRender,
+          moveLastItemToBeginningOfList,
+          createNewOrderedArrayIndexTwo,
+          null,
+          null
+        );
+        return;
+      }
+      // top three
+      if (targetPosIndex == "three") {
+        desktopScrollHelper["up"]["top"][targetPosIndex](
+          target,
+          callToRender,
+          moveLastItemToBeginningOfList,
+          createNewOrderedArrayIndexTwo,
+          null,
+          null
+        );
+        return;
+      }
+      // bottom eight
+      if (targetPosIndex == "eight") {
+        desktopScrollHelper["up"]["bottom"][targetPosIndex](
+          target,
+          callToRender,
+          moveLastItemToBeginningOfList,
+          createNewOrderedArrayIndexSix,
+          null,
+          null
+        );
+        return;
+      }
+      // bottom nine
+      if (targetPosIndex == "nine") {
+        desktopScrollHelper["up"]["bottom"][targetPosIndex](
+          target,
+          callToRender,
+          moveLastItemToBeginningOfList,
+          createNewOrderedArrayIndexSix,
+          null,
+          null
+        );
+        return;
+      }
     }
 
     // func to move two top items to bottom
@@ -480,7 +1175,12 @@ const methodsForKeyboardScroll = {
     changeCurrentSnapItemAttr(element);
     scrollingUpHelper(element);
     previousSnapSibling(element, width);
-    document.getElementById("currentFocused").focus();
+
+    width <= 375
+      ? document.getElementById("currentFocused").focus()
+      : (document.getElementById("currentFocused").scrollIntoView(),
+        document.getElementById("currentFocused").focus());
+
     console.log("up");
   },
   // left arrow
@@ -497,55 +1197,141 @@ const methodsForKeyboardScroll = {
   ) => {
     event.preventDefault();
 
-    const { moveFirstTwoItemsToEnd, moveLastItemToBeginningOfList } =
-      reorderArrayFuncsObj;
+    const {
+      moveFirstTwoItemsToEnd,
+      moveLastItemToBeginningOfList,
+      moveTopFourItemsToBottom,
+    } = reorderArrayFuncsObj;
 
-    const { createNewOrderedArrayIndexSeven } = createArrayFuncsObj;
+    const {
+      createNewOrderedArrayIndexOne,
+      createNewOrderedArrayIndexTwo,
+      createNewOrderedArrayIndexSix,
+      createNewOrderedArrayIndexSeven,
+    } = createArrayFuncsObj;
 
     const { scrollingUpHelper, previousSnapSibling } = defaultActionFuncsObj;
 
     const { changeCurrentSnapItemAttr } = defaultActionFuncsObj;
 
-    if (posindex == "one") {
-      methodObj["up"]["top"][posindex](
-        element,
-        callToRender,
-        moveFirstTwoItemsToEnd,
-        createNewOrderedArrayIndexSeven,
-        null,
-        null
-      );
-      return;
+    /**
+     * mobile
+     * **/
+
+    if (width <= 375) {
+      if (posindex == "one") {
+        methodObj["up"]["top"][posindex](
+          element,
+          callToRender,
+          moveFirstTwoItemsToEnd,
+          createNewOrderedArrayIndexSeven,
+          null,
+          null
+        );
+        return;
+      }
+
+      if (posindex == "two") {
+        methodObj["up"]["top"][posindex](
+          element,
+          callToRender,
+          moveLastItemToBeginningOfList,
+          createNewOrderedArrayIndexOne,
+          null,
+          null
+        );
+        return;
+      }
+
+      if (posindex == "nine") {
+        methodObj["up"]["bottom"][posindex](
+          element,
+          callToRender,
+          moveLastItemToBeginningOfList,
+          createNewOrderedArrayIndexSeven,
+          null,
+          null
+        );
+        return;
+      }
     }
 
-    if (posindex == "two") {
-      methodObj["up"]["top"][posindex](
-        element,
-        callToRender,
-        moveLastItemToBeginningOfList,
-        createNewOrderedArrayIndexOne,
-        null,
-        null
-      );
-      return;
-    }
+    /**
+     * desktop
+     * **/
 
-    if (posindex == "nine") {
-      methodObj["up"]["bottom"][posindex](
-        element,
-        callToRender,
-        moveLastItemToBeginningOfList,
-        createNewOrderedArrayIndexSeven,
-        null,
-        null
-      );
-      return;
+    if (width >= 1440) {
+      // top one
+      if (targetPosIndex == "one") {
+        desktopScrollHelper["up"]["top"][targetPosIndex](
+          target,
+          callToRender,
+          moveTopFourItemsToBottom,
+          createNewOrderedArrayIndexSix,
+          null,
+          null
+        );
+        return;
+      }
+      // top two
+      if (targetPosIndex == "two") {
+        desktopScrollHelper["up"]["top"][targetPosIndex](
+          target,
+          callToRender,
+          moveLastItemToBeginningOfList,
+          createNewOrderedArrayIndexTwo,
+          null,
+          null
+        );
+        return;
+      }
+      // top three
+      if (targetPosIndex == "three") {
+        desktopScrollHelper["up"]["top"][targetPosIndex](
+          target,
+          callToRender,
+          moveLastItemToBeginningOfList,
+          createNewOrderedArrayIndexTwo,
+          null,
+          null
+        );
+        return;
+      }
+      // bottom eight
+      if (targetPosIndex == "eight") {
+        desktopScrollHelper["up"]["bottom"][targetPosIndex](
+          target,
+          callToRender,
+          moveLastItemToBeginningOfList,
+          createNewOrderedArrayIndexSix,
+          null,
+          null
+        );
+        return;
+      }
+      // bottom nine
+      if (targetPosIndex == "nine") {
+        desktopScrollHelper["up"]["bottom"][targetPosIndex](
+          target,
+          callToRender,
+          moveLastItemToBeginningOfList,
+          createNewOrderedArrayIndexSix,
+          null,
+          null
+        );
+        return;
+      }
     }
 
     changeCurrentSnapItemAttr(element);
     scrollingUpHelper(element);
     previousSnapSibling(element, width);
-    document.getElementById("currentFocused").focus();
+
+    width <= 375
+      ? document.getElementById("currentFocused").focus()
+      : (document.getElementById("currentFocused").scrollIntoView(),
+        document.getElementById("currentFocused").focus());
+
     console.log("left");
   },
   // down arrow
@@ -562,56 +1348,142 @@ const methodsForKeyboardScroll = {
   ) => {
     event.preventDefault();
 
-    const { moveFirstItemToEndOfList, moveLastTwoItemsToBeginning } =
-      reorderArrayFuncsObj;
+    const {
+      moveFirstItemToEndOfList,
+      moveLastTwoItemsToBeginning,
+      moveBottomFourItemsToBeginning,
+    } = reorderArrayFuncsObj;
 
-    const { createNewOrderedArrayIndexOne, createNewOrderedArrayIndexSeven } =
-      createArrayFuncsObj;
+    const {
+      createNewOrderedArrayIndexOne,
+      createNewOrderedArrayIndexTwo,
+      createNewOrderedArrayIndexSix,
+      createNewOrderedArrayIndexSeven,
+    } = createArrayFuncsObj;
 
     const { scrollingDownHelper, nextSnapSibling } = defaultActionFuncsObj;
 
     const { changeCurrentSnapItemAttr } = defaultActionFuncsObj;
 
-    if (posindex == "one") {
-      methodObj["down"]["top"][posindex](
-        element,
-        callToRender,
-        moveFirstItemToEndOfList,
-        createNewOrderedArrayIndexOne,
-        null,
-        null
-      );
-      return;
+    /**
+     * mobile
+     * **/
+
+    if (width <= 375) {
+      if (posindex == "one") {
+        methodObj["down"]["top"][posindex](
+          element,
+          callToRender,
+          moveFirstItemToEndOfList,
+          createNewOrderedArrayIndexOne,
+          null,
+          null
+        );
+        return;
+      }
+
+      if (posindex == "eight") {
+        methodObj["down"]["bottom"][posindex](
+          element,
+          callToRender,
+          moveFirstItemToEndOfList,
+          createNewOrderedArrayIndexSeven,
+          null,
+          null
+        );
+      }
+
+      if (posindex == "nine") {
+        methodObj["down"]["bottom"][posindex](
+          element,
+          callToRender,
+          moveLastTwoItemsToBeginning,
+          createNewOrderedArrayIndexOne,
+          null,
+          null
+        );
+        return;
+      }
     }
 
-    if (posindex == "eight") {
-      methodObj["down"]["bottom"][posindex](
-        element,
-        callToRender,
-        moveFirstItemToEndOfList,
-        createNewOrderedArrayIndexSeven,
-        null,
-        null
-      );
+    /**
+     * desktop
+     * **/
+
+    if (width >= 1440) {
+      // top one
+      if (targetPosIndex == "one") {
+        desktopScrollHelper["down"]["top"][targetPosIndex](
+          target,
+          callToRender,
+          moveFirstItemToEndOfList,
+          createNewOrderedArrayIndexTwo,
+          null,
+          null
+        );
+        return;
+      }
+      // top two
+      if (targetPosIndex == "two") {
+        desktopScrollHelper["down"]["top"][targetPosIndex](
+          target,
+          callToRender,
+          moveFirstItemToEndOfList,
+          createNewOrderedArrayIndexTwo,
+          null,
+          null
+        );
+        return;
+      }
+      // bottom seven
+      if (targetPosIndex == "seven") {
+        desktopScrollHelper["down"]["bottom"][targetPosIndex](
+          target,
+          callToRender,
+          moveFirstItemToEndOfList,
+          createNewOrderedArrayIndexSix,
+          null,
+          null
+        );
+        return;
+      }
+      // bottom eight
+      if (targetPosIndex == "eight") {
+        desktopScrollHelper["down"]["bottom"][targetPosIndex](
+          target,
+          callToRender,
+          moveFirstItemToEndOfList,
+          createNewOrderedArrayIndexSix,
+          null,
+          null
+        );
+        return;
+      }
+      // bottom nine
+      if (targetPosIndex == "nine") {
+        desktopScrollHelper["down"]["bottom"][targetPosIndex](
+          target,
+          callToRender,
+          moveBottomFourItemsToBeginning,
+          createNewOrderedArrayIndexTwo,
+          null,
+          null
+        );
+        return;
+      }
     }
 
-    if (posindex == "nine") {
-      methodObj["down"]["bottom"][posindex](
-        element,
-        callToRender,
-        moveLastTwoItemsToBeginning,
-        createNewOrderedArrayIndexOne,
-        null,
-        null
-      );
-      return;
-    }
     // func to move two bottom items to top
     // func to move one top item to bottom
     changeCurrentSnapItemAttr(element);
     scrollingDownHelper(element);
     nextSnapSibling(element, width);
-    document.getElementById("currentFocused").focus();
+
+    width <= 375
+      ? document.getElementById("currentFocused").focus()
+      : (document.getElementById("currentFocused").scrollIntoView(),
+        document.getElementById("currentFocused").focus());
+
     console.log("down");
   },
   // right arrow
@@ -628,54 +1500,140 @@ const methodsForKeyboardScroll = {
   ) => {
     event.preventDefault();
 
-    const { moveFirstItemToEndOfList, moveLastTwoItemsToBeginning } =
-      reorderArrayFuncsObj;
+    const {
+      moveFirstItemToEndOfList,
+      moveLastTwoItemsToBeginning,
+      moveBottomFourItemsToBeginning,
+    } = reorderArrayFuncsObj;
 
-    const { createNewOrderedArrayIndexOne } = createArrayFuncsObj;
+    const {
+      createNewOrderedArrayIndexOne,
+      createNewOrderedArrayIndexTwo,
+      createNewOrderedArrayIndexSix,
+      createNewOrderedArrayIndexSeven,
+    } = createArrayFuncsObj;
 
     const { scrollingDownHelper, nextSnapSibling } = defaultActionFuncsObj;
 
     const { changeCurrentSnapItemAttr } = defaultActionFuncsObj;
 
-    if (posindex == "one") {
-      methodObj["down"]["top"][posindex](
-        element,
-        callToRender,
-        moveFirstItemToEndOfList,
-        createNewOrderedArrayIndexOne,
-        null,
-        null
-      );
-      return;
+    /**
+     * mobile
+     * **/
+
+    if (width <= 375) {
+      if (posindex == "one") {
+        methodObj["down"]["top"][posindex](
+          element,
+          callToRender,
+          moveFirstItemToEndOfList,
+          createNewOrderedArrayIndexOne,
+          null,
+          null
+        );
+        return;
+      }
+
+      if (posindex == "eight") {
+        methodObj["down"]["bottom"][posindex](
+          element,
+          callToRender,
+          moveFirstItemToEndOfList,
+          createNewOrderedArrayIndexSeven,
+          null,
+          null
+        );
+      }
+
+      if (posindex == "nine") {
+        methodObj["down"]["bottom"][posindex](
+          element,
+          callToRender,
+          moveLastTwoItemsToBeginning,
+          createNewOrderedArrayIndexOne,
+          null,
+          null
+        );
+        return;
+      }
     }
 
-    if (posindex == "eight") {
-      methodObj["down"]["bottom"][posindex](
-        element,
-        callToRender,
-        moveFirstItemToEndOfList,
-        createNewOrderedArrayIndexSeven,
-        null,
-        null
-      );
-    }
+    /**
+     * desktop
+     * **/
 
-    if (posindex == "nine") {
-      methodObj["down"]["bottom"][posindex](
-        element,
-        callToRender,
-        moveLastTwoItemsToBeginning,
-        createNewOrderedArrayIndexOne,
-        null,
-        null
-      );
-      return;
+    if (width >= 1440) {
+      // top one
+      if (targetPosIndex == "one") {
+        desktopScrollHelper["down"]["top"][targetPosIndex](
+          target,
+          callToRender,
+          moveFirstItemToEndOfList,
+          createNewOrderedArrayIndexTwo,
+          null,
+          null
+        );
+        return;
+      }
+      // top two
+      if (targetPosIndex == "two") {
+        desktopScrollHelper["down"]["top"][targetPosIndex](
+          target,
+          callToRender,
+          moveFirstItemToEndOfList,
+          createNewOrderedArrayIndexTwo,
+          null,
+          null
+        );
+        return;
+      }
+      // bottom seven
+      if (targetPosIndex == "seven") {
+        desktopScrollHelper["down"]["bottom"][targetPosIndex](
+          target,
+          callToRender,
+          moveFirstItemToEndOfList,
+          createNewOrderedArrayIndexSix,
+          null,
+          null
+        );
+        return;
+      }
+      // bottom eight
+      if (targetPosIndex == "eight") {
+        desktopScrollHelper["down"]["bottom"][targetPosIndex](
+          target,
+          callToRender,
+          moveFirstItemToEndOfList,
+          createNewOrderedArrayIndexSix,
+          null,
+          null
+        );
+        return;
+      }
+      // bottom nine
+      if (targetPosIndex == "nine") {
+        desktopScrollHelper["down"]["bottom"][targetPosIndex](
+          target,
+          callToRender,
+          moveBottomFourItemsToBeginning,
+          createNewOrderedArrayIndexTwo,
+          null,
+          null
+        );
+        return;
+      }
     }
 
     changeCurrentSnapItemAttr(element);
     scrollingDownHelper(element);
     nextSnapSibling(element, width);
-    document.getElementById("currentFocused").focus();
+
+    width <= 375
+      ? document.getElementById("currentFocused").focus()
+      : (document.getElementById("currentFocused").scrollIntoView(),
+        document.getElementById("currentFocused").focus());
+
     console.log("right");
   },
   // home
@@ -701,6 +1659,13 @@ const methodsForKeyboardScroll = {
       const { changeCurrentSnapItemAttr } = defaultActionFuncsObj;
 
       changeCurrentSnapItemAttr(element);
+
+      /**
+       * mobile
+       * **/
+
+      if (width <= 375) {
+      }
 
       if (posindex == "nine") {
         const lastTwoItemsToBeginning = moveLastTwoItemsToBeginning(element);
@@ -740,6 +1705,10 @@ const methodsForKeyboardScroll = {
       // firstItem.scrollIntoView();
     }
 
+    /**
+     * desktop
+     * **/
+
     console.log("home");
   },
   // end
@@ -765,6 +1734,10 @@ const methodsForKeyboardScroll = {
       const { changeCurrentSnapItemAttr } = defaultActionFuncsObj;
 
       changeCurrentSnapItemAttr(element);
+
+      /**
+       * mobile
+       * **/
 
       if (posindex == "one") {
         const firstTwoItemsToBottom = moveFirstTwoItemsToEnd(element);
@@ -802,6 +1775,10 @@ const methodsForKeyboardScroll = {
         };
       });
 
+      /**
+       * desktop
+       * **/
+
       console.log("end");
     }
   },
@@ -830,6 +1807,10 @@ const methodsForKeyboardScroll = {
       defaultActionFuncsObj;
 
     changeCurrentSnapItemAttr(element);
+
+    /**
+     * mobile
+     * **/
 
     // check if event.target data-pos-index is "nine" or "two"
     if (posindex == "nine") {
@@ -873,6 +1854,10 @@ const methodsForKeyboardScroll = {
       return;
     }
 
+    /**
+     * desktop
+     * **/
+
     // select previous previous sibling element
 
     const twoItemsAboveCurrent =
@@ -911,6 +1896,10 @@ const methodsForKeyboardScroll = {
       // check if posindex is "one", "seven" or "eight"
 
       changeCurrentSnapItemAttr(element);
+
+      /**
+       * mobile
+       * **/
 
       if (posindex == "one") {
         const firstItemToBottomPosindexOne = moveFirstItemToEndOfList(element);
@@ -955,6 +1944,10 @@ const methodsForKeyboardScroll = {
         return;
       }
 
+      /**
+       * desktop
+       * **/
+
       // select next next sibling element
 
       const twoItemsBelowCurrent =
@@ -974,6 +1967,8 @@ export function keyboardScrollThroughSnapItems(event) {
   // event.code
   const windowWidth = window.innerWidth;
   const keyPropForMobileAndDesktop = windowWidth <= 375 ? "mobile" : "desktop";
+  const scrollHelperMethodObj =
+    windowWidth <= 375 ? mobileScrollHelper : desktopScrollHelper;
   // pass in event and element to methodsForKeyboardScroll[key]()
   // console.log(event.target.closest("div[aria-roledescription='slide']"));
   const currentFocusedSnapItem = document.getElementById("currentFocused");
@@ -1002,12 +1997,14 @@ export function keyboardScrollThroughSnapItems(event) {
       windowWidth,
       targetPosIndex,
       this.setSnapArray,
-      scrollHelper,
+      scrollHelperMethodObj,
       {
         moveFirstItemToEndOfList,
         moveFirstTwoItemsToEnd,
         moveLastItemToBeginningOfList,
         moveLastTwoItemsToBeginning,
+        moveTopFourItemsToBottom,
+        moveBottomFourItemsToBeginning,
       },
       {
         createNewOrderedArrayIndexOne,
@@ -1121,272 +2118,272 @@ export function observeSnapItemsContainerMobile(
 
   console.log("another test mobile");
 
-  const mobileScrollHelper = {
-    top: {
-      one: (target, observer) => {
-        console.log("resize", isResize);
-        console.log(target);
-        console.log("observer", observer);
+  // const mobileScrollHelper = {
+  //   top: {
+  //     one: (target, observer) => {
+  //       console.log("resize", isResize);
+  //       console.log(target);
+  //       console.log("observer", observer);
 
-        target.nextElementSibling.setAttribute("tabindex", "-1");
-        target.nextElementSibling.setAttribute("aria-hidden", "true");
-        console.log(target.parentElement.children);
-        const parentChildren = [...target.parentElement.children];
-        const arr = [...parentChildren];
-        const lastItem = arr[arr.length - 1];
-        const beforeLastItem = arr.slice(0, -1);
-        console.log(lastItem), console.log(beforeLastItem);
-        const reorderItems = createNewOrderedArrayIndexOne(
-          [lastItem, ...beforeLastItem],
-          "1"
-        );
-        console.log(reorderItems);
-        observer.disconnect();
+  //       target.nextElementSibling.setAttribute("tabindex", "-1");
+  //       target.nextElementSibling.setAttribute("aria-hidden", "true");
+  //       console.log(target.parentElement.children);
+  //       const parentChildren = [...target.parentElement.children];
+  //       const arr = [...parentChildren];
+  //       const lastItem = arr[arr.length - 1];
+  //       const beforeLastItem = arr.slice(0, -1);
+  //       console.log(lastItem), console.log(beforeLastItem);
+  //       const reorderItems = createNewOrderedArrayIndexOne(
+  //         [lastItem, ...beforeLastItem],
+  //         "1"
+  //       );
+  //       console.log(reorderItems);
+  //       observer.disconnect();
 
-        // callFuncToRenderNewArray(reorderItems);
-        callFuncToRenderNewArray((prev) => {
-          return {
-            ...prev,
-            bottomOrTopArray: reorderItems,
-            targetElement: "one",
-          };
-        });
-      },
-      two: (target, observer, prevFocused) => {
-        console.log("resize", isResize);
+  //       // callFuncToRenderNewArray(reorderItems);
+  //       callFuncToRenderNewArray((prev) => {
+  //         return {
+  //           ...prev,
+  //           bottomOrTopArray: reorderItems,
+  //           targetElement: "one",
+  //         };
+  //       });
+  //     },
+  //     two: (target, observer, prevFocused) => {
+  //       console.log("resize", isResize);
 
-        console.log(target);
-        console.log("observer", observer);
+  //       console.log(target);
+  //       console.log("observer", observer);
 
-        prevFocused.getAttribute("data-pos-index") == "one"
-          ? (target.previousElementSibling.setAttribute("tabindex", "-1"),
-            target.previousElementSibling.setAttribute("aria-hidden", "true"))
-          : null;
-        prevFocused.getAttribute("data-pos-index") == "three"
-          ? (target.nextElementSibling.setAttribute("tabindex", "-1"),
-            target.nextElementSibling.setAttribute("aria-hidden", "true"))
-          : null;
+  //       prevFocused.getAttribute("data-pos-index") == "one"
+  //         ? (target.previousElementSibling.setAttribute("tabindex", "-1"),
+  //           target.previousElementSibling.setAttribute("aria-hidden", "true"))
+  //         : null;
+  //       prevFocused.getAttribute("data-pos-index") == "three"
+  //         ? (target.nextElementSibling.setAttribute("tabindex", "-1"),
+  //           target.nextElementSibling.setAttribute("aria-hidden", "true"))
+  //         : null;
 
-        // target.previousElementSibling.setAttribute("tabindex", "-1");
-        // target.previousElementSibling.setAttribute("aria-hidden", "true");
+  //       // target.previousElementSibling.setAttribute("tabindex", "-1");
+  //       // target.previousElementSibling.setAttribute("aria-hidden", "true");
 
-        // target.nextElementSibling.setAttribute("tabindex", "-1");
-        // target.nextElementSibling.setAttribute("aria-hidden", "true");
-        console.log(target.parentElement.children);
-        const parentChildren = [...target.parentElement.children];
-        const copyOfArr = [...parentChildren];
-        const [firstItem, ...restOfArray] = copyOfArr;
-        console.log(firstItem);
-        console.log(restOfArray);
-        const newOrderedItems = createNewOrderedArrayIndexOne(
-          [...restOfArray, firstItem],
-          "2"
-        );
-        console.log(newOrderedItems);
-        observer.disconnect();
+  //       // target.nextElementSibling.setAttribute("tabindex", "-1");
+  //       // target.nextElementSibling.setAttribute("aria-hidden", "true");
+  //       console.log(target.parentElement.children);
+  //       const parentChildren = [...target.parentElement.children];
+  //       const copyOfArr = [...parentChildren];
+  //       const [firstItem, ...restOfArray] = copyOfArr;
+  //       console.log(firstItem);
+  //       console.log(restOfArray);
+  //       const newOrderedItems = createNewOrderedArrayIndexOne(
+  //         [...restOfArray, firstItem],
+  //         "2"
+  //       );
+  //       console.log(newOrderedItems);
+  //       observer.disconnect();
 
-        // callFuncToRenderNewArray(newOrderedItems);
-        callFuncToRenderNewArray((values) => {
-          return {
-            ...values,
-            bottomOrTopArray: newOrderedItems,
-            targetElement: "two",
-          };
-        });
-      },
-      nine: (target, observer) => {
-        console.log("resize", isResize);
+  //       // callFuncToRenderNewArray(newOrderedItems);
+  //       callFuncToRenderNewArray((values) => {
+  //         return {
+  //           ...values,
+  //           bottomOrTopArray: newOrderedItems,
+  //           targetElement: "two",
+  //         };
+  //       });
+  //     },
+  //     nine: (target, observer) => {
+  //       console.log("resize", isResize);
 
-        console.log(target);
-        console.log("observer", observer);
+  //       console.log(target);
+  //       console.log("observer", observer);
 
-        target.nextElementSibling.setAttribute("tabindex", "-1");
-        target.nextElementSibling.setAttribute("aria-hidden", "true");
-        console.log(target.parentElement.children);
+  //       target.nextElementSibling.setAttribute("tabindex", "-1");
+  //       target.nextElementSibling.setAttribute("aria-hidden", "true");
+  //       console.log(target.parentElement.children);
 
-        const scrollChildren = [...target.parentElement.children];
-        const copyOfArray = [...scrollChildren];
-        const firstItem = copyOfArray[0];
-        const secondItem = copyOfArray[1];
-        const restOfItems = copyOfArray.slice(2);
-        console.log(firstItem);
-        console.log(secondItem);
-        console.log(restOfItems);
-        const reorderedChildren = createNewOrderedArrayIndexSeven(
-          [...restOfItems, firstItem, secondItem],
-          "9"
-        );
-        console.log(reorderedChildren);
-        observer.disconnect();
+  //       const scrollChildren = [...target.parentElement.children];
+  //       const copyOfArray = [...scrollChildren];
+  //       const firstItem = copyOfArray[0];
+  //       const secondItem = copyOfArray[1];
+  //       const restOfItems = copyOfArray.slice(2);
+  //       console.log(firstItem);
+  //       console.log(secondItem);
+  //       console.log(restOfItems);
+  //       const reorderedChildren = createNewOrderedArrayIndexSeven(
+  //         [...restOfItems, firstItem, secondItem],
+  //         "9"
+  //       );
+  //       console.log(reorderedChildren);
+  //       observer.disconnect();
 
-        // callFuncToRenderNewArray(reorderedChildren);
-        callFuncToRenderNewArray((values) => {
-          return {
-            ...values,
-            bottomOrTopArray: reorderedChildren,
-            targetElement: "nine",
-          };
-        });
-      },
-    },
-    bottom: {
-      one: (target, observer) => {
-        console.log("resize", isResize);
+  //       // callFuncToRenderNewArray(reorderedChildren);
+  //       callFuncToRenderNewArray((values) => {
+  //         return {
+  //           ...values,
+  //           bottomOrTopArray: reorderedChildren,
+  //           targetElement: "nine",
+  //         };
+  //       });
+  //     },
+  //   },
+  //   bottom: {
+  //     one: (target, observer) => {
+  //       console.log("resize", isResize);
 
-        console.log(target);
-        console.log("observer", observer);
-        target.previousElementSibling.setAttribute("tabindex", "-1");
-        target.previousElementSibling.setAttribute("aria-hidden", "true");
-        console.log(target.parentElement.children);
+  //       console.log(target);
+  //       console.log("observer", observer);
+  //       target.previousElementSibling.setAttribute("tabindex", "-1");
+  //       target.previousElementSibling.setAttribute("aria-hidden", "true");
+  //       console.log(target.parentElement.children);
 
-        const snapItems = [...target.parentElement.children];
-        const copyOfSnapItems = [...snapItems];
-        const secondToLast = copyOfSnapItems[copyOfSnapItems.length - 2];
-        const lastItem = copyOfSnapItems[copyOfSnapItems.length - 1];
-        const beforeLastTwo = copyOfSnapItems.slice(0, -2);
-        console.log(secondToLast);
-        console.log(lastItem);
-        console.log(beforeLastTwo);
-        const reorderedItems = createNewOrderedArrayIndexOne(
-          [secondToLast, lastItem, ...beforeLastTwo],
-          "1"
-        );
-        console.log(reorderedItems);
-        observer.disconnect();
-        // callFuncToRenderNewArray(reorderedItems);
-        callFuncToRenderNewArray((prevValues) => {
-          return {
-            ...prevValues,
-            bottomOrTopArray: reorderedItems,
-            targetElement: "one",
-          };
-        });
-      },
-      eight: (target, observer, prevFocus) => {
-        console.log("resize", isResize);
+  //       const snapItems = [...target.parentElement.children];
+  //       const copyOfSnapItems = [...snapItems];
+  //       const secondToLast = copyOfSnapItems[copyOfSnapItems.length - 2];
+  //       const lastItem = copyOfSnapItems[copyOfSnapItems.length - 1];
+  //       const beforeLastTwo = copyOfSnapItems.slice(0, -2);
+  //       console.log(secondToLast);
+  //       console.log(lastItem);
+  //       console.log(beforeLastTwo);
+  //       const reorderedItems = createNewOrderedArrayIndexOne(
+  //         [secondToLast, lastItem, ...beforeLastTwo],
+  //         "1"
+  //       );
+  //       console.log(reorderedItems);
+  //       observer.disconnect();
+  //       // callFuncToRenderNewArray(reorderedItems);
+  //       callFuncToRenderNewArray((prevValues) => {
+  //         return {
+  //           ...prevValues,
+  //           bottomOrTopArray: reorderedItems,
+  //           targetElement: "one",
+  //         };
+  //       });
+  //     },
+  //     eight: (target, observer, prevFocus) => {
+  //       console.log("resize", isResize);
 
-        console.log(target);
-        console.log("observer", observer);
+  //       console.log(target);
+  //       console.log("observer", observer);
 
-        prevFocus.getAttribute("data-pos-index") == "seven"
-          ? (target.previousElementSibling.setAttribute("tabindex", "-1"),
-            target.previousElementSibling.setAttribute("aria-hidden", "true"))
-          : null;
-        prevFocus.getAttribute("data-pos-index") == "nine"
-          ? (target.nextElementSibling.setAttribute("tabindex", "-1"),
-            target.nextElementSibling.setAttribute("aria-hidden", "true"))
-          : null;
+  //       prevFocus.getAttribute("data-pos-index") == "seven"
+  //         ? (target.previousElementSibling.setAttribute("tabindex", "-1"),
+  //           target.previousElementSibling.setAttribute("aria-hidden", "true"))
+  //         : null;
+  //       prevFocus.getAttribute("data-pos-index") == "nine"
+  //         ? (target.nextElementSibling.setAttribute("tabindex", "-1"),
+  //           target.nextElementSibling.setAttribute("aria-hidden", "true"))
+  //         : null;
 
-        //         target.nextElementSibling.setAttribute("tabindex", "-1");
-        //         target.nextElementSibling.setAttribute("aria-hidden", "true");
+  //       //         target.nextElementSibling.setAttribute("tabindex", "-1");
+  //       //         target.nextElementSibling.setAttribute("aria-hidden", "true");
 
-        // target.previousElementSibling.setAttribute("tabindex", "-1");
-        //         target.previousElementSibling.setAttribute("aria-hidden", "true");
+  //       // target.previousElementSibling.setAttribute("tabindex", "-1");
+  //       //         target.previousElementSibling.setAttribute("aria-hidden", "true");
 
-        console.log(target.parentElement.children);
+  //       console.log(target.parentElement.children);
 
-        const snapChildren = [...target.parentElement.children];
-        const copyOfSnapChildren = [].concat(snapChildren);
-        const lastItem = copyOfSnapChildren[copyOfSnapChildren.length - 1];
-        const beforeLastItem = copyOfSnapChildren.slice(0, -1);
-        console.log(lastItem);
-        console.log(beforeLastItem);
-        const reordernSnapItem = createNewOrderedArrayIndexSeven(
-          [lastItem, ...beforeLastItem],
-          "8"
-        );
-        console.log(reordernSnapItem);
-        observer.disconnect();
+  //       const snapChildren = [...target.parentElement.children];
+  //       const copyOfSnapChildren = [].concat(snapChildren);
+  //       const lastItem = copyOfSnapChildren[copyOfSnapChildren.length - 1];
+  //       const beforeLastItem = copyOfSnapChildren.slice(0, -1);
+  //       console.log(lastItem);
+  //       console.log(beforeLastItem);
+  //       const reordernSnapItem = createNewOrderedArrayIndexSeven(
+  //         [lastItem, ...beforeLastItem],
+  //         "8"
+  //       );
+  //       console.log(reordernSnapItem);
+  //       observer.disconnect();
 
-        // callFuncToRenderNewArray(reordernSnapItem);
-        // debugger;
-        callFuncToRenderNewArray((prevValues) => {
-          return {
-            ...prevValues,
-            bottomOrTopArray: reordernSnapItem,
-            targetElement: "eight",
-          };
-        });
-      },
-      nine: (target, observer) => {
-        console.log("resize", isResize);
+  //       // callFuncToRenderNewArray(reordernSnapItem);
+  //       // debugger;
+  //       callFuncToRenderNewArray((prevValues) => {
+  //         return {
+  //           ...prevValues,
+  //           bottomOrTopArray: reordernSnapItem,
+  //           targetElement: "eight",
+  //         };
+  //       });
+  //     },
+  //     nine: (target, observer) => {
+  //       console.log("resize", isResize);
 
-        console.log(target);
-        console.log("observer", observer);
+  //       console.log(target);
+  //       console.log("observer", observer);
 
-        target.previousElementSibling.setAttribute("tabindex", "-1");
-        target.previousElementSibling.setAttribute("aria-hidden", "true");
-        console.log(target.parentElement.children);
+  //       target.previousElementSibling.setAttribute("tabindex", "-1");
+  //       target.previousElementSibling.setAttribute("aria-hidden", "true");
+  //       console.log(target.parentElement.children);
 
-        const parentChildren = [...target.parentElement.children];
-        const copyOfArray = parentChildren.slice();
-        // get target parent children
-        const [firstElement, ...restOfItems] = copyOfArray;
-        console.log(firstElement);
-        console.log(restOfItems);
-        const reorderArray = createNewOrderedArrayIndexSeven(
-          [...restOfItems, firstElement],
-          "9"
-        );
-        console.log(reorderArray);
-        observer.disconnect();
+  //       const parentChildren = [...target.parentElement.children];
+  //       const copyOfArray = parentChildren.slice();
+  //       // get target parent children
+  //       const [firstElement, ...restOfItems] = copyOfArray;
+  //       console.log(firstElement);
+  //       console.log(restOfItems);
+  //       const reorderArray = createNewOrderedArrayIndexSeven(
+  //         [...restOfItems, firstElement],
+  //         "9"
+  //       );
+  //       console.log(reorderArray);
+  //       observer.disconnect();
 
-        // callFuncToRenderNewArray(reorderArray);
-        callFuncToRenderNewArray((prevValues) => {
-          return {
-            ...prevValues,
-            bottomOrTopArray: reorderArray,
-            targetElement: "nine",
-          };
-        });
-      },
-    },
-    // nine: (target) => {
-    //   target.previousElementSibling.setAttribute("tabindex", "-1");
-    //   // get target parent children
-    //   const [firstElement, ...restOfItems] = [...target.parentElement.children];
-    //   const reorderArray = [...restOfItems, firstElement].map(
-    //     function createNewOrderedList(element, index) {
-    //       /**
-    //                      * classText,
-    //                     posIndex,
-    //                     spanText,
-    //                     tabindex,
-    //                     ariaHidden,
-    //                     ariaLabel,
-    //                      * **/
-    //       const objOfValues =
-    //         index == 7
-    //           ? {
-    //               classText: "snap-item",
-    //               posIndex: element.getAttribute("data-pos-index"),
-    //               spanText: element.firstElementChild.innerText,
-    //               tabindex: "0",
-    //               ariaHidden: "false",
-    //               ariaLabel: `9 of 9`,
-    //               focusId: "currentFocused",
-    //             }
-    //           : {
-    //               classText: "snap-item",
-    //               posIndex: element.getAttribute("data-pos-index"),
-    //               spanText: element.firstElementChild.innerText,
-    //               tabindex: "-1",
-    //               ariaHidden: "true",
-    //               ariaLabel: element.getAttribute("aria-label"),
-    //             };
-    //       return objOfValues;
-    //     }
-    //   );
-    //   console.log(reorderArray);
-    //   callFuncToRenderNewArray((prevValues) => {
-    //     return {
-    //       ...prevValues,
-    //       upArrowArray: reorderArray,
-    //       downArrowArray: null,
-    //     };
-    //   });
-    // },
-  };
+  //       // callFuncToRenderNewArray(reorderArray);
+  //       callFuncToRenderNewArray((prevValues) => {
+  //         return {
+  //           ...prevValues,
+  //           bottomOrTopArray: reorderArray,
+  //           targetElement: "nine",
+  //         };
+  //       });
+  //     },
+  //   },
+  // nine: (target) => {
+  //   target.previousElementSibling.setAttribute("tabindex", "-1");
+  //   // get target parent children
+  //   const [firstElement, ...restOfItems] = [...target.parentElement.children];
+  //   const reorderArray = [...restOfItems, firstElement].map(
+  //     function createNewOrderedList(element, index) {
+  //       /**
+  //                      * classText,
+  //                     posIndex,
+  //                     spanText,
+  //                     tabindex,
+  //                     ariaHidden,
+  //                     ariaLabel,
+  //                      * **/
+  //       const objOfValues =
+  //         index == 7
+  //           ? {
+  //               classText: "snap-item",
+  //               posIndex: element.getAttribute("data-pos-index"),
+  //               spanText: element.firstElementChild.innerText,
+  //               tabindex: "0",
+  //               ariaHidden: "false",
+  //               ariaLabel: `9 of 9`,
+  //               focusId: "currentFocused",
+  //             }
+  //           : {
+  //               classText: "snap-item",
+  //               posIndex: element.getAttribute("data-pos-index"),
+  //               spanText: element.firstElementChild.innerText,
+  //               tabindex: "-1",
+  //               ariaHidden: "true",
+  //               ariaLabel: element.getAttribute("aria-label"),
+  //             };
+  //       return objOfValues;
+  //     }
+  //   );
+  //   console.log(reorderArray);
+  //   callFuncToRenderNewArray((prevValues) => {
+  //     return {
+  //       ...prevValues,
+  //       upArrowArray: reorderArray,
+  //       downArrowArray: null,
+  //     };
+  //   });
+  // },
+  // };
   // callback
   function assignValuesToElementAttrMobile(entries, observer) {
     entries.forEach(function loopThroughItemsMobile(entry) {
@@ -1666,6 +2663,10 @@ export function observeSnapItemsContainerMobile(
  * DELETE LATER!!!
  * **/
 
+/**
+ * create array factory func
+ * **/
+
 export function factoryFuncCreateArray(indexOfArray) {
   return function innerFunc(array, quantity, renderFunc) {
     return array.map(function createNewOrderedList(element, index) {
@@ -1700,6 +2701,114 @@ export function factoryFuncCreateArray(indexOfArray) {
             };
       return objOfValues;
     });
+  };
+}
+
+/**
+ * mobile scroll up down factory func
+ * **/
+
+function mobileScrollUpFactoryFunc(
+  mobileMethodsObj,
+  { moveFirstTwoItemsToEnd, moveLastItemToBeginningOfList },
+  { createNewOrderedArrayIndexSeven, createNewOrderedArrayIndexOne }
+) {
+  return function innerFunc(
+    target,
+    posIndex,
+    renderComponent,
+    scrollType,
+    arrowBtn
+  ) {
+    console.log(moveFirstTwoItemsToEnd, moveLastItemToBeginningOfList);
+    console.log(createNewOrderedArrayIndexSeven, createNewOrderedArrayIndexOne);
+    // top one
+    if (posIndex == "one") {
+      mobileMethodsObj["up"]["top"][posIndex](
+        target,
+        renderComponent,
+        moveFirstTwoItemsToEnd,
+        createNewOrderedArrayIndexSeven,
+        scrollType,
+        arrowBtn
+      );
+      return;
+    }
+    // top eight
+    if (posIndex == "two") {
+      mobileMethodsObj["up"]["top"][posIndex](
+        target,
+        renderComponent,
+        moveLastItemToBeginningOfList,
+        createNewOrderedArrayIndexOne,
+        scrollType,
+        arrowBtn
+      );
+      return;
+    }
+    // bottom nine
+    if (posIndex == "nine") {
+      mobileMethodsObj["up"]["bottom"][posIndex](
+        target,
+        renderComponent,
+        moveLastItemToBeginningOfList,
+        createNewOrderedArrayIndexSeven,
+        scrollType,
+        arrowBtn
+      );
+      return;
+    }
+  };
+}
+
+function mobileScrollDownFactoryFunc(
+  mobileMethodsObj,
+  { moveFirstItemToEndOfList, moveLastTwoItemsToBeginning },
+  { createNewOrderedArrayIndexOne, createNewOrderedArrayIndexSeven }
+) {
+  return function innerFunc(
+    target,
+    posIndex,
+    renderComponent,
+    scrollType,
+    arrowBtn
+  ) {
+    // top one
+    if (posIndex == "one") {
+      mobileMethodsObj["down"]["top"][posIndex](
+        target,
+        renderComponent,
+        moveFirstItemToEndOfList,
+        createNewOrderedArrayIndexOne,
+        scrollType,
+        arrowBtn
+      );
+      return;
+    }
+    // bottom eight
+    if (posIndex == "eight") {
+      mobileMethodsObj["down"]["bottom"][posIndex](
+        target,
+        renderComponent,
+        moveFirstItemToEndOfList,
+        createNewOrderedArrayIndexSeven,
+        scrollType,
+        arrowBtn
+      );
+      return;
+    }
+    // bottom nine
+    if (posIndex == "nine") {
+      mobileMethodsObj["down"]["bottom"][posIndex](
+        target,
+        renderComponent,
+        moveLastTwoItemsToBeginning,
+        createNewOrderedArrayIndexOne,
+        scrollType,
+        arrowBtn
+      );
+      return;
+    }
   };
 }
 
@@ -2421,6 +3530,32 @@ export function moveFirstTwoItemsToEnd(target) {
   return result;
 }
 
+/**
+ * move top four item to bottom
+ * **/
+
+function moveTopFourItemsToBottom(target) {
+  const parentChildren = [...target.parentElement.children];
+  const copiedArr = [...parentChildren];
+  const firstFour = copiedArr.slice(0, 4);
+  const lastFive = copiedArr.slice(4);
+  const result = [...lastFive, ...firstFour];
+  return result;
+}
+
+/**
+ * move bottom four to top
+ * **/
+
+function moveBottomFourItemsToBeginning(target) {
+  const parentChildren = [...target.parentElement.children];
+  const copiedArr = [...parentChildren];
+  const lastFour = copiedArr.slice(-4);
+  const firstFive = copiedArr.slice(0, -4);
+  const result = [...lastFour, ...firstFive];
+  return result;
+}
+
 function observerHelper(target, desktopHelper) {
   // if current target element tabindex === "0" return
   // when we rerender our items the target element tabindex will be "0"
@@ -2492,7 +3627,7 @@ function desktopPreviousFocusedHelper(target) {
  * **/
 
 export function focusCenteredSnapItemOnWheelScrollDesktopMobile(event) {
-  const screenSize = window.innerWidth <= 375 ? "mobile" : "desktop";
+  const screenSize = window.innerWidth;
   console.log("screenSize", screenSize);
   const { deltaY } = event;
   const currentFocused = document.getElementById("currentFocused");
@@ -2508,38 +3643,120 @@ export function focusCenteredSnapItemOnWheelScrollDesktopMobile(event) {
 
   // when deltaY is negative run scrollingUpHelper
   if (deltaY < 0) {
-    // top one
-    if (targetPosIndex == "one") {
-      scrollHelper["up"]["top"][targetPosIndex](
-        currentFocused,
-        this.setSnapArray,
-        moveFirstTwoItemsToEnd,
-        createNewOrderedArrayIndexSeven,
-        "mouse"
-      );
-      return;
+    /**
+     * mobile
+     * **/
+    if (screenSize <= 375) {
+      // top one
+
+      if (
+        targetPosIndex == "one" ||
+        targetPosIndex == "two" ||
+        targetPosIndex == "nine"
+      ) {
+        mobileMouseScrollUp(
+          currentFocused,
+          targetPosIndex,
+          this.setSnapArray,
+          "mouse",
+          null
+        );
+        return;
+      }
+      // if (targetPosIndex == "one") {
+      //   mobileScrollHelper["up"]["top"][targetPosIndex](
+      //     currentFocused,
+      //     this.setSnapArray,
+      //     moveFirstTwoItemsToEnd,
+      //     createNewOrderedArrayIndexSeven,
+      //     "mouse"
+      //   );
+      //   return;
+      // }
+      // // top eight
+      // if (targetPosIndex == "two") {
+      //   mobileScrollHelper["up"]["top"][targetPosIndex](
+      //     currentFocused,
+      //     this.setSnapArray,
+      //     moveLastItemToBeginningOfList,
+      //     createNewOrderedArrayIndexOne,
+      //     "mouse"
+      //   );
+      //   return;
+      // }
+      // // bottom nine
+      // if (targetPosIndex == "nine") {
+      //   mobileScrollHelper["up"]["bottom"][targetPosIndex](
+      //     currentFocused,
+      //     this.setSnapArray,
+      //     moveLastItemToBeginningOfList,
+      //     createNewOrderedArrayIndexSeven,
+      //     "mouse"
+      //   );
+      //   return;
+      // }
     }
-    // top eight
-    if (targetPosIndex == "two") {
-      scrollHelper["up"]["top"][targetPosIndex](
-        currentFocused,
-        this.setSnapArray,
-        moveLastItemToBeginningOfList,
-        createNewOrderedArrayIndexOne,
-        "mouse"
-      );
-      return;
-    }
-    // bottom nine
-    if (targetPosIndex == "nine") {
-      scrollHelper["up"]["bottom"][targetPosIndex](
-        currentFocused,
-        this.setSnapArray,
-        moveLastItemToBeginningOfList,
-        createNewOrderedArrayIndexSeven,
-        "mouse"
-      );
-      return;
+
+    /**
+     * desktop
+     * **/
+
+    if (screenSize >= 1440) {
+      // top one
+      if (targetPosIndex == "one") {
+        desktopScrollHelper["up"]["top"][targetPosIndex](
+          currentFocused,
+          this.setSnapArray,
+          moveTopFourItemsToBottom,
+          createNewOrderedArrayIndexSix,
+          "mouse"
+        );
+        return;
+      }
+      // top two
+      if (targetPosIndex == "two") {
+        desktopScrollHelper["up"]["top"][targetPosIndex](
+          currentFocused,
+          this.setSnapArray,
+          moveLastItemToBeginningOfList,
+          createNewOrderedArrayIndexTwo,
+          "mouse"
+        );
+        return;
+      }
+      // top three
+      if (targetPosIndex == "three") {
+        desktopScrollHelper["up"]["top"][targetPosIndex](
+          currentFocused,
+          this.setSnapArray,
+          moveLastItemToBeginningOfList,
+          createNewOrderedArrayIndexTwo,
+          "mouse"
+        );
+        return;
+      }
+      // bottom eight
+      if (targetPosIndex == "eight") {
+        desktopScrollHelper["up"]["bottom"][targetPosIndex](
+          currentFocused,
+          this.setSnapArray,
+          moveLastItemToBeginningOfList,
+          createNewOrderedArrayIndexSix,
+          "mouse"
+        );
+        return;
+      }
+      // bottom nine
+      if (targetPosIndex == "nine") {
+        desktopScrollHelper["up"]["bottom"][targetPosIndex](
+          currentFocused,
+          this.setSnapArray,
+          moveLastItemToBeginningOfList,
+          createNewOrderedArrayIndexSix,
+          "mouse"
+        );
+        return;
+      }
     }
 
     scrollingUpHelper(currentFocused);
@@ -2551,38 +3768,119 @@ export function focusCenteredSnapItemOnWheelScrollDesktopMobile(event) {
   }
   // when deltaY is positive run scrollingDownHelper
   if (deltaY > 0) {
-    // top one
-    if (targetPosIndex == "one") {
-      scrollHelper["down"]["top"][targetPosIndex](
-        currentFocused,
-        this.setSnapArray,
-        moveFirstItemToEndOfList,
-        createNewOrderedArrayIndexOne,
-        "mouse"
-      );
-      return;
+    /**
+     * mobile
+     * **/
+    if (screenSize <= 375) {
+      if (
+        targetPosIndex == "one" ||
+        targetPosIndex == "eight" ||
+        targetPosIndex == "nine"
+      ) {
+        mobileMouseScrollDown(
+          currentFocused,
+          targetPosIndex,
+          this.setSnapArray,
+          "mouse",
+          null
+        );
+        return;
+      }
+      // // top one
+      // if (targetPosIndex == "one") {
+      //   mobileScrollHelper["down"]["top"][targetPosIndex](
+      //     currentFocused,
+      //     this.setSnapArray,
+      //     moveFirstItemToEndOfList,
+      //     createNewOrderedArrayIndexOne,
+      //     "mouse"
+      //   );
+      //   return;
+      // }
+      // // bottom eight
+      // if (targetPosIndex == "eight") {
+      //   mobileScrollHelper["down"]["bottom"][targetPosIndex](
+      //     currentFocused,
+      //     this.setSnapArray,
+      //     moveFirstItemToEndOfList,
+      //     createNewOrderedArrayIndexSeven,
+      //     "mouse"
+      //   );
+      //   return;
+      // }
+      // // bottom nine
+      // if (targetPosIndex == "nine") {
+      //   mobileScrollHelper["down"]["bottom"][targetPosIndex](
+      //     currentFocused,
+      //     this.setSnapArray,
+      //     moveLastTwoItemsToBeginning,
+      //     createNewOrderedArrayIndexOne,
+      //     "mouse"
+      //   );
+      //   return;
+      // }
     }
-    // bottom eight
-    if (targetPosIndex == "eight") {
-      scrollHelper["down"]["bottom"][targetPosIndex](
-        currentFocused,
-        this.setSnapArray,
-        moveFirstItemToEndOfList,
-        createNewOrderedArrayIndexSeven,
-        "mouse"
-      );
-      return;
-    }
-    // bottom nine
-    if (targetPosIndex == "nine") {
-      scrollHelper["down"]["bottom"][targetPosIndex](
-        currentFocused,
-        this.setSnapArray,
-        moveLastTwoItemsToBeginning,
-        createNewOrderedArrayIndexOne,
-        "mouse"
-      );
-      return;
+
+    /**
+     * desktop
+     * **/
+
+    if (screenSize >= 1440) {
+      // top one
+      if (targetPosIndex == "one") {
+        desktopScrollHelper["down"]["top"][targetPosIndex](
+          currentFocused,
+          this.setSnapArray,
+          moveFirstItemToEndOfList,
+          createNewOrderedArrayIndexTwo,
+          "mouse"
+        );
+        return;
+      }
+      // top two
+      if (targetPosIndex == "two") {
+        desktopScrollHelper["down"]["top"][targetPosIndex](
+          currentFocused,
+          this.setSnapArray,
+          moveFirstItemToEndOfList,
+          createNewOrderedArrayIndexTwo,
+          "mouse"
+        );
+        return;
+      }
+      // bottom seven
+      if (targetPosIndex == "seven") {
+        desktopScrollHelper["down"]["bottom"][targetPosIndex](
+          currentFocused,
+          this.setSnapArray,
+          moveFirstItemToEndOfList,
+          createNewOrderedArrayIndexSix,
+          "mouse"
+        );
+        return;
+      }
+      // bottom eight
+      if (targetPosIndex == "eight") {
+        desktopScrollHelper["down"]["bottom"][targetPosIndex](
+          currentFocused,
+          this.setSnapArray,
+          moveFirstItemToEndOfList,
+          createNewOrderedArrayIndexSix,
+          "mouse"
+        );
+        return;
+      }
+      // bottom nine
+      if (targetPosIndex == "nine") {
+        desktopScrollHelper["down"]["bottom"][targetPosIndex](
+          currentFocused,
+          this.setSnapArray,
+          moveBottomFourItemsToBeginning,
+          createNewOrderedArrayIndexTwo,
+          "mouse"
+        );
+        return;
+      }
     }
 
     scrollingDownHelper(currentFocused);
@@ -2590,6 +3888,9 @@ export function focusCenteredSnapItemOnWheelScrollDesktopMobile(event) {
       document.getElementById("currentFocused").focus();
     }, 500);
     console.log("scrolling down");
+    /**
+     * desktop
+     * **/
   }
 }
 
