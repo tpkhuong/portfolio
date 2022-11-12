@@ -601,7 +601,7 @@ const desktopScrollHelper = {
         upDownArrow
       ) => {
         // reorder array
-        const topItemToBottomEight = reorderArray(targett);
+        const topItemToBottomEight = reorderArray(target);
         // create array of objs
         const arrayForDesktopDownBottomEight = createArray(
           topItemToBottomEight,
@@ -686,13 +686,19 @@ const createNewOrderedArrayIndexSeven = factoryFuncCreateArray(7);
 
 const createNewOrderedArrayIndexTwo = factoryFuncCreateArray(2);
 
+const createNewOrderedArrayIndexThree = factoryFuncCreateArray(3);
+
+const createNewOrderedArrayIndexFive = factoryFuncCreateArray(5);
+
 const createNewOrderedArrayIndexSix = factoryFuncCreateArray(6);
 
 /**
  * create func for mouse scroll, arrow key scroll, arrow button scroll
  * **/
 
-// mobile scroll up
+/**
+ * mobile scroll up
+ * **/
 
 const mobileMouseScrollUp = mobileScrollUpFactoryFunc(
   mobileScrollHelper,
@@ -703,7 +709,7 @@ const mobileMouseScrollUp = mobileScrollUpFactoryFunc(
   { createNewOrderedArrayIndexSeven, createNewOrderedArrayIndexOne }
 );
 
-const arrowKeyScrollUp = mobileScrollUpFactoryFunc(
+const mobileArrowKeyScrollUp = mobileScrollUpFactoryFunc(
   mobileScrollHelper,
   {
     moveFirstTwoItemsToEnd,
@@ -712,7 +718,7 @@ const arrowKeyScrollUp = mobileScrollUpFactoryFunc(
   { createNewOrderedArrayIndexSeven, createNewOrderedArrayIndexOne }
 );
 
-const arrowBtnScrollUp = mobileScrollUpFactoryFunc(
+const mobileArrowBtnScrollUp = mobileScrollUpFactoryFunc(
   mobileScrollHelper,
   {
     moveFirstTwoItemsToEnd,
@@ -721,7 +727,9 @@ const arrowBtnScrollUp = mobileScrollUpFactoryFunc(
   { createNewOrderedArrayIndexSeven, createNewOrderedArrayIndexOne }
 );
 
-// mobile scroll down
+/**
+ * mobile scroll down
+ * **/
 
 const mobileMouseScrollDown = mobileScrollDownFactoryFunc(
   mobileScrollHelper,
@@ -734,7 +742,8 @@ const mobileMouseScrollDown = mobileScrollDownFactoryFunc(
     createNewOrderedArrayIndexSeven,
   }
 );
-const arrowKeyScrollDown = mobileScrollDownFactoryFunc(
+
+const mobileArrowKeyScrollDown = mobileScrollDownFactoryFunc(
   mobileScrollHelper,
   {
     moveFirstItemToEndOfList,
@@ -745,7 +754,8 @@ const arrowKeyScrollDown = mobileScrollDownFactoryFunc(
     createNewOrderedArrayIndexSeven,
   }
 );
-const arrowBtnScrollDown = mobileScrollDownFactoryFunc(
+
+const mobileArrowBtnScrollDown = mobileScrollDownFactoryFunc(
   mobileScrollHelper,
   {
     moveFirstItemToEndOfList,
@@ -755,6 +765,46 @@ const arrowBtnScrollDown = mobileScrollDownFactoryFunc(
     createNewOrderedArrayIndexOne,
     createNewOrderedArrayIndexSeven,
   }
+);
+
+/**
+ * desktop scroll up
+ * **/
+
+const desktopMouseScrollUp = desktopScrollUpFactoryFunc(
+  desktopScrollHelper,
+  { moveLastItemToBeginningOfList, moveTopFourItemsToBottom },
+  { createNewOrderedArrayIndexTwo, createNewOrderedArrayIndexSix }
+);
+const desktopArrowKeyScrollUp = desktopScrollUpFactoryFunc(
+  desktopScrollHelper,
+  { moveLastItemToBeginningOfList, moveTopFourItemsToBottom },
+  { createNewOrderedArrayIndexTwo, createNewOrderedArrayIndexSix }
+);
+const desktopArrowBtnScrollUp = desktopScrollUpFactoryFunc(
+  desktopScrollHelper,
+  { moveLastItemToBeginningOfList, moveTopFourItemsToBottom },
+  { createNewOrderedArrayIndexTwo, createNewOrderedArrayIndexSix }
+);
+
+/**
+ * desktop scroll down
+ * **/
+
+const desktopMouseScrollDown = desktopScrollDownFactoryFunc(
+  desktopScrollHelper,
+  { moveFirstItemToEndOfList, moveBottomFourItemsToBeginning },
+  { createNewOrderedArrayIndexTwo, createNewOrderedArrayIndexSix }
+);
+const desktopArrowKeyScrollDown = desktopScrollDownFactoryFunc(
+  desktopScrollHelper,
+  { moveFirstItemToEndOfList, moveBottomFourItemsToBeginning },
+  { createNewOrderedArrayIndexTwo, createNewOrderedArrayIndexSix }
+);
+const desktopArrowBtnScrollDown = desktopScrollDownFactoryFunc(
+  desktopScrollHelper,
+  { moveFirstItemToEndOfList, moveBottomFourItemsToBeginning },
+  { createNewOrderedArrayIndexTwo, createNewOrderedArrayIndexSix }
 );
 
 // call Object.freeze on our method obj so we can't mutate it
@@ -780,42 +830,56 @@ export function clickPreviousSnapItem(event) {
      * mobile
      * **/
     if (windowWidth <= 375) {
-      // top one
-      if (posindexUpArrowBtn == "one") {
-        mobileScrollHelper["up"]["top"][posindexUpArrowBtn](
+      if (
+        posindexUpArrowBtn == "one" ||
+        posindexUpArrowBtn == "two" ||
+        posindexUpArrowBtn == "nine"
+      ) {
+        mobileArrowBtnScrollUp(
           currentFocusedElement,
+          posindexUpArrowBtn,
           this.setSnapArray,
-          moveFirstTwoItemsToEnd,
-          createNewOrderedArrayIndexSeven,
           null,
           "upBtn"
         );
         return;
       }
-      // top eight
-      if (posindexUpArrowBtn == "two") {
-        mobileScrollHelper["up"]["top"][posindexUpArrowBtn](
-          currentFocusedElement,
-          this.setSnapArray,
-          moveLastItemToBeginningOfList,
-          createNewOrderedArrayIndexOne,
-          null,
-          "upBtn"
-        );
-        return;
-      }
-      // bottom nine
-      if (posindexUpArrowBtn == "nine") {
-        mobileScrollHelper["up"]["bottom"][posindexUpArrowBtn](
-          currentFocusedElement,
-          this.setSnapArray,
-          moveLastItemToBeginningOfList,
-          createNewOrderedArrayIndexSeven,
-          null,
-          "upBtn"
-        );
-        return;
-      }
+      // // top one
+      // if (posindexUpArrowBtn == "one") {
+      //   mobileScrollHelper["up"]["top"][posindexUpArrowBtn](
+      //     currentFocusedElement,
+      //     this.setSnapArray,
+      //     moveFirstTwoItemsToEnd,
+      //     createNewOrderedArrayIndexSeven,
+      //     null,
+      //     "upBtn"
+      //   );
+      //   return;
+      // }
+      // // top eight
+      // if (posindexUpArrowBtn == "two") {
+      //   mobileScrollHelper["up"]["top"][posindexUpArrowBtn](
+      //     currentFocusedElement,
+      //     this.setSnapArray,
+      //     moveLastItemToBeginningOfList,
+      //     createNewOrderedArrayIndexOne,
+      //     null,
+      //     "upBtn"
+      //   );
+      //   return;
+      // }
+      // // bottom nine
+      // if (posindexUpArrowBtn == "nine") {
+      //   mobileScrollHelper["up"]["bottom"][posindexUpArrowBtn](
+      //     currentFocusedElement,
+      //     this.setSnapArray,
+      //     moveLastItemToBeginningOfList,
+      //     createNewOrderedArrayIndexSeven,
+      //     null,
+      //     "upBtn"
+      //   );
+      //   return;
+      // }
     }
 
     /**
@@ -823,66 +887,83 @@ export function clickPreviousSnapItem(event) {
      * **/
 
     if (windowWidth >= 1440) {
-      // top one
-      if (posindexUpArrowBtn == "one") {
-        desktopScrollHelper["up"]["top"][posindexUpArrowBtn](
+      if (
+        posindexUpArrowBtn == "one" ||
+        posindexUpArrowBtn == "two" ||
+        posindexUpArrowBtn == "three" ||
+        posindexUpArrowBtn == "eight" ||
+        posindexUpArrowBtn == "nine"
+      ) {
+        desktopArrowBtnScrollUp(
           currentFocusedElement,
+          posindexUpArrowBtn,
           this.setSnapArray,
-          moveTopFourItemsToBottom,
-          createNewOrderedArrayIndexSix,
           null,
           "upBtn"
         );
         return;
       }
-      // top two
-      if (posindexUpArrowBtn == "two") {
-        desktopScrollHelper["up"]["top"][posindexUpArrowBtn](
-          currentFocusedElement,
-          this.setSnapArray,
-          moveLastItemToBeginningOfList,
-          createNewOrderedArrayIndexTwo,
-          null,
-          "upBtn"
-        );
-        return;
-      }
-      // top three
-      if (posindexUpArrowBtn == "three") {
-        desktopScrollHelper["up"]["top"][posindexUpArrowBtn](
-          currentFocusedElement,
-          this.setSnapArray,
-          moveLastItemToBeginningOfList,
-          createNewOrderedArrayIndexTwo,
-          null,
-          "upBtn"
-        );
-        return;
-      }
-      // bottom eight
-      if (posindexUpArrowBtn == "eight") {
-        desktopScrollHelper["up"]["bottom"][posindexUpArrowBtn](
-          currentFocusedElement,
-          this.setSnapArray,
-          moveLastItemToBeginningOfList,
-          createNewOrderedArrayIndexSix,
-          null,
-          "upBtn"
-        );
-        return;
-      }
-      // bottom nine
-      if (posindexUpArrowBtn == "nine") {
-        desktopScrollHelper["up"]["bottom"][posindexUpArrowBtn](
-          currentFocusedElement,
-          this.setSnapArray,
-          moveLastItemToBeginningOfList,
-          createNewOrderedArrayIndexSix,
-          null,
-          "upBtn"
-        );
-        return;
-      }
+
+      // // top one
+      // if (posindexUpArrowBtn == "one") {
+      //   desktopScrollHelper["up"]["top"][posindexUpArrowBtn](
+      //     currentFocusedElement,
+      //     this.setSnapArray,
+      //     moveTopFourItemsToBottom,
+      //     createNewOrderedArrayIndexSix,
+      //     null,
+      //     "upBtn"
+      //   );
+      //   return;
+      // }
+      // // top two
+      // if (posindexUpArrowBtn == "two") {
+      //   desktopScrollHelper["up"]["top"][posindexUpArrowBtn](
+      //     currentFocusedElement,
+      //     this.setSnapArray,
+      //     moveLastItemToBeginningOfList,
+      //     createNewOrderedArrayIndexTwo,
+      //     null,
+      //     "upBtn"
+      //   );
+      //   return;
+      // }
+      // // top three
+      // if (posindexUpArrowBtn == "three") {
+      //   desktopScrollHelper["up"]["top"][posindexUpArrowBtn](
+      //     currentFocusedElement,
+      //     this.setSnapArray,
+      //     moveLastItemToBeginningOfList,
+      //     createNewOrderedArrayIndexTwo,
+      //     null,
+      //     "upBtn"
+      //   );
+      //   return;
+      // }
+      // // bottom eight
+      // if (posindexUpArrowBtn == "eight") {
+      //   desktopScrollHelper["up"]["bottom"][posindexUpArrowBtn](
+      //     currentFocusedElement,
+      //     this.setSnapArray,
+      //     moveLastItemToBeginningOfList,
+      //     createNewOrderedArrayIndexSix,
+      //     null,
+      //     "upBtn"
+      //   );
+      //   return;
+      // }
+      // // bottom nine
+      // if (posindexUpArrowBtn == "nine") {
+      //   desktopScrollHelper["up"]["bottom"][posindexUpArrowBtn](
+      //     currentFocusedElement,
+      //     this.setSnapArray,
+      //     moveLastItemToBeginningOfList,
+      //     createNewOrderedArrayIndexSix,
+      //     null,
+      //     "upBtn"
+      //   );
+      //   return;
+      // }
     }
 
     // scroll up
@@ -914,42 +995,56 @@ export function clickNextSnapItem(event) {
      * **/
 
     if (windowWidth <= 375) {
-      // top one
-      if (posindexDownArrowBtn == "one") {
-        mobileScrollHelper["down"]["top"][posindexDownArrowBtn](
+      if (
+        posindexDownArrowBtn == "one" ||
+        posindexDownArrowBtn == "eight" ||
+        posindexDownArrowBtn == "nine"
+      ) {
+        mobileArrowBtnScrollDown(
           currentFocusedItem,
+          posindexDownArrowBtn,
           this.setSnapArray,
-          moveFirstItemToEndOfList,
-          createNewOrderedArrayIndexOne,
           null,
           "downBtn"
         );
         return;
       }
-      // bottom eight
-      if (posindexDownArrowBtn == "eight") {
-        mobileScrollHelper["down"]["bottom"][posindexDownArrowBtn](
-          currentFocusedItem,
-          this.setSnapArray,
-          moveFirstItemToEndOfList,
-          createNewOrderedArrayIndexSeven,
-          null,
-          "downBtn"
-        );
-        return;
-      }
-      // bottom nine
-      if (posindexDownArrowBtn == "nine") {
-        mobileScrollHelper["down"]["bottom"][posindexDownArrowBtn](
-          currentFocusedItem,
-          this.setSnapArray,
-          moveLastTwoItemsToBeginning,
-          createNewOrderedArrayIndexOne,
-          null,
-          "downBtn"
-        );
-        return;
-      }
+      // // top one
+      // if (posindexDownArrowBtn == "one") {
+      //   mobileScrollHelper["down"]["top"][posindexDownArrowBtn](
+      //     currentFocusedItem,
+      //     this.setSnapArray,
+      //     moveFirstItemToEndOfList,
+      //     createNewOrderedArrayIndexOne,
+      //     null,
+      //     "downBtn"
+      //   );
+      //   return;
+      // }
+      // // bottom eight
+      // if (posindexDownArrowBtn == "eight") {
+      //   mobileScrollHelper["down"]["bottom"][posindexDownArrowBtn](
+      //     currentFocusedItem,
+      //     this.setSnapArray,
+      //     moveFirstItemToEndOfList,
+      //     createNewOrderedArrayIndexSeven,
+      //     null,
+      //     "downBtn"
+      //   );
+      //   return;
+      // }
+      // // bottom nine
+      // if (posindexDownArrowBtn == "nine") {
+      //   mobileScrollHelper["down"]["bottom"][posindexDownArrowBtn](
+      //     currentFocusedItem,
+      //     this.setSnapArray,
+      //     moveLastTwoItemsToBeginning,
+      //     createNewOrderedArrayIndexOne,
+      //     null,
+      //     "downBtn"
+      //   );
+      //   return;
+      // }
     }
 
     /**
@@ -957,66 +1052,83 @@ export function clickNextSnapItem(event) {
      * **/
 
     if (windowWidth >= 1440) {
-      // top one
-      if (posindexDownArrowBtn == "one") {
-        desktopScrollHelper["down"]["top"][posindexDownArrowBtn](
+      if (
+        posindexDownArrowBtn == "one" ||
+        posindexDownArrowBtn == "two" ||
+        posindexDownArrowBtn == "seven" ||
+        posindexDownArrowBtn == "eight" ||
+        posindexDownArrowBtn == "nine"
+      ) {
+        desktopArrowBtnScrollDown(
           currentFocusedItem,
+          posindexDownArrowBtn,
           this.setSnapArray,
-          moveFirstItemToEndOfList,
-          createNewOrderedArrayIndexTwo,
           null,
           "downBtn"
         );
         return;
       }
-      // top two
-      if (posindexDownArrowBtn == "two") {
-        desktopScrollHelper["down"]["top"][posindexDownArrowBtn](
-          currentFocusedItem,
-          this.setSnapArray,
-          moveFirstItemToEndOfList,
-          createNewOrderedArrayIndexTwo,
-          null,
-          "downBtn"
-        );
-        return;
-      }
-      // bottom seven
-      if (posindexDownArrowBtn == "seven") {
-        desktopScrollHelper["down"]["bottom"][posindexDownArrowBtn](
-          currentFocusedItem,
-          this.setSnapArray,
-          moveFirstItemToEndOfList,
-          createNewOrderedArrayIndexSix,
-          null,
-          "downBtn"
-        );
-        return;
-      }
-      // bottom eight
-      if (posindexDownArrowBtn == "eight") {
-        desktopScrollHelper["down"]["bottom"][posindexDownArrowBtn](
-          currentFocusedItem,
-          this.setSnapArray,
-          moveFirstItemToEndOfList,
-          createNewOrderedArrayIndexSix,
-          null,
-          "downBtn"
-        );
-        return;
-      }
-      // bottom nine
-      if (posindexDownArrowBtn == "nine") {
-        desktopScrollHelper["down"]["bottom"][posindexDownArrowBtn](
-          currentFocusedItem,
-          this.setSnapArray,
-          moveBottomFourItemsToBeginning,
-          createNewOrderedArrayIndexTwo,
-          null,
-          "downBtn"
-        );
-        return;
-      }
+
+      // // top one
+      // if (posindexDownArrowBtn == "one") {
+      //   desktopScrollHelper["down"]["top"][posindexDownArrowBtn](
+      //     currentFocusedItem,
+      //     this.setSnapArray,
+      //     moveFirstItemToEndOfList,
+      //     createNewOrderedArrayIndexTwo,
+      //     null,
+      //     "downBtn"
+      //   );
+      //   return;
+      // }
+      // // top two
+      // if (posindexDownArrowBtn == "two") {
+      //   desktopScrollHelper["down"]["top"][posindexDownArrowBtn](
+      //     currentFocusedItem,
+      //     this.setSnapArray,
+      //     moveFirstItemToEndOfList,
+      //     createNewOrderedArrayIndexTwo,
+      //     null,
+      //     "downBtn"
+      //   );
+      //   return;
+      // }
+      // // bottom seven
+      // if (posindexDownArrowBtn == "seven") {
+      //   desktopScrollHelper["down"]["bottom"][posindexDownArrowBtn](
+      //     currentFocusedItem,
+      //     this.setSnapArray,
+      //     moveFirstItemToEndOfList,
+      //     createNewOrderedArrayIndexSix,
+      //     null,
+      //     "downBtn"
+      //   );
+      //   return;
+      // }
+      // // bottom eight
+      // if (posindexDownArrowBtn == "eight") {
+      //   desktopScrollHelper["down"]["bottom"][posindexDownArrowBtn](
+      //     currentFocusedItem,
+      //     this.setSnapArray,
+      //     moveFirstItemToEndOfList,
+      //     createNewOrderedArrayIndexSix,
+      //     null,
+      //     "downBtn"
+      //   );
+      //   return;
+      // }
+      // // bottom nine
+      // if (posindexDownArrowBtn == "nine") {
+      //   desktopScrollHelper["down"]["bottom"][posindexDownArrowBtn](
+      //     currentFocusedItem,
+      //     this.setSnapArray,
+      //     moveBottomFourItemsToBeginning,
+      //     createNewOrderedArrayIndexTwo,
+      //     null,
+      //     "downBtn"
+      //   );
+      //   return;
+      // }
     }
 
     scrollingDownHelper(currentFocusedItem);
@@ -1036,70 +1148,80 @@ const methodsForKeyboardScroll = {
     width,
     posindex,
     callToRender,
-    methodObj,
-    reorderArrayFuncsObj,
-    createArrayFuncsObj,
+    scrollFuncsObj,
     defaultActionFuncsObj
   ) => {
     event.preventDefault();
 
-    const {
-      moveFirstTwoItemsToEnd,
-      moveLastItemToBeginningOfList,
-      moveTopFourItemsToBottom,
-    } = reorderArrayFuncsObj;
+    const { mobileArrowKeyScrollUp, desktopArrowKeyScrollUp } = scrollFuncsObj;
+
+    // const {
+    //   moveFirstTwoItemsToEnd,
+    //   moveLastItemToBeginningOfList,
+    //   moveTopFourItemsToBottom,
+    // } = reorderArrayFuncsObj;
+
+    // const {
+    //   createNewOrderedArrayIndexOne,
+    //   createNewOrderedArrayIndexTwo,
+    //   createNewOrderedArrayIndexSix,
+    //   createNewOrderedArrayIndexSeven,
+    // } = createArrayFuncsObj;
 
     const {
-      createNewOrderedArrayIndexOne,
-      createNewOrderedArrayIndexTwo,
-      createNewOrderedArrayIndexSix,
-      createNewOrderedArrayIndexSeven,
-    } = createArrayFuncsObj;
+      scrollingUpHelper,
+      previousSnapSibling,
+      changeCurrentSnapItemAttr,
+    } = defaultActionFuncsObj;
 
-    const { scrollingUpHelper, previousSnapSibling } = defaultActionFuncsObj;
-
-    const { changeCurrentSnapItemAttr } = defaultActionFuncsObj;
+    changeCurrentSnapItemAttr(element);
 
     /**
      * mobile
      * **/
 
     if (width <= 375) {
-      if (posindex == "one") {
-        methodObj["up"]["top"][posindex](
-          element,
-          callToRender,
-          moveFirstTwoItemsToEnd,
-          createNewOrderedArrayIndexSeven,
-          null,
-          null
-        );
+      if (posindex == "one" || posindex == "two" || posindex == "nine") {
+        mobileArrowKeyScrollUp(element, posindex, callToRender, null, null);
+
         return;
       }
 
-      if (posindex == "two") {
-        methodObj["up"]["top"][posindex](
-          element,
-          callToRender,
-          moveLastItemToBeginningOfList,
-          createNewOrderedArrayIndexOne,
-          null,
-          null
-        );
-        return;
-      }
+      // if (posindex == "one") {
+      //   methodObj["up"]["top"][posindex](
+      //     element,
+      //     callToRender,
+      //     moveFirstTwoItemsToEnd,
+      //     createNewOrderedArrayIndexSeven,
+      //     null,
+      //     null
+      //   );
+      //   return;
+      // }
 
-      if (posindex == "nine") {
-        methodObj["up"]["bottom"][posindex](
-          element,
-          callToRender,
-          moveLastItemToBeginningOfList,
-          createNewOrderedArrayIndexSeven,
-          null,
-          null
-        );
-        return;
-      }
+      // if (posindex == "two") {
+      //   methodObj["up"]["top"][posindex](
+      //     element,
+      //     callToRender,
+      //     moveLastItemToBeginningOfList,
+      //     createNewOrderedArrayIndexOne,
+      //     null,
+      //     null
+      //   );
+      //   return;
+      // }
+
+      // if (posindex == "nine") {
+      //   methodObj["up"]["bottom"][posindex](
+      //     element,
+      //     callToRender,
+      //     moveLastItemToBeginningOfList,
+      //     createNewOrderedArrayIndexSeven,
+      //     null,
+      //     null
+      //   );
+      //   return;
+      // }
     }
 
     /**
@@ -1107,72 +1229,81 @@ const methodsForKeyboardScroll = {
      * **/
 
     if (width >= 1440) {
-      // top one
-      if (targetPosIndex == "one") {
-        desktopScrollHelper["up"]["top"][targetPosIndex](
-          target,
-          callToRender,
-          moveTopFourItemsToBottom,
-          createNewOrderedArrayIndexSix,
-          null,
-          null
-        );
-        return;
+      if (
+        posindex == "one" ||
+        posindex == "two" ||
+        posindex == "three" ||
+        posindex == "eight" ||
+        posindex == "nine"
+      ) {
+        desktopArrowKeyScrollUp(element, posindex, callToRender, null, null);
       }
-      // top two
-      if (targetPosIndex == "two") {
-        desktopScrollHelper["up"]["top"][targetPosIndex](
-          target,
-          callToRender,
-          moveLastItemToBeginningOfList,
-          createNewOrderedArrayIndexTwo,
-          null,
-          null
-        );
-        return;
-      }
-      // top three
-      if (targetPosIndex == "three") {
-        desktopScrollHelper["up"]["top"][targetPosIndex](
-          target,
-          callToRender,
-          moveLastItemToBeginningOfList,
-          createNewOrderedArrayIndexTwo,
-          null,
-          null
-        );
-        return;
-      }
-      // bottom eight
-      if (targetPosIndex == "eight") {
-        desktopScrollHelper["up"]["bottom"][targetPosIndex](
-          target,
-          callToRender,
-          moveLastItemToBeginningOfList,
-          createNewOrderedArrayIndexSix,
-          null,
-          null
-        );
-        return;
-      }
-      // bottom nine
-      if (targetPosIndex == "nine") {
-        desktopScrollHelper["up"]["bottom"][targetPosIndex](
-          target,
-          callToRender,
-          moveLastItemToBeginningOfList,
-          createNewOrderedArrayIndexSix,
-          null,
-          null
-        );
-        return;
-      }
+
+      // // top one
+      // if (targetPosIndex == "one") {
+      //   desktopScrollHelper["up"]["top"][targetPosIndex](
+      //     target,
+      //     callToRender,
+      //     moveTopFourItemsToBottom,
+      //     createNewOrderedArrayIndexSix,
+      //     null,
+      //     null
+      //   );
+      //   return;
+      // }
+      // // top two
+      // if (targetPosIndex == "two") {
+      //   desktopScrollHelper["up"]["top"][targetPosIndex](
+      //     target,
+      //     callToRender,
+      //     moveLastItemToBeginningOfList,
+      //     createNewOrderedArrayIndexTwo,
+      //     null,
+      //     null
+      //   );
+      //   return;
+      // }
+      // // top three
+      // if (targetPosIndex == "three") {
+      //   desktopScrollHelper["up"]["top"][targetPosIndex](
+      //     target,
+      //     callToRender,
+      //     moveLastItemToBeginningOfList,
+      //     createNewOrderedArrayIndexTwo,
+      //     null,
+      //     null
+      //   );
+      //   return;
+      // }
+      // // bottom eight
+      // if (targetPosIndex == "eight") {
+      //   desktopScrollHelper["up"]["bottom"][targetPosIndex](
+      //     target,
+      //     callToRender,
+      //     moveLastItemToBeginningOfList,
+      //     createNewOrderedArrayIndexSix,
+      //     null,
+      //     null
+      //   );
+      //   return;
+      // }
+      // // bottom nine
+      // if (targetPosIndex == "nine") {
+      //   desktopScrollHelper["up"]["bottom"][targetPosIndex](
+      //     target,
+      //     callToRender,
+      //     moveLastItemToBeginningOfList,
+      //     createNewOrderedArrayIndexSix,
+      //     null,
+      //     null
+      //   );
+      //   return;
+      // }
     }
 
     // func to move two top items to bottom
     // func to move one bottom item to top
 
-    changeCurrentSnapItemAttr(element);
     scrollingUpHelper(element);
     previousSnapSibling(element, width);
 
@@ -1190,70 +1321,79 @@ const methodsForKeyboardScroll = {
     width,
     posindex,
     callToRender,
-    methodObj,
-    reorderArrayFuncsObj,
-    createArrayFuncsObj,
+    scrollFuncsObj,
     defaultActionFuncsObj
   ) => {
     event.preventDefault();
 
-    const {
-      moveFirstTwoItemsToEnd,
-      moveLastItemToBeginningOfList,
-      moveTopFourItemsToBottom,
-    } = reorderArrayFuncsObj;
+    const { mobileArrowKeyScrollUp, desktopArrowKeyScrollUp } = scrollFuncsObj;
+
+    // const {
+    //   moveFirstTwoItemsToEnd,
+    //   moveLastItemToBeginningOfList,
+    //   moveTopFourItemsToBottom,
+    // } = reorderArrayFuncsObj;
+
+    // const {
+    //   createNewOrderedArrayIndexOne,
+    //   createNewOrderedArrayIndexTwo,
+    //   createNewOrderedArrayIndexSix,
+    //   createNewOrderedArrayIndexSeven,
+    // } = createArrayFuncsObj;
 
     const {
-      createNewOrderedArrayIndexOne,
-      createNewOrderedArrayIndexTwo,
-      createNewOrderedArrayIndexSix,
-      createNewOrderedArrayIndexSeven,
-    } = createArrayFuncsObj;
+      scrollingUpHelper,
+      previousSnapSibling,
+      changeCurrentSnapItemAttr,
+    } = defaultActionFuncsObj;
 
-    const { scrollingUpHelper, previousSnapSibling } = defaultActionFuncsObj;
-
-    const { changeCurrentSnapItemAttr } = defaultActionFuncsObj;
+    changeCurrentSnapItemAttr(element);
 
     /**
      * mobile
      * **/
 
     if (width <= 375) {
-      if (posindex == "one") {
-        methodObj["up"]["top"][posindex](
-          element,
-          callToRender,
-          moveFirstTwoItemsToEnd,
-          createNewOrderedArrayIndexSeven,
-          null,
-          null
-        );
-        return;
-      }
+      if (posindex == "one" || posindex == "two" || posindex == "nine") {
+        mobileArrowKeyScrollUp(element, posindex, callToRender, null, null);
 
-      if (posindex == "two") {
-        methodObj["up"]["top"][posindex](
-          element,
-          callToRender,
-          moveLastItemToBeginningOfList,
-          createNewOrderedArrayIndexOne,
-          null,
-          null
-        );
         return;
       }
+      // if (posindex == "one") {
+      //   methodObj["up"]["top"][posindex](
+      //     element,
+      //     callToRender,
+      //     moveFirstTwoItemsToEnd,
+      //     createNewOrderedArrayIndexSeven,
+      //     null,
+      //     null
+      //   );
+      //   return;
+      // }
 
-      if (posindex == "nine") {
-        methodObj["up"]["bottom"][posindex](
-          element,
-          callToRender,
-          moveLastItemToBeginningOfList,
-          createNewOrderedArrayIndexSeven,
-          null,
-          null
-        );
-        return;
-      }
+      // if (posindex == "two") {
+      //   methodObj["up"]["top"][posindex](
+      //     element,
+      //     callToRender,
+      //     moveLastItemToBeginningOfList,
+      //     createNewOrderedArrayIndexOne,
+      //     null,
+      //     null
+      //   );
+      //   return;
+      // }
+
+      // if (posindex == "nine") {
+      //   methodObj["up"]["bottom"][posindex](
+      //     element,
+      //     callToRender,
+      //     moveLastItemToBeginningOfList,
+      //     createNewOrderedArrayIndexSeven,
+      //     null,
+      //     null
+      //   );
+      //   return;
+      // }
     }
 
     /**
@@ -1261,69 +1401,78 @@ const methodsForKeyboardScroll = {
      * **/
 
     if (width >= 1440) {
+      if (
+        posindex == "one" ||
+        posindex == "two" ||
+        posindex == "three" ||
+        posindex == "eight" ||
+        posindex == "nine"
+      ) {
+        desktopArrowKeyScrollUp(element, posindex, callToRender, null, null);
+      }
+
       // top one
-      if (targetPosIndex == "one") {
-        desktopScrollHelper["up"]["top"][targetPosIndex](
-          target,
-          callToRender,
-          moveTopFourItemsToBottom,
-          createNewOrderedArrayIndexSix,
-          null,
-          null
-        );
-        return;
-      }
-      // top two
-      if (targetPosIndex == "two") {
-        desktopScrollHelper["up"]["top"][targetPosIndex](
-          target,
-          callToRender,
-          moveLastItemToBeginningOfList,
-          createNewOrderedArrayIndexTwo,
-          null,
-          null
-        );
-        return;
-      }
-      // top three
-      if (targetPosIndex == "three") {
-        desktopScrollHelper["up"]["top"][targetPosIndex](
-          target,
-          callToRender,
-          moveLastItemToBeginningOfList,
-          createNewOrderedArrayIndexTwo,
-          null,
-          null
-        );
-        return;
-      }
-      // bottom eight
-      if (targetPosIndex == "eight") {
-        desktopScrollHelper["up"]["bottom"][targetPosIndex](
-          target,
-          callToRender,
-          moveLastItemToBeginningOfList,
-          createNewOrderedArrayIndexSix,
-          null,
-          null
-        );
-        return;
-      }
-      // bottom nine
-      if (targetPosIndex == "nine") {
-        desktopScrollHelper["up"]["bottom"][targetPosIndex](
-          target,
-          callToRender,
-          moveLastItemToBeginningOfList,
-          createNewOrderedArrayIndexSix,
-          null,
-          null
-        );
-        return;
-      }
+      // if (targetPosIndex == "one") {
+      //   desktopScrollHelper["up"]["top"][targetPosIndex](
+      //     target,
+      //     callToRender,
+      //     moveTopFourItemsToBottom,
+      //     createNewOrderedArrayIndexSix,
+      //     null,
+      //     null
+      //   );
+      //   return;
+      // }
+      // // top two
+      // if (targetPosIndex == "two") {
+      //   desktopScrollHelper["up"]["top"][targetPosIndex](
+      //     target,
+      //     callToRender,
+      //     moveLastItemToBeginningOfList,
+      //     createNewOrderedArrayIndexTwo,
+      //     null,
+      //     null
+      //   );
+      //   return;
+      // }
+      // // top three
+      // if (targetPosIndex == "three") {
+      //   desktopScrollHelper["up"]["top"][targetPosIndex](
+      //     target,
+      //     callToRender,
+      //     moveLastItemToBeginningOfList,
+      //     createNewOrderedArrayIndexTwo,
+      //     null,
+      //     null
+      //   );
+      //   return;
+      // }
+      // // bottom eight
+      // if (targetPosIndex == "eight") {
+      //   desktopScrollHelper["up"]["bottom"][targetPosIndex](
+      //     target,
+      //     callToRender,
+      //     moveLastItemToBeginningOfList,
+      //     createNewOrderedArrayIndexSix,
+      //     null,
+      //     null
+      //   );
+      //   return;
+      // }
+      // // bottom nine
+      // if (targetPosIndex == "nine") {
+      //   desktopScrollHelper["up"]["bottom"][targetPosIndex](
+      //     target,
+      //     callToRender,
+      //     moveLastItemToBeginningOfList,
+      //     createNewOrderedArrayIndexSix,
+      //     null,
+      //     null
+      //   );
+      //   return;
+      // }
     }
 
-    changeCurrentSnapItemAttr(element);
     scrollingUpHelper(element);
     previousSnapSibling(element, width);
 
@@ -1341,69 +1490,76 @@ const methodsForKeyboardScroll = {
     width,
     posindex,
     callToRender,
-    methodObj,
-    reorderArrayFuncsObj,
-    createArrayFuncsObj,
+    scrollFuncsObj,
     defaultActionFuncsObj
   ) => {
     event.preventDefault();
 
-    const {
-      moveFirstItemToEndOfList,
-      moveLastTwoItemsToBeginning,
-      moveBottomFourItemsToBeginning,
-    } = reorderArrayFuncsObj;
+    const { mobileArrowKeyScrollDown, desktopArrowKeyScrollDown } =
+      scrollFuncsObj;
 
-    const {
-      createNewOrderedArrayIndexOne,
-      createNewOrderedArrayIndexTwo,
-      createNewOrderedArrayIndexSix,
-      createNewOrderedArrayIndexSeven,
-    } = createArrayFuncsObj;
+    // const {
+    //   moveFirstItemToEndOfList,
+    //   moveLastTwoItemsToBeginning,
+    //   moveBottomFourItemsToBeginning,
+    // } = reorderArrayFuncsObj;
 
-    const { scrollingDownHelper, nextSnapSibling } = defaultActionFuncsObj;
+    // const {
+    //   createNewOrderedArrayIndexOne,
+    //   createNewOrderedArrayIndexTwo,
+    //   createNewOrderedArrayIndexSix,
+    //   createNewOrderedArrayIndexSeven,
+    // } = createArrayFuncsObj;
 
-    const { changeCurrentSnapItemAttr } = defaultActionFuncsObj;
+    const { scrollingDownHelper, nextSnapSibling, changeCurrentSnapItemAttr } =
+      defaultActionFuncsObj;
+
+    changeCurrentSnapItemAttr(element);
 
     /**
      * mobile
      * **/
 
     if (width <= 375) {
-      if (posindex == "one") {
-        methodObj["down"]["top"][posindex](
-          element,
-          callToRender,
-          moveFirstItemToEndOfList,
-          createNewOrderedArrayIndexOne,
-          null,
-          null
-        );
+      if (posindex == "one" || posindex == "eight" || posindex == "nine") {
+        mobileArrowKeyScrollDown(element, posindex, callToRender, null, null);
         return;
       }
 
-      if (posindex == "eight") {
-        methodObj["down"]["bottom"][posindex](
-          element,
-          callToRender,
-          moveFirstItemToEndOfList,
-          createNewOrderedArrayIndexSeven,
-          null,
-          null
-        );
-      }
+      // if (posindex == "one") {
+      //   methodObj["down"]["top"][posindex](
+      //     element,
+      //     callToRender,
+      //     moveFirstItemToEndOfList,
+      //     createNewOrderedArrayIndexOne,
+      //     null,
+      //     null
+      //   );
+      //   return;
+      // }
 
-      if (posindex == "nine") {
-        methodObj["down"]["bottom"][posindex](
-          element,
-          callToRender,
-          moveLastTwoItemsToBeginning,
-          createNewOrderedArrayIndexOne,
-          null,
-          null
-        );
-        return;
-      }
+      // if (posindex == "eight") {
+      //   methodObj["down"]["bottom"][posindex](
+      //     element,
+      //     callToRender,
+      //     moveFirstItemToEndOfList,
+      //     createNewOrderedArrayIndexSeven,
+      //     null,
+      //     null
+      //   );
+      // }
+
+      // if (posindex == "nine") {
+      //   methodObj["down"]["bottom"][posindex](
+      //     element,
+      //     callToRender,
+      //     moveLastTwoItemsToBeginning,
+      //     createNewOrderedArrayIndexOne,
+      //     null,
+      //     null
+      //   );
+      //   return;
+      // }
     }
 
     /**
@@ -1411,71 +1567,81 @@ const methodsForKeyboardScroll = {
      * **/
 
     if (width >= 1440) {
+      if (
+        posindex == "one" ||
+        posindex == "two" ||
+        posindex == "seven" ||
+        posindex == "eight" ||
+        posindex == "nine"
+      ) {
+        desktopArrowKeyScrollDown(element, posindex, callToRender, null, null);
+        return;
+      }
+
       // top one
-      if (targetPosIndex == "one") {
-        desktopScrollHelper["down"]["top"][targetPosIndex](
-          target,
-          callToRender,
-          moveFirstItemToEndOfList,
-          createNewOrderedArrayIndexTwo,
-          null,
-          null
-        );
-        return;
-      }
-      // top two
-      if (targetPosIndex == "two") {
-        desktopScrollHelper["down"]["top"][targetPosIndex](
-          target,
-          callToRender,
-          moveFirstItemToEndOfList,
-          createNewOrderedArrayIndexTwo,
-          null,
-          null
-        );
-        return;
-      }
-      // bottom seven
-      if (targetPosIndex == "seven") {
-        desktopScrollHelper["down"]["bottom"][targetPosIndex](
-          target,
-          callToRender,
-          moveFirstItemToEndOfList,
-          createNewOrderedArrayIndexSix,
-          null,
-          null
-        );
-        return;
-      }
-      // bottom eight
-      if (targetPosIndex == "eight") {
-        desktopScrollHelper["down"]["bottom"][targetPosIndex](
-          target,
-          callToRender,
-          moveFirstItemToEndOfList,
-          createNewOrderedArrayIndexSix,
-          null,
-          null
-        );
-        return;
-      }
-      // bottom nine
-      if (targetPosIndex == "nine") {
-        desktopScrollHelper["down"]["bottom"][targetPosIndex](
-          target,
-          callToRender,
-          moveBottomFourItemsToBeginning,
-          createNewOrderedArrayIndexTwo,
-          null,
-          null
-        );
-        return;
-      }
+      // if (targetPosIndex == "one") {
+      //   desktopScrollHelper["down"]["top"][targetPosIndex](
+      //     target,
+      //     callToRender,
+      //     moveFirstItemToEndOfList,
+      //     createNewOrderedArrayIndexTwo,
+      //     null,
+      //     null
+      //   );
+      //   return;
+      // }
+      // // top two
+      // if (targetPosIndex == "two") {
+      //   desktopScrollHelper["down"]["top"][targetPosIndex](
+      //     target,
+      //     callToRender,
+      //     moveFirstItemToEndOfList,
+      //     createNewOrderedArrayIndexTwo,
+      //     null,
+      //     null
+      //   );
+      //   return;
+      // }
+      // // bottom seven
+      // if (targetPosIndex == "seven") {
+      //   desktopScrollHelper["down"]["bottom"][targetPosIndex](
+      //     target,
+      //     callToRender,
+      //     moveFirstItemToEndOfList,
+      //     createNewOrderedArrayIndexSix,
+      //     null,
+      //     null
+      //   );
+      //   return;
+      // }
+      // // bottom eight
+      // if (targetPosIndex == "eight") {
+      //   desktopScrollHelper["down"]["bottom"][targetPosIndex](
+      //     target,
+      //     callToRender,
+      //     moveFirstItemToEndOfList,
+      //     createNewOrderedArrayIndexSix,
+      //     null,
+      //     null
+      //   );
+      //   return;
+      // }
+      // // bottom nine
+      // if (targetPosIndex == "nine") {
+      //   desktopScrollHelper["down"]["bottom"][targetPosIndex](
+      //     target,
+      //     callToRender,
+      //     moveBottomFourItemsToBeginning,
+      //     createNewOrderedArrayIndexTwo,
+      //     null,
+      //     null
+      //   );
+      //   return;
+      // }
     }
 
     // func to move two bottom items to top
     // func to move one top item to bottom
-    changeCurrentSnapItemAttr(element);
     scrollingDownHelper(element);
     nextSnapSibling(element, width);
 
@@ -1493,69 +1659,76 @@ const methodsForKeyboardScroll = {
     width,
     posindex,
     callToRender,
-    methodObj,
-    reorderArrayFuncsObj,
-    createArrayFuncsObj,
+    scrollFuncsObj,
     defaultActionFuncsObj
   ) => {
     event.preventDefault();
 
-    const {
-      moveFirstItemToEndOfList,
-      moveLastTwoItemsToBeginning,
-      moveBottomFourItemsToBeginning,
-    } = reorderArrayFuncsObj;
+    const { mobileArrowKeyScrollDown, desktopArrowKeyScrollDown } =
+      scrollFuncsObj;
 
-    const {
-      createNewOrderedArrayIndexOne,
-      createNewOrderedArrayIndexTwo,
-      createNewOrderedArrayIndexSix,
-      createNewOrderedArrayIndexSeven,
-    } = createArrayFuncsObj;
+    // const {
+    //   moveFirstItemToEndOfList,
+    //   moveLastTwoItemsToBeginning,
+    //   moveBottomFourItemsToBeginning,
+    // } = reorderArrayFuncsObj;
 
-    const { scrollingDownHelper, nextSnapSibling } = defaultActionFuncsObj;
+    // const {
+    //   createNewOrderedArrayIndexOne,
+    //   createNewOrderedArrayIndexTwo,
+    //   createNewOrderedArrayIndexSix,
+    //   createNewOrderedArrayIndexSeven,
+    // } = createArrayFuncsObj;
 
-    const { changeCurrentSnapItemAttr } = defaultActionFuncsObj;
+    const { scrollingDownHelper, nextSnapSibling, changeCurrentSnapItemAttr } =
+      defaultActionFuncsObj;
+
+    changeCurrentSnapItemAttr(element);
 
     /**
      * mobile
      * **/
 
     if (width <= 375) {
-      if (posindex == "one") {
-        methodObj["down"]["top"][posindex](
-          element,
-          callToRender,
-          moveFirstItemToEndOfList,
-          createNewOrderedArrayIndexOne,
-          null,
-          null
-        );
+      if (posindex == "one" || posindex == "eight" || posindex == "nine") {
+        mobileArrowKeyScrollDown(element, posindex, callToRender, null, null);
         return;
       }
 
-      if (posindex == "eight") {
-        methodObj["down"]["bottom"][posindex](
-          element,
-          callToRender,
-          moveFirstItemToEndOfList,
-          createNewOrderedArrayIndexSeven,
-          null,
-          null
-        );
-      }
+      // if (posindex == "one") {
+      //   methodObj["down"]["top"][posindex](
+      //     element,
+      //     callToRender,
+      //     moveFirstItemToEndOfList,
+      //     createNewOrderedArrayIndexOne,
+      //     null,
+      //     null
+      //   );
+      //   return;
+      // }
 
-      if (posindex == "nine") {
-        methodObj["down"]["bottom"][posindex](
-          element,
-          callToRender,
-          moveLastTwoItemsToBeginning,
-          createNewOrderedArrayIndexOne,
-          null,
-          null
-        );
-        return;
-      }
+      // if (posindex == "eight") {
+      //   methodObj["down"]["bottom"][posindex](
+      //     element,
+      //     callToRender,
+      //     moveFirstItemToEndOfList,
+      //     createNewOrderedArrayIndexSeven,
+      //     null,
+      //     null
+      //   );
+      // }
+
+      // if (posindex == "nine") {
+      //   methodObj["down"]["bottom"][posindex](
+      //     element,
+      //     callToRender,
+      //     moveLastTwoItemsToBeginning,
+      //     createNewOrderedArrayIndexOne,
+      //     null,
+      //     null
+      //   );
+      //   return;
+      // }
     }
 
     /**
@@ -1563,69 +1736,79 @@ const methodsForKeyboardScroll = {
      * **/
 
     if (width >= 1440) {
+      if (
+        posindex == "one" ||
+        posindex == "two" ||
+        posindex == "seven" ||
+        posindex == "eight" ||
+        posindex == "nine"
+      ) {
+        desktopArrowKeyScrollDown(element, posindex, callToRender, null, null);
+        return;
+      }
+
       // top one
-      if (targetPosIndex == "one") {
-        desktopScrollHelper["down"]["top"][targetPosIndex](
-          target,
-          callToRender,
-          moveFirstItemToEndOfList,
-          createNewOrderedArrayIndexTwo,
-          null,
-          null
-        );
-        return;
-      }
-      // top two
-      if (targetPosIndex == "two") {
-        desktopScrollHelper["down"]["top"][targetPosIndex](
-          target,
-          callToRender,
-          moveFirstItemToEndOfList,
-          createNewOrderedArrayIndexTwo,
-          null,
-          null
-        );
-        return;
-      }
-      // bottom seven
-      if (targetPosIndex == "seven") {
-        desktopScrollHelper["down"]["bottom"][targetPosIndex](
-          target,
-          callToRender,
-          moveFirstItemToEndOfList,
-          createNewOrderedArrayIndexSix,
-          null,
-          null
-        );
-        return;
-      }
-      // bottom eight
-      if (targetPosIndex == "eight") {
-        desktopScrollHelper["down"]["bottom"][targetPosIndex](
-          target,
-          callToRender,
-          moveFirstItemToEndOfList,
-          createNewOrderedArrayIndexSix,
-          null,
-          null
-        );
-        return;
-      }
-      // bottom nine
-      if (targetPosIndex == "nine") {
-        desktopScrollHelper["down"]["bottom"][targetPosIndex](
-          target,
-          callToRender,
-          moveBottomFourItemsToBeginning,
-          createNewOrderedArrayIndexTwo,
-          null,
-          null
-        );
-        return;
-      }
+      // if (targetPosIndex == "one") {
+      //   desktopScrollHelper["down"]["top"][targetPosIndex](
+      //     target,
+      //     callToRender,
+      //     moveFirstItemToEndOfList,
+      //     createNewOrderedArrayIndexTwo,
+      //     null,
+      //     null
+      //   );
+      //   return;
+      // }
+      // // top two
+      // if (targetPosIndex == "two") {
+      //   desktopScrollHelper["down"]["top"][targetPosIndex](
+      //     target,
+      //     callToRender,
+      //     moveFirstItemToEndOfList,
+      //     createNewOrderedArrayIndexTwo,
+      //     null,
+      //     null
+      //   );
+      //   return;
+      // }
+      // // bottom seven
+      // if (targetPosIndex == "seven") {
+      //   desktopScrollHelper["down"]["bottom"][targetPosIndex](
+      //     target,
+      //     callToRender,
+      //     moveFirstItemToEndOfList,
+      //     createNewOrderedArrayIndexSix,
+      //     null,
+      //     null
+      //   );
+      //   return;
+      // }
+      // // bottom eight
+      // if (targetPosIndex == "eight") {
+      //   desktopScrollHelper["down"]["bottom"][targetPosIndex](
+      //     target,
+      //     callToRender,
+      //     moveFirstItemToEndOfList,
+      //     createNewOrderedArrayIndexSix,
+      //     null,
+      //     null
+      //   );
+      //   return;
+      // }
+      // // bottom nine
+      // if (targetPosIndex == "nine") {
+      //   desktopScrollHelper["down"]["bottom"][targetPosIndex](
+      //     target,
+      //     callToRender,
+      //     moveBottomFourItemsToBeginning,
+      //     createNewOrderedArrayIndexTwo,
+      //     null,
+      //     null
+      //   );
+      //   return;
+      // }
     }
 
-    changeCurrentSnapItemAttr(element);
     scrollingDownHelper(element);
     nextSnapSibling(element, width);
 
@@ -1651,10 +1834,14 @@ const methodsForKeyboardScroll = {
     event.preventDefault();
 
     if (posindex != "one") {
-      const { moveLastTwoItemsToBeginning, moveLastItemToBeginningOfList } =
-        reorderArrayFuncsObj;
+      const {
+        moveLastTwoItemsToBeginning,
+        moveLastItemToBeginningOfList,
+        moveBottomFourItemsToBeginning,
+      } = reorderArrayFuncsObj;
 
-      const { createNewOrderedArrayIndexOne } = createArrayFuncsObj;
+      const { createNewOrderedArrayIndexOne, createNewOrderedArrayIndexTwo } =
+        createArrayFuncsObj;
 
       const { changeCurrentSnapItemAttr } = defaultActionFuncsObj;
 
@@ -1665,49 +1852,130 @@ const methodsForKeyboardScroll = {
        * **/
 
       if (width <= 375) {
-      }
+        if (posindex == "nine") {
+          const lastTwoItemsToBeginning = moveLastTwoItemsToBeginning(element);
 
-      if (posindex == "nine") {
-        const lastTwoItemsToBeginning = moveLastTwoItemsToBeginning(element);
+          const arrayOfObjHomeBtn = createNewOrderedArrayIndexOne(
+            lastTwoItemsToBeginning,
+            "1",
+            callToRender
+          );
 
-        const arrayOfObjHomeBtn = createNewOrderedArrayIndexOne(
-          lastTwoItemsToBeginning,
+          callToRender((prevValues) => {
+            return {
+              ...prevValues,
+              bottomOrTopArray: arrayOfObjHomeBtn,
+              targetElement: "homebtnmovetwo",
+              clickedBtn: null,
+            };
+          });
+          return;
+        }
+
+        const lastItemToBeginning = moveLastItemToBeginningOfList(element);
+        const arrayOfObjLastItemToTop = createNewOrderedArrayIndexOne(
+          lastItemToBeginning,
           "1",
           callToRender
         );
 
-        callToRender((prevValues) => {
+        callToRender((values) => {
           return {
-            ...prevValues,
-            bottomOrTopArray: arrayOfObjHomeBtn,
-            targetElement: "homebtnmovetwo",
+            ...values,
+            bottomOrTopArray: arrayOfObjLastItemToTop,
+            targetElement: "homebtnmoveone",
             clickedBtn: null,
           };
         });
-        return;
+        // firstItem.scrollIntoView();
       }
 
-      const lastItemToBeginning = moveLastItemToBeginningOfList(element);
-      const arrayOfObjLastItemToTop = createNewOrderedArrayIndexOne(
-        lastItemToBeginning,
-        "1",
-        callToRender
-      );
+      /**
+       * desktop
+       * **/
 
-      callToRender((values) => {
-        return {
-          ...values,
-          bottomOrTopArray: arrayOfObjLastItemToTop,
-          targetElement: "homebtnmoveone",
-          clickedBtn: null,
-        };
-      });
-      // firstItem.scrollIntoView();
+      if (width >= 1440) {
+        if (posindex != "one") {
+          if (posindex == "two") {
+            const lastSnapItemToTop = moveLastItemToBeginningOfList(element);
+            const arrayOfObjLastSnapItemToTop = createNewOrderedArrayIndexTwo(
+              lastSnapItemToTop,
+              "1",
+              callToRender
+            );
+
+            callToRender((values) => {
+              return {
+                ...values,
+                bottomOrTopArray: arrayOfObjLastSnapItemToTop,
+                targetElement: "homebtnmoveonetotop",
+                clickedBtn: null,
+              };
+            });
+            return;
+          }
+
+          if (posindex == "eight") {
+            const snapItems = [...element.parentElement.children];
+            const copyArray = [].concat(snapItems);
+            const lastThreeItems = copyArray.slice(-3);
+            const beforeLastThree = copyArray.slice(0, -3);
+
+            const arrayOfObjThreeItemsToBeginning =
+              createNewOrderedArrayIndexTwo(
+                [...lastThreeItems, ...beforeLastThree],
+                "1",
+                callToRender
+              );
+
+            callToRender((values) => {
+              return {
+                ...values,
+                bottomOrTopArray: arrayOfObjThreeItemsToBeginning,
+                targetElement: "homebtnmovethreeatbottom",
+              };
+            });
+            return;
+          }
+
+          if (posindex == "nine") {
+            const lastFourToBeginning = moveBottomFourItemsToBeginning(element);
+            const arrayOfObjFourItemsToBeginning =
+              createNewOrderedArrayIndexTwo(
+                lastFourToBeginning,
+                "1",
+                callToRender
+              );
+
+            callToRender((prevValues) => {
+              return {
+                ...prevValues,
+                bottomOrTopArray: arrayOfObjFourItemsToBeginning,
+                targetElement: "homebtnmovefouratbottom",
+                clickedBtn: null,
+              };
+            });
+            return;
+          }
+          // default action
+          const lastTwoToBeginning = moveLastTwoItemsToBeginning(element);
+          const arrayOfObjLastTwoToBeginning = createNewOrderedArrayIndexTwo(
+            lastTwoToBeginning,
+            "1",
+            callToRender
+          );
+
+          callToRender((prev) => {
+            return {
+              ...prev,
+              bottomOrTopArray: arrayOfObjLastTwoToBeginning,
+              targetElement: "homebtnmovetwoatbottom",
+              clickedBtn: null,
+            };
+          });
+        }
+      }
     }
-
-    /**
-     * desktop
-     * **/
 
     console.log("home");
   },
@@ -1726,10 +1994,14 @@ const methodsForKeyboardScroll = {
     event.preventDefault();
 
     if (posindex != "nine") {
-      const { moveFirstTwoItemsToEnd, moveFirstItemToEndOfList } =
-        reorderArrayFuncsObj;
+      const {
+        moveFirstTwoItemsToEnd,
+        moveFirstItemToEndOfList,
+        moveTopFourItemsToBottom,
+      } = reorderArrayFuncsObj;
 
-      const { createNewOrderedArrayIndexSeven } = createArrayFuncsObj;
+      const { createNewOrderedArrayIndexSeven, createNewOrderedArrayIndexSix } =
+        createArrayFuncsObj;
 
       const { changeCurrentSnapItemAttr } = defaultActionFuncsObj;
 
@@ -1738,46 +2010,133 @@ const methodsForKeyboardScroll = {
       /**
        * mobile
        * **/
+      if (width <= 375) {
+        if (posindex == "one") {
+          const firstTwoItemsToBottom = moveFirstTwoItemsToEnd(element);
 
-      if (posindex == "one") {
-        const firstTwoItemsToBottom = moveFirstTwoItemsToEnd(element);
+          const arrayOfObjEndBtn = createNewOrderedArrayIndexSeven(
+            firstTwoItemsToBottom,
+            "9",
+            callToRender
+          );
 
-        const arrayOfObjEndBtn = createNewOrderedArrayIndexSeven(
-          firstTwoItemsToBottom,
+          callToRender((values) => {
+            return {
+              ...values,
+              bottomOrTopArray: arrayOfObjEndBtn,
+              targetElement: "endbtnmovetwo",
+              clickedBtn: null,
+            };
+          });
+          return;
+        }
+
+        // default action
+        const firstItemToEnd = moveFirstItemToEndOfList(element);
+        const arrayOfObjFirstItemToEnd = createNewOrderedArrayIndexSeven(
+          firstItemToEnd,
           "9",
           callToRender
         );
 
-        callToRender((values) => {
+        callToRender((prev) => {
           return {
-            ...values,
-            bottomOrTopArray: arrayOfObjEndBtn,
-            targetElement: "endbtnmovetwo",
+            ...prev,
+            bottomOrTopArray: arrayOfObjFirstItemToEnd,
+            targetElement: "endbtnmoveone",
             clickedBtn: null,
           };
         });
-        return;
       }
-
-      const firstItemToEnd = moveFirstItemToEndOfList(element);
-      const arrayOfObjFirstItemToEnd = createNewOrderedArrayIndexSeven(
-        firstItemToEnd,
-        "9",
-        callToRender
-      );
-
-      callToRender((prev) => {
-        return {
-          ...prev,
-          bottomOrTopArray: arrayOfObjFirstItemToEnd,
-          targetElement: "endbtnmoveone",
-          clickedBtn: null,
-        };
-      });
 
       /**
        * desktop
        * **/
+
+      if (width >= 1440) {
+        if (posindex != "nine") {
+          if (posindex == "one") {
+            const topFourToBottom = moveTopFourItemsToBottom(element);
+            const arrayOfObjEndBtnOneIndex = createNewOrderedArrayIndexSix(
+              topFourToBottom,
+              "9",
+              callToRender
+            );
+
+            callToRender((values) => {
+              return {
+                ...values,
+                bottomOrTopArray: arrayOfObjEndBtnOneIndex,
+                targetElement: "endbtntopfourtoend",
+                clickedBtn: null,
+              };
+            });
+            return;
+          }
+
+          if (posindex == "two") {
+            const endBtnSnapItems = [...element.parentElement.children];
+            const copyArrayTwoIndex = [].concat(endBtnSnapItems);
+
+            const firstThree = copyArrayTwoIndex.slice(0, 3);
+            const restOfSnapItems = copyArrayTwoIndex.slice(3);
+
+            const arrayOfObjFirstThreeEndBtn = createNewOrderedArrayIndexSix(
+              [...restOfSnapItems, ...firstThree],
+              "9",
+              callToRender
+            );
+
+            callToRender((prevValues) => {
+              return {
+                ...prevValues,
+                bottomOrTopArray: arrayOfObjFirstThreeEndBtn,
+                targetElement: "endbtntopthreetoend",
+                clickedBtn: null,
+              };
+            });
+            return;
+          }
+
+          if (posindex == "eight") {
+            // move first item to end
+            const topItemToBottom = moveFirstItemToEndOfList(element);
+            const arrayOfObjFirstItemToEnd = createNewOrderedArrayIndexSix(
+              topItemToBottom,
+              "9",
+              callToRender
+            );
+
+            callToRender((values) => {
+              return {
+                ...values,
+                bottomOrTopArray: arrayOfObjFirstItemToEnd,
+                targetElement: "endbtntopitemtoend",
+                clickedBtn: null,
+              };
+            });
+
+            return;
+          }
+
+          // default action
+          const lastTwoSnapToBeginning = moveLastTwoItemsToBeginning(element);
+          const arrayOfObjLastTwoSnapItem = createNewOrderedArrayIndexSix(
+            lastTwoSnapToBeginning,
+            "9",
+            callToRender
+          );
+
+          callToRender((prev) => {
+            return {
+              ...prev,
+              bottomOrTopArray: arrayOfObjLastTwoSnapItem,
+              targetElement: "endbtnmovetwo",
+              clickedBtn: null,
+            };
+          });
+        }
+      }
 
       console.log("end");
     }
@@ -1800,9 +2159,14 @@ const methodsForKeyboardScroll = {
       return;
     }
 
-    const { moveLastItemToBeginningOfList } = reorderArrayFuncsObj;
-    const { createNewOrderedArrayIndexOne, createNewOrderedArrayIndexSix } =
-      createArrayFuncsObj;
+    const { moveLastItemToBeginningOfList, moveLastTwoItemsToBeginning } =
+      reorderArrayFuncsObj;
+    const {
+      createNewOrderedArrayIndexOne,
+      createNewOrderedArrayIndexTwo,
+      createNewOrderedArrayIndexFive,
+      createNewOrderedArrayIndexSix,
+    } = createArrayFuncsObj;
     const { changeCurrentSnapItemAttr, applyFocusSnapItemAttr } =
       defaultActionFuncsObj;
 
@@ -1812,51 +2176,61 @@ const methodsForKeyboardScroll = {
      * mobile
      * **/
 
-    // check if event.target data-pos-index is "nine" or "two"
-    if (posindex == "nine") {
-      const lastItemToBeginningIndexNine =
-        moveLastItemToBeginningOfList(element);
-      const arrayForPageUpNineIndex = createNewOrderedArrayIndexSix(
-        lastItemToBeginningIndexNine,
-        "7",
-        callToRender
-      );
+    if (width <= 375) {
+      // check if event.target data-pos-index is "nine" or "two"
+      if (posindex == "nine") {
+        const lastItemToBeginningIndexNine =
+          moveLastItemToBeginningOfList(element);
+        const arrayForPageUpNineIndex = createNewOrderedArrayIndexSix(
+          lastItemToBeginningIndexNine,
+          "7",
+          callToRender
+        );
 
-      callToRender((prev) => {
-        return {
-          ...prev,
-          bottomOrTopArray: arrayForPageUpNineIndex,
-          targetElement: "pageupnine",
-          clickedBtn: null,
-        };
-      });
-      return;
-    }
+        callToRender((prev) => {
+          return {
+            ...prev,
+            bottomOrTopArray: arrayForPageUpNineIndex,
+            targetElement: "pageupnine",
+            clickedBtn: null,
+          };
+        });
+        return;
+      }
 
-    if (posindex == "two" || posindex == "three") {
-      const lastItemToBeginningIndexTwoThree =
-        moveLastItemToBeginningOfList(element);
+      if (posindex == "two" || posindex == "three") {
+        const lastItemToBeginningIndexTwoThree =
+          moveLastItemToBeginningOfList(element);
 
-      const arrayForPageUpIndexTwoThree = createNewOrderedArrayIndexOne(
-        lastItemToBeginningIndexTwoThree,
-        "1",
-        callToRender
-      );
+        const arrayForPageUpIndexTwoThree = createNewOrderedArrayIndexOne(
+          lastItemToBeginningIndexTwoThree,
+          "1",
+          callToRender
+        );
 
-      callToRender((values) => {
-        return {
-          ...values,
-          bottomOrTopArray: arrayForPageUpIndexTwoThree,
-          targetElement: "pageuptwothree",
-          clickedBtn: null,
-        };
-      });
-      return;
+        callToRender((values) => {
+          return {
+            ...values,
+            bottomOrTopArray: arrayForPageUpIndexTwoThree,
+            targetElement: "pageuptwothree",
+            clickedBtn: null,
+          };
+        });
+        return;
+      }
     }
 
     /**
      * desktop
      * **/
+
+    if (width >= 1440) {
+      // two last item to top
+      // three last two items to top
+      // four last item to top
+      // eight last item to top
+      // nine last two items to top
+    }
 
     // select previous previous sibling element
 
@@ -1887,20 +2261,25 @@ const methodsForKeyboardScroll = {
       return;
     }
 
-    if (posindex != "nine") {
-      const { moveFirstItemToEndOfList } = reorderArrayFuncsObj;
-      const { createNewOrderedArrayIndexTwo, createNewOrderedArrayIndexSeven } =
-        createArrayFuncsObj;
-      const { changeCurrentSnapItemAttr, applyFocusSnapItemAttr } =
-        defaultActionFuncsObj;
-      // check if posindex is "one", "seven" or "eight"
+    const { moveFirstItemToEndOfList, moveFirstTwoItemsToEnd } =
+      reorderArrayFuncsObj;
+    const {
+      createNewOrderedArrayIndexTwo,
+      createNewOrderedArrayIndexThree,
+      createNewOrderedArrayIndexSix,
+      createNewOrderedArrayIndexSeven,
+    } = createArrayFuncsObj;
+    const { changeCurrentSnapItemAttr, applyFocusSnapItemAttr } =
+      defaultActionFuncsObj;
+    // check if posindex is "one", "seven" or "eight"
 
-      changeCurrentSnapItemAttr(element);
+    changeCurrentSnapItemAttr(element);
 
-      /**
-       * mobile
-       * **/
+    /**
+     * mobile
+     * **/
 
+    if (width <= 375) {
       if (posindex == "one") {
         const firstItemToBottomPosindexOne = moveFirstItemToEndOfList(element);
         const arrayForPageDownOneIndex = createNewOrderedArrayIndexTwo(
@@ -1943,22 +2322,29 @@ const methodsForKeyboardScroll = {
 
         return;
       }
-
-      /**
-       * desktop
-       * **/
-
-      // select next next sibling element
-
-      const twoItemsBelowCurrent =
-        element.nextElementSibling.nextElementSibling;
-
-      applyFocusSnapItemAttr(twoItemsBelowCurrent);
-
-      twoItemsBelowCurrent.focus();
-
-      console.log("pagedown");
     }
+
+    /**
+     * desktop
+     * **/
+
+    if (width >= 1440) {
+      // one first two to end
+      // two first item to end
+      // six first item to end
+      // seven first two to end
+      // eight first item to end
+    }
+
+    // select next next sibling element
+
+    const twoItemsBelowCurrent = element.nextElementSibling.nextElementSibling;
+
+    applyFocusSnapItemAttr(twoItemsBelowCurrent);
+
+    twoItemsBelowCurrent.focus();
+
+    console.log("pagedown");
   },
 };
 
@@ -1997,7 +2383,20 @@ export function keyboardScrollThroughSnapItems(event) {
       windowWidth,
       targetPosIndex,
       this.setSnapArray,
-      scrollHelperMethodObj,
+      {
+        mobileArrowKeyScrollUp,
+        mobileArrowKeyScrollDown,
+        desktopArrowKeyScrollUp,
+        desktopArrowKeyScrollDown,
+      },
+      {
+        scrollingUpHelper,
+        scrollingDownHelper,
+        previousSnapSibling,
+        nextSnapSibling,
+        changeCurrentSnapItemAttr,
+        applyFocusSnapItemAttr,
+      },
       {
         moveFirstItemToEndOfList,
         moveFirstTwoItemsToEnd,
@@ -2008,17 +2407,11 @@ export function keyboardScrollThroughSnapItems(event) {
       },
       {
         createNewOrderedArrayIndexOne,
-        createNewOrderedArrayIndexSeven,
         createNewOrderedArrayIndexTwo,
+        createNewOrderedArrayIndexThree,
+        createNewOrderedArrayIndexFive,
         createNewOrderedArrayIndexSix,
-      },
-      {
-        scrollingUpHelper,
-        scrollingDownHelper,
-        previousSnapSibling,
-        nextSnapSibling,
-        changeCurrentSnapItemAttr,
-        applyFocusSnapItemAttr,
+        createNewOrderedArrayIndexSeven,
       }
     );
   }
@@ -2705,7 +3098,7 @@ export function factoryFuncCreateArray(indexOfArray) {
 }
 
 /**
- * mobile scroll up down factory func
+ * mobile scroll up factory func
  * **/
 
 function mobileScrollUpFactoryFunc(
@@ -2761,6 +3154,10 @@ function mobileScrollUpFactoryFunc(
   };
 }
 
+/**
+ * mobile scroll down factory func
+ * **/
+
 function mobileScrollDownFactoryFunc(
   mobileMethodsObj,
   { moveFirstItemToEndOfList, moveLastTwoItemsToBeginning },
@@ -2812,6 +3209,163 @@ function mobileScrollDownFactoryFunc(
   };
 }
 
+/**
+ * desktop scroll up factory func
+ * **/
+
+function desktopScrollUpFactoryFunc(
+  desktopMethodObj,
+  { moveLastItemToBeginningOfList, moveTopFourItemsToBottom },
+  { createNewOrderedArrayIndexTwo, createNewOrderedArrayIndexSix }
+) {
+  return function innerFunc(
+    target,
+    posIndex,
+    renderSnapItems,
+    scrollType,
+    arrowBtn
+  ) {
+    // top one
+    if (posIndex == "one") {
+      desktopMethodObj["up"]["top"][posIndex](
+        target,
+        renderSnapItems,
+        moveTopFourItemsToBottom,
+        createNewOrderedArrayIndexSix,
+        scrollType,
+        arrowBtn
+      );
+      return;
+    }
+    // top two
+    if (posIndex == "two") {
+      desktopMethodObj["up"]["top"][posIndex](
+        target,
+        renderSnapItems,
+        moveLastItemToBeginningOfList,
+        createNewOrderedArrayIndexTwo,
+        scrollType,
+        arrowBtn
+      );
+      return;
+    }
+    // top three
+    if (posIndex == "three") {
+      desktopMethodObj["up"]["top"][posIndex](
+        target,
+        renderSnapItems,
+        moveLastItemToBeginningOfList,
+        createNewOrderedArrayIndexTwo,
+        scrollType,
+        arrowBtn
+      );
+      return;
+    }
+    // bottom eight
+    if (posIndex == "eight") {
+      desktopMethodObj["up"]["bottom"][posIndex](
+        target,
+        renderSnapItems,
+        moveLastItemToBeginningOfList,
+        createNewOrderedArrayIndexSix,
+        scrollType,
+        arrowBtn
+      );
+      return;
+    }
+    // bottom nine
+    if (posIndex == "nine") {
+      desktopMethodObj["up"]["bottom"][posIndex](
+        target,
+        renderSnapItems,
+        moveLastItemToBeginningOfList,
+        createNewOrderedArrayIndexSix,
+        scrollType,
+        arrowBtn
+      );
+      return;
+    }
+  };
+}
+
+/**
+ * desktop scroll down factory func
+ * **/
+
+function desktopScrollDownFactoryFunc(
+  desktopMethodObj,
+  { moveFirstItemToEndOfList, moveBottomFourItemsToBeginning },
+  { createNewOrderedArrayIndexTwo, createNewOrderedArrayIndexSix }
+) {
+  return function innerFunc(
+    target,
+    posIndex,
+    renderSnapItems,
+    scrollType,
+    arrowBtn
+  ) {
+    // top one
+    if (posIndex == "one") {
+      desktopMethodObj["down"]["top"][posIndex](
+        target,
+        renderSnapItems,
+        moveFirstItemToEndOfList,
+        createNewOrderedArrayIndexTwo,
+        scrollType,
+        arrowBtn
+      );
+      return;
+    }
+    // top two
+    if (posIndex == "two") {
+      desktopMethodObj["down"]["top"][posIndex](
+        target,
+        renderSnapItems,
+        moveFirstItemToEndOfList,
+        createNewOrderedArrayIndexTwo,
+        scrollType,
+        arrowBtn
+      );
+      return;
+    }
+    // bottom seven
+    if (posIndex == "seven") {
+      desktopMethodObj["down"]["bottom"][posIndex](
+        target,
+        renderSnapItems,
+        moveFirstItemToEndOfList,
+        createNewOrderedArrayIndexSix,
+        scrollType,
+        arrowBtn
+      );
+      return;
+    }
+    // bottom eight
+    if (posIndex == "eight") {
+      desktopMethodObj["down"]["bottom"][posIndex](
+        target,
+        renderSnapItems,
+        moveFirstItemToEndOfList,
+        createNewOrderedArrayIndexSix,
+        scrollType,
+        arrowBtn
+      );
+      return;
+    }
+    // bottom nine
+    if (posIndex == "nine") {
+      desktopMethodObj["down"]["bottom"][posIndex](
+        target,
+        renderSnapItems,
+        moveBottomFourItemsToBeginning,
+        createNewOrderedArrayIndexTwo,
+        scrollType,
+        arrowBtn
+      );
+      return;
+    }
+  };
+}
 /**
  * desktop
  * **/
@@ -3702,61 +4256,78 @@ export function focusCenteredSnapItemOnWheelScrollDesktopMobile(event) {
      * **/
 
     if (screenSize >= 1440) {
-      // top one
-      if (targetPosIndex == "one") {
-        desktopScrollHelper["up"]["top"][targetPosIndex](
+      if (
+        targetPosIndex == "one" ||
+        targetPosIndex == "two" ||
+        targetPosIndex == "three" ||
+        targetPosIndex == "eight" ||
+        targetPosIndex == "nine"
+      ) {
+        desktopMouseScrollUp(
           currentFocused,
+          targetPosIndex,
           this.setSnapArray,
-          moveTopFourItemsToBottom,
-          createNewOrderedArrayIndexSix,
-          "mouse"
+          "mouse",
+          null
         );
         return;
       }
-      // top two
-      if (targetPosIndex == "two") {
-        desktopScrollHelper["up"]["top"][targetPosIndex](
-          currentFocused,
-          this.setSnapArray,
-          moveLastItemToBeginningOfList,
-          createNewOrderedArrayIndexTwo,
-          "mouse"
-        );
-        return;
-      }
-      // top three
-      if (targetPosIndex == "three") {
-        desktopScrollHelper["up"]["top"][targetPosIndex](
-          currentFocused,
-          this.setSnapArray,
-          moveLastItemToBeginningOfList,
-          createNewOrderedArrayIndexTwo,
-          "mouse"
-        );
-        return;
-      }
-      // bottom eight
-      if (targetPosIndex == "eight") {
-        desktopScrollHelper["up"]["bottom"][targetPosIndex](
-          currentFocused,
-          this.setSnapArray,
-          moveLastItemToBeginningOfList,
-          createNewOrderedArrayIndexSix,
-          "mouse"
-        );
-        return;
-      }
-      // bottom nine
-      if (targetPosIndex == "nine") {
-        desktopScrollHelper["up"]["bottom"][targetPosIndex](
-          currentFocused,
-          this.setSnapArray,
-          moveLastItemToBeginningOfList,
-          createNewOrderedArrayIndexSix,
-          "mouse"
-        );
-        return;
-      }
+
+      // // top one
+      // if (targetPosIndex == "one") {
+      //   desktopScrollHelper["up"]["top"][targetPosIndex](
+      //     currentFocused,
+      //     this.setSnapArray,
+      //     moveTopFourItemsToBottom,
+      //     createNewOrderedArrayIndexSix,
+      //     "mouse"
+      //   );
+      //   return;
+      // }
+      // // top two
+      // if (targetPosIndex == "two") {
+      //   desktopScrollHelper["up"]["top"][targetPosIndex](
+      //     currentFocused,
+      //     this.setSnapArray,
+      //     moveLastItemToBeginningOfList,
+      //     createNewOrderedArrayIndexTwo,
+      //     "mouse"
+      //   );
+      //   return;
+      // }
+      // // top three
+      // if (targetPosIndex == "three") {
+      //   desktopScrollHelper["up"]["top"][targetPosIndex](
+      //     currentFocused,
+      //     this.setSnapArray,
+      //     moveLastItemToBeginningOfList,
+      //     createNewOrderedArrayIndexTwo,
+      //     "mouse"
+      //   );
+      //   return;
+      // }
+      // // bottom eight
+      // if (targetPosIndex == "eight") {
+      //   desktopScrollHelper["up"]["bottom"][targetPosIndex](
+      //     currentFocused,
+      //     this.setSnapArray,
+      //     moveLastItemToBeginningOfList,
+      //     createNewOrderedArrayIndexSix,
+      //     "mouse"
+      //   );
+      //   return;
+      // }
+      // // bottom nine
+      // if (targetPosIndex == "nine") {
+      //   desktopScrollHelper["up"]["bottom"][targetPosIndex](
+      //     currentFocused,
+      //     this.setSnapArray,
+      //     moveLastItemToBeginningOfList,
+      //     createNewOrderedArrayIndexSix,
+      //     "mouse"
+      //   );
+      //   return;
+      // }
     }
 
     scrollingUpHelper(currentFocused);
@@ -3826,61 +4397,78 @@ export function focusCenteredSnapItemOnWheelScrollDesktopMobile(event) {
      * **/
 
     if (screenSize >= 1440) {
-      // top one
-      if (targetPosIndex == "one") {
-        desktopScrollHelper["down"]["top"][targetPosIndex](
+      if (
+        targetPosIndex == "one" ||
+        targetPosIndex == "two" ||
+        targetPosIndex == "seven" ||
+        targetPosIndex == "eight" ||
+        targetPosIndex == "nine"
+      ) {
+        desktopMouseScrollDown(
           currentFocused,
+          targetPosIndex,
           this.setSnapArray,
-          moveFirstItemToEndOfList,
-          createNewOrderedArrayIndexTwo,
-          "mouse"
+          "mouse",
+          null
         );
         return;
       }
-      // top two
-      if (targetPosIndex == "two") {
-        desktopScrollHelper["down"]["top"][targetPosIndex](
-          currentFocused,
-          this.setSnapArray,
-          moveFirstItemToEndOfList,
-          createNewOrderedArrayIndexTwo,
-          "mouse"
-        );
-        return;
-      }
-      // bottom seven
-      if (targetPosIndex == "seven") {
-        desktopScrollHelper["down"]["bottom"][targetPosIndex](
-          currentFocused,
-          this.setSnapArray,
-          moveFirstItemToEndOfList,
-          createNewOrderedArrayIndexSix,
-          "mouse"
-        );
-        return;
-      }
-      // bottom eight
-      if (targetPosIndex == "eight") {
-        desktopScrollHelper["down"]["bottom"][targetPosIndex](
-          currentFocused,
-          this.setSnapArray,
-          moveFirstItemToEndOfList,
-          createNewOrderedArrayIndexSix,
-          "mouse"
-        );
-        return;
-      }
-      // bottom nine
-      if (targetPosIndex == "nine") {
-        desktopScrollHelper["down"]["bottom"][targetPosIndex](
-          currentFocused,
-          this.setSnapArray,
-          moveBottomFourItemsToBeginning,
-          createNewOrderedArrayIndexTwo,
-          "mouse"
-        );
-        return;
-      }
+
+      // // top one
+      // if (targetPosIndex == "one") {
+      //   desktopScrollHelper["down"]["top"][targetPosIndex](
+      //     currentFocused,
+      //     this.setSnapArray,
+      //     moveFirstItemToEndOfList,
+      //     createNewOrderedArrayIndexTwo,
+      //     "mouse"
+      //   );
+      //   return;
+      // }
+      // // top two
+      // if (targetPosIndex == "two") {
+      //   desktopScrollHelper["down"]["top"][targetPosIndex](
+      //     currentFocused,
+      //     this.setSnapArray,
+      //     moveFirstItemToEndOfList,
+      //     createNewOrderedArrayIndexTwo,
+      //     "mouse"
+      //   );
+      //   return;
+      // }
+      // // bottom seven
+      // if (targetPosIndex == "seven") {
+      //   desktopScrollHelper["down"]["bottom"][targetPosIndex](
+      //     currentFocused,
+      //     this.setSnapArray,
+      //     moveFirstItemToEndOfList,
+      //     createNewOrderedArrayIndexSix,
+      //     "mouse"
+      //   );
+      //   return;
+      // }
+      // // bottom eight
+      // if (targetPosIndex == "eight") {
+      //   desktopScrollHelper["down"]["bottom"][targetPosIndex](
+      //     currentFocused,
+      //     this.setSnapArray,
+      //     moveFirstItemToEndOfList,
+      //     createNewOrderedArrayIndexSix,
+      //     "mouse"
+      //   );
+      //   return;
+      // }
+      // // bottom nine
+      // if (targetPosIndex == "nine") {
+      //   desktopScrollHelper["down"]["bottom"][targetPosIndex](
+      //     currentFocused,
+      //     this.setSnapArray,
+      //     moveBottomFourItemsToBeginning,
+      //     createNewOrderedArrayIndexTwo,
+      //     "mouse"
+      //   );
+      //   return;
+      // }
     }
 
     scrollingDownHelper(currentFocused);
