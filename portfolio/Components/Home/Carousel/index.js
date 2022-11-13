@@ -179,6 +179,7 @@ export default function Carousel({ children, ...props }) {
         : { resizeIndicator: null };
       console.log(objFromLocalData, "objFromLocalData");
       console.log(window.innerWidth, "innerWidth resizeSnapItems");
+
       // mobile
       if (window.innerWidth <= 375) {
         if (!objFromLocalData.resizeIndicator) {
@@ -191,32 +192,31 @@ export default function Carousel({ children, ...props }) {
           return;
         }
         if (objFromLocalData.resizeIndicator == "desktop") {
+          const targetPosindex = document
+            .getElementById("currentFocused")
+            .getAttribute("data-pos-index");
+
           console.log("scrollSnap: mobile resize is desktop");
-          // disconnect desktop
-          observeSnapItemsContainerDesktop(
-            scrollContainer,
-            scrollChildren,
-            setSnapArray,
-            initialValuesObj.bottomOrTopArray,
-            true
-          );
-          console.log("break");
-          // observe mobile
-          observeSnapItemsContainerMobile(
-            scrollContainer,
-            scrollChildren,
-            setSnapArray
-            // false,
-            // true
-          );
+
           objFromLocalData.resizeIndicator = "mobile";
           localStorage.setItem(
             "cachedObserverValues",
             JSON.stringify(objFromLocalData)
           );
+          // dont move snap items
+          if (
+            targetPosindex == "three" ||
+            targetPosindex == "four" ||
+            targetPosindex == "five" ||
+            targetPosindex == "six" ||
+            targetPosindex == "seven"
+          ) {
+          }
+          // move snap items
           return;
         }
       }
+
       // desktop
       if (window.innerWidth >= 1440) {
         if (!objFromLocalData.resizeIndicator) {
@@ -228,34 +228,28 @@ export default function Carousel({ children, ...props }) {
           );
           return;
         }
+
         if (objFromLocalData.resizeIndicator == "mobile") {
+          const targetPosindex = document
+            .getElementById("currentFocused")
+            .getAttribute("data-pos-index");
           console.log("scrollSnap: desktop resize is mobile");
-          // disconnect mobile observer
-          observeSnapItemsContainerMobile(
-            scrollContainer,
-            scrollChildren,
-            setSnapArray,
-            true
-            // "this is a test"
-          );
-          // code outside callback of mobile observer is called
-          // then when the element is in the rootMargin/threshold
-          // code in the callback is called
-          // observe desktop
-          console.log("break desktop");
-          observeSnapItemsContainerDesktop(
-            scrollContainer,
-            scrollChildren,
-            setSnapArray,
-            initialValuesObj.bottomOrTopArray
-            // true,
-            // true
-          );
+
           objFromLocalData.resizeIndicator = "desktop";
           localStorage.setItem(
             "cachedObserverValues",
             JSON.stringify(objFromLocalData)
           );
+          // dont move snap items
+          if (
+            targetPosindex == "three" ||
+            targetPosindex == "four" ||
+            targetPosindex == "five" ||
+            targetPosindex == "six" ||
+            targetPosindex == "seven"
+          ) {
+          }
+          // move snap items
           return;
         }
       }
