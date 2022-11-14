@@ -19,3 +19,53 @@ export function swipeLeftBtn(event) {
     ? carouselBtnElement.setAttribute("data-carouselbtnclicked", "false")
     : null;
 }
+
+function Tooltip({ text, children, hovering }) {
+  return (
+    // don't need onMouseOver or onMouseOut because we are passing in hovering.
+    <Hover>
+      {/* we will have what we want to render as a children prop to <Hover> component */}
+      {(hovering) => (
+        <div style={styles.container}>
+          {hovering === true && <div style={styles.tooltip}>{text}</div>}
+          {children}
+        </div>
+      )}
+      {/* <div style={styles.container}>
+        {hovering === true && <div style={styles.tooltip}>{text}</div>}
+        {children}
+      </div> */}
+    </Hover>
+  );
+}
+
+class Hover extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      hovering: false,
+    };
+
+    this.mouseOver = this.mouseOver.bind(this);
+    this.mouseOut = this.mouseOut.bind(this);
+  }
+  mouseOver() {
+    this.setState({
+      hovering: true,
+    });
+  }
+
+  mouseOut() {
+    this.setState({
+      hovering: false,
+    });
+  }
+  render() {
+    return (
+      <div onMouseOut={this.mouseOut} onMouseOver={this.mouseOver}>
+        {this.props.children(this.state.hovering)}
+      </div>
+    );
+  }
+}

@@ -6,8 +6,8 @@ import {
   clickNextSnapItem,
   focusCenteredSnapItemOnWheelScrollDesktopMobile,
   keyboardScrollThroughSnapItems,
-  observeSnapItemsContainerMobile,
-  observeSnapItemsContainerDesktop,
+  moveLastItemToBeginningOfList,
+  moveFirstItemToEndOfList,
 } from "./carouselHelpers";
 import { FaArrowRight, FaArrowUp, FaArrowDown } from "react-icons/fa";
 import Project from "./Project";
@@ -70,6 +70,7 @@ export default function Carousel({ children, ...props }) {
           ...snapItemBeforeLast,
         ];
 
+        scrollContainer.replaceChildren();
         console.log(positionEightIndexAtBeginning);
         const appendElementToScrollContainer =
           createChildrenForScrollContainerDesktop(
@@ -191,6 +192,7 @@ export default function Carousel({ children, ...props }) {
           );
           return;
         }
+
         if (objFromLocalData.resizeIndicator == "desktop") {
           const targetPosindex = document
             .getElementById("currentFocused")
@@ -211,9 +213,44 @@ export default function Carousel({ children, ...props }) {
             targetPosindex == "six" ||
             targetPosindex == "seven"
           ) {
+            document.getElementById("currentFocused").focus();
+            return;
           }
           // move snap items
-          return;
+          // top
+          if (targetPosindex == "one" || targetPosindex == "two") {
+            const focusedSnapItem = document.getElementById("currentFocused");
+            scrollContainer.replaceChildren();
+            // top item goes to bottom
+            const arrayForTopItemToBottom =
+              moveFirstItemToEndOfList(focusedSnapItem);
+            const appendElementsToContainer =
+              createChildrenForScrollContainerDesktop(arrayForTopItemToBottom);
+
+            scrollContainer.append(appendElementsToContainer);
+
+            document.getElementById("currentFocused").focus();
+
+            return;
+          }
+          // bottom
+          if (targetPosindex == "eight" || targetPosindex == "nine") {
+            const focusedSnapItem = document.getElementById("currentFocused");
+            scrollContainer.replaceChildren();
+            // bottom item goes to top
+            const arrayForBottomItemToBeginning =
+              moveLastItemToBeginningOfList(focusedSnapItem);
+
+            const appendSnapItemsToContainer =
+              createChildrenForScrollContainerDesktop(
+                arrayForBottomItemToBeginning
+              );
+
+            scrollContainer.append(appendSnapItemsToContainer);
+            document.getElementById("currentFocused").focus();
+
+            return;
+          }
         }
       }
 
@@ -248,9 +285,49 @@ export default function Carousel({ children, ...props }) {
             targetPosindex == "six" ||
             targetPosindex == "seven"
           ) {
+            document.getElementById("currentFocused").scrollIntoView();
+            document.getElementById("currentFocused").focus();
+
+            return;
           }
           // move snap items
-          return;
+          if (targetPosindex == "one" || targetPosindex == "two") {
+            const currentFocusedItem =
+              document.getElementById("currentFocused");
+            scrollContainer.replaceChildren();
+            // bottom item goes to top
+            const lastItemToBeginnging =
+              moveLastItemToBeginningOfList(currentFocusedItem);
+
+            const appendItemsToScrollContainer =
+              createChildrenForScrollContainerDesktop(lastItemToBeginnging);
+
+            scrollContainer.append(appendItemsToScrollContainer);
+
+            document.getElementById("currentFocused").scrollIntoView();
+            document.getElementById("currentFocused").focus();
+
+            return;
+          }
+          if (targetPosindex == "eight" || targetPosindex == "nine") {
+            const currentFocusedItem =
+              document.getElementById("currentFocused");
+            scrollContainer.replaceChildren();
+            // top item goes to bottom
+
+            const topItemToBottom =
+              moveFirstItemToEndOfList(currentFocusedItem);
+
+            const appendSnapItemsToScrollContainer =
+              createChildrenForScrollContainerDesktop(topItemToBottom);
+
+            scrollContainer.append(appendSnapItemsToScrollContainer);
+
+            document.getElementById("currentFocused").scrollIntoView();
+            document.getElementById("currentFocused").focus();
+
+            return;
+          }
         }
       }
     });
