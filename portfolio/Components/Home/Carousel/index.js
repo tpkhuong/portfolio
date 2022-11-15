@@ -6,6 +6,9 @@ import {
   clickNextSnapItem,
   focusCenteredSnapItemOnWheelScrollDesktopMobile,
   keyboardScrollThroughSnapItems,
+  resizeFocusCorrectItem,
+  resizeMobileToDesktop,
+  resizeDesktopToMobile,
   moveLastItemToBeginningOfList,
   moveFirstItemToEndOfList,
 } from "./carouselHelpers";
@@ -180,6 +183,7 @@ export default function Carousel({ children, ...props }) {
         : { resizeIndicator: null };
       console.log(objFromLocalData, "objFromLocalData");
       console.log(window.innerWidth, "innerWidth resizeSnapItems");
+      console.log(document.activeElement, "document.activeElement");
 
       // mobile
       if (window.innerWidth <= 375) {
@@ -194,6 +198,7 @@ export default function Carousel({ children, ...props }) {
         }
 
         if (objFromLocalData.resizeIndicator == "desktop") {
+          const focusedSnapItem = document.getElementById("currentFocused");
           const targetPosindex = document
             .getElementById("currentFocused")
             .getAttribute("data-pos-index");
@@ -213,33 +218,94 @@ export default function Carousel({ children, ...props }) {
             targetPosindex == "six" ||
             targetPosindex == "seven"
           ) {
-            document.getElementById("currentFocused").focus();
-            return;
+            // render array
+            const copiedItems = [...focusedSnapItem.parentElement.children];
+            const focusItemBeforeReplaceChildren = document.activeElement;
+
+            scrollContainer.replaceChildren();
+
+            const appendSnapItemsToContainer =
+              createChildrenForScrollContainerDesktop(copiedItems);
+
+            scrollContainer.append(appendSnapItemsToContainer);
+
+            if (
+              focusItemBeforeReplaceChildren.getAttribute("id") == "upBtn" ||
+              focusItemBeforeReplaceChildren.getAttribute("id") == "downBtn"
+            ) {
+              document.getElementById("currentFocused").scrollIntoView();
+              document.getElementById("currentFocused").focus();
+              setTimeout(() => {
+                focusItemBeforeReplaceChildren.focus();
+              }, 80);
+              return;
+            }
+
+            if (document.activeElement.tagName == "BODY") {
+              console.log("focus is on body element");
+              focusItemBeforeReplaceChildren.scrollIntoView();
+              focusItemBeforeReplaceChildren.focus();
+              return;
+            }
           }
           // move snap items
           // top
           if (targetPosindex == "one" || targetPosindex == "two") {
-            const focusedSnapItem = document.getElementById("currentFocused");
-            scrollContainer.replaceChildren();
-            // top item goes to bottom
             const arrayForTopItemToBottom =
               moveFirstItemToEndOfList(focusedSnapItem);
+
+            const focusItemBeforeReplaceChildren = document.activeElement;
+
+            console.log(
+              focusItemBeforeReplaceChildren,
+              "focusItemBeforeReplaceChildren"
+            );
+
+            scrollContainer.replaceChildren();
+            // top item goes to bottom
             const appendElementsToContainer =
               createChildrenForScrollContainerDesktop(arrayForTopItemToBottom);
 
             scrollContainer.append(appendElementsToContainer);
 
-            document.getElementById("currentFocused").focus();
+            if (
+              focusItemBeforeReplaceChildren.getAttribute("id") == "upBtn" ||
+              focusItemBeforeReplaceChildren.getAttribute("id") == "downBtn"
+            ) {
+              document.getElementById("currentFocused").scrollIntoView();
+              document.getElementById("currentFocused").focus();
+              setTimeout(() => {
+                focusItemBeforeReplaceChildren.focus();
+              }, 80);
+              return;
+            }
 
-            return;
+            console.log(
+              focusItemBeforeReplaceChildren,
+              "focusItemBeforeReplaceChildren after replacechildren()"
+            );
+
+            if (document.activeElement.tagName == "BODY") {
+              console.log("focus is on body element");
+              focusItemBeforeReplaceChildren.scrollIntoView();
+              focusItemBeforeReplaceChildren.focus();
+              return;
+            }
           }
           // bottom
           if (targetPosindex == "eight" || targetPosindex == "nine") {
-            const focusedSnapItem = document.getElementById("currentFocused");
-            scrollContainer.replaceChildren();
             // bottom item goes to top
             const arrayForBottomItemToBeginning =
               moveLastItemToBeginningOfList(focusedSnapItem);
+
+            const focusItemBeforeReplaceChildren = document.activeElement;
+
+            console.log(
+              focusItemBeforeReplaceChildren,
+              "focusItemBeforeReplaceChildren"
+            );
+
+            scrollContainer.replaceChildren();
 
             const appendSnapItemsToContainer =
               createChildrenForScrollContainerDesktop(
@@ -247,9 +313,29 @@ export default function Carousel({ children, ...props }) {
               );
 
             scrollContainer.append(appendSnapItemsToContainer);
-            document.getElementById("currentFocused").focus();
 
-            return;
+            if (
+              focusItemBeforeReplaceChildren.getAttribute("id") == "upBtn" ||
+              focusItemBeforeReplaceChildren.getAttribute("id") == "downBtn"
+            ) {
+              document.getElementById("currentFocused").scrollIntoView();
+              document.getElementById("currentFocused").focus();
+              setTimeout(() => {
+                focusItemBeforeReplaceChildren.focus();
+              }, 80);
+              return;
+            }
+
+            console.log(
+              focusItemBeforeReplaceChildren,
+              "focusItemBeforeReplaceChildren after replacechildren()"
+            );
+
+            if (document.activeElement.tagName == "BODY") {
+              focusItemBeforeReplaceChildren.scrollIntoView();
+              focusItemBeforeReplaceChildren.focus();
+              return;
+            }
           }
         }
       }
@@ -267,6 +353,8 @@ export default function Carousel({ children, ...props }) {
         }
 
         if (objFromLocalData.resizeIndicator == "mobile") {
+          const currentFocusedItem = document.getElementById("currentFocused");
+
           const targetPosindex = document
             .getElementById("currentFocused")
             .getAttribute("data-pos-index");
@@ -285,54 +373,132 @@ export default function Carousel({ children, ...props }) {
             targetPosindex == "six" ||
             targetPosindex == "seven"
           ) {
-            document.getElementById("currentFocused").scrollIntoView();
-            document.getElementById("currentFocused").focus();
+            // render array
+            const copiedSnapItemsArray = [
+              ...currentFocusedItem.parentElement.children,
+            ];
+            const focusItemBeforeReplaceChildren = document.activeElement;
+
+            scrollContainer.replaceChildren();
+
+            const appendSnapItemsArray =
+              createChildrenForScrollContainerDesktop(copiedSnapItemsArray);
+
+            scrollContainer.append(appendSnapItemsArray);
+
+            if (
+              focusItemBeforeReplaceChildren.getAttribute("id") == "upBtn" ||
+              focusItemBeforeReplaceChildren.getAttribute("id") == "downBtn"
+            ) {
+              document.getElementById("currentFocused").scrollIntoView();
+              document.getElementById("currentFocused").focus();
+              setTimeout(() => {
+                focusItemBeforeReplaceChildren.focus();
+              }, 80);
+              return;
+            }
+
+            if (
+              focusItemBeforeReplaceChildren.getAttribute("id") ==
+              "currentFocused"
+            ) {
+              document.getElementById("currentFocused").scrollIntoView();
+              document.getElementById("currentFocused").focus();
+              return;
+            }
 
             return;
           }
           // move snap items
           if (targetPosindex == "one" || targetPosindex == "two") {
-            const currentFocusedItem =
-              document.getElementById("currentFocused");
-            scrollContainer.replaceChildren();
             // bottom item goes to top
             const lastItemToBeginnging =
               moveLastItemToBeginningOfList(currentFocusedItem);
+
+            const focusItemBeforeReplaceChildren = document.activeElement;
+
+            console.log(
+              focusItemBeforeReplaceChildren,
+              "focusItemBeforeReplaceChildren"
+            );
+
+            scrollContainer.replaceChildren();
 
             const appendItemsToScrollContainer =
               createChildrenForScrollContainerDesktop(lastItemToBeginnging);
 
             scrollContainer.append(appendItemsToScrollContainer);
 
-            document.getElementById("currentFocused").scrollIntoView();
-            document.getElementById("currentFocused").focus();
+            if (
+              focusItemBeforeReplaceChildren.getAttribute("id") == "upBtn" ||
+              focusItemBeforeReplaceChildren.getAttribute("id") == "downBtn"
+            ) {
+              document.getElementById("currentFocused").focus();
+              setTimeout(() => {
+                focusItemBeforeReplaceChildren.focus();
+              }, 80);
+              return;
+            }
 
-            return;
+            console.log(
+              focusItemBeforeReplaceChildren,
+              "focusItemBeforeReplaceChildren after replacechildren()"
+            );
+
+            if (document.activeElement.tagName == "BODY") {
+              focusItemBeforeReplaceChildren.scrollIntoView();
+              focusItemBeforeReplaceChildren.focus();
+              return;
+            }
           }
+
           if (targetPosindex == "eight" || targetPosindex == "nine") {
-            const currentFocusedItem =
-              document.getElementById("currentFocused");
-            scrollContainer.replaceChildren();
             // top item goes to bottom
 
             const topItemToBottom =
               moveFirstItemToEndOfList(currentFocusedItem);
+
+            const focusItemBeforeReplaceChildren = document.activeElement;
+
+            console.log(
+              focusItemBeforeReplaceChildren,
+              "focusItemBeforeReplaceChildren"
+            );
+
+            scrollContainer.replaceChildren();
 
             const appendSnapItemsToScrollContainer =
               createChildrenForScrollContainerDesktop(topItemToBottom);
 
             scrollContainer.append(appendSnapItemsToScrollContainer);
 
-            document.getElementById("currentFocused").scrollIntoView();
-            document.getElementById("currentFocused").focus();
+            if (
+              document.activeElement.getAttribute("id") == "upBtn" ||
+              document.activeElement.getAttribute("id") == "downBtn"
+            ) {
+              document.getElementById("currentFocused").focus();
+              setTimeout(() => {
+                focusItemBeforeReplaceChildren.focus();
+              }, 80);
+              return;
+            }
 
-            return;
+            console.log(
+              focusItemBeforeReplaceChildren,
+              "focusItemBeforeReplaceChildren after replacechildren()"
+            );
+
+            if (document.activeElement.tagName == "BODY") {
+              focusItemBeforeReplaceChildren.scrollIntoView();
+              focusItemBeforeReplaceChildren.focus();
+              return;
+            }
           }
         }
       }
     });
     // call .observe()
-    // resizeSnapitems.observe(document.getElementsByTagName("body")[0]);
+    resizeSnapitems.observe(document.getElementsByTagName("body")[0]);
   }, [initialValuesObj.targetElement]);
 
   return (
@@ -340,6 +506,7 @@ export default function Carousel({ children, ...props }) {
       id="carousel-snap-item"
       className={CarouselStyles[`project-wrapper`]}
       aria-roledescription="carousel"
+      tabIndex="-1"
     >
       <h2 className="visually-hidden">Completed Projects</h2>
       {/* position relative on controller-project-wrapper */}

@@ -2537,6 +2537,9 @@ const methodsForKeyboardScroll = {
 };
 
 export function keyboardScrollThroughSnapItems(event) {
+  if (event.ctrlKey) {
+    return;
+  }
   console.log(this, "this");
   // event.code
   const windowWidth = window.innerWidth;
@@ -4370,6 +4373,7 @@ function desktopPreviousFocusedHelper(target) {
 
 export function focusCenteredSnapItemOnWheelScrollDesktopMobile(event) {
   const screenSize = window.innerWidth;
+  console.log(event);
   console.log("screenSize", screenSize);
   const { deltaY } = event;
   const currentFocused = document.getElementById("currentFocused");
@@ -4728,14 +4732,133 @@ function applyFocusSnapItemAttr(target) {
  * resize mobile. desktop going to mobile
  * **/
 
-export function resizeDesktopToMobile() {
-  //
+export function resizeDesktopToMobile(
+  container,
+  moveLastItemFunc,
+  moveFirstItemFunc,
+  resizeFocusFunc,
+  createChildrenFunc,
+  [up, down, focus]
+) {
+  // dont move snap items
+  if (
+    targetPosindex == "three" ||
+    targetPosindex == "four" ||
+    targetPosindex == "five" ||
+    targetPosindex == "six" ||
+    targetPosindex == "seven"
+  ) {
+    resizeFocusFunc(up, down, focus);
+    return;
+  }
+  // move snap items
+  // top
+  if (targetPosindex == "one" || targetPosindex == "two") {
+    const focusedSnapItem = document.getElementById("currentFocused");
+    const arrayForTopItemToBottom = moveFirstItemFunc(focusedSnapItem);
+    container.replaceChildren();
+    // top item goes to bottom
+    const appendElementsToContainer = createChildrenFunc(
+      arrayForTopItemToBottom
+    );
+
+    container.append(appendElementsToContainer);
+
+    resizeFocusFunc(up, down, focus);
+
+    return;
+  }
+  // bottom
+  if (targetPosindex == "eight" || targetPosindex == "nine") {
+    const focusedSnapItem = document.getElementById("currentFocused");
+    // bottom item goes to top
+    const arrayForBottomItemToBeginning = moveLastItemFunc(focusedSnapItem);
+
+    container.replaceChildren();
+
+    const appendSnapItemsToContainer = createChildrenFunc(
+      arrayForBottomItemToBeginning
+    );
+
+    container.append(appendSnapItemsToContainer);
+    resizeFocusFunc(up, down, focus);
+
+    return;
+  }
 }
 
 /**
  * resize desktop. mobile going to desktop
  * **/
 
-export function resizeMobileToDesktop() {
-  //
+export function resizeMobileToDesktop(
+  container,
+  moveLastItemFunc,
+  moveFirstItemFunc,
+  resizeFocusFunc,
+  createChildrenFunc,
+  [up, down, focus]
+) {
+  // dont move snap items
+  if (
+    targetPosindex == "three" ||
+    targetPosindex == "four" ||
+    targetPosindex == "five" ||
+    targetPosindex == "six" ||
+    targetPosindex == "seven"
+  ) {
+    resizeFocusFunc(up, down, focus);
+    return;
+  }
+  // move snap items
+  if (targetPosindex == "one" || targetPosindex == "two") {
+    const currentFocusedItem = document.getElementById("currentFocused");
+    // bottom item goes to top
+    const lastItemToBeginnging = moveLastItemFunc(currentFocusedItem);
+
+    container.replaceChildren();
+
+    const appendItemsToScrollContainer =
+      createChildrenFunc(lastItemToBeginnging);
+
+    container.append(appendItemsToScrollContainer);
+
+    resizeFocusFunc(up, down, focus);
+    return;
+  }
+  if (targetPosindex == "eight" || targetPosindex == "nine") {
+    const currentFocusedItem = document.getElementById("currentFocused");
+    // top item goes to bottom
+
+    const topItemToBottom = moveFirstItemFunc(currentFocusedItem);
+
+    container.replaceChildren();
+
+    const appendSnapItemsToScrollContainer =
+      createChildrenFunc(topItemToBottom);
+
+    container.append(appendSnapItemsToScrollContainer);
+
+    resizeFocusFunc(up, down, focus);
+    return;
+  }
+}
+
+/**
+ * resize focus correct item
+ * **/
+
+export function resizeFocusCorrectItem(up, down, focus) {
+  if (
+    document.activeElement.getAttribute("id") == up ||
+    document.activeElement.getAttribute("id") == down
+  ) {
+    return;
+  }
+
+  if (document.activeElement.getAttribute("id") == focus) {
+    document.getElementById("currentFocused").scrollIntoView();
+    document.getElementById("currentFocused").focus();
+    return;
+  }
 }
