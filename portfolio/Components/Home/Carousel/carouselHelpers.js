@@ -824,7 +824,7 @@ export function clickPreviousSnapItem(event) {
     // remove id attribute
     currentFocusedElement.removeAttribute("id");
     // aria-hidden "true"
-    currentFocusedElement.setAttribute("aria-hidden", "false");
+    currentFocusedElement.setAttribute("aria-hidden", "true");
 
     /**
      * mobile
@@ -988,7 +988,7 @@ export function clickNextSnapItem(event) {
     // remove id attribute
     currentFocusedItem.removeAttribute("id");
     // aria-hidden "true"
-    currentFocusedItem.setAttribute("aria-hidden", "false");
+    currentFocusedItem.setAttribute("aria-hidden", "true");
 
     /**
      * mobile
@@ -4737,9 +4737,12 @@ export function resizeDesktopToMobile(
   moveLastItemFunc,
   moveFirstItemFunc,
   resizeFocusFunc,
-  createChildrenFunc,
-  [up, down, focus]
+  createChildrenFunc
 ) {
+  const focusedSnapItem = document.getElementById("currentFocused");
+
+  const targetPosindex = focusedSnapItem.getAttribute("data-pos-index");
+
   // dont move snap items
   if (
     targetPosindex == "three" ||
@@ -4748,31 +4751,43 @@ export function resizeDesktopToMobile(
     targetPosindex == "six" ||
     targetPosindex == "seven"
   ) {
-    resizeFocusFunc(up, down, focus);
+    // render array
+    const copiedItems = [...focusedSnapItem.parentElement.children];
+
+    const focusItemBeforeReplaceChildren = document.activeElement;
+
+    container.replaceChildren();
+    const appendSnapItemsToContainer = createChildrenFunc(copiedItems);
+
+    container.append(appendSnapItemsToContainer);
+
+    resizeFocusFunc(focusItemBeforeReplaceChildren);
     return;
   }
   // move snap items
   // top
   if (targetPosindex == "one" || targetPosindex == "two") {
-    const focusedSnapItem = document.getElementById("currentFocused");
-    const arrayForTopItemToBottom = moveFirstItemFunc(focusedSnapItem);
-    container.replaceChildren();
     // top item goes to bottom
+    const arrayForTopItemToBottom = moveFirstItemFunc(focusedSnapItem);
+
+    const focusItemBeforeReplaceChildren = document.activeElement;
+
+    container.replaceChildren();
     const appendElementsToContainer = createChildrenFunc(
       arrayForTopItemToBottom
     );
 
     container.append(appendElementsToContainer);
 
-    resizeFocusFunc(up, down, focus);
-
+    resizeFocusFunc(focusItemBeforeReplaceChildren);
     return;
   }
   // bottom
   if (targetPosindex == "eight" || targetPosindex == "nine") {
-    const focusedSnapItem = document.getElementById("currentFocused");
     // bottom item goes to top
     const arrayForBottomItemToBeginning = moveLastItemFunc(focusedSnapItem);
+
+    const focusItemBeforeReplaceChildren = document.activeElement;
 
     container.replaceChildren();
 
@@ -4781,8 +4796,8 @@ export function resizeDesktopToMobile(
     );
 
     container.append(appendSnapItemsToContainer);
-    resizeFocusFunc(up, down, focus);
 
+    resizeFocusFunc(focusItemBeforeReplaceChildren);
     return;
   }
 }
@@ -4796,9 +4811,11 @@ export function resizeMobileToDesktop(
   moveLastItemFunc,
   moveFirstItemFunc,
   resizeFocusFunc,
-  createChildrenFunc,
-  [up, down, focus]
+  createChildrenFunc
 ) {
+  const currentFocusedItem = document.getElementById("currentFocused");
+
+  const targetPosindex = currentFocusedItem.getAttribute("data-pos-index");
   // dont move snap items
   if (
     targetPosindex == "three" ||
@@ -4807,14 +4824,26 @@ export function resizeMobileToDesktop(
     targetPosindex == "six" ||
     targetPosindex == "seven"
   ) {
-    resizeFocusFunc(up, down, focus);
+    // render array
+    const copiedSnapItemsArray = [...currentFocusedItem.parentElement.children];
+
+    const focusItemBeforeReplaceChildren = document.activeElement;
+
+    container.replaceChildren();
+
+    const appendSnapItemsArray = createChildrenFunc(copiedSnapItemsArray);
+
+    container.append(appendSnapItemsArray);
+
+    resizeFocusFunc(focusItemBeforeReplaceChildren);
     return;
   }
   // move snap items
   if (targetPosindex == "one" || targetPosindex == "two") {
-    const currentFocusedItem = document.getElementById("currentFocused");
     // bottom item goes to top
     const lastItemToBeginnging = moveLastItemFunc(currentFocusedItem);
+
+    const focusItemBeforeReplaceChildren = document.activeElement;
 
     container.replaceChildren();
 
@@ -4823,14 +4852,14 @@ export function resizeMobileToDesktop(
 
     container.append(appendItemsToScrollContainer);
 
-    resizeFocusFunc(up, down, focus);
+    resizeFocusFunc(focusItemBeforeReplaceChildren);
     return;
   }
   if (targetPosindex == "eight" || targetPosindex == "nine") {
-    const currentFocusedItem = document.getElementById("currentFocused");
     // top item goes to bottom
-
     const topItemToBottom = moveFirstItemFunc(currentFocusedItem);
+
+    const focusItemBeforeReplaceChildren = document.activeElement;
 
     container.replaceChildren();
 
@@ -4839,7 +4868,7 @@ export function resizeMobileToDesktop(
 
     container.append(appendSnapItemsToScrollContainer);
 
-    resizeFocusFunc(up, down, focus);
+    resizeFocusFunc(focusItemBeforeReplaceChildren);
     return;
   }
 }
@@ -4848,17 +4877,25 @@ export function resizeMobileToDesktop(
  * resize focus correct item
  * **/
 
-export function resizeFocusCorrectItem(up, down, focus) {
+export function resizeFocusCorrectItem(target) {
   if (
-    document.activeElement.getAttribute("id") == up ||
-    document.activeElement.getAttribute("id") == down
+    target.getAttribute("id") == "upBtn" ||
+    target.getAttribute("id") == "downBtn"
   ) {
+    document.getElementById("currentFocused").focus();
+    document.getElementById("currentFocused").scrollIntoView();
+    setTimeout(() => {
+      target.focus();
+    }, 80);
     return;
   }
 
-  if (document.activeElement.getAttribute("id") == focus) {
-    document.getElementById("currentFocused").scrollIntoView();
-    document.getElementById("currentFocused").focus();
+  console.log(target, "target after replacechildren()");
+
+  if (document.activeElement.tagName == "BODY") {
+    console.log("focus is on body element");
+    target.focus();
+    target.scrollIntoView();
     return;
   }
 }

@@ -20,7 +20,9 @@ export default function AboutMe({ children, ...props }) {
       <a href="#main-content" className="skip-link">
         Skip to Main Content
       </a>
-      <header></header>
+      <header role="banner">
+        <LogoNavbarContainer pageName="aboutme" />
+      </header>
       {/* Information-Selection */}
       {/* Selector */}
       {/* PersonalInfo */}

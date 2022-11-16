@@ -61,10 +61,10 @@ export default function Intro({ children, ...props }) {
         className={IntroStyles[`swipe-left-btn`]}
         onClick={swipeLeftBtn}
       >
-        <snap className={IntroStyles[`btn-content-wrapper`]}>
+        <span className={IntroStyles[`btn-content-wrapper`]}>
           <FaArrowLeft className={IntroStyles[`arrow-left`]} />
           <span className={IntroStyles[`btn-text`]}>swipe left projects.</span>
-        </snap>
+        </span>
       </button>
     </div>
   );
