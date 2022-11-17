@@ -4756,7 +4756,7 @@ export function resizeDesktopToMobile(
 
     const focusItemBeforeReplaceChildren = document.activeElement;
 
-    container.replaceChildren();
+    // container.replaceChildren();
     const appendSnapItemsToContainer = createChildrenFunc(copiedItems);
 
     container.append(appendSnapItemsToContainer);
@@ -4768,15 +4768,20 @@ export function resizeDesktopToMobile(
   // top
   if (targetPosindex == "one" || targetPosindex == "two") {
     // top item goes to bottom
+
     const arrayForTopItemToBottom = moveFirstItemFunc(focusedSnapItem);
 
     const focusItemBeforeReplaceChildren = document.activeElement;
 
     container.replaceChildren();
+
+    console.log(arrayForTopItemToBottom, "arrayForTopItemToBottom");
+
     const appendElementsToContainer = createChildrenFunc(
       arrayForTopItemToBottom
     );
-
+    console.log(appendElementsToContainer, "appendElementsToContainer");
+    console.log(container, "container");
     container.append(appendElementsToContainer);
 
     resizeFocusFunc(focusItemBeforeReplaceChildren);
@@ -4789,7 +4794,7 @@ export function resizeDesktopToMobile(
 
     const focusItemBeforeReplaceChildren = document.activeElement;
 
-    container.replaceChildren();
+    // container.replaceChildren();
 
     const appendSnapItemsToContainer = createChildrenFunc(
       arrayForBottomItemToBeginning
@@ -4829,7 +4834,7 @@ export function resizeMobileToDesktop(
 
     const focusItemBeforeReplaceChildren = document.activeElement;
 
-    container.replaceChildren();
+    // container.replaceChildren();
 
     const appendSnapItemsArray = createChildrenFunc(copiedSnapItemsArray);
 
@@ -4845,8 +4850,7 @@ export function resizeMobileToDesktop(
 
     const focusItemBeforeReplaceChildren = document.activeElement;
 
-    container.replaceChildren();
-
+    // container.replaceChildren();
     const appendItemsToScrollContainer =
       createChildrenFunc(lastItemToBeginnging);
 
@@ -4861,7 +4865,7 @@ export function resizeMobileToDesktop(
 
     const focusItemBeforeReplaceChildren = document.activeElement;
 
-    container.replaceChildren();
+    // container.replaceChildren();
 
     const appendSnapItemsToScrollContainer =
       createChildrenFunc(topItemToBottom);

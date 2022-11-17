@@ -23,9 +23,16 @@ export default function AboutMe({ children, ...props }) {
       <header role="banner">
         <LogoNavbarContainer pageName="aboutme" />
       </header>
-      {/* Information-Selection */}
+      <Main>
+        <div className={AboutStyles[`info-selection-snippet-container`]}>
+          {/* learn about me selection and selected info section container */}
+          {/* snippet container */}
+        </div>
+      </Main>
+      <MobileMenu />
+      {/* LearnAboutme-Selection */}
       {/* Selector */}
-      {/* PersonalInfo */}
+      {/* Passion */}
       {/* Professional */}
       {/* Skills */}
       {/* Snippet Showcase */}

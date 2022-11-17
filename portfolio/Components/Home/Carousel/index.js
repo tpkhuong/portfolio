@@ -39,7 +39,722 @@ export default function Carousel({ children, ...props }) {
       ? (secondChild.setAttribute("aria-hidden", "false"),
         secondChild.setAttribute("tabindex", "0"),
         secondChild.setAttribute("id", "currentFocused"))
-      : null;
+      : // resizeSnapitems.observe(document.getElementsByTagName("body")[0]))
+        null;
+
+    const resizeWatcher = debounce(function resize() {
+      const dataFromLocalStorage = !localStorage.getItem("cachedObserverValues")
+        ? null
+        : JSON.parse(localStorage.getItem("cachedObserverValues"));
+
+      const objFromLocalData = dataFromLocalStorage
+        ? dataFromLocalStorage
+        : { resizeIndicator: null };
+      console.log(objFromLocalData, "objFromLocalData");
+      console.log(window.innerWidth, "innerWidth resizeSnapItems");
+      console.log(document.activeElement, "document.activeElement");
+
+      // mobile
+      if (window.innerWidth <= 375) {
+        if (!objFromLocalData.resizeIndicator) {
+          console.log("scrollSnap: mobile resize is null");
+          objFromLocalData.resizeIndicator = "mobile";
+          localStorage.setItem(
+            "cachedObserverValues",
+            JSON.stringify(objFromLocalData)
+          );
+          return;
+        }
+
+        if (objFromLocalData.resizeIndicator == "desktop") {
+          objFromLocalData.resizeIndicator = "mobile";
+          localStorage.setItem(
+            "cachedObserverValues",
+            JSON.stringify(objFromLocalData)
+          );
+
+          // resizeDesktopToMobile(
+          //   scrollContainer,
+          //   moveLastItemToBeginningOfList,
+          //   moveFirstItemToEndOfList,
+          //   resizeFocusCorrectItem,
+          //   createChildrenForScrollContainerDesktop
+          // );
+          // return;
+          const focusedSnapItem = document.getElementById("currentFocused");
+          const targetPosindex = document
+            .getElementById("currentFocused")
+            .getAttribute("data-pos-index");
+
+          console.log("scrollSnap: mobile resize is desktop");
+
+          objFromLocalData.resizeIndicator = "mobile";
+          localStorage.setItem(
+            "cachedObserverValues",
+            JSON.stringify(objFromLocalData)
+          );
+          // dont move snap items
+          if (
+            targetPosindex == "three" ||
+            targetPosindex == "four" ||
+            targetPosindex == "five" ||
+            targetPosindex == "six" ||
+            targetPosindex == "seven"
+          ) {
+            // render array
+            const copiedItems = [...focusedSnapItem.parentElement.children];
+            const focusItemBeforeReplaceChildren = document.activeElement;
+
+            scrollContainer.replaceChildren();
+
+            const appendSnapItemsToContainer =
+              createChildrenForScrollContainerDesktop(copiedItems);
+
+            scrollContainer.append(appendSnapItemsToContainer);
+
+            if (
+              focusItemBeforeReplaceChildren.getAttribute("id") == "upBtn" ||
+              focusItemBeforeReplaceChildren.getAttribute("id") == "downBtn"
+            ) {
+              document.getElementById("currentFocused").focus();
+              document.getElementById("currentFocused").scrollIntoView();
+              setTimeout(() => {
+                focusItemBeforeReplaceChildren.focus();
+              }, 80);
+              return;
+            }
+
+            if (document.activeElement.tagName == "BODY") {
+              console.log("focus is on body element");
+              focusItemBeforeReplaceChildren.focus();
+              focusItemBeforeReplaceChildren.scrollIntoView();
+              return;
+            }
+          }
+          // move snap items
+          // top
+          if (targetPosindex == "one" || targetPosindex == "two") {
+            const arrayForTopItemToBottom =
+              moveFirstItemToEndOfList(focusedSnapItem);
+
+            const focusItemBeforeReplaceChildren = document.activeElement;
+
+            console.log(
+              focusItemBeforeReplaceChildren,
+              "focusItemBeforeReplaceChildren"
+            );
+
+            scrollContainer.replaceChildren();
+            // top item goes to bottom
+            const appendElementsToContainer =
+              createChildrenForScrollContainerDesktop(arrayForTopItemToBottom);
+
+            scrollContainer.append(appendElementsToContainer);
+
+            if (
+              focusItemBeforeReplaceChildren.getAttribute("id") == "upBtn" ||
+              focusItemBeforeReplaceChildren.getAttribute("id") == "downBtn"
+            ) {
+              document.getElementById("currentFocused").focus();
+              document.getElementById("currentFocused").scrollIntoView();
+              setTimeout(() => {
+                focusItemBeforeReplaceChildren.focus();
+              }, 80);
+              return;
+            }
+
+            console.log(
+              focusItemBeforeReplaceChildren,
+              "focusItemBeforeReplaceChildren after replacechildren()"
+            );
+
+            if (document.activeElement.tagName == "BODY") {
+              console.log("focus is on body element");
+              focusItemBeforeReplaceChildren.focus();
+              focusItemBeforeReplaceChildren.scrollIntoView();
+              return;
+            }
+          }
+          // bottom
+          if (targetPosindex == "eight" || targetPosindex == "nine") {
+            // bottom item goes to top
+            const arrayForBottomItemToBeginning =
+              moveLastItemToBeginningOfList(focusedSnapItem);
+
+            const focusItemBeforeReplaceChildren = document.activeElement;
+
+            console.log(
+              focusItemBeforeReplaceChildren,
+              "focusItemBeforeReplaceChildren"
+            );
+
+            scrollContainer.replaceChildren();
+
+            const appendSnapItemsToContainer =
+              createChildrenForScrollContainerDesktop(
+                arrayForBottomItemToBeginning
+              );
+
+            scrollContainer.append(appendSnapItemsToContainer);
+
+            if (
+              focusItemBeforeReplaceChildren.getAttribute("id") == "upBtn" ||
+              focusItemBeforeReplaceChildren.getAttribute("id") == "downBtn"
+            ) {
+              document.getElementById("currentFocused").focus();
+              document.getElementById("currentFocused").scrollIntoView();
+              setTimeout(() => {
+                focusItemBeforeReplaceChildren.focus();
+              }, 80);
+              return;
+            }
+
+            console.log(
+              focusItemBeforeReplaceChildren,
+              "focusItemBeforeReplaceChildren after replacechildren()"
+            );
+
+            if (document.activeElement.tagName == "BODY") {
+              focusItemBeforeReplaceChildren.focus();
+              focusItemBeforeReplaceChildren.scrollIntoView();
+              return;
+            }
+          }
+        }
+      }
+
+      // desktop
+      if (window.innerWidth >= 1440) {
+        if (!objFromLocalData.resizeIndicator) {
+          console.log("scrollSnap: desktop resize is null");
+          objFromLocalData.resizeIndicator = "desktop";
+          localStorage.setItem(
+            "cachedObserverValues",
+            JSON.stringify(objFromLocalData)
+          );
+          return;
+        }
+
+        if (objFromLocalData.resizeIndicator == "mobile") {
+          objFromLocalData.resizeIndicator = "desktop";
+          localStorage.setItem(
+            "cachedObserverValues",
+            JSON.stringify(objFromLocalData)
+          );
+
+          // resizeMobileToDesktop(
+          //   scrollContainer,
+          //   moveLastItemToBeginningOfList,
+          //   moveFirstItemToEndOfList,
+          //   resizeFocusCorrectItem,
+          //   createChildrenForScrollContainerDesktop
+          // );
+          // return;
+          const currentFocusedItem = document.getElementById("currentFocused");
+
+          const targetPosindex = document
+            .getElementById("currentFocused")
+            .getAttribute("data-pos-index");
+          console.log("scrollSnap: desktop resize is mobile");
+
+          objFromLocalData.resizeIndicator = "desktop";
+          localStorage.setItem(
+            "cachedObserverValues",
+            JSON.stringify(objFromLocalData)
+          );
+          // dont move snap items
+          if (
+            targetPosindex == "three" ||
+            targetPosindex == "four" ||
+            targetPosindex == "five" ||
+            targetPosindex == "six" ||
+            targetPosindex == "seven"
+          ) {
+            // render array
+            const copiedSnapItemsArray = [
+              ...currentFocusedItem.parentElement.children,
+            ];
+            const focusItemBeforeReplaceChildren = document.activeElement;
+
+            scrollContainer.replaceChildren();
+
+            const appendSnapItemsArray =
+              createChildrenForScrollContainerDesktop(copiedSnapItemsArray);
+
+            scrollContainer.append(appendSnapItemsArray);
+
+            if (
+              focusItemBeforeReplaceChildren.getAttribute("id") == "upBtn" ||
+              focusItemBeforeReplaceChildren.getAttribute("id") == "downBtn"
+            ) {
+              document.getElementById("currentFocused").focus();
+              document.getElementById("currentFocused").scrollIntoView();
+              setTimeout(() => {
+                focusItemBeforeReplaceChildren.focus();
+              }, 80);
+              return;
+            }
+
+            if (document.activeElement.tagName == "BODY") {
+              focusItemBeforeReplaceChildren.focus();
+              focusItemBeforeReplaceChildren.scrollIntoView();
+              return;
+            }
+
+            return;
+          }
+          // move snap items
+          if (targetPosindex == "one" || targetPosindex == "two") {
+            // bottom item goes to top
+            const lastItemToBeginnging =
+              moveLastItemToBeginningOfList(currentFocusedItem);
+
+            const focusItemBeforeReplaceChildren = document.activeElement;
+
+            console.log(
+              focusItemBeforeReplaceChildren,
+              "focusItemBeforeReplaceChildren"
+            );
+
+            scrollContainer.replaceChildren();
+
+            const appendItemsToScrollContainer =
+              createChildrenForScrollContainerDesktop(lastItemToBeginnging);
+
+            scrollContainer.append(appendItemsToScrollContainer);
+
+            if (
+              focusItemBeforeReplaceChildren.getAttribute("id") == "upBtn" ||
+              focusItemBeforeReplaceChildren.getAttribute("id") == "downBtn"
+            ) {
+              document.getElementById("currentFocused").focus();
+              document.getElementById("currentFocused").scrollIntoView();
+              setTimeout(() => {
+                focusItemBeforeReplaceChildren.focus();
+              }, 80);
+              return;
+            }
+
+            console.log(
+              focusItemBeforeReplaceChildren,
+              "focusItemBeforeReplaceChildren after replacechildren()"
+            );
+
+            if (document.activeElement.tagName == "BODY") {
+              focusItemBeforeReplaceChildren.focus();
+              focusItemBeforeReplaceChildren.scrollIntoView();
+              return;
+            }
+          }
+
+          if (targetPosindex == "eight" || targetPosindex == "nine") {
+            // top item goes to bottom
+
+            const topItemToBottom =
+              moveFirstItemToEndOfList(currentFocusedItem);
+
+            const focusItemBeforeReplaceChildren = document.activeElement;
+
+            console.log(
+              focusItemBeforeReplaceChildren,
+              "focusItemBeforeReplaceChildren"
+            );
+
+            scrollContainer.replaceChildren();
+
+            const appendSnapItemsToScrollContainer =
+              createChildrenForScrollContainerDesktop(topItemToBottom);
+
+            scrollContainer.append(appendSnapItemsToScrollContainer);
+
+            if (
+              focusItemBeforeReplaceChildren.getAttribute("id") == "upBtn" ||
+              focusItemBeforeReplaceChildren.getAttribute("id") == "downBtn"
+            ) {
+              document.getElementById("currentFocused").focus();
+              document.getElementById("currentFocused").scrollIntoView();
+              setTimeout(() => {
+                focusItemBeforeReplaceChildren.focus();
+              }, 80);
+              return;
+            }
+
+            console.log(
+              focusItemBeforeReplaceChildren,
+              "focusItemBeforeReplaceChildren after replacechildren()"
+            );
+
+            if (document.activeElement.tagName == "BODY") {
+              focusItemBeforeReplaceChildren.focus();
+              focusItemBeforeReplaceChildren.scrollIntoView();
+              return;
+            }
+          }
+        }
+      }
+    }, 80);
+
+    window.addEventListener("resize", resizeWatcher);
+
+    return () => {
+      window.removeEventListener("resize", resizeWatcher);
+    };
+
+    /**
+     * Resize observer
+     * **/
+
+    // const resizeSnapitems = new ResizeObserver((entries) => {
+    //   const dataFromLocalStorage = !localStorage.getItem("cachedObserverValues")
+    //     ? null
+    //     : JSON.parse(localStorage.getItem("cachedObserverValues"));
+
+    //   const objFromLocalData = dataFromLocalStorage
+    //     ? dataFromLocalStorage
+    //     : { resizeIndicator: null };
+    //   console.log(objFromLocalData, "objFromLocalData");
+    //   console.log(window.innerWidth, "innerWidth resizeSnapItems");
+    //   console.log(document.activeElement, "document.activeElement");
+
+    //   // mobile
+    //   if (window.innerWidth <= 375) {
+    //     if (!objFromLocalData.resizeIndicator) {
+    //       console.log("scrollSnap: mobile resize is null");
+    //       objFromLocalData.resizeIndicator = "mobile";
+    //       localStorage.setItem(
+    //         "cachedObserverValues",
+    //         JSON.stringify(objFromLocalData)
+    //       );
+    //       return;
+    //     }
+
+    //     if (objFromLocalData.resizeIndicator == "desktop") {
+    //       objFromLocalData.resizeIndicator = "mobile";
+    //       localStorage.setItem(
+    //         "cachedObserverValues",
+    //         JSON.stringify(objFromLocalData)
+    //       );
+
+    //       // resizeDesktopToMobile(
+    //       //   scrollContainer,
+    //       //   moveLastItemToBeginningOfList,
+    //       //   moveFirstItemToEndOfList,
+    //       //   resizeFocusCorrectItem,
+    //       //   createChildrenForScrollContainerDesktop
+    //       // );
+    //       // return;
+    //       const focusedSnapItem = document.getElementById("currentFocused");
+    //       const targetPosindex = document
+    //         .getElementById("currentFocused")
+    //         .getAttribute("data-pos-index");
+
+    //       console.log("scrollSnap: mobile resize is desktop");
+
+    //       objFromLocalData.resizeIndicator = "mobile";
+    //       localStorage.setItem(
+    //         "cachedObserverValues",
+    //         JSON.stringify(objFromLocalData)
+    //       );
+    //       // dont move snap items
+    //       if (
+    //         targetPosindex == "three" ||
+    //         targetPosindex == "four" ||
+    //         targetPosindex == "five" ||
+    //         targetPosindex == "six" ||
+    //         targetPosindex == "seven"
+    //       ) {
+    //         // render array
+    //         const copiedItems = [...focusedSnapItem.parentElement.children];
+    //         const focusItemBeforeReplaceChildren = document.activeElement;
+
+    //         scrollContainer.replaceChildren();
+
+    //         const appendSnapItemsToContainer =
+    //           createChildrenForScrollContainerDesktop(copiedItems);
+
+    //         scrollContainer.append(appendSnapItemsToContainer);
+
+    //         if (
+    //           focusItemBeforeReplaceChildren.getAttribute("id") == "upBtn" ||
+    //           focusItemBeforeReplaceChildren.getAttribute("id") == "downBtn"
+    //         ) {
+    //           document.getElementById("currentFocused").focus();
+    //           document.getElementById("currentFocused").scrollIntoView();
+    //           setTimeout(() => {
+    //             focusItemBeforeReplaceChildren.focus();
+    //           }, 80);
+    //           return;
+    //         }
+
+    //         if (document.activeElement.tagName == "BODY") {
+    //           console.log("focus is on body element");
+    //           focusItemBeforeReplaceChildren.focus();
+    //           focusItemBeforeReplaceChildren.scrollIntoView();
+    //           return;
+    //         }
+    //       }
+    //       // move snap items
+    //       // top
+    //       if (targetPosindex == "one" || targetPosindex == "two") {
+    //         const arrayForTopItemToBottom =
+    //           moveFirstItemToEndOfList(focusedSnapItem);
+
+    //         const focusItemBeforeReplaceChildren = document.activeElement;
+
+    //         console.log(
+    //           focusItemBeforeReplaceChildren,
+    //           "focusItemBeforeReplaceChildren"
+    //         );
+
+    //         scrollContainer.replaceChildren();
+    //         // top item goes to bottom
+    //         const appendElementsToContainer =
+    //           createChildrenForScrollContainerDesktop(arrayForTopItemToBottom);
+
+    //         scrollContainer.append(appendElementsToContainer);
+
+    //         if (
+    //           focusItemBeforeReplaceChildren.getAttribute("id") == "upBtn" ||
+    //           focusItemBeforeReplaceChildren.getAttribute("id") == "downBtn"
+    //         ) {
+    //           document.getElementById("currentFocused").focus();
+    //           document.getElementById("currentFocused").scrollIntoView();
+    //           setTimeout(() => {
+    //             focusItemBeforeReplaceChildren.focus();
+    //           }, 80);
+    //           return;
+    //         }
+
+    //         console.log(
+    //           focusItemBeforeReplaceChildren,
+    //           "focusItemBeforeReplaceChildren after replacechildren()"
+    //         );
+
+    //         if (document.activeElement.tagName == "BODY") {
+    //           console.log("focus is on body element");
+    //           focusItemBeforeReplaceChildren.focus();
+    //           focusItemBeforeReplaceChildren.scrollIntoView();
+    //           return;
+    //         }
+    //       }
+    //       // bottom
+    //       if (targetPosindex == "eight" || targetPosindex == "nine") {
+    //         // bottom item goes to top
+    //         const arrayForBottomItemToBeginning =
+    //           moveLastItemToBeginningOfList(focusedSnapItem);
+
+    //         const focusItemBeforeReplaceChildren = document.activeElement;
+
+    //         console.log(
+    //           focusItemBeforeReplaceChildren,
+    //           "focusItemBeforeReplaceChildren"
+    //         );
+
+    //         scrollContainer.replaceChildren();
+
+    //         const appendSnapItemsToContainer =
+    //           createChildrenForScrollContainerDesktop(
+    //             arrayForBottomItemToBeginning
+    //           );
+
+    //         scrollContainer.append(appendSnapItemsToContainer);
+
+    //         if (
+    //           focusItemBeforeReplaceChildren.getAttribute("id") == "upBtn" ||
+    //           focusItemBeforeReplaceChildren.getAttribute("id") == "downBtn"
+    //         ) {
+    //           document.getElementById("currentFocused").focus();
+    //           document.getElementById("currentFocused").scrollIntoView();
+    //           setTimeout(() => {
+    //             focusItemBeforeReplaceChildren.focus();
+    //           }, 80);
+    //           return;
+    //         }
+
+    //         console.log(
+    //           focusItemBeforeReplaceChildren,
+    //           "focusItemBeforeReplaceChildren after replacechildren()"
+    //         );
+
+    //         if (document.activeElement.tagName == "BODY") {
+    //           focusItemBeforeReplaceChildren.focus();
+    //           focusItemBeforeReplaceChildren.scrollIntoView();
+    //           return;
+    //         }
+    //       }
+    //     }
+    //   }
+
+    //   // desktop
+    //   if (window.innerWidth >= 1440) {
+    //     if (!objFromLocalData.resizeIndicator) {
+    //       console.log("scrollSnap: desktop resize is null");
+    //       objFromLocalData.resizeIndicator = "desktop";
+    //       localStorage.setItem(
+    //         "cachedObserverValues",
+    //         JSON.stringify(objFromLocalData)
+    //       );
+    //       return;
+    //     }
+
+    //     if (objFromLocalData.resizeIndicator == "mobile") {
+    //       objFromLocalData.resizeIndicator = "desktop";
+    //       localStorage.setItem(
+    //         "cachedObserverValues",
+    //         JSON.stringify(objFromLocalData)
+    //       );
+
+    //       // resizeMobileToDesktop(
+    //       //   scrollContainer,
+    //       //   moveLastItemToBeginningOfList,
+    //       //   moveFirstItemToEndOfList,
+    //       //   resizeFocusCorrectItem,
+    //       //   createChildrenForScrollContainerDesktop
+    //       // );
+    //       // return;
+    //       const currentFocusedItem = document.getElementById("currentFocused");
+
+    //       const targetPosindex = document
+    //         .getElementById("currentFocused")
+    //         .getAttribute("data-pos-index");
+    //       console.log("scrollSnap: desktop resize is mobile");
+
+    //       objFromLocalData.resizeIndicator = "desktop";
+    //       localStorage.setItem(
+    //         "cachedObserverValues",
+    //         JSON.stringify(objFromLocalData)
+    //       );
+    //       // dont move snap items
+    //       if (
+    //         targetPosindex == "three" ||
+    //         targetPosindex == "four" ||
+    //         targetPosindex == "five" ||
+    //         targetPosindex == "six" ||
+    //         targetPosindex == "seven"
+    //       ) {
+    //         // render array
+    //         const copiedSnapItemsArray = [
+    //           ...currentFocusedItem.parentElement.children,
+    //         ];
+    //         const focusItemBeforeReplaceChildren = document.activeElement;
+
+    //         scrollContainer.replaceChildren();
+
+    //         const appendSnapItemsArray =
+    //           createChildrenForScrollContainerDesktop(copiedSnapItemsArray);
+
+    //         scrollContainer.append(appendSnapItemsArray);
+
+    //         if (
+    //           focusItemBeforeReplaceChildren.getAttribute("id") == "upBtn" ||
+    //           focusItemBeforeReplaceChildren.getAttribute("id") == "downBtn"
+    //         ) {
+    //           document.getElementById("currentFocused").focus();
+    //           document.getElementById("currentFocused").scrollIntoView();
+    //           setTimeout(() => {
+    //             focusItemBeforeReplaceChildren.focus();
+    //           }, 80);
+    //           return;
+    //         }
+
+    //         if (document.activeElement.tagName == "BODY") {
+    //           focusItemBeforeReplaceChildren.focus();
+    //           focusItemBeforeReplaceChildren.scrollIntoView();
+    //           return;
+    //         }
+
+    //         return;
+    //       }
+    //       // move snap items
+    //       if (targetPosindex == "one" || targetPosindex == "two") {
+    //         // bottom item goes to top
+    //         const lastItemToBeginnging =
+    //           moveLastItemToBeginningOfList(currentFocusedItem);
+
+    //         const focusItemBeforeReplaceChildren = document.activeElement;
+
+    //         console.log(
+    //           focusItemBeforeReplaceChildren,
+    //           "focusItemBeforeReplaceChildren"
+    //         );
+
+    //         scrollContainer.replaceChildren();
+
+    //         const appendItemsToScrollContainer =
+    //           createChildrenForScrollContainerDesktop(lastItemToBeginnging);
+
+    //         scrollContainer.append(appendItemsToScrollContainer);
+
+    //         if (
+    //           focusItemBeforeReplaceChildren.getAttribute("id") == "upBtn" ||
+    //           focusItemBeforeReplaceChildren.getAttribute("id") == "downBtn"
+    //         ) {
+    //           document.getElementById("currentFocused").focus();
+    //           document.getElementById("currentFocused").scrollIntoView();
+    //           setTimeout(() => {
+    //             focusItemBeforeReplaceChildren.focus();
+    //           }, 80);
+    //           return;
+    //         }
+
+    //         console.log(
+    //           focusItemBeforeReplaceChildren,
+    //           "focusItemBeforeReplaceChildren after replacechildren()"
+    //         );
+
+    //         if (document.activeElement.tagName == "BODY") {
+    //           focusItemBeforeReplaceChildren.focus();
+    //           focusItemBeforeReplaceChildren.scrollIntoView();
+    //           return;
+    //         }
+    //       }
+
+    //       if (targetPosindex == "eight" || targetPosindex == "nine") {
+    //         // top item goes to bottom
+
+    //         const topItemToBottom =
+    //           moveFirstItemToEndOfList(currentFocusedItem);
+
+    //         const focusItemBeforeReplaceChildren = document.activeElement;
+
+    //         console.log(
+    //           focusItemBeforeReplaceChildren,
+    //           "focusItemBeforeReplaceChildren"
+    //         );
+
+    //         scrollContainer.replaceChildren();
+
+    //         const appendSnapItemsToScrollContainer =
+    //           createChildrenForScrollContainerDesktop(topItemToBottom);
+
+    //         scrollContainer.append(appendSnapItemsToScrollContainer);
+
+    //         if (
+    //           focusItemBeforeReplaceChildren.getAttribute("id") == "upBtn" ||
+    //           focusItemBeforeReplaceChildren.getAttribute("id") == "downBtn"
+    //         ) {
+    //           document.getElementById("currentFocused").focus();
+    //           document.getElementById("currentFocused").scrollIntoView();
+    //           setTimeout(() => {
+    //             focusItemBeforeReplaceChildren.focus();
+    //           }, 80);
+    //           return;
+    //         }
+
+    //         console.log(
+    //           focusItemBeforeReplaceChildren,
+    //           "focusItemBeforeReplaceChildren after replacechildren()"
+    //         );
+
+    //         if (document.activeElement.tagName == "BODY") {
+    //           focusItemBeforeReplaceChildren.focus();
+    //           focusItemBeforeReplaceChildren.scrollIntoView();
+    //           return;
+    //         }
+    //       }
+    //     }
+    //   }
+    // });
 
     if (window.innerWidth <= 375) {
       console.log("hello");
@@ -73,7 +788,7 @@ export default function Carousel({ children, ...props }) {
           ...snapItemBeforeLast,
         ];
 
-        scrollContainer.replaceChildren();
+        // scrollContainer.replaceChildren();
         console.log(positionEightIndexAtBeginning);
         const appendElementToScrollContainer =
           createChildrenForScrollContainerDesktop(
@@ -169,374 +884,23 @@ export default function Carousel({ children, ...props }) {
     //     : null;
     // }
 
-    /**
-     * Resize observer
-     * **/
-
-    const resizeSnapitems = new ResizeObserver((entries) => {
-      const dataFromLocalStorage = !localStorage.getItem("cachedObserverValues")
-        ? null
-        : JSON.parse(localStorage.getItem("cachedObserverValues"));
-
-      const objFromLocalData = dataFromLocalStorage
-        ? dataFromLocalStorage
-        : { resizeIndicator: null };
-      console.log(objFromLocalData, "objFromLocalData");
-      console.log(window.innerWidth, "innerWidth resizeSnapItems");
-      console.log(document.activeElement, "document.activeElement");
-
-      // mobile
-      if (window.innerWidth <= 375) {
-        if (!objFromLocalData.resizeIndicator) {
-          console.log("scrollSnap: mobile resize is null");
-          objFromLocalData.resizeIndicator = "mobile";
-          localStorage.setItem(
-            "cachedObserverValues",
-            JSON.stringify(objFromLocalData)
-          );
-          return;
-        }
-
-        if (objFromLocalData.resizeIndicator == "desktop") {
-          objFromLocalData.resizeIndicator = "mobile";
-          localStorage.setItem(
-            "cachedObserverValues",
-            JSON.stringify(objFromLocalData)
-          );
-
-          resizeDesktopToMobile(
-            scrollContainer,
-            moveLastItemToBeginningOfList,
-            moveFirstItemToEndOfList,
-            resizeFocusCorrectItem,
-            createChildrenForScrollContainerDesktop
-          );
-          return;
-          // const focusedSnapItem = document.getElementById("currentFocused");
-          // const targetPosindex = document
-          //   .getElementById("currentFocused")
-          //   .getAttribute("data-pos-index");
-
-          // console.log("scrollSnap: mobile resize is desktop");
-
-          // objFromLocalData.resizeIndicator = "mobile";
-          // localStorage.setItem(
-          //   "cachedObserverValues",
-          //   JSON.stringify(objFromLocalData)
-          // );
-          // // dont move snap items
-          // if (
-          //   targetPosindex == "three" ||
-          //   targetPosindex == "four" ||
-          //   targetPosindex == "five" ||
-          //   targetPosindex == "six" ||
-          //   targetPosindex == "seven"
-          // ) {
-          //   // render array
-          //   const copiedItems = [...focusedSnapItem.parentElement.children];
-          //   const focusItemBeforeReplaceChildren = document.activeElement;
-
-          //   scrollContainer.replaceChildren();
-
-          //   const appendSnapItemsToContainer =
-          //     createChildrenForScrollContainerDesktop(copiedItems);
-
-          //   scrollContainer.append(appendSnapItemsToContainer);
-
-          //   if (
-          //     focusItemBeforeReplaceChildren.getAttribute("id") == "upBtn" ||
-          //     focusItemBeforeReplaceChildren.getAttribute("id") == "downBtn"
-          //   ) {
-          //     document.getElementById("currentFocused").focus();
-          //     document.getElementById("currentFocused").scrollIntoView();
-          //     setTimeout(() => {
-          //       focusItemBeforeReplaceChildren.focus();
-          //     }, 80);
-          //     return;
-          //   }
-
-          //   if (document.activeElement.tagName == "BODY") {
-          //     console.log("focus is on body element");
-          //     focusItemBeforeReplaceChildren.focus();
-          //     focusItemBeforeReplaceChildren.scrollIntoView();
-          //     return;
-          //   }
-          // }
-          // // move snap items
-          // // top
-          // if (targetPosindex == "one" || targetPosindex == "two") {
-          //   const arrayForTopItemToBottom =
-          //     moveFirstItemToEndOfList(focusedSnapItem);
-
-          //   const focusItemBeforeReplaceChildren = document.activeElement;
-
-          //   console.log(
-          //     focusItemBeforeReplaceChildren,
-          //     "focusItemBeforeReplaceChildren"
-          //   );
-
-          //   scrollContainer.replaceChildren();
-          //   // top item goes to bottom
-          //   const appendElementsToContainer =
-          //     createChildrenForScrollContainerDesktop(arrayForTopItemToBottom);
-
-          //   scrollContainer.append(appendElementsToContainer);
-
-          //   if (
-          //     focusItemBeforeReplaceChildren.getAttribute("id") == "upBtn" ||
-          //     focusItemBeforeReplaceChildren.getAttribute("id") == "downBtn"
-          //   ) {
-          //     document.getElementById("currentFocused").focus();
-          //     document.getElementById("currentFocused").scrollIntoView();
-          //     setTimeout(() => {
-          //       focusItemBeforeReplaceChildren.focus();
-          //     }, 80);
-          //     return;
-          //   }
-
-          //   console.log(
-          //     focusItemBeforeReplaceChildren,
-          //     "focusItemBeforeReplaceChildren after replacechildren()"
-          //   );
-
-          //   if (document.activeElement.tagName == "BODY") {
-          //     console.log("focus is on body element");
-          //     focusItemBeforeReplaceChildren.focus();
-          //     focusItemBeforeReplaceChildren.scrollIntoView();
-          //     return;
-          //   }
-          // }
-          // // bottom
-          // if (targetPosindex == "eight" || targetPosindex == "nine") {
-          //   // bottom item goes to top
-          //   const arrayForBottomItemToBeginning =
-          //     moveLastItemToBeginningOfList(focusedSnapItem);
-
-          //   const focusItemBeforeReplaceChildren = document.activeElement;
-
-          //   console.log(
-          //     focusItemBeforeReplaceChildren,
-          //     "focusItemBeforeReplaceChildren"
-          //   );
-
-          //   scrollContainer.replaceChildren();
-
-          //   const appendSnapItemsToContainer =
-          //     createChildrenForScrollContainerDesktop(
-          //       arrayForBottomItemToBeginning
-          //     );
-
-          //   scrollContainer.append(appendSnapItemsToContainer);
-
-          //   if (
-          //     focusItemBeforeReplaceChildren.getAttribute("id") == "upBtn" ||
-          //     focusItemBeforeReplaceChildren.getAttribute("id") == "downBtn"
-          //   ) {
-          //     document.getElementById("currentFocused").focus();
-          //     document.getElementById("currentFocused").scrollIntoView();
-          //     setTimeout(() => {
-          //       focusItemBeforeReplaceChildren.focus();
-          //     }, 80);
-          //     return;
-          //   }
-
-          //   console.log(
-          //     focusItemBeforeReplaceChildren,
-          //     "focusItemBeforeReplaceChildren after replacechildren()"
-          //   );
-
-          //   if (document.activeElement.tagName == "BODY") {
-          //     focusItemBeforeReplaceChildren.focus();
-          //     focusItemBeforeReplaceChildren.scrollIntoView();
-          //     return;
-          //   }
-          // }
-        }
-      }
-
-      // desktop
-      if (window.innerWidth >= 1440) {
-        if (!objFromLocalData.resizeIndicator) {
-          console.log("scrollSnap: desktop resize is null");
-          objFromLocalData.resizeIndicator = "desktop";
-          localStorage.setItem(
-            "cachedObserverValues",
-            JSON.stringify(objFromLocalData)
-          );
-          return;
-        }
-
-        if (objFromLocalData.resizeIndicator == "mobile") {
-          objFromLocalData.resizeIndicator = "desktop";
-          localStorage.setItem(
-            "cachedObserverValues",
-            JSON.stringify(objFromLocalData)
-          );
-
-          resizeMobileToDesktop(
-            scrollContainer,
-            moveLastItemToBeginningOfList,
-            moveFirstItemToEndOfList,
-            resizeFocusCorrectItem,
-            createChildrenForScrollContainerDesktop
-          );
-          return;
-          // const currentFocusedItem = document.getElementById("currentFocused");
-
-          // const targetPosindex = document
-          //   .getElementById("currentFocused")
-          //   .getAttribute("data-pos-index");
-          // console.log("scrollSnap: desktop resize is mobile");
-
-          // objFromLocalData.resizeIndicator = "desktop";
-          // localStorage.setItem(
-          //   "cachedObserverValues",
-          //   JSON.stringify(objFromLocalData)
-          // );
-          // // dont move snap items
-          // if (
-          //   targetPosindex == "three" ||
-          //   targetPosindex == "four" ||
-          //   targetPosindex == "five" ||
-          //   targetPosindex == "six" ||
-          //   targetPosindex == "seven"
-          // ) {
-          //   // render array
-          //   const copiedSnapItemsArray = [
-          //     ...currentFocusedItem.parentElement.children,
-          //   ];
-          //   const focusItemBeforeReplaceChildren = document.activeElement;
-
-          //   scrollContainer.replaceChildren();
-
-          //   const appendSnapItemsArray =
-          //     createChildrenForScrollContainerDesktop(copiedSnapItemsArray);
-
-          //   scrollContainer.append(appendSnapItemsArray);
-
-          //   if (
-          //     focusItemBeforeReplaceChildren.getAttribute("id") == "upBtn" ||
-          //     focusItemBeforeReplaceChildren.getAttribute("id") == "downBtn"
-          //   ) {
-          //     document.getElementById("currentFocused").focus();
-          //     document.getElementById("currentFocused").scrollIntoView();
-          //     setTimeout(() => {
-          //       focusItemBeforeReplaceChildren.focus();
-          //     }, 80);
-          //     return;
-          //   }
-
-          //   if (document.activeElement.tagName == "BODY") {
-          //     focusItemBeforeReplaceChildren.focus();
-          //     focusItemBeforeReplaceChildren.scrollIntoView();
-          //     return;
-          //   }
-
-          //   return;
-          // }
-          // // move snap items
-          // if (targetPosindex == "one" || targetPosindex == "two") {
-          //   // bottom item goes to top
-          //   const lastItemToBeginnging =
-          //     moveLastItemToBeginningOfList(currentFocusedItem);
-
-          //   const focusItemBeforeReplaceChildren = document.activeElement;
-
-          //   console.log(
-          //     focusItemBeforeReplaceChildren,
-          //     "focusItemBeforeReplaceChildren"
-          //   );
-
-          //   scrollContainer.replaceChildren();
-
-          //   const appendItemsToScrollContainer =
-          //     createChildrenForScrollContainerDesktop(lastItemToBeginnging);
-
-          //   scrollContainer.append(appendItemsToScrollContainer);
-
-          //   if (
-          //     focusItemBeforeReplaceChildren.getAttribute("id") == "upBtn" ||
-          //     focusItemBeforeReplaceChildren.getAttribute("id") == "downBtn"
-          //   ) {
-          //     document.getElementById("currentFocused").focus();
-          //     document.getElementById("currentFocused").scrollIntoView();
-          //     setTimeout(() => {
-          //       focusItemBeforeReplaceChildren.focus();
-          //     }, 80);
-          //     return;
-          //   }
-
-          //   console.log(
-          //     focusItemBeforeReplaceChildren,
-          //     "focusItemBeforeReplaceChildren after replacechildren()"
-          //   );
-
-          //   if (document.activeElement.tagName == "BODY") {
-          //     focusItemBeforeReplaceChildren.focus();
-          //     focusItemBeforeReplaceChildren.scrollIntoView();
-          //     return;
-          //   }
-          // }
-
-          // if (targetPosindex == "eight" || targetPosindex == "nine") {
-          //   // top item goes to bottom
-
-          //   const topItemToBottom =
-          //     moveFirstItemToEndOfList(currentFocusedItem);
-
-          //   const focusItemBeforeReplaceChildren = document.activeElement;
-
-          //   console.log(
-          //     focusItemBeforeReplaceChildren,
-          //     "focusItemBeforeReplaceChildren"
-          //   );
-
-          //   scrollContainer.replaceChildren();
-
-          //   const appendSnapItemsToScrollContainer =
-          //     createChildrenForScrollContainerDesktop(topItemToBottom);
-
-          //   scrollContainer.append(appendSnapItemsToScrollContainer);
-
-          //   if (
-          //     focusItemBeforeReplaceChildren.getAttribute("id") == "upBtn" ||
-          //     focusItemBeforeReplaceChildren.getAttribute("id") == "downBtn"
-          //   ) {
-          //     document.getElementById("currentFocused").focus();
-          //     document.getElementById("currentFocused").scrollIntoView();
-          //     setTimeout(() => {
-          //       focusItemBeforeReplaceChildren.focus();
-          //     }, 80);
-          //     return;
-          //   }
-
-          //   console.log(
-          //     focusItemBeforeReplaceChildren,
-          //     "focusItemBeforeReplaceChildren after replacechildren()"
-          //   );
-
-          //   if (document.activeElement.tagName == "BODY") {
-          //     focusItemBeforeReplaceChildren.focus();
-          //     focusItemBeforeReplaceChildren.scrollIntoView();
-          //     return;
-          //   }
-          // }
-        }
-      }
-    });
     // call .observe()
-    document.addEventListener(
-      "visibilitychange",
-      function addObserverRemoveObserver(event) {
-        console.log(event);
-        if (document.visibilityState == "visible") {
-          console.log("hello");
-        }
-        if (document.visibilityState == "hidden") {
-        }
-      }
-    );
-    // resizeSnapitems.observe(document.getElementsByTagName("body")[0]);
+
+    // document.addEventListener(
+    //   "visibilitychange",
+    //   function addObserverRemoveObserver(event) {
+    //     if (document.visibilityState == "visible") {
+    //       resizeSnapitems.observe(document.getElementsByTagName("body")[0]);
+    //       console.log("hello");
+    //     }
+
+    //     if (document.visibilityState == "hidden") {
+    //       console.log("hidden");
+    //       resizeSnapitems.unobserve(document.getElementsByTagName("body")[0]);
+    //     }
+    //   }
+    // );
+    // return a function calling .removeevent in that function to clean up any added event listeners
   }, [initialValuesObj.targetElement]);
 
   return (
@@ -731,4 +1095,20 @@ function createChildrenForScrollContainerDesktop(array) {
   });
 
   return fragment;
+}
+
+function debounce(func, wait, immediate) {
+  var timeout;
+  return function () {
+    var context = this,
+      args = arguments;
+    var later = function () {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
 }
