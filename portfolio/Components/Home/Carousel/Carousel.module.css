@@ -24,6 +24,124 @@
   flex-basis: 350px;
 }
 
+/*** 
+***** *****
+mobile snap item orders
+***** *****
+***/
+
+.snap-items-container[data-item-order="standard"] [data-pos-index="one"] {
+  order: 0;
+}
+.snap-items-container[data-item-order="standard"] [data-pos-index="two"] {
+  order: 1;
+}
+.snap-items-container[data-item-order="standard"] [data-pos-index="three"] {
+  order: 2;
+}
+.snap-items-container[data-item-order="standard"] [data-pos-index="four"] {
+  order: 3;
+}
+.snap-items-container[data-item-order="standard"] [data-pos-index="five"] {
+  order: 4;
+}
+.snap-items-container[data-item-order="standard"] [data-pos-index="six"] {
+  order: 5;
+}
+.snap-items-container[data-item-order="standard"] [data-pos-index="seven"] {
+  order: 6;
+}
+.snap-items-container[data-item-order="standard"] [data-pos-index="eight"] {
+  order: 7;
+}
+.snap-items-container[data-item-order="standard"] [data-pos-index="nine"] {
+  order: 8;
+}
+
+/*****/
+
+.snap-items-container[data-item-order="mobile-nine-first"]
+  [data-pos-index="one"] {
+  order: 1;
+}
+.snap-items-container[data-item-order="mobile-nine-first"]
+  [data-pos-index="two"] {
+  order: 2;
+}
+.snap-items-container[data-item-order="mobile-nine-first"]
+  [data-pos-index="three"] {
+  order: 3;
+}
+.snap-items-container[data-item-order="mobile-nine-first"]
+  [data-pos-index="four"] {
+  order: 4;
+}
+.snap-items-container[data-item-order="mobile-nine-first"]
+  [data-pos-index="five"] {
+  order: 5;
+}
+.snap-items-container[data-item-order="mobile-nine-first"]
+  [data-pos-index="six"] {
+  order: 6;
+}
+.snap-items-container[data-item-order="mobile-nine-first"]
+  [data-pos-index="seven"] {
+  order: 7;
+}
+.snap-items-container[data-item-order="mobile-nine-first"]
+  [data-pos-index="eight"] {
+  order: 8;
+}
+.snap-items-container[data-item-order="mobile-nine-first"]
+  [data-pos-index="nine"] {
+  order: 0;
+}
+
+/*****/
+
+.snap-items-container[data-item-order="mobile-one-last"]
+  [data-pos-index="one"] {
+  order: 8;
+}
+.snap-items-container[data-item-order="mobile-one-last"]
+  [data-pos-index="two"] {
+  order: 0;
+}
+.snap-items-container[data-item-order="mobile-one-last"]
+  [data-pos-index="three"] {
+  order: 1;
+}
+.snap-items-container[data-item-order="mobile-one-last"]
+  [data-pos-index="four"] {
+  order: 2;
+}
+.snap-items-container[data-item-order="mobile-one-last"]
+  [data-pos-index="five"] {
+  order: 3;
+}
+.snap-items-container[data-item-order="mobile-one-last"]
+  [data-pos-index="six"] {
+  order: 4;
+}
+.snap-items-container[data-item-order="mobile-one-last"]
+  [data-pos-index="seven"] {
+  order: 5;
+}
+.snap-items-container[data-item-order="mobile-one-last"]
+  [data-pos-index="eight"] {
+  order: 6;
+}
+.snap-items-container[data-item-order="mobile-one-last"]
+  [data-pos-index="nine"] {
+  order: 7;
+}
+
+/*** 
+***** *****
+mobile snap item orders
+***** *****
+***/
+
 .snap-items-container::-webkit-scrollbar {
   width: 0;
   height: 0;
@@ -135,4 +253,170 @@
     padding-inline: 0;
     flex-basis: calc(100vh - 64px - 58px);
   }
+
+  /*** 
+***** *****
+desktop snap item orders
+***** *****
+***/
+
+  .snap-items-container[data-item-order="desktop-eight-first"]
+    [data-pos-index="one"] {
+    order: 2;
+  }
+  .snap-items-container[data-item-order="desktop-eight-first"]
+    [data-pos-index="two"] {
+    order: 3;
+  }
+  .snap-items-container[data-item-order="desktop-eight-first"]
+    [data-pos-index="three"] {
+    order: 4;
+  }
+  .snap-items-container[data-item-order="desktop-eight-first"]
+    [data-pos-index="four"] {
+    order: 5;
+  }
+  .snap-items-container[data-item-order="desktop-eight-first"]
+    [data-pos-index="five"] {
+    order: 6;
+  }
+  .snap-items-container[data-item-order="desktop-eight-first"]
+    [data-pos-index="six"] {
+    order: 7;
+  }
+  .snap-items-container[data-item-order="desktop-eight-first"]
+    [data-pos-index="seven"] {
+    order: 8;
+  }
+  .snap-items-container[data-item-order="desktop-eight-first"]
+    [data-pos-index="eight"] {
+    order: 0;
+  }
+  .snap-items-container[data-item-order="desktop-eight-first"]
+    [data-pos-index="nine"] {
+    order: 1;
+  }
+
+  /********/
+
+  .snap-items-container[data-item-order="desktop-nine-first"]
+    [data-pos-index="one"] {
+    order: 1;
+  }
+  .snap-items-container[data-item-order="desktop-nine-first"]
+    [data-pos-index="two"] {
+    order: 2;
+  }
+  .snap-items-container[data-item-order="desktop-nine-first"]
+    [data-pos-index="three"] {
+    order: 3;
+  }
+  .snap-items-container[data-item-order="desktop-nine-first"]
+    [data-pos-index="four"] {
+    order: 4;
+  }
+  .snap-items-container[data-item-order="desktop-nine-first"]
+    [data-pos-index="five"] {
+    order: 5;
+  }
+  .snap-items-container[data-item-order="desktop-nine-first"]
+    [data-pos-index="six"] {
+    order: 6;
+  }
+  .snap-items-container[data-item-order="desktop-nine-first"]
+    [data-pos-index="seven"] {
+    order: 7;
+  }
+  .snap-items-container[data-item-order="desktop-nine-first"]
+    [data-pos-index="eight"] {
+    order: 8;
+  }
+  .snap-items-container[data-item-order="desktop-nine-first"]
+    [data-pos-index="nine"] {
+    order: 0;
+  }
+
+  /********/
+
+  .snap-items-container[data-item-order="desktop-two-last"]
+    [data-pos-index="one"] {
+    order: 7;
+  }
+  .snap-items-container[data-item-order="desktop-two-last"]
+    [data-pos-index="two"] {
+    order: 8;
+  }
+  .snap-items-container[data-item-order="desktop-two-last"]
+    [data-pos-index="three"] {
+    order: 0;
+  }
+  .snap-items-container[data-item-order="desktop-two-last"]
+    [data-pos-index="four"] {
+    order: 1;
+  }
+  .snap-items-container[data-item-order="desktop-two-last"]
+    [data-pos-index="five"] {
+    order: 2;
+  }
+  .snap-items-container[data-item-order="desktop-two-last"]
+    [data-pos-index="six"] {
+    order: 3;
+  }
+  .snap-items-container[data-item-order="desktop-two-last"]
+    [data-pos-index="seven"] {
+    order: 4;
+  }
+  .snap-items-container[data-item-order="desktop-two-last"]
+    [data-pos-index="eight"] {
+    order: 5;
+  }
+  .snap-items-container[data-item-order="desktop-two-last"]
+    [data-pos-index="nine"] {
+    order: 6;
+  }
+
+  /********/
+
+  .snap-items-container[data-item-order="desktop-one-last"]
+    [data-pos-index="one"] {
+    order: 8;
+  }
+  .snap-items-container[data-item-order="desktop-one-last"]
+    [data-pos-index="two"] {
+    order: 0;
+  }
+  .snap-items-container[data-item-order="desktop-one-last"]
+    [data-pos-index="three"] {
+    order: 1;
+  }
+  .snap-items-container[data-item-order="desktop-one-last"]
+    [data-pos-index="four"] {
+    order: 2;
+  }
+  .snap-items-container[data-item-order="desktop-one-last"]
+    [data-pos-index="five"] {
+    order: 3;
+  }
+  .snap-items-container[data-item-order="desktop-one-last"]
+    [data-pos-index="six"] {
+    order: 4;
+  }
+  .snap-items-container[data-item-order="desktop-one-last"]
+    [data-pos-index="seven"] {
+    order: 5;
+  }
+  .snap-items-container[data-item-order="desktop-one-last"]
+    [data-pos-index="eight"] {
+    order: 6;
+  }
+  .snap-items-container[data-item-order="desktop-one-last"]
+    [data-pos-index="nine"] {
+    order: 7;
+  }
+
+  /*** 
+***** *****
+desktop snap item orders
+***** *****
+***/
 }

@@ -29,120 +29,91 @@ const mobileScrollHelper = {
     top: {
       one: (
         target,
-        renderComponent,
-        reorderArray,
-        createArray,
+        applyAttrCallback,
+        assignItemOrderCallback,
+        itemOrderStr,
         typeOfScroll,
-        upDownArrow
+        timeValue,
+        focusArrow
       ) => {
-        // reorder array
-        const topItemsToBottom = reorderArray(target);
-        // create array of objs
-        const arrayForTopOneUp = createArray(
-          topItemsToBottom,
-          "9",
-          renderComponent
-        );
-        // render component
+        const lastItem =
+          target.parentElement.children[
+            target.parentElement.children.length - 1
+          ];
+
         typeOfScroll == "mouse"
           ? setTimeout(() => {
-              renderComponent((prev) => {
-                return {
-                  ...prev,
-                  bottomOrTopArray: arrayForTopOneUp,
-                  targetElement: "uptopone",
-                };
-              });
+              target.parentElement.setAttribute(
+                "data-item-order",
+                itemOrderStr
+              );
+
+              applyAttrCallback(lastItem);
+
+              lastItem.focus();
+
+              lastItem.scrollIntoView();
             }, 500)
           : setTimeout(() => {
-              renderComponent((prev) => {
-                return {
-                  ...prev,
-                  bottomOrTopArray: arrayForTopOneUp,
-                  targetElement: "uptopone",
-                  clickedBtn: upDownArrow,
-                };
-              });
+              target.parentElement.setAttribute(
+                "data-item-order",
+                itemOrderStr
+              );
+
+              applyAttrCallback(lastItem);
+
+              lastItem.focus();
+
+              lastItem.scrollIntoView();
+
+              focusArrow ? document.getElementById(focusArrow).focus() : null;
             }, 100);
+        // render component
+        // typeOfScroll == "mouse"
+        //   ? setTimeout(() => {
+        //       renderComponent((prev) => {
+        //         return {
+        //           ...prev,
+        //           bottomOrTopArray: arrayForTopOneUp,
+        //           targetElement: "uptopone",
+        //         };
+        //       });
+        //     }, 500)
+        //   : setTimeout(() => {
+        //       renderComponent((prev) => {
+        //         return {
+        //           ...prev,
+        //           bottomOrTopArray: arrayForTopOneUp,
+        //           targetElement: "uptopone",
+        //           clickedBtn: upDownArrow,
+        //         };
+        //       });
+        //     }, 100);
       },
       two: (
         target,
-        renderComponent,
-        reorderArray,
-        createArray,
+        applyAttrCallback,
+        assignItemOrderCallback,
+        itemOrderStr,
         typeOfScroll,
-        upDownArrow
+        timeValue,
+        focusArrow
       ) => {
-        // reorder array
-        const bottomSnapItemToBeginning = reorderArray(target);
-        // create array of objs
-        const arrayForTopTwoUp = createArray(
-          bottomSnapItemToBeginning,
-          "1",
-          renderComponent
-        );
-        // render component
-        typeOfScroll == "mouse"
-          ? setTimeout(() => {
-              renderComponent((prevVals) => {
-                return {
-                  ...prevVals,
-                  bottomOrTopArray: arrayForTopTwoUp,
-                  targetElement: "uptoptwo",
-                };
-              });
-            }, 500)
-          : setTimeout(() => {
-              renderComponent((prevVals) => {
-                return {
-                  ...prevVals,
-                  bottomOrTopArray: arrayForTopTwoUp,
-                  targetElement: "uptoptwo",
-                  clickedBtn: upDownArrow,
-                };
-              });
-            }, 100);
+        assignItemOrderCallback(target, itemOrderStr, timeValue);
       },
     },
     // bottom
     bottom: {
       nine: (
         target,
-        renderComponent,
-        reorderArray,
-        createArray,
+        applyAttrCallback,
+        assignItemOrderCallback,
+        itemOrderStr,
         typeOfScroll,
-        upDownArrow
+        timeValue,
+        focusArrow
       ) => {
-        // reorder array
-        const bottomItemToBeginning = reorderArray(target);
-        // create array of objs
-        const arrayForBottomNineUp = createArray(
-          bottomItemToBeginning,
-          "8",
-          renderComponent
-        );
-        // render component
-        typeOfScroll == "mouse"
-          ? setTimeout(() => {
-              renderComponent((values) => {
-                return {
-                  ...values,
-                  bottomOrTopArray: arrayForBottomNineUp,
-                  targetElement: "upbottomnine",
-                };
-              });
-            }, 500)
-          : setTimeout(() => {
-              renderComponent((values) => {
-                return {
-                  ...values,
-                  bottomOrTopArray: arrayForBottomNineUp,
-                  targetElement: "upbottomnine",
-                  clickedBtn: upDownArrow,
-                };
-              });
-            }, 100);
+        assignItemOrderCallback(target, itemOrderStr, timeValue);
       },
     },
   },
@@ -152,119 +123,64 @@ const mobileScrollHelper = {
     top: {
       one: (
         target,
-        renderComponent,
-        reorderArray,
-        createArray,
+        applyAttrCallback,
+        assignItemOrderCallback,
+        itemOrderStr,
         typeOfScroll,
-        upDownArrow
+        timeValue,
+        focusArrow
       ) => {
-        // reorder array
-        const topItemToBottom = reorderArray(target);
-        // create array of objs
-        const arrayForTopOneDown = createArray(
-          topItemToBottom,
-          "2",
-          renderComponent
-        );
-        // render component
-        typeOfScroll == "mouse"
-          ? setTimeout(() => {
-              renderComponent((prevValues) => {
-                return {
-                  ...prevValues,
-                  bottomOrTopArray: arrayForTopOneDown,
-                  targetElement: "downtopone",
-                };
-              });
-            }, 500)
-          : setTimeout(() => {
-              renderComponent((prevValues) => {
-                return {
-                  ...prevValues,
-                  bottomOrTopArray: arrayForTopOneDown,
-                  targetElement: "downtopone",
-                  clickedBtn: upDownArrow,
-                };
-              });
-            }, 100);
+        assignItemOrderCallback(target, itemOrderStr, timeValue);
       },
     },
     // bottom
     bottom: {
       eight: (
         target,
-        renderComponent,
-        reorderArray,
-        createArray,
+        applyAttrCallback,
+        assignItemOrderCallback,
+        itemOrderStr,
         typeOfScroll,
-        upDownArrow
+        timeValue,
+        focusArrow
       ) => {
-        // reorder array
-        const topItemToEnd = reorderArray(target);
-        // create array of objs
-        const arrayForBottomEightDown = createArray(
-          topItemToEnd,
-          "9",
-          renderComponent
-        );
-        // render component
-        typeOfScroll == "mouse"
-          ? setTimeout(() => {
-              renderComponent((values) => {
-                return {
-                  ...values,
-                  bottomOrTopArray: arrayForBottomEightDown,
-                  targetElement: "downbottomeight",
-                };
-              });
-            }, 500)
-          : setTimeout(() => {
-              renderComponent((values) => {
-                return {
-                  ...values,
-                  bottomOrTopArray: arrayForBottomEightDown,
-                  targetElement: "downbottomeight",
-                  clickedBtn: upDownArrow,
-                };
-              });
-            }, 100);
+        assignItemOrderCallback(target, itemOrderStr, timeValue);
       },
       nine: (
         target,
-        renderComponent,
-        reorderArray,
-        createArray,
+        applyAttrCallback,
+        assignItemOrderCallback,
+        itemOrderStr,
         typeOfScroll,
-        upDownArrow
+        timeValue,
+        focusArrow
       ) => {
-        // reorder array
-        const bottomItemsToBeginning = reorderArray(target);
-        // create array of objs
-        const arrayForBottomNineDown = createArray(
-          bottomItemsToBeginning,
-          "1",
-          renderComponent
-        );
-        // render component
+        const firstItem = target.parentElement.children[0];
+
         typeOfScroll == "mouse"
           ? setTimeout(() => {
-              renderComponent((val) => {
-                return {
-                  ...val,
-                  bottomOrTopArray: arrayForBottomNineDown,
-                  targetElement: "downbottomnine",
-                };
-              });
+              target.parentElement.setAttribute(
+                "data-item-order",
+                itemOrderStr
+              );
+
+              applyAttrCallback(firstItem);
+
+              firstItem.focus();
+              firstItem.scrollIntoView();
             }, 500)
           : setTimeout(() => {
-              renderComponent((val) => {
-                return {
-                  ...val,
-                  bottomOrTopArray: arrayForBottomNineDown,
-                  targetElement: "downbottomnine",
-                  clickedBtn: upDownArrow,
-                };
-              });
+              target.parentElement.setAttribute(
+                "data-item-order",
+                itemOrderStr
+              );
+
+              applyAttrCallback(firstItem);
+
+              firstItem.focus();
+              firstItem.scrollIntoView();
+
+              focusArrow ? document.getElementById(focusArrow).focus() : null;
             }, 100);
       },
     },
@@ -702,69 +618,53 @@ const createNewOrderedArrayIndexSix = factoryFuncCreateArray(6);
 
 const mobileMouseScrollUp = mobileScrollUpFactoryFunc(
   mobileScrollHelper,
-  {
-    moveFirstTwoItemsToEnd,
-    moveLastItemToBeginningOfList,
-  },
-  { createNewOrderedArrayIndexSeven, createNewOrderedArrayIndexOne }
+  applyFocusSnapItemAttr,
+  assignItemOrderAttr,
+  ["mobile-one-last", "mobile-nine-first", "standard"],
+  null
 );
 
 const mobileArrowKeyScrollUp = mobileScrollUpFactoryFunc(
   mobileScrollHelper,
-  {
-    moveFirstTwoItemsToEnd,
-    moveLastItemToBeginningOfList,
-  },
-  { createNewOrderedArrayIndexSeven, createNewOrderedArrayIndexOne }
+  applyFocusSnapItemAttr,
+  assignItemOrderAttr,
+  ["mobile-one-last", "mobile-nine-first", "standard"],
+  null
 );
 
 const mobileArrowBtnScrollUp = mobileScrollUpFactoryFunc(
   mobileScrollHelper,
-  {
-    moveFirstTwoItemsToEnd,
-    moveLastItemToBeginningOfList,
-  },
-  { createNewOrderedArrayIndexSeven, createNewOrderedArrayIndexOne }
+  applyFocusSnapItemAttr,
+  assignItemOrderAttr,
+  ["mobile-one-last", "mobile-nine-first", "standard"],
+  "upBtn"
 );
 
 /**
  * mobile scroll down
  * **/
-
 const mobileMouseScrollDown = mobileScrollDownFactoryFunc(
   mobileScrollHelper,
-  {
-    moveFirstItemToEndOfList,
-    moveLastTwoItemsToBeginning,
-  },
-  {
-    createNewOrderedArrayIndexOne,
-    createNewOrderedArrayIndexSeven,
-  }
+  applyFocusSnapItemAttr,
+  assignItemOrderAttr,
+  ["standard", "mobile-one-last", "mobile-nine-first"],
+  null
 );
 
 const mobileArrowKeyScrollDown = mobileScrollDownFactoryFunc(
   mobileScrollHelper,
-  {
-    moveFirstItemToEndOfList,
-    moveLastTwoItemsToBeginning,
-  },
-  {
-    createNewOrderedArrayIndexOne,
-    createNewOrderedArrayIndexSeven,
-  }
+  applyFocusSnapItemAttr,
+  assignItemOrderAttr,
+  ["standard", "mobile-one-last", "mobile-nine-first"],
+  null
 );
 
 const mobileArrowBtnScrollDown = mobileScrollDownFactoryFunc(
   mobileScrollHelper,
-  {
-    moveFirstItemToEndOfList,
-    moveLastTwoItemsToBeginning,
-  },
-  {
-    createNewOrderedArrayIndexOne,
-    createNewOrderedArrayIndexSeven,
-  }
+  applyFocusSnapItemAttr,
+  assignItemOrderAttr,
+  ["standard", "mobile-one-last", "mobile-nine-first"],
+  "downBtn"
 );
 
 /**
@@ -3294,51 +3194,50 @@ export function factoryFuncCreateArray(indexOfArray) {
 
 function mobileScrollUpFactoryFunc(
   mobileMethodsObj,
-  { moveFirstTwoItemsToEnd, moveLastItemToBeginningOfList },
-  { createNewOrderedArrayIndexSeven, createNewOrderedArrayIndexOne }
+  applyAttrFunc,
+  assignOrderAttrFunc,
+  [oneIndexAttrStr, twoIndexAttrStr, nineIndexAttrStr],
+  focusArrowBtn
 ) {
-  return function innerFunc(
-    target,
-    posIndex,
-    renderComponent,
-    scrollType,
-    arrowBtn
-  ) {
-    console.log(moveFirstTwoItemsToEnd, moveLastItemToBeginningOfList);
-    console.log(createNewOrderedArrayIndexSeven, createNewOrderedArrayIndexOne);
+  return function innerFunc(target, posIndex, scrollType, time) {
     // top one
     if (posIndex == "one") {
       mobileMethodsObj["up"]["top"][posIndex](
         target,
-        renderComponent,
-        moveFirstTwoItemsToEnd,
-        createNewOrderedArrayIndexSeven,
+        applyAttrFunc,
+        assignOrderAttrFunc,
+        oneIndexAttrStr,
         scrollType,
-        arrowBtn
+        time,
+        focusArrowBtn
       );
       return;
     }
+
     // top eight
     if (posIndex == "two") {
       mobileMethodsObj["up"]["top"][posIndex](
         target,
-        renderComponent,
-        moveLastItemToBeginningOfList,
-        createNewOrderedArrayIndexOne,
+        applyAttrFunc,
+        assignOrderAttrFunc,
+        twoIndexAttrStr,
         scrollType,
-        arrowBtn
+        time,
+        focusArrowBtn
       );
       return;
     }
+
     // bottom nine
     if (posIndex == "nine") {
       mobileMethodsObj["up"]["bottom"][posIndex](
         target,
-        renderComponent,
-        moveLastItemToBeginningOfList,
-        createNewOrderedArrayIndexSeven,
+        applyAttrFunc,
+        assignOrderAttrFunc,
+        nineIndexAttrStr,
         scrollType,
-        arrowBtn
+        time,
+        focusArrowBtn
       );
       return;
     }
@@ -3351,25 +3250,22 @@ function mobileScrollUpFactoryFunc(
 
 function mobileScrollDownFactoryFunc(
   mobileMethodsObj,
-  { moveFirstItemToEndOfList, moveLastTwoItemsToBeginning },
-  { createNewOrderedArrayIndexOne, createNewOrderedArrayIndexSeven }
+  applyAttrFunc,
+  assignOrderAttrFunc,
+  [oneIndexAttrStr, eightIndexAttrStr, nineIndexAttrStr],
+  focusArrowBtn
 ) {
-  return function innerFunc(
-    target,
-    posIndex,
-    renderComponent,
-    scrollType,
-    arrowBtn
-  ) {
+  return function innerFunc(target, posIndex, scrollType, time) {
     // top one
     if (posIndex == "one") {
       mobileMethodsObj["down"]["top"][posIndex](
         target,
-        renderComponent,
-        moveFirstItemToEndOfList,
-        createNewOrderedArrayIndexOne,
+        applyAttrFunc,
+        assignOrderAttrFunc,
+        eightIndexAttrStr,
         scrollType,
-        arrowBtn
+        time,
+        focusArrowBtn
       );
       return;
     }
@@ -3377,11 +3273,12 @@ function mobileScrollDownFactoryFunc(
     if (posIndex == "eight") {
       mobileMethodsObj["down"]["bottom"][posIndex](
         target,
-        renderComponent,
-        moveFirstItemToEndOfList,
-        createNewOrderedArrayIndexSeven,
+        applyAttrFunc,
+        assignOrderAttrFunc,
+        oneIndexAttrStr,
         scrollType,
-        arrowBtn
+        time,
+        focusArrowBtn
       );
       return;
     }
@@ -3389,11 +3286,12 @@ function mobileScrollDownFactoryFunc(
     if (posIndex == "nine") {
       mobileMethodsObj["down"]["bottom"][posIndex](
         target,
-        renderComponent,
-        moveLastTwoItemsToBeginning,
-        createNewOrderedArrayIndexOne,
+        applyAttrFunc,
+        assignOrderAttrFunc,
+        nineIndexAttrStr,
         scrollType,
-        arrowBtn
+        time,
+        focusArrowBtn
       );
       return;
     }
@@ -4213,6 +4111,24 @@ export function observeSnapItemsContainerDesktop(
 }
 
 /**
+ * first snap item
+ * **/
+
+function firstSnapItem(target) {
+  return target.parentElement.children[0];
+}
+
+/**
+ * last snap item
+ * **/
+
+function lastSnapItem(target) {
+  return target.parentElement.children[
+    target.parentElement.children.length - 1
+  ];
+}
+
+/**
  * move item to top of list
  * **/
 
@@ -4394,21 +4310,67 @@ export function focusCenteredSnapItemOnWheelScrollDesktopMobile(event) {
      * **/
     if (screenSize <= 375) {
       // top one
-
-      if (
-        targetPosIndex == "one" ||
-        targetPosIndex == "two" ||
-        targetPosIndex == "nine"
-      ) {
-        mobileMouseScrollUp(
-          currentFocused,
-          targetPosIndex,
-          this.setSnapArray,
-          "mouse",
-          null
-        );
+      if (targetPosIndex == "one") {
+        mobileMouseScrollUp(currentFocused, targetPosIndex, "mouse");
         return;
       }
+
+      if (targetPosIndex == "two" || targetPosIndex == "nine") {
+        mobileMouseScrollUp(currentFocused, targetPosIndex, "mouse", 500);
+      }
+
+      // if (targetPosIndex == "one") {
+      //   const lastItem =
+      //     currentFocused.parentElement.children[
+      //       currentFocused.parentElement.children.length - 1
+      //     ];
+      //   setTimeout(() => {
+      //     currentFocused.parentElement.setAttribute(
+      //       "data-item-order",
+      //       "mobile-one-last"
+      //     );
+      //     applyFocusSnapItemAttr(lastItem);
+      //     lastItem.focus();
+      //     lastItem.scrollIntoView();
+      //   }, 500);
+      //   return;
+      // }
+      // if (targetPosIndex == "two") {
+      //   setTimeout(() => {
+      //     currentFocused.parentElement.setAttribute(
+      //       "data-item-order",
+      //       "mobile-nine-first"
+      //     );
+      //   }, 500);
+      // }
+      // if (targetPosIndex == "nine") {
+      //   setTimeout(() => {
+      //     currentFocused.parentElement.setAttribute(
+      //       "data-item-order",
+      //       "standard"
+      //     );
+      //   }, 500);
+      // }
+      /**
+       * work with resize event listener
+       * **/
+      // if (
+      //   targetPosIndex == "one" ||
+      //   targetPosIndex == "two" ||
+      //   targetPosIndex == "nine"
+      // ) {
+      //   mobileMouseScrollUp(
+      //     currentFocused,
+      //     targetPosIndex,
+      //     this.setSnapArray,
+      //     "mouse",
+      //     null
+      //   );
+      //   return;
+      // }
+      /**
+       * work with resize event listener
+       * **/
       // if (targetPosIndex == "one") {
       //   mobileScrollHelper["up"]["top"][targetPosIndex](
       //     currentFocused,
@@ -4448,22 +4410,74 @@ export function focusCenteredSnapItemOnWheelScrollDesktopMobile(event) {
      * **/
 
     if (screenSize >= 1440) {
-      if (
-        targetPosIndex == "one" ||
-        targetPosIndex == "two" ||
-        targetPosIndex == "three" ||
-        targetPosIndex == "eight" ||
-        targetPosIndex == "nine"
-      ) {
-        desktopMouseScrollUp(
-          currentFocused,
-          targetPosIndex,
-          this.setSnapArray,
-          "mouse",
-          null
-        );
+      if (targetPosIndex == "one") {
+        const lastItem = lastSnapItem(currentFocused);
+
+        setTimeout(() => {
+          currentFocused.parentElement.setAttribute(
+            "data-item-order",
+            "desktop-two-last"
+          );
+
+          applyFocusSnapItemAttr(lastItem);
+
+          lastItem.focus();
+          lastItem.scrollIntoView();
+        }, 500);
+
         return;
       }
+      if (targetPosIndex == "two") {
+        setTimeout(() => {
+          currentFocused.parentElement.setAttribute(
+            "data-item-order",
+            "desktop-eight-first"
+          );
+        }, 500);
+      }
+      if (targetPosIndex == "three") {
+        setTimeout(() => {
+          currentFocused.parentElement.setAttribute(
+            "data-item-order",
+            "desktop-nine-first"
+          );
+        }, 500);
+      }
+      if (targetPosIndex == "eight") {
+        setTimeout(() => {
+          currentFocused.parentElement.setAttribute(
+            "data-item-order",
+            "standard"
+          );
+        }, 500);
+      }
+      if (targetPosIndex == "nine") {
+        setTimeout(() => {
+          currentFocused.parentElement.setAttribute(
+            "data-item-order",
+            "desktop-one-last"
+          );
+        }, 500);
+
+        return;
+      }
+
+      // if (
+      //   targetPosIndex == "one" ||
+      //   targetPosIndex == "two" ||
+      //   targetPosIndex == "three" ||
+      //   targetPosIndex == "eight" ||
+      //   targetPosIndex == "nine"
+      // ) {
+      //   desktopMouseScrollUp(
+      //     currentFocused,
+      //     targetPosIndex,
+      //     this.setSnapArray,
+      //     "mouse",
+      //     null
+      //   );
+      //   return;
+      // }
 
       // // top one
       // if (targetPosIndex == "one") {
@@ -4535,20 +4549,71 @@ export function focusCenteredSnapItemOnWheelScrollDesktopMobile(event) {
      * mobile
      * **/
     if (screenSize <= 375) {
-      if (
-        targetPosIndex == "one" ||
-        targetPosIndex == "eight" ||
-        targetPosIndex == "nine"
-      ) {
-        mobileMouseScrollDown(
-          currentFocused,
-          targetPosIndex,
-          this.setSnapArray,
-          "mouse",
-          null
-        );
+      if (targetPosIndex == "nine") {
+        mobileMouseScrollDown(currentFocused, targetPosIndex, "mouse");
         return;
       }
+
+      if (targetPosIndex == "one" || targetPosIndex == "eight") {
+        mobileMouseScrollDown(currentFocused, targetPosIndex, "mouse", 500);
+      }
+
+      // if (targetPosIndex == "one") {
+      //   setTimeout(() => {
+      //     currentFocused.parentElement.setAttribute(
+      //       "data-item-order",
+      //       "standard"
+      //     );
+      //   }, 500);
+      // }
+
+      // if (targetPosIndex == "eight") {
+      //   setTimeout(() => {
+      //     currentFocused.parentElement.setAttribute(
+      //       "data-item-order",
+      //       "mobile-one-last"
+      //     );
+      //   }, 500);
+      // }
+
+      // if (targetPosIndex == "nine") {
+      //   setTimeout(() => {
+      //     currentFocused.parentElement.setAttribute(
+      //       "data-item-order",
+      //       "mobile-nine-first"
+      //     );
+
+      //     const firstItem = currentFocused.parentElement.children[0];
+
+      //     applyFocusSnapItemAttr(firstItem);
+
+      //     firstItem.focus();
+      //     firstItem.scrollIntoView();
+      //   }, 500);
+
+      //   return;
+      // }
+
+      /**
+       * work with resize event listener
+       * **/
+      // if (
+      //   targetPosIndex == "one" ||
+      //   targetPosIndex == "eight" ||
+      //   targetPosIndex == "nine"
+      // ) {
+      //   mobileMouseScrollDown(
+      //     currentFocused,
+      //     targetPosIndex,
+      //     this.setSnapArray,
+      //     "mouse",
+      //     null
+      //   );
+      //   return;
+      // }
+      /**
+       * work with resize event listener
+       * **/
       // // top one
       // if (targetPosIndex == "one") {
       //   mobileScrollHelper["down"]["top"][targetPosIndex](
@@ -4589,22 +4654,71 @@ export function focusCenteredSnapItemOnWheelScrollDesktopMobile(event) {
      * **/
 
     if (screenSize >= 1440) {
-      if (
-        targetPosIndex == "one" ||
-        targetPosIndex == "two" ||
-        targetPosIndex == "seven" ||
-        targetPosIndex == "eight" ||
-        targetPosIndex == "nine"
-      ) {
-        desktopMouseScrollDown(
-          currentFocused,
-          targetPosIndex,
-          this.setSnapArray,
-          "mouse",
-          null
-        );
+      if (targetPosIndex == "one") {
+        setTimeout(() => {
+          currentFocused.parentElement.setAttribute(
+            "data-item-order",
+            "desktop-nine-first"
+          );
+        }, 500);
+      }
+      if (targetPosIndex == "two") {
+        setTimeout(() => {
+          currentFocused.parentElement.setAttribute(
+            "data-item-order",
+            "standard"
+          );
+        }, 500);
+      }
+      if (targetPosIndex == "seven") {
+        setTimeout(() => {
+          currentFocused.parentElement.setAttribute(
+            "data-item-order",
+            "desktop-one-last"
+          );
+        }, 500);
+      }
+      if (targetPosIndex == "eight") {
+        setTimeout(() => {
+          currentFocused.parentElement.setAttribute(
+            "data-item-order",
+            "desktop-two-last"
+          );
+        }, 500);
+      }
+      if (targetPosIndex == "nine") {
+        setTimeout(() => {
+          const firstItem = firstSnapItem(currentFocused);
+
+          currentFocused.parentElement.setAttribute(
+            "data-item-order",
+            "desktop-eight-first"
+          );
+
+          applyFocusSnapItemAttr(firstItem);
+
+          firstItem.focus();
+          firstItem.scrollIntoView();
+        }, 500);
         return;
       }
+
+      // if (
+      //   targetPosIndex == "one" ||
+      //   targetPosIndex == "two" ||
+      //   targetPosIndex == "seven" ||
+      //   targetPosIndex == "eight" ||
+      //   targetPosIndex == "nine"
+      // ) {
+      //   desktopMouseScrollDown(
+      //     currentFocused,
+      //     targetPosIndex,
+      //     this.setSnapArray,
+      //     "mouse",
+      //     null
+      //   );
+      //   return;
+      // }
 
       // // top one
       // if (targetPosIndex == "one") {
@@ -4726,6 +4840,16 @@ function applyFocusSnapItemAttr(target) {
   target.setAttribute("id", "currentFocused");
   // add id attribute "currentFocused"
   target.setAttribute("aria-hidden", "false");
+}
+
+/**
+ * assign item order attr
+ * **/
+
+function assignItemOrderAttr(focusedElement, attrValue, time) {
+  setTimeout(() => {
+    focusedElement.parentElement.setAttribute("data-item-order", attrValue);
+  }, time);
 }
 
 /**
