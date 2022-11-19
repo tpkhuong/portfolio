@@ -12,7 +12,7 @@ export function swipeRightBtn(event) {
   const introBtnElement = document.getElementById("show-carousel");
   setTimeout(() => {
     carouselSnapElement.parentElement.scrollBy(-5, 0);
-  }, 350);
+  }, 500);
   introBtnElement.getAttribute("data-introbtnclicked") == "true"
     ? introBtnElement.setAttribute("data-introbtnclicked", "false")
     : null;
@@ -197,11 +197,12 @@ const desktopScrollHelper = {
     top: {
       one: (
         target,
-        renderComponent,
-        reorderArray,
-        createArray,
+        applyAttrCallback,
+        assignItemOrderCallback,
+        itemOrderStr,
         typeOfScroll,
-        upDownArrow
+        timeValue,
+        focusArrow
       ) => {
         // reorder array
         const topFourItemsToBottom = reorderArray(target);
@@ -235,11 +236,12 @@ const desktopScrollHelper = {
       },
       two: (
         target,
-        renderComponent,
-        reorderArray,
-        createArray,
+        applyAttrCallback,
+        assignItemOrderCallback,
+        itemOrderStr,
         typeOfScroll,
-        upDownArrow
+        timeValue,
+        focusArrow
       ) => {
         // reorder array
         const bottomItemToBeginningUpTwo = reorderArray(target);
@@ -273,11 +275,12 @@ const desktopScrollHelper = {
       },
       three: (
         target,
-        renderComponent,
-        reorderArray,
-        createArray,
+        applyAttrCallback,
+        assignItemOrderCallback,
+        itemOrderStr,
         typeOfScroll,
-        upDownArrow
+        timeValue,
+        focusArrow
       ) => {
         // reorder array
         const bottomItemToBeginningThree = reorderArray(target);
@@ -313,11 +316,12 @@ const desktopScrollHelper = {
     bottom: {
       eight: (
         target,
-        renderComponent,
-        reorderArray,
-        createArray,
+        applyAttrCallback,
+        assignItemOrderCallback,
+        itemOrderStr,
         typeOfScroll,
-        upDownArrow
+        timeValue,
+        focusArrow
       ) => {
         // reorder array
         const bottomToBeginningEight = reorderArray(target);
@@ -351,11 +355,12 @@ const desktopScrollHelper = {
       },
       nine: (
         target,
-        renderComponent,
-        reorderArray,
-        createArray,
+        applyAttrCallback,
+        assignItemOrderCallback,
+        itemOrderStr,
         typeOfScroll,
-        upDownArrow
+        timeValue,
+        focusArrow
       ) => {
         // reorder array
         const bottomItemToBeginningNine = reorderArray(target);
@@ -394,11 +399,12 @@ const desktopScrollHelper = {
     top: {
       one: (
         target,
-        renderComponent,
-        reorderArray,
-        createArray,
+        applyAttrCallback,
+        assignItemOrderCallback,
+        itemOrderStr,
         typeOfScroll,
-        upDownArrow
+        timeValue,
+        focusArrow
       ) => {
         // reorder array
         const topItemToBottomOne = reorderArray(target);
@@ -432,11 +438,12 @@ const desktopScrollHelper = {
       },
       two: (
         target,
-        renderComponent,
-        reorderArray,
-        createArray,
+        applyAttrCallback,
+        assignItemOrderCallback,
+        itemOrderStr,
         typeOfScroll,
-        upDownArrow
+        timeValue,
+        focusArrow
       ) => {
         // reorder array
         const topItemToBottomTwo = reorderArray(target);
@@ -472,11 +479,12 @@ const desktopScrollHelper = {
     bottom: {
       seven: (
         target,
-        renderComponent,
-        reorderArray,
-        createArray,
+        applyAttrCallback,
+        assignItemOrderCallback,
+        itemOrderStr,
         typeOfScroll,
-        upDownArrow
+        timeValue,
+        focusArrow
       ) => {
         // reorder array
         const topItemToBottomSeven = reorderArray(target);
@@ -510,11 +518,12 @@ const desktopScrollHelper = {
       },
       eight: (
         target,
-        renderComponent,
-        reorderArray,
-        createArray,
+        applyAttrCallback,
+        assignItemOrderCallback,
+        itemOrderStr,
         typeOfScroll,
-        upDownArrow
+        timeValue,
+        focusArrow
       ) => {
         // reorder array
         const topItemToBottomEight = reorderArray(target);
@@ -548,11 +557,12 @@ const desktopScrollHelper = {
       },
       nine: (
         target,
-        renderComponent,
-        reorderArray,
-        createArray,
+        applyAttrCallback,
+        assignItemOrderCallback,
+        itemOrderStr,
         typeOfScroll,
-        upDownArrow
+        timeValue,
+        focusArrow
       ) => {
         // reorder array
         const lastFourToBeginning = reorderArray(target);
@@ -730,20 +740,80 @@ export function clickPreviousSnapItem(event) {
      * mobile
      * **/
     if (windowWidth <= 375) {
-      if (
-        posindexUpArrowBtn == "one" ||
-        posindexUpArrowBtn == "two" ||
-        posindexUpArrowBtn == "nine"
-      ) {
-        mobileArrowBtnScrollUp(
-          currentFocusedElement,
-          posindexUpArrowBtn,
-          this.setSnapArray,
-          null,
-          "upBtn"
+      if (posindexUpArrowBtn == "one") {
+        const lastItem =
+          currentFocusedElement.parentElement.children[
+            currentFocusedElement.parentElement.children.length - 1
+          ];
+
+        currentFocusedElement.parentElement.setAttribute(
+          "data-item-order",
+          "mobile-one-last"
         );
+
+        applyFocusSnapItemAttr(lastItem);
+
+        lastItem.focus();
+
+        setTimeout(() => {
+          document.getElementById("upBtn").focus();
+        }, 100);
         return;
       }
+
+      if (posindexUpArrowBtn == "two") {
+        const firstItem = currentFocusedElement.parentElement.children[0];
+
+        currentFocusedElement.parentElement.setAttribute(
+          "data-item-order",
+          "mobile-nine-first"
+        );
+
+        applyFocusSnapItemAttr(firstItem);
+
+        firstItem.focus();
+
+        setTimeout(() => {
+          document.getElementById("upBtn").focus();
+        }, 100);
+        return;
+      }
+
+      if (posindexUpArrowBtn == "nine") {
+        const eighthItem =
+          currentFocusedElement.parentElement.children[
+            currentFocusedElement.parentElement.children.length - 2
+          ];
+
+        currentFocusedElement.parentElement.setAttribute(
+          "data-item-order",
+          "standard"
+        );
+
+        applyFocusSnapItemAttr(eighthItem);
+
+        eighthItem.focus();
+
+        setTimeout(() => {
+          document.getElementById("upBtn").focus();
+        }, 100);
+        return;
+      }
+
+      // if (
+      //   posindexUpArrowBtn == "one" ||
+      //   posindexUpArrowBtn == "two" ||
+      //   posindexUpArrowBtn == "nine"
+      // ) {
+      //   mobileArrowBtnScrollUp(
+      //     currentFocusedElement,
+      //     posindexUpArrowBtn,
+      //     this.setSnapArray,
+      //     null,
+      //     "upBtn"
+      //   );
+      //   return;
+      // }
       // // top one
       // if (posindexUpArrowBtn == "one") {
       //   mobileScrollHelper["up"]["top"][posindexUpArrowBtn](
@@ -869,9 +939,10 @@ export function clickPreviousSnapItem(event) {
     // scroll up
     scrollingUpHelper(currentFocusedElement);
     previousSnapSibling(currentFocusedElement, windowWidth);
-    // setTimeout(() => {
-    //   event.target.closest("BUTTON").focus();
-    // }, 50);
+    document.getElementById("currentFocused").focus();
+    setTimeout(() => {
+      document.getElementById("upBtn").focus();
+    }, 50);
   }
 }
 
@@ -895,20 +966,75 @@ export function clickNextSnapItem(event) {
      * **/
 
     if (windowWidth <= 375) {
-      if (
-        posindexDownArrowBtn == "one" ||
-        posindexDownArrowBtn == "eight" ||
-        posindexDownArrowBtn == "nine"
-      ) {
-        mobileArrowBtnScrollDown(
-          currentFocusedItem,
-          posindexDownArrowBtn,
-          this.setSnapArray,
-          null,
-          "downBtn"
+      if (posindexDownArrowBtn == "one") {
+        const secondItem = currentFocusedItem.parentElement.children[1];
+
+        currentFocusedItem.parentElement.setAttribute(
+          "data-item-order",
+          "standard"
         );
+
+        applyFocusSnapItemAttr(secondItem);
+
+        secondItem.focus();
+
+        setTimeout(() => {
+          document.getElementById("downBtn").focus();
+        }, 100);
         return;
       }
+
+      if (posindexDownArrowBtn == "eight") {
+        const lastItem = lastSnapItem(currentFocusedItem);
+
+        currentFocusedItem.parentElement.setAttribute(
+          "data-item-order",
+          "mobile-one-last"
+        );
+
+        applyFocusSnapItemAttr(lastItem);
+
+        lastItem.focus();
+
+        setTimeout(() => {
+          document.getElementById("downBtn").focus();
+        }, 100);
+        return;
+      }
+
+      if (posindexDownArrowBtn == "nine") {
+        currentFocusedItem.parentElement.setAttribute(
+          "data-item-order",
+          "mobile-nine-first"
+        );
+
+        const firstItem = currentFocusedItem.parentElement.children[0];
+
+        applyFocusSnapItemAttr(firstItem);
+
+        firstItem.focus();
+
+        setTimeout(() => {
+          document.getElementById("downBtn").focus();
+        }, 100);
+
+        return;
+      }
+
+      // if (
+      //   posindexDownArrowBtn == "one" ||
+      //   posindexDownArrowBtn == "eight" ||
+      //   posindexDownArrowBtn == "nine"
+      // ) {
+      //   mobileArrowBtnScrollDown(
+      //     currentFocusedItem,
+      //     posindexDownArrowBtn,
+      //     this.setSnapArray,
+      //     null,
+      //     "downBtn"
+      //   );
+      //   return;
+      // }
       // // top one
       // if (posindexDownArrowBtn == "one") {
       //   mobileScrollHelper["down"]["top"][posindexDownArrowBtn](
@@ -1033,27 +1159,23 @@ export function clickNextSnapItem(event) {
 
     scrollingDownHelper(currentFocusedItem);
     nextSnapSibling(currentFocusedItem, windowWidth);
-    // setTimeout(() => {
-    //   event.target.closest("BUTTON").focus();
-    // }, 50);
+    document.getElementById("currentFocused").focus();
+    setTimeout(() => {
+      document.getElementById("downBtn").focus();
+    }, 50);
   }
 }
 
-// keyboard
+/**
+ * keyboard
+ * **/
+
 const methodsForKeyboardScroll = {
   // up arrow
-  ArrowUp: (
-    event,
-    element,
-    width,
-    posindex,
-    callToRender,
-    scrollFuncsObj,
-    defaultActionFuncsObj
-  ) => {
+  ArrowUp: (event, element, width, posindex, defaultActionFuncsObj) => {
     event.preventDefault();
 
-    const { mobileArrowKeyScrollUp, desktopArrowKeyScrollUp } = scrollFuncsObj;
+    // const { mobileArrowKeyScrollUp, desktopArrowKeyScrollUp } = scrollFuncsObj;
 
     // const {
     //   moveFirstTwoItemsToEnd,
@@ -1072,6 +1194,7 @@ const methodsForKeyboardScroll = {
       scrollingUpHelper,
       previousSnapSibling,
       changeCurrentSnapItemAttr,
+      applyFocusSnapItemAttr,
     } = defaultActionFuncsObj;
 
     changeCurrentSnapItemAttr(element);
@@ -1081,11 +1204,59 @@ const methodsForKeyboardScroll = {
      * **/
 
     if (width <= 375) {
-      if (posindex == "one" || posindex == "two" || posindex == "nine") {
-        mobileArrowKeyScrollUp(element, posindex, callToRender, null, null);
+      if (posindex == "one") {
+        const lastItem =
+          element.parentElement.children[
+            element.parentElement.children.length - 1
+          ];
+
+        element.parentElement.setAttribute(
+          "data-item-order",
+          "mobile-one-last"
+        );
+
+        applyFocusSnapItemAttr(lastItem);
+
+        lastItem.focus();
 
         return;
       }
+
+      if (posindex == "two") {
+        const firstItem = element.parentElement.children[0];
+
+        element.parentElement.setAttribute(
+          "data-item-order",
+          "mobile-nine-first"
+        );
+
+        applyFocusSnapItemAttr(firstItem);
+
+        firstItem.focus();
+
+        return;
+      }
+
+      if (posindex == "nine") {
+        const eighthItem =
+          element.parentElement.children[
+            element.parentElement.children.length - 2
+          ];
+
+        element.parentElement.setAttribute("data-item-order", "standard");
+
+        applyFocusSnapItemAttr(eighthItem);
+
+        eighthItem.focus();
+
+        return;
+      }
+
+      // if (posindex == "one" || posindex == "two" || posindex == "nine") {
+      //   mobileArrowKeyScrollUp(element, posindex, callToRender, null, null);
+
+      //   return;
+      // }
 
       // if (posindex == "one") {
       //   methodObj["up"]["top"][posindex](
@@ -1215,18 +1386,10 @@ const methodsForKeyboardScroll = {
     console.log("up");
   },
   // left arrow
-  ArrowLeft: (
-    event,
-    element,
-    width,
-    posindex,
-    callToRender,
-    scrollFuncsObj,
-    defaultActionFuncsObj
-  ) => {
+  ArrowLeft: (event, element, width, posindex, defaultActionFuncsObj) => {
     event.preventDefault();
 
-    const { mobileArrowKeyScrollUp, desktopArrowKeyScrollUp } = scrollFuncsObj;
+    // const { mobileArrowKeyScrollUp, desktopArrowKeyScrollUp } = scrollFuncsObj;
 
     // const {
     //   moveFirstTwoItemsToEnd,
@@ -1245,6 +1408,7 @@ const methodsForKeyboardScroll = {
       scrollingUpHelper,
       previousSnapSibling,
       changeCurrentSnapItemAttr,
+      applyFocusSnapItemAttr,
     } = defaultActionFuncsObj;
 
     changeCurrentSnapItemAttr(element);
@@ -1254,11 +1418,59 @@ const methodsForKeyboardScroll = {
      * **/
 
     if (width <= 375) {
-      if (posindex == "one" || posindex == "two" || posindex == "nine") {
-        mobileArrowKeyScrollUp(element, posindex, callToRender, null, null);
+      if (posindex == "one") {
+        const lastItem =
+          element.parentElement.children[
+            element.parentElement.children.length - 1
+          ];
+
+        element.parentElement.setAttribute(
+          "data-item-order",
+          "mobile-one-last"
+        );
+
+        applyFocusSnapItemAttr(lastItem);
+
+        lastItem.focus();
 
         return;
       }
+
+      if (posindex == "two") {
+        const firstItem = element.parentElement.children[0];
+
+        element.parentElement.setAttribute(
+          "data-item-order",
+          "mobile-nine-first"
+        );
+
+        applyFocusSnapItemAttr(firstItem);
+
+        firstItem.focus();
+
+        return;
+      }
+
+      if (posindex == "nine") {
+        const eighthItem =
+          element.parentElement.children[
+            element.parentElement.children.length - 2
+          ];
+
+        element.parentElement.setAttribute("data-item-order", "standard");
+
+        applyFocusSnapItemAttr(eighthItem);
+
+        eighthItem.focus();
+
+        return;
+      }
+
+      // if (posindex == "one" || posindex == "two" || posindex == "nine") {
+      //   mobileArrowKeyScrollUp(element, posindex, callToRender, null, null);
+
+      //   return;
+      // }
       // if (posindex == "one") {
       //   methodObj["up"]["top"][posindex](
       //     element,
@@ -1384,19 +1596,11 @@ const methodsForKeyboardScroll = {
     console.log("left");
   },
   // down arrow
-  ArrowDown: (
-    event,
-    element,
-    width,
-    posindex,
-    callToRender,
-    scrollFuncsObj,
-    defaultActionFuncsObj
-  ) => {
+  ArrowDown: (event, element, width, posindex, defaultActionFuncsObj) => {
     event.preventDefault();
 
-    const { mobileArrowKeyScrollDown, desktopArrowKeyScrollDown } =
-      scrollFuncsObj;
+    // const { mobileArrowKeyScrollDown, desktopArrowKeyScrollDown } =
+    //   scrollFuncsObj;
 
     // const {
     //   moveFirstItemToEndOfList,
@@ -1421,10 +1625,52 @@ const methodsForKeyboardScroll = {
      * **/
 
     if (width <= 375) {
-      if (posindex == "one" || posindex == "eight" || posindex == "nine") {
-        mobileArrowKeyScrollDown(element, posindex, callToRender, null, null);
+      if (posindex == "one") {
+        const secondItem = element.parentElement.children[1];
+
+        element.parentElement.setAttribute("data-item-order", "standard");
+
+        applyFocusSnapItemAttr(secondItem);
+
+        secondItem.focus();
+
         return;
       }
+
+      if (posindex == "eight") {
+        const lastItem = lastSnapItem(element);
+
+        element.parentElement.setAttribute(
+          "data-item-order",
+          "mobile-one-last"
+        );
+
+        applyFocusSnapItemAttr(lastItem);
+
+        lastItem.focus();
+
+        return;
+      }
+
+      if (posindex == "nine") {
+        element.parentElement.setAttribute(
+          "data-item-order",
+          "mobile-nine-first"
+        );
+
+        const firstItem = element.parentElement.children[0];
+
+        applyFocusSnapItemAttr(firstItem);
+
+        firstItem.focus();
+
+        return;
+      }
+
+      // if (posindex == "one" || posindex == "eight" || posindex == "nine") {
+      //   mobileArrowKeyScrollDown(element, posindex, callToRender, null, null);
+      //   return;
+      // }
 
       // if (posindex == "one") {
       //   methodObj["down"]["top"][posindex](
@@ -1553,19 +1799,11 @@ const methodsForKeyboardScroll = {
     console.log("down");
   },
   // right arrow
-  ArrowRight: (
-    event,
-    element,
-    width,
-    posindex,
-    callToRender,
-    scrollFuncsObj,
-    defaultActionFuncsObj
-  ) => {
+  ArrowRight: (event, element, width, posindex, defaultActionFuncsObj) => {
     event.preventDefault();
 
-    const { mobileArrowKeyScrollDown, desktopArrowKeyScrollDown } =
-      scrollFuncsObj;
+    // const { mobileArrowKeyScrollDown, desktopArrowKeyScrollDown } =
+    //   scrollFuncsObj;
 
     // const {
     //   moveFirstItemToEndOfList,
@@ -1590,8 +1828,45 @@ const methodsForKeyboardScroll = {
      * **/
 
     if (width <= 375) {
-      if (posindex == "one" || posindex == "eight" || posindex == "nine") {
-        mobileArrowKeyScrollDown(element, posindex, callToRender, null, null);
+      if (posindex == "one") {
+        const secondItem = element.parentElement.children[1];
+
+        element.parentElement.setAttribute("data-item-order", "standard");
+
+        applyFocusSnapItemAttr(secondItem);
+
+        secondItem.focus();
+
+        return;
+      }
+
+      if (posindex == "eight") {
+        const lastItem = lastSnapItem(element);
+
+        element.parentElement.setAttribute(
+          "data-item-order",
+          "mobile-one-last"
+        );
+
+        applyFocusSnapItemAttr(lastItem);
+
+        lastItem.focus();
+
+        return;
+      }
+
+      if (posindex == "nine") {
+        element.parentElement.setAttribute(
+          "data-item-order",
+          "mobile-nine-first"
+        );
+
+        const firstItem = element.parentElement.children[0];
+
+        applyFocusSnapItemAttr(firstItem);
+
+        firstItem.focus();
+
         return;
       }
 
@@ -2462,24 +2737,17 @@ export function keyboardScrollThroughSnapItems(event) {
    * **/
   if (methodsForKeyboardScroll[event.code]) {
     // set tabindex to "-1"
-    // currentFocusedSnapItem.setAttribute("tabindex", "-1");
+    currentFocusedSnapItem.setAttribute("tabindex", "-1");
     // aria-hidden "true"
-    // currentFocusedSnapItem.setAttribute("aria-hidden", "true");
+    currentFocusedSnapItem.setAttribute("aria-hidden", "true");
     // remove id attribute
-    // currentFocusedSnapItem.removeAttribute("id");
+    currentFocusedSnapItem.removeAttribute("id");
 
     methodsForKeyboardScroll[event.code](
       event,
       currentFocusedSnapItem,
       windowWidth,
       targetPosIndex,
-      this.setSnapArray,
-      {
-        mobileArrowKeyScrollUp,
-        mobileArrowKeyScrollDown,
-        desktopArrowKeyScrollUp,
-        desktopArrowKeyScrollDown,
-      },
       {
         scrollingUpHelper,
         scrollingDownHelper,
@@ -2487,22 +2755,6 @@ export function keyboardScrollThroughSnapItems(event) {
         nextSnapSibling,
         changeCurrentSnapItemAttr,
         applyFocusSnapItemAttr,
-      },
-      {
-        moveFirstItemToEndOfList,
-        moveFirstTwoItemsToEnd,
-        moveLastItemToBeginningOfList,
-        moveLastTwoItemsToBeginning,
-        moveTopFourItemsToBottom,
-        moveBottomFourItemsToBeginning,
-      },
-      {
-        createNewOrderedArrayIndexOne,
-        createNewOrderedArrayIndexTwo,
-        createNewOrderedArrayIndexThree,
-        createNewOrderedArrayIndexFive,
-        createNewOrderedArrayIndexSix,
-        createNewOrderedArrayIndexSeven,
       }
     );
   }
@@ -4310,47 +4562,66 @@ export function focusCenteredSnapItemOnWheelScrollDesktopMobile(event) {
      * **/
     if (screenSize <= 375) {
       // top one
-      if (targetPosIndex == "one") {
-        mobileMouseScrollUp(currentFocused, targetPosIndex, "mouse");
-        return;
-      }
-
-      if (targetPosIndex == "two" || targetPosIndex == "nine") {
-        mobileMouseScrollUp(currentFocused, targetPosIndex, "mouse", 500);
-      }
-
       // if (targetPosIndex == "one") {
-      //   const lastItem =
-      //     currentFocused.parentElement.children[
-      //       currentFocused.parentElement.children.length - 1
-      //     ];
-      //   setTimeout(() => {
-      //     currentFocused.parentElement.setAttribute(
-      //       "data-item-order",
-      //       "mobile-one-last"
-      //     );
-      //     applyFocusSnapItemAttr(lastItem);
-      //     lastItem.focus();
-      //     lastItem.scrollIntoView();
-      //   }, 500);
+      //   mobileMouseScrollUp(currentFocused, targetPosIndex, "mouse");
       //   return;
       // }
-      // if (targetPosIndex == "two") {
-      //   setTimeout(() => {
-      //     currentFocused.parentElement.setAttribute(
-      //       "data-item-order",
-      //       "mobile-nine-first"
-      //     );
-      //   }, 500);
+
+      // if (targetPosIndex == "two" || targetPosIndex == "nine") {
+      //   mobileMouseScrollUp(currentFocused, targetPosIndex, "mouse", 500);
       // }
-      // if (targetPosIndex == "nine") {
-      //   setTimeout(() => {
-      //     currentFocused.parentElement.setAttribute(
-      //       "data-item-order",
-      //       "standard"
-      //     );
-      //   }, 500);
-      // }
+
+      if (targetPosIndex == "one") {
+        setTimeout(() => {
+          const lastItem =
+            currentFocused.parentElement.children[
+              currentFocused.parentElement.children.length - 1
+            ];
+
+          currentFocused.parentElement.setAttribute(
+            "data-item-order",
+            "mobile-one-last"
+          );
+
+          applyFocusSnapItemAttr(lastItem);
+
+          lastItem.focus();
+        }, 500);
+        return;
+      }
+      if (targetPosIndex == "two") {
+        setTimeout(() => {
+          const firstItem = currentFocused.parentElement.children[0];
+
+          currentFocused.parentElement.setAttribute(
+            "data-item-order",
+            "mobile-nine-first"
+          );
+
+          applyFocusSnapItemAttr(firstItem);
+
+          firstItem.focus();
+        }, 500);
+        return;
+      }
+      if (targetPosIndex == "nine") {
+        setTimeout(() => {
+          const eighthItem =
+            currentFocused.parentElement.children[
+              currentFocused.parentElement.children.length - 2
+            ];
+
+          currentFocused.parentElement.setAttribute(
+            "data-item-order",
+            "standard"
+          );
+
+          applyFocusSnapItemAttr(eighthItem);
+
+          eighthItem.focus();
+        }, 500);
+        return;
+      }
       /**
        * work with resize event listener
        * **/
@@ -4427,39 +4698,72 @@ export function focusCenteredSnapItemOnWheelScrollDesktopMobile(event) {
 
         return;
       }
+
       if (targetPosIndex == "two") {
+        const firstItem = currentFocused.parentElement.children[0];
+
         setTimeout(() => {
           currentFocused.parentElement.setAttribute(
             "data-item-order",
             "desktop-eight-first"
           );
+
+          applyFocusSnapItemAttr(firstItem);
+
+          firstItem.focus();
+          firstItem.scrollIntoView();
         }, 500);
       }
+
       if (targetPosIndex == "three") {
+        const secondItem = currentFocused.parentElement.children[1];
         setTimeout(() => {
           currentFocused.parentElement.setAttribute(
             "data-item-order",
             "desktop-nine-first"
           );
+
+          applyFocusSnapItemAttr(secondItem);
+
+          secondItem.focus();
+          secondItem.scrollIntoView();
         }, 500);
       }
+
       if (targetPosIndex == "eight") {
+        const seventhItem =
+          currentFocused.parentElement.children[
+            currentFocused.parentElement.children.length - 3
+          ];
         setTimeout(() => {
           currentFocused.parentElement.setAttribute(
             "data-item-order",
             "standard"
           );
+
+          applyFocusSnapItemAttr(seventhItem);
+
+          seventhItem.focus();
+          seventhItem.scrollIntoView();
         }, 500);
       }
+
       if (targetPosIndex == "nine") {
+        const eighthItem =
+          currentFocused.parentElement.children[
+            currentFocused.parentElement.children.length - 2
+          ];
         setTimeout(() => {
           currentFocused.parentElement.setAttribute(
             "data-item-order",
             "desktop-one-last"
           );
-        }, 500);
 
-        return;
+          applyFocusSnapItemAttr(eighthItem);
+
+          eighthItem.focus();
+          eighthItem.scrollIntoView();
+        }, 500);
       }
 
       // if (
@@ -4549,50 +4853,63 @@ export function focusCenteredSnapItemOnWheelScrollDesktopMobile(event) {
      * mobile
      * **/
     if (screenSize <= 375) {
-      if (targetPosIndex == "nine") {
-        mobileMouseScrollDown(currentFocused, targetPosIndex, "mouse");
+      // if (targetPosIndex == "nine") {
+      //   mobileMouseScrollDown(currentFocused, targetPosIndex, "mouse");
+      //   return;
+      // }
+
+      // if (targetPosIndex == "one" || targetPosIndex == "eight") {
+      //   mobileMouseScrollDown(currentFocused, targetPosIndex, "mouse", 500);
+      // }
+
+      if (targetPosIndex == "one") {
+        setTimeout(() => {
+          const secondItem = currentFocused.parentElement.children[1];
+
+          currentFocused.parentElement.setAttribute(
+            "data-item-order",
+            "standard"
+          );
+
+          applyFocusSnapItemAttr(secondItem);
+
+          secondItem.focus();
+        }, 500);
         return;
       }
 
-      if (targetPosIndex == "one" || targetPosIndex == "eight") {
-        mobileMouseScrollDown(currentFocused, targetPosIndex, "mouse", 500);
+      if (targetPosIndex == "eight") {
+        setTimeout(() => {
+          const lastItem = lastSnapItem(currentFocused);
+
+          currentFocused.parentElement.setAttribute(
+            "data-item-order",
+            "mobile-one-last"
+          );
+
+          applyFocusSnapItemAttr(lastItem);
+
+          lastItem.focus();
+        }, 500);
+        return;
       }
 
-      // if (targetPosIndex == "one") {
-      //   setTimeout(() => {
-      //     currentFocused.parentElement.setAttribute(
-      //       "data-item-order",
-      //       "standard"
-      //     );
-      //   }, 500);
-      // }
+      if (targetPosIndex == "nine") {
+        setTimeout(() => {
+          currentFocused.parentElement.setAttribute(
+            "data-item-order",
+            "mobile-nine-first"
+          );
 
-      // if (targetPosIndex == "eight") {
-      //   setTimeout(() => {
-      //     currentFocused.parentElement.setAttribute(
-      //       "data-item-order",
-      //       "mobile-one-last"
-      //     );
-      //   }, 500);
-      // }
+          const firstItem = currentFocused.parentElement.children[0];
 
-      // if (targetPosIndex == "nine") {
-      //   setTimeout(() => {
-      //     currentFocused.parentElement.setAttribute(
-      //       "data-item-order",
-      //       "mobile-nine-first"
-      //     );
+          applyFocusSnapItemAttr(firstItem);
 
-      //     const firstItem = currentFocused.parentElement.children[0];
+          firstItem.focus();
+        }, 500);
 
-      //     applyFocusSnapItemAttr(firstItem);
-
-      //     firstItem.focus();
-      //     firstItem.scrollIntoView();
-      //   }, 500);
-
-      //   return;
-      // }
+        return;
+      }
 
       /**
        * work with resize event listener
@@ -4655,35 +4972,67 @@ export function focusCenteredSnapItemOnWheelScrollDesktopMobile(event) {
 
     if (screenSize >= 1440) {
       if (targetPosIndex == "one") {
+        const secondItem = currentFocused.parentElement.children[1];
+
         setTimeout(() => {
           currentFocused.parentElement.setAttribute(
             "data-item-order",
             "desktop-nine-first"
           );
+
+          applyFocusSnapItemAttr(secondItem);
+
+          secondItem.focus();
+          secondItem.scrollIntoView();
         }, 500);
       }
       if (targetPosIndex == "two") {
+        const thirdItem = currentFocused.parentElement.children[2];
+
         setTimeout(() => {
           currentFocused.parentElement.setAttribute(
             "data-item-order",
             "standard"
           );
+
+          applyFocusSnapItemAttr(thirdItem);
+
+          thirdItem.focus();
+          thirdItem.scrollIntoView();
         }, 500);
       }
       if (targetPosIndex == "seven") {
+        const eighthItem =
+          currentFocused.parentElement.children[
+            currentFocused.parentElement.children.length - 2
+          ];
         setTimeout(() => {
           currentFocused.parentElement.setAttribute(
             "data-item-order",
             "desktop-one-last"
           );
+
+          applyFocusSnapItemAttr(eighthItem);
+
+          eighthItem.focus();
+          eighthItem.scrollIntoView();
         }, 500);
       }
       if (targetPosIndex == "eight") {
+        const lastItem =
+          currentFocused.parentElement.children[
+            currentFocused.parentElement.children.length - 1
+          ];
         setTimeout(() => {
           currentFocused.parentElement.setAttribute(
             "data-item-order",
             "desktop-two-last"
           );
+
+          applyFocusSnapItemAttr(lastItem);
+
+          lastItem.focus();
+          lastItem.scrollIntoView();
         }, 500);
       }
       if (targetPosIndex == "nine") {

@@ -970,17 +970,14 @@ export default function Carousel({ children, ...props }) {
           tabIndex="-1"
           id="scroll-container"
           aria-live="polite"
-          onKeyDown={(event) => {
-            console.log(event);
-          }}
           onWheel={focusCenteredSnapItemOnWheelScrollDesktopMobile.bind({
             initialValuesObj,
             setSnapArray,
           })}
-          // onKeyDown={keyboardScrollThroughSnapItems.bind({
-          //   initialValuesObj,
-          //   setSnapArray,
-          // })}
+          onKeyDown={keyboardScrollThroughSnapItems.bind({
+            initialValuesObj,
+            setSnapArray,
+          })}
         >
           {/* aria-hidden all on projects except project with tabindex 0 */}
           {!initialValuesObj.bottomOrTopArray ? (
