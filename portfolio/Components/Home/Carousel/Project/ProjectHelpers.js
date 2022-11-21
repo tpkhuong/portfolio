@@ -1,26 +1,26 @@
-import {
-  factoryFuncCreateArray,
-  moveFirstItemToEndOfList,
-  moveFirstTwoItemsToEnd,
-  moveLastItemToBeginningOfList,
-  moveLastTwoItemsToBeginning,
-} from "../carouselHelpers";
+// import {
+//   factoryFuncCreateArray,
+//   moveFirstItemToEndOfList,
+//   moveFirstTwoItemsToEnd,
+//   moveLastItemToBeginningOfList,
+//   moveLastTwoItemsToBeginning,
+// } from "../carouselHelpers";
 
-/**
- * create func to create arrays for touch event
- * **/
+// /**
+//  * create func to create arrays for touch event
+//  * **/
 
-// working with index 1 and 7 mobile
+// // working with index 1 and 7 mobile
 
-const touchEventCreateNewOrderedArrayIndexOne = factoryFuncCreateArray(1);
+// const touchEventCreateNewOrderedArrayIndexOne = factoryFuncCreateArray(1);
 
-const touchEventCreateNewOrderedArrayIndexSeven = factoryFuncCreateArray(7);
+// const touchEventCreateNewOrderedArrayIndexSeven = factoryFuncCreateArray(7);
 
-// working with index 2 and 6 desktop
+// // working with index 2 and 6 desktop
 
-const touchEventCreateNewOrderedArrayIndexTwo = factoryFuncCreateArray(2);
+// const touchEventCreateNewOrderedArrayIndexTwo = factoryFuncCreateArray(2);
 
-const touchEventCreateNewOrderedArrayIndexSix = factoryFuncCreateArray(6);
+// const touchEventCreateNewOrderedArrayIndexSix = factoryFuncCreateArray(6);
 
 /**
  * scroll methods for touch event
@@ -33,120 +33,105 @@ const touchEventVerticalMovementHelper = {
     top: {
       one: (
         target,
-        renderComponent,
-        reorderArray,
-        createArray,
+        applyAttrCallback,
+        itemOrderStr,
         typeOfScroll,
-        upDownArrow
+        focusArrow
       ) => {
-        // reorder array
-        const topItemToBottom = reorderArray(target);
-        // create array of objs
-        const arrayForTopOneDown = createArray(
-          topItemToBottom,
-          "2",
-          renderComponent
-        );
-        // render component
-        typeOfScroll == "mouse"
+        const secondItem = target.parentElement.children[1];
+
+        if (typeOfScroll == "mouse") {
+          setTimeout(() => {
+            target.parentElement.setAttribute("data-item-order", itemOrderStr);
+
+            applyAttrCallback(secondItem);
+
+            secondItem.focus();
+          }, 500);
+          return;
+        }
+
+        target.parentElement.setAttribute("data-item-order", itemOrderStr);
+
+        applyAttrCallback(secondItem);
+
+        secondItem.focus();
+
+        focusArrow
           ? setTimeout(() => {
-              renderComponent((prevValues) => {
-                return {
-                  ...prevValues,
-                  bottomOrTopArray: arrayForTopOneDown,
-                  targetElement: "downtopone",
-                };
-              });
-            }, 500)
-          : setTimeout(() => {
-              renderComponent((prevValues) => {
-                return {
-                  ...prevValues,
-                  bottomOrTopArray: arrayForTopOneDown,
-                  targetElement: "downtopone",
-                  clickedBtn: upDownArrow,
-                };
-              });
-            }, 100);
+              document.getElementById(focusArrow).focus();
+            }, 100)
+          : null;
       },
     },
     // bottom
     bottom: {
       eight: (
         target,
-        renderComponent,
-        reorderArray,
-        createArray,
+        applyAttrCallback,
+        itemOrderStr,
         typeOfScroll,
-        upDownArrow
+        focusArrow
       ) => {
-        // reorder array
-        const topItemToEnd = reorderArray(target);
-        // create array of objs
-        const arrayForBottomEightDown = createArray(
-          topItemToEnd,
-          "9",
-          renderComponent
-        );
-        // render component
-        typeOfScroll == "mouse"
+        const lastItem =
+          target.parentElement.children[
+            target.parentElement.children.length - 1
+          ];
+
+        if (typeOfScroll == "mouse") {
+          setTimeout(() => {
+            target.parentElement.setAttribute("data-item-order", itemOrderStr);
+
+            applyAttrCallback(lastItem);
+
+            lastItem.focus();
+          }, 500);
+          return;
+        }
+
+        target.parentElement.setAttribute("data-item-order", itemOrderStr);
+
+        applyAttrCallback(lastItem);
+
+        lastItem.focus();
+
+        focusArrow
           ? setTimeout(() => {
-              renderComponent((values) => {
-                return {
-                  ...values,
-                  bottomOrTopArray: arrayForBottomEightDown,
-                  targetElement: "downbottomeight",
-                };
-              });
-            }, 500)
-          : setTimeout(() => {
-              renderComponent((values) => {
-                return {
-                  ...values,
-                  bottomOrTopArray: arrayForBottomEightDown,
-                  targetElement: "downbottomeight",
-                  clickedBtn: upDownArrow,
-                };
-              });
-            }, 100);
+              document.getElementById(focusArrow).focus();
+            }, 100)
+          : null;
       },
       nine: (
         target,
-        renderComponent,
-        reorderArray,
-        createArray,
+        applyAttrCallback,
+        itemOrderStr,
         typeOfScroll,
-        upDownArrow
+        focusArrow
       ) => {
-        // reorder array
-        const bottomItemsToBeginning = reorderArray(target);
-        // create array of objs
-        const arrayForBottomNineDown = createArray(
-          bottomItemsToBeginning,
-          "1",
-          renderComponent
-        );
-        // render component
-        typeOfScroll == "mouse"
+        const firstItem = target.parentElement.children[0];
+
+        if (typeOfScroll == "mouse") {
+          setTimeout(() => {
+            target.parentElement.setAttribute("data-item-order", itemOrderStr);
+
+            applyAttrCallback(firstItem);
+
+            firstItem.focus();
+          }, 500);
+          return;
+        }
+
+        target.parentElement.setAttribute("data-item-order", itemOrderStr);
+
+        applyAttrCallback(firstItem);
+
+        firstItem.focus();
+
+        focusArrow
           ? setTimeout(() => {
-              renderComponent((val) => {
-                return {
-                  ...val,
-                  bottomOrTopArray: arrayForBottomNineDown,
-                  targetElement: "downbottomnine",
-                };
-              });
-            }, 500)
-          : setTimeout(() => {
-              renderComponent((val) => {
-                return {
-                  ...val,
-                  bottomOrTopArray: arrayForBottomNineDown,
-                  targetElement: "downbottomnine",
-                  clickedBtn: upDownArrow,
-                };
-              });
-            }, 100);
+              document.getElementById(focusArrow).focus();
+            }, 100)
+          : null;
       },
     },
   },
@@ -156,120 +141,130 @@ const touchEventVerticalMovementHelper = {
     top: {
       one: (
         target,
-        renderComponent,
-        reorderArray,
-        createArray,
+        applyAttrCallback,
+        itemOrderStr,
         typeOfScroll,
-        upDownArrow
+        focusArrow
       ) => {
-        // reorder array
-        const topItemsToBottom = reorderArray(target);
-        // create array of objs
-        const arrayForTopOneUp = createArray(
-          topItemsToBottom,
-          "9",
-          renderComponent
-        );
-        // render component
-        typeOfScroll == "mouse"
+        const lastItem =
+          target.parentElement.children[
+            target.parentElement.children.length - 1
+          ];
+
+        if (typeOfScroll == "mouse") {
+          setTimeout(() => {
+            target.parentElement.setAttribute("data-item-order", itemOrderStr);
+
+            applyAttrCallback(lastItem);
+
+            lastItem.focus();
+          }, 500);
+          return;
+        }
+
+        target.parentElement.setAttribute("data-item-order", itemOrderStr);
+
+        applyAttrCallback(lastItem);
+
+        lastItem.focus();
+
+        focusArrow
           ? setTimeout(() => {
-              renderComponent((prev) => {
-                return {
-                  ...prev,
-                  bottomOrTopArray: arrayForTopOneUp,
-                  targetElement: "uptopone",
-                };
-              });
-            }, 500)
-          : setTimeout(() => {
-              renderComponent((prev) => {
-                return {
-                  ...prev,
-                  bottomOrTopArray: arrayForTopOneUp,
-                  targetElement: "uptopone",
-                  clickedBtn: upDownArrow,
-                };
-              });
-            }, 100);
+              document.getElementById(focusArrow).focus();
+            }, 100)
+          : null;
+
+        // render component
+        // typeOfScroll == "mouse"
+        //   ? setTimeout(() => {
+        //       renderComponent((prev) => {
+        //         return {
+        //           ...prev,
+        //           bottomOrTopArray: arrayForTopOneUp,
+        //           targetElement: "uptopone",
+        //         };
+        //       });
+        //     }, 500)
+        //   : setTimeout(() => {
+        //       renderComponent((prev) => {
+        //         return {
+        //           ...prev,
+        //           bottomOrTopArray: arrayForTopOneUp,
+        //           targetElement: "uptopone",
+        //           clickedBtn: upDownArrow,
+        //         };
+        //       });
+        //     }, 100);
       },
       two: (
         target,
-        renderComponent,
-        reorderArray,
-        createArray,
+        applyAttrCallback,
+        itemOrderStr,
         typeOfScroll,
-        upDownArrow
+        focusArrow
       ) => {
-        // reorder array
-        const bottomSnapItemToBeginning = reorderArray(target);
-        // create array of objs
-        const arrayForTopTwoUp = createArray(
-          bottomSnapItemToBeginning,
-          "1",
-          renderComponent
-        );
-        // render component
-        typeOfScroll == "mouse"
+        const firstItem = target.parentElement.children[0];
+
+        if (typeOfScroll == "mouse") {
+          setTimeout(() => {
+            target.parentElement.setAttribute("data-item-order", itemOrderStr);
+
+            applyAttrCallback(firstItem);
+
+            firstItem.focus();
+          }, 500);
+          return;
+        }
+
+        target.parentElement.setAttribute("data-item-order", itemOrderStr);
+
+        applyAttrCallback(firstItem);
+
+        firstItem.focus();
+
+        focusArrow
           ? setTimeout(() => {
-              renderComponent((prevVals) => {
-                return {
-                  ...prevVals,
-                  bottomOrTopArray: arrayForTopTwoUp,
-                  targetElement: "uptoptwo",
-                };
-              });
-            }, 500)
-          : setTimeout(() => {
-              renderComponent((prevVals) => {
-                return {
-                  ...prevVals,
-                  bottomOrTopArray: arrayForTopTwoUp,
-                  targetElement: "uptoptwo",
-                  clickedBtn: upDownArrow,
-                };
-              });
-            }, 100);
+              document.getElementById(focusArrow).focus();
+            }, 100)
+          : null;
       },
     },
     // bottom
     bottom: {
       nine: (
         target,
-        renderComponent,
-        reorderArray,
-        createArray,
+        applyAttrCallback,
+        itemOrderStr,
         typeOfScroll,
-        upDownArrow
+        focusArrow
       ) => {
-        // reorder array
-        const bottomItemToBeginning = reorderArray(target);
-        // create array of objs
-        const arrayForBottomNineUp = createArray(
-          bottomItemToBeginning,
-          "8",
-          renderComponent
-        );
-        // render component
-        typeOfScroll == "mouse"
+        const eighthItem =
+          target.parentElement.children[
+            target.parentElement.children.length - 2
+          ];
+
+        if (typeOfScroll == "mouse") {
+          setTimeout(() => {
+            target.parentElement.setAttribute("data-item-order", itemOrderStr);
+
+            applyAttrCallback(eighthItem);
+
+            eighthItem.focus();
+          }, 500);
+          return;
+        }
+
+        target.parentElement.setAttribute("data-item-order", itemOrderStr);
+
+        applyAttrCallback(eighthItem);
+
+        eighthItem.focus();
+
+        focusArrow
           ? setTimeout(() => {
-              renderComponent((values) => {
-                return {
-                  ...values,
-                  bottomOrTopArray: arrayForBottomNineUp,
-                  targetElement: "upbottomnine",
-                };
-              });
-            }, 500)
-          : setTimeout(() => {
-              renderComponent((values) => {
-                return {
-                  ...values,
-                  bottomOrTopArray: arrayForBottomNineUp,
-                  targetElement: "upbottomnine",
-                  clickedBtn: upDownArrow,
-                };
-              });
-            }, 100);
+              document.getElementById(focusArrow).focus();
+            }, 100)
+          : null;
       },
     },
   },
@@ -345,9 +340,8 @@ export function touchEndForMobile(event) {
       if (targetPosIndex == "one") {
         touchEventVerticalMovementHelper["up"]["top"][targetPosIndex](
           currentFocusedSnapItem,
-          this.renderSnapItems,
-          moveFirstItemToEndOfList,
-          touchEventCreateNewOrderedArrayIndexOne,
+          touchEventApplyFocusSnapItemAttr,
+          "standard",
           null,
           null
         );
@@ -358,9 +352,8 @@ export function touchEndForMobile(event) {
       if (targetPosIndex == "eight") {
         touchEventVerticalMovementHelper["up"]["bottom"][targetPosIndex](
           currentFocusedSnapItem,
-          this.renderSnapItems,
-          moveFirstItemToEndOfList,
-          touchEventCreateNewOrderedArrayIndexSeven,
+          touchEventApplyFocusSnapItemAttr,
+          "mobile-one-last",
           null,
           null
         );
@@ -371,9 +364,8 @@ export function touchEndForMobile(event) {
       if (targetPosIndex == "nine") {
         touchEventVerticalMovementHelper["up"]["bottom"][targetPosIndex](
           currentFocusedSnapItem,
-          this.renderSnapItems,
-          moveLastTwoItemsToBeginning,
-          touchEventCreateNewOrderedArrayIndexOne,
+          touchEventApplyFocusSnapItemAttr,
+          "mobile-one-first",
           null,
           null
         );
@@ -382,7 +374,7 @@ export function touchEndForMobile(event) {
 
       // default action
       touchEventMovingUpHelper(currentFocusedSnapItem);
-      document.getElementById("currentFocused");
+      document.getElementById("currentFocused").focus();
     }
     // touchend clientRect.y is greater than touchstart clientRect.y going down
     if (
@@ -396,9 +388,8 @@ export function touchEndForMobile(event) {
       if (targetPosIndex == "one") {
         touchEventVerticalMovementHelper["down"]["top"][targetPosIndex](
           currentFocusedSnapItem,
-          this.renderSnapItems,
-          moveFirstTwoItemsToEnd,
-          touchEventCreateNewOrderedArrayIndexSeven,
+          touchEventApplyFocusSnapItemAttr,
+          "standard",
           null,
           null
         );
@@ -409,9 +400,8 @@ export function touchEndForMobile(event) {
       if (targetPosIndex == "two") {
         touchEventVerticalMovementHelper["down"]["top"][targetPosIndex](
           currentFocusedSnapItem,
-          this.renderSnapItems,
-          moveLastItemToBeginningOfList,
-          touchEventCreateNewOrderedArrayIndexOne,
+          touchEventApplyFocusSnapItemAttr,
+          "mobile-one-last",
           null,
           null
         );
@@ -422,9 +412,8 @@ export function touchEndForMobile(event) {
       if (targetPosIndex == "nine") {
         touchEventVerticalMovementHelper["down"]["bottom"][targetPosIndex](
           currentFocusedSnapItem,
-          this.renderSnapItems,
-          moveLastItemToBeginningOfList,
-          touchEventCreateNewOrderedArrayIndexSeven,
+          touchEventApplyFocusSnapItemAttr,
+          "mobile-nine-first",
           null,
           null
         );
@@ -433,7 +422,7 @@ export function touchEndForMobile(event) {
 
       // default action
       touchEventMovingDownHelper(currentFocusedSnapItem);
-      document.getElementById("currentFocused");
+      document.getElementById("currentFocused").focus();
     }
     console.log("end", event.target.getBoundingClientRect().y);
     console.log("end", event.changedTouches[0].screenY);
