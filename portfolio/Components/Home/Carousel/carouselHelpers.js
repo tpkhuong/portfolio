@@ -1,3 +1,5 @@
+import { FaRegObjectUngroup } from "react-icons/fa";
+
 export function swipeRightBtn(event) {
   event.target.closest("BUTTON").getAttribute("data-carouselbtnclicked") ==
   "false"
@@ -295,11 +297,12 @@ const desktopScrollHelper = {
             lastItem.focus();
             lastItem.scrollIntoView();
           }, 500);
+          return;
         }
 
         target.parentElement.setAttribute("data-item-order", itemOrderStr);
 
-        applyFocusSnapItemAttr(lastItem);
+        applyAttrCallback(lastItem);
 
         lastItem.focus();
         lastItem.scrollIntoView();
@@ -319,7 +322,7 @@ const desktopScrollHelper = {
         typeOfScroll,
         focusArrow
       ) => {
-        const firstItem = currentFocused.parentElement.children[0];
+        const firstItem = target.parentElement.children[0];
 
         if (typeOfScroll == "mouse") {
           setTimeout(() => {
@@ -330,11 +333,12 @@ const desktopScrollHelper = {
             firstItem.focus();
             firstItem.scrollIntoView();
           }, 500);
+          return;
         }
 
         target.parentElement.setAttribute("data-item-order", itemOrderStr);
 
-        applyFocusSnapItemAttr(firstItem);
+        applyAttrCallback(firstItem);
 
         firstItem.focus();
         firstItem.scrollIntoView();
@@ -354,7 +358,7 @@ const desktopScrollHelper = {
         typeOfScroll,
         focusArrow
       ) => {
-        const secondItem = currentFocused.parentElement.children[1];
+        const secondItem = target.parentElement.children[1];
 
         if (typeOfScroll == "mouse") {
           setTimeout(() => {
@@ -365,11 +369,12 @@ const desktopScrollHelper = {
             secondItem.focus();
             secondItem.scrollIntoView();
           }, 500);
+          return;
         }
 
         target.parentElement.setAttribute("data-item-order", itemOrderStr);
 
-        applyFocusSnapItemAttr(secondItem);
+        applyAttrCallback(secondItem);
 
         secondItem.focus();
         secondItem.scrollIntoView();
@@ -392,8 +397,8 @@ const desktopScrollHelper = {
         focusArrow
       ) => {
         const seventhItem =
-          currentFocused.parentElement.children[
-            currentFocused.parentElement.children.length - 3
+          target.parentElement.children[
+            target.parentElement.children.length - 3
           ];
 
         if (typeOfScroll == "mouse") {
@@ -405,11 +410,12 @@ const desktopScrollHelper = {
             seventhItem.focus();
             seventhItem.scrollIntoView();
           }, 500);
+          return;
         }
 
         target.parentElement.setAttribute("data-item-order", itemOrderStr);
 
-        applyFocusSnapItemAttr(seventhItem);
+        applyAttrCallback(seventhItem);
 
         seventhItem.focus();
         seventhItem.scrollIntoView();
@@ -430,8 +436,8 @@ const desktopScrollHelper = {
         focusArrow
       ) => {
         const eighthItem =
-          currentFocused.parentElement.children[
-            currentFocused.parentElement.children.length - 2
+          target.parentElement.children[
+            target.parentElement.children.length - 2
           ];
 
         if (typeOfScroll == "mouse") {
@@ -443,11 +449,12 @@ const desktopScrollHelper = {
             eighthItem.focus();
             eighthItem.scrollIntoView();
           }, 500);
+          return;
         }
 
         target.parentElement.setAttribute("data-item-order", itemOrderStr);
 
-        applyFocusSnapItemAttr(eighthItem);
+        applyAttrCallback(eighthItem);
 
         eighthItem.focus();
         eighthItem.scrollIntoView();
@@ -472,7 +479,7 @@ const desktopScrollHelper = {
         typeOfScroll,
         focusArrow
       ) => {
-        const secondItem = currentFocused.parentElement.children[1];
+        const secondItem = target.parentElement.children[1];
 
         if (typeOfScroll == "mouse") {
           setTimeout(() => {
@@ -483,11 +490,12 @@ const desktopScrollHelper = {
             secondItem.focus();
             secondItem.scrollIntoView();
           }, 500);
+          return;
         }
 
         target.parentElement.setAttribute("data-item-order", itemOrderStr);
 
-        applyFocusSnapItemAttr(secondItem);
+        applyAttrCallback(secondItem);
 
         secondItem.focus();
         secondItem.scrollIntoView();
@@ -507,9 +515,8 @@ const desktopScrollHelper = {
         typeOfScroll,
         focusArrow
       ) => {
+        const thirdItem = target.parentElement.children[2];
         if (typeOfScroll == "mouse") {
-          const thirdItem = currentFocused.parentElement.children[2];
-
           setTimeout(() => {
             target.parentElement.setAttribute("data-item-order", itemOrderStr);
 
@@ -518,11 +525,12 @@ const desktopScrollHelper = {
             thirdItem.focus();
             thirdItem.scrollIntoView();
           }, 500);
+          return;
         }
 
         target.parentElement.setAttribute("data-item-order", itemOrderStr);
 
-        applyFocusSnapItemAttr(thirdItem);
+        applyAttrCallback(thirdItem);
 
         thirdItem.focus();
         thirdItem.scrollIntoView();
@@ -545,8 +553,8 @@ const desktopScrollHelper = {
         focusArrow
       ) => {
         const eighthItem =
-          currentFocused.parentElement.children[
-            currentFocused.parentElement.children.length - 2
+          target.parentElement.children[
+            target.parentElement.children.length - 2
           ];
 
         if (typeOfScroll == "mouse") {
@@ -558,11 +566,12 @@ const desktopScrollHelper = {
             eighthItem.focus();
             eighthItem.scrollIntoView();
           }, 500);
+          return;
         }
 
         target.parentElement.setAttribute("data-item-order", itemOrderStr);
 
-        applyFocusSnapItemAttr(eighthItem);
+        applyAttrCallback(eighthItem);
 
         eighthItem.focus();
         eighthItem.scrollIntoView();
@@ -583,8 +592,8 @@ const desktopScrollHelper = {
         focusArrow
       ) => {
         const lastItem =
-          currentFocused.parentElement.children[
-            currentFocused.parentElement.children.length - 1
+          target.parentElement.children[
+            target.parentElement.children.length - 1
           ];
 
         if (typeOfScroll == "mouse") {
@@ -596,11 +605,12 @@ const desktopScrollHelper = {
             lastItem.focus();
             lastItem.scrollIntoView();
           }, 500);
+          return;
         }
 
         target.parentElement.setAttribute("data-item-order", itemOrderStr);
 
-        applyFocusSnapItemAttr(lastItem);
+        applyAttrCallback(lastItem);
 
         lastItem.focus();
         lastItem.scrollIntoView();
@@ -631,11 +641,12 @@ const desktopScrollHelper = {
             firstItem.focus();
             firstItem.scrollIntoView();
           }, 500);
+          return;
         }
 
         target.parentElement.setAttribute("data-item-order", itemOrderStr);
 
-        applyFocusSnapItemAttr(firstItem);
+        applyAttrCallback(firstItem);
 
         firstItem.focus();
         firstItem.scrollIntoView();
@@ -1626,6 +1637,7 @@ const methodsForKeyboardScroll = {
         posindex == "nine"
       ) {
         desktopArrowKeyScrollUp(element, posindex, null);
+        return;
       }
 
       // if (posindex == "one") {
@@ -1913,6 +1925,7 @@ const methodsForKeyboardScroll = {
         posindex == "nine"
       ) {
         desktopArrowKeyScrollUp(element, posindex, null);
+        return;
       }
 
       // if (posindex == "one") {
@@ -2643,69 +2656,43 @@ const methodsForKeyboardScroll = {
     element,
     width,
     posindex,
-    callToRender,
-    scrollMethodObj,
-    defaultActionFuncsObj,
-    reorderArrayFuncsObj,
-    createArrayFuncsObj
+    keyScrollFuncObj,
+    defaultActionFuncsObj
   ) => {
     event.preventDefault();
 
     if (posindex != "one") {
-      const {
-        moveLastTwoItemsToBeginning,
-        moveLastItemToBeginningOfList,
-        moveBottomFourItemsToBeginning,
-      } = reorderArrayFuncsObj;
+      // const {
+      //   moveLastTwoItemsToBeginning,
+      //   moveLastItemToBeginningOfList,
+      //   moveBottomFourItemsToBeginning,
+      // } = reorderArrayFuncsObj;
 
-      const { createNewOrderedArrayIndexOne, createNewOrderedArrayIndexTwo } =
-        createArrayFuncsObj;
+      // const { createNewOrderedArrayIndexOne, createNewOrderedArrayIndexTwo } =
+      //   createArrayFuncsObj;
 
-      const { changeCurrentSnapItemAttr } = defaultActionFuncsObj;
+      const { changeCurrentSnapItemAttr, applyFocusSnapItemAttr } =
+        defaultActionFuncsObj;
 
       changeCurrentSnapItemAttr(element);
+
+      const firstItem = element.parentElement.children[0];
+
+      applyFocusSnapItemAttr(firstItem);
 
       /**
        * mobile
        * **/
 
       if (width <= 375) {
-        if (posindex == "nine") {
-          const lastTwoItemsToBeginning = moveLastTwoItemsToBeginning(element);
-
-          const arrayOfObjHomeBtn = createNewOrderedArrayIndexOne(
-            lastTwoItemsToBeginning,
-            "1",
-            callToRender
-          );
-
-          callToRender((prevValues) => {
-            return {
-              ...prevValues,
-              bottomOrTopArray: arrayOfObjHomeBtn,
-              targetElement: "homebtnmovetwo",
-              clickedBtn: null,
-            };
-          });
-          return;
-        }
-
-        const lastItemToBeginning = moveLastItemToBeginningOfList(element);
-        const arrayOfObjLastItemToTop = createNewOrderedArrayIndexOne(
-          lastItemToBeginning,
-          "1",
-          callToRender
+        element.parentElement.setAttribute(
+          "data-item-order",
+          "mobile-nine-first"
         );
 
-        callToRender((values) => {
-          return {
-            ...values,
-            bottomOrTopArray: arrayOfObjLastItemToTop,
-            targetElement: "homebtnmoveone",
-            clickedBtn: null,
-          };
-        });
-        // firstItem.scrollIntoView();
+        firstItem.focus();
+        firstItem.scrollIntoView();
+        return;
       }
 
       /**
@@ -2713,84 +2700,17 @@ const methodsForKeyboardScroll = {
        * **/
 
       if (width >= 1440) {
-        if (posindex == "two") {
-          const lastSnapItemToTop = moveLastItemToBeginningOfList(element);
-          const arrayOfObjLastSnapItemToTop = createNewOrderedArrayIndexTwo(
-            lastSnapItemToTop,
-            "1",
-            callToRender
-          );
-
-          callToRender((values) => {
-            return {
-              ...values,
-              bottomOrTopArray: arrayOfObjLastSnapItemToTop,
-              targetElement: "homebtnmoveonetotop",
-              clickedBtn: null,
-            };
-          });
-          return;
-        }
-
-        if (posindex == "eight") {
-          const snapItems = [...element.parentElement.children];
-          const copyArray = [].concat(snapItems);
-          const lastThreeItems = copyArray.slice(-3);
-          const beforeLastThree = copyArray.slice(0, -3);
-
-          const arrayOfObjThreeItemsToBeginning = createNewOrderedArrayIndexTwo(
-            [...lastThreeItems, ...beforeLastThree],
-            "1",
-            callToRender
-          );
-
-          callToRender((values) => {
-            return {
-              ...values,
-              bottomOrTopArray: arrayOfObjThreeItemsToBeginning,
-              targetElement: "homebtnmovethreeatbottom",
-            };
-          });
-          return;
-        }
-
-        if (posindex == "nine") {
-          const lastFourToBeginning = moveBottomFourItemsToBeginning(element);
-          const arrayOfObjFourItemsToBeginning = createNewOrderedArrayIndexTwo(
-            lastFourToBeginning,
-            "1",
-            callToRender
-          );
-
-          callToRender((prevValues) => {
-            return {
-              ...prevValues,
-              bottomOrTopArray: arrayOfObjFourItemsToBeginning,
-              targetElement: "homebtnmovefouratbottom",
-              clickedBtn: null,
-            };
-          });
-          return;
-        }
-        // default action
-        const lastTwoToBeginning = moveLastTwoItemsToBeginning(element);
-        const arrayOfObjLastTwoToBeginning = createNewOrderedArrayIndexTwo(
-          lastTwoToBeginning,
-          "1",
-          callToRender
+        element.parentElement.setAttribute(
+          "data-item-order",
+          "desktop-eight-first"
         );
 
-        callToRender((prev) => {
-          return {
-            ...prev,
-            bottomOrTopArray: arrayOfObjLastTwoToBeginning,
-            targetElement: "homebtnmovetwoatbottom",
-            clickedBtn: null,
-          };
-        });
+        firstItem.focus();
+        firstItem.scrollIntoView();
+
+        return;
       }
     }
-
     console.log("home");
   },
   // end
@@ -2799,69 +2719,46 @@ const methodsForKeyboardScroll = {
     element,
     width,
     posindex,
-    callToRender,
-    scrollMethodObj,
-    defaultActionFuncsObj,
-    reorderArrayFuncsObj,
-    createArrayFuncsObj
+    keyScrollFuncObj,
+    defaultActionFuncsObj
   ) => {
     event.preventDefault();
 
     if (posindex != "nine") {
-      const {
-        moveFirstTwoItemsToEnd,
-        moveFirstItemToEndOfList,
-        moveTopFourItemsToBottom,
-      } = reorderArrayFuncsObj;
+      // const {
+      //   moveFirstTwoItemsToEnd,
+      //   moveFirstItemToEndOfList,
+      //   moveTopFourItemsToBottom,
+      // } = reorderArrayFuncsObj;
 
-      const { createNewOrderedArrayIndexSeven, createNewOrderedArrayIndexSix } =
-        createArrayFuncsObj;
+      // const { createNewOrderedArrayIndexSeven, createNewOrderedArrayIndexSix } =
+      //   createArrayFuncsObj;
 
-      const { changeCurrentSnapItemAttr } = defaultActionFuncsObj;
+      const { changeCurrentSnapItemAttr, applyFocusSnapItemAttr } =
+        defaultActionFuncsObj;
 
       changeCurrentSnapItemAttr(element);
+
+      const lastItem =
+        element.parentElement.children[
+          element.parentElement.children.length - 1
+        ];
+
+      applyFocusSnapItemAttr(lastItem);
 
       /**
        * mobile
        * **/
 
       if (width <= 375) {
-        if (posindex == "one") {
-          const firstTwoItemsToBottom = moveFirstTwoItemsToEnd(element);
-
-          const arrayOfObjEndBtn = createNewOrderedArrayIndexSeven(
-            firstTwoItemsToBottom,
-            "9",
-            callToRender
-          );
-
-          callToRender((values) => {
-            return {
-              ...values,
-              bottomOrTopArray: arrayOfObjEndBtn,
-              targetElement: "endbtnmovetwo",
-              clickedBtn: null,
-            };
-          });
-          return;
-        }
-
-        // default action
-        const firstItemToEnd = moveFirstItemToEndOfList(element);
-        const arrayOfObjFirstItemToEnd = createNewOrderedArrayIndexSeven(
-          firstItemToEnd,
-          "9",
-          callToRender
+        element.parentElement.setAttribute(
+          "data-item-order",
+          "mobile-one-last"
         );
 
-        callToRender((prev) => {
-          return {
-            ...prev,
-            bottomOrTopArray: arrayOfObjFirstItemToEnd,
-            targetElement: "endbtnmoveone",
-            clickedBtn: null,
-          };
-        });
+        lastItem.focus();
+        lastItem.scrollIntoView();
+        return;
       }
 
       /**
@@ -2869,86 +2766,14 @@ const methodsForKeyboardScroll = {
        * **/
 
       if (width >= 1440) {
-        if (posindex == "one") {
-          const topFourToBottom = moveTopFourItemsToBottom(element);
-          const arrayOfObjEndBtnOneIndex = createNewOrderedArrayIndexSix(
-            topFourToBottom,
-            "9",
-            callToRender
-          );
-
-          callToRender((values) => {
-            return {
-              ...values,
-              bottomOrTopArray: arrayOfObjEndBtnOneIndex,
-              targetElement: "endbtntopfourtoend",
-              clickedBtn: null,
-            };
-          });
-          return;
-        }
-
-        if (posindex == "two") {
-          const endBtnSnapItems = [...element.parentElement.children];
-          const copyArrayTwoIndex = [].concat(endBtnSnapItems);
-
-          const firstThree = copyArrayTwoIndex.slice(0, 3);
-          const restOfSnapItems = copyArrayTwoIndex.slice(3);
-
-          const arrayOfObjFirstThreeEndBtn = createNewOrderedArrayIndexSix(
-            [...restOfSnapItems, ...firstThree],
-            "9",
-            callToRender
-          );
-
-          callToRender((prevValues) => {
-            return {
-              ...prevValues,
-              bottomOrTopArray: arrayOfObjFirstThreeEndBtn,
-              targetElement: "endbtntopthreetoend",
-              clickedBtn: null,
-            };
-          });
-          return;
-        }
-
-        if (posindex == "eight") {
-          // move first item to end
-          const topItemToBottom = moveFirstItemToEndOfList(element);
-          const arrayOfObjFirstItemToEnd = createNewOrderedArrayIndexSix(
-            topItemToBottom,
-            "9",
-            callToRender
-          );
-
-          callToRender((values) => {
-            return {
-              ...values,
-              bottomOrTopArray: arrayOfObjFirstItemToEnd,
-              targetElement: "endbtntopitemtoend",
-              clickedBtn: null,
-            };
-          });
-
-          return;
-        }
-
-        // default action
-        const lastTwoSnapToBeginning = moveFirstTwoItemsToEnd(element);
-        const arrayOfObjLastTwoSnapItem = createNewOrderedArrayIndexSix(
-          lastTwoSnapToBeginning,
-          "9",
-          callToRender
+        element.parentElement.setAttribute(
+          "data-item-order",
+          "desktop-two-last"
         );
 
-        callToRender((prev) => {
-          return {
-            ...prev,
-            bottomOrTopArray: arrayOfObjLastTwoSnapItem,
-            targetElement: "endbtnmovetwotoend",
-            clickedBtn: null,
-          };
-        });
+        lastItem.focus();
+        lastItem.scrollIntoView();
+        return;
       }
 
       console.log("end");
@@ -2960,26 +2785,25 @@ const methodsForKeyboardScroll = {
     element,
     width,
     posindex,
-    callToRender,
-    scrollMethodObj,
-    defaultActionFuncsObj,
-    reorderArrayFuncsObj,
-    createArrayFuncsObj
+    keyScrollFuncObj,
+    defaultActionFuncsObj
   ) => {
     event.preventDefault();
 
     if (posindex == "one") {
       return;
     }
+    const twoAboveCurrentFocused =
+      element.previousElementSibling.previousElementSibling;
+    // const { moveLastItemToBeginningOfList, moveLastTwoItemsToBeginning } =
+    //   reorderArrayFuncsObj;
+    // const {
+    //   createNewOrderedArrayIndexOne,
+    //   createNewOrderedArrayIndexTwo,
+    //   createNewOrderedArrayIndexFive,
+    //   createNewOrderedArrayIndexSix,
+    // } = createArrayFuncsObj;
 
-    const { moveLastItemToBeginningOfList, moveLastTwoItemsToBeginning } =
-      reorderArrayFuncsObj;
-    const {
-      createNewOrderedArrayIndexOne,
-      createNewOrderedArrayIndexTwo,
-      createNewOrderedArrayIndexFive,
-      createNewOrderedArrayIndexSix,
-    } = createArrayFuncsObj;
     const { changeCurrentSnapItemAttr, applyFocusSnapItemAttr } =
       defaultActionFuncsObj;
 
@@ -2992,43 +2816,27 @@ const methodsForKeyboardScroll = {
     if (width <= 375) {
       // check if event.target data-pos-index is "nine" or "two"
       if (posindex == "nine") {
-        const lastItemToBeginningIndexNine =
-          moveLastItemToBeginningOfList(element);
-        const arrayForPageUpNineIndex = createNewOrderedArrayIndexSix(
-          lastItemToBeginningIndexNine,
-          "7",
-          callToRender
-        );
+        applyFocusSnapItemAttr(twoAboveCurrentFocused);
 
-        callToRender((prev) => {
-          return {
-            ...prev,
-            bottomOrTopArray: arrayForPageUpNineIndex,
-            targetElement: "pageupnine",
-            clickedBtn: null,
-          };
-        });
+        element.parentElement.setAttribute("data-item-order", "standard");
+
+        twoAboveCurrentFocused.focus();
+        twoAboveCurrentFocused.scrollIntoView();
         return;
       }
 
       if (posindex == "two" || posindex == "three") {
-        const lastItemToBeginningIndexTwoThree =
-          moveLastItemToBeginningOfList(element);
+        const firstItem = element.parentElement.children[0];
+        applyFocusSnapItemAttr(firstItem);
 
-        const arrayForPageUpIndexTwoThree = createNewOrderedArrayIndexOne(
-          lastItemToBeginningIndexTwoThree,
-          "1",
-          callToRender
+        element.parentElement.setAttribute(
+          "data-item-order",
+          "mobile-nine-first"
         );
 
-        callToRender((values) => {
-          return {
-            ...values,
-            bottomOrTopArray: arrayForPageUpIndexTwoThree,
-            targetElement: "pageuptwothree",
-            clickedBtn: null,
-          };
-        });
+        firstItem.focus();
+        firstItem.scrollIntoView();
+
         return;
       }
     }
@@ -3039,118 +2847,63 @@ const methodsForKeyboardScroll = {
 
     if (width >= 1440) {
       // two last item to top
-      if (posindex == "two") {
-        const lastSnapItemToTopIndexTwo =
-          moveLastItemToBeginningOfList(element);
+      if (posindex == "two" || posindex == "three") {
+        const firstItem = element.parentElement.children[0];
+        applyFocusSnapItemAttr(firstItem);
 
-        const arrayForPageUpIndexTwo = createNewOrderedArrayIndexTwo(
-          lastSnapItemToTopIndexTwo,
-          "1",
-          callToRender
+        element.parentElement.setAttribute(
+          "data-item-order",
+          "desktop-eight-first"
         );
 
-        callToRender((values) => {
-          return {
-            ...values,
-            bottomOrTopArray: arrayForPageUpIndexTwo,
-            targetElement: "pageupindextwo",
-            clickedBtn: null,
-          };
-        });
+        firstItem.focus();
+        firstItem.scrollIntoView();
+
         return;
       }
-      // three last two items to top
-      if (posindex == "three") {
-        const lastTwoItemToBeginningIndexThree =
-          moveLastTwoItemsToBeginning(element);
 
-        const arrayForPageUpIndexThree = createNewOrderedArrayIndexTwo(
-          lastTwoItemToBeginningIndexThree,
-          "1",
-          callToRender
-        );
-
-        callToRender((prev) => {
-          return {
-            ...prev,
-            bottomOrTopArray: arrayForPageUpIndexThree,
-            targetElement: "pageupindexthree",
-            clickedBtn: null,
-          };
-        });
-        return;
-      }
       // four last item to top
       if (posindex == "four") {
-        const lastItemToBeginningIndexFour =
-          moveLastItemToBeginningOfList(element);
+        applyFocusSnapItemAttr(twoAboveCurrentFocused);
 
-        const arrayForPageUpIndexFour = createNewOrderedArrayIndexTwo(
-          lastItemToBeginningIndexFour,
-          "2",
-          callToRender
+        element.parentElement.setAttribute(
+          "data-item-order",
+          "desktop-nine-first"
         );
 
-        callToRender((values) => {
-          return {
-            ...values,
-            bottomOrTopArray: arrayForPageUpIndexFour,
-            targetElement: "pageupindexfour",
-            clickedBtn: null,
-          };
-        });
+        twoAboveCurrentFocused.focus();
+        twoAboveCurrentFocused.scrollIntoView();
+
         return;
       }
-      // eight last item to top
+
       if (posindex == "eight") {
-        const lastItemToTopIndexEight = moveLastItemToBeginningOfList(element);
+        applyFocusSnapItemAttr(twoAboveCurrentFocused);
 
-        const arrayForPageUpIndexEight = createNewOrderedArrayIndexFive(
-          lastItemToTopIndexEight,
-          "6",
-          callToRender
-        );
+        element.parentElement.setAttribute("data-item-order", "standard");
 
-        callToRender((prevValues) => {
-          return {
-            ...prevValues,
-            bottomOrTopArray: arrayForPageUpIndexEight,
-            targetElement: "pageupindexeight",
-            clickedBtn: null,
-          };
-        });
+        twoAboveCurrentFocused.focus();
+        twoAboveCurrentFocused.scrollIntoView();
         return;
       }
-      // nine last two items to top
+
       if (posindex == "nine") {
-        const lastTwoSnapToTop = moveLastTwoItemsToBeginning(element);
+        applyFocusSnapItemAttr(twoAboveCurrentFocused);
 
-        const arrayForPageUpIndexNine = createNewOrderedArrayIndexSix(
-          lastTwoSnapToTop,
-          "7",
-          callToRender
-        );
+        element.parentElement.setAttribute("data-item-order", "standard");
 
-        callToRender((values) => {
-          return {
-            ...values,
-            bottomOrTopArray: arrayForPageUpIndexNine,
-            targetElement: "pageupindexnine",
-            clickedBtn: null,
-          };
-        });
+        twoAboveCurrentFocused.focus();
+        twoAboveCurrentFocused.scrollIntoView();
         return;
       }
     }
 
     // select previous previous sibling element
 
-    const twoItemsAboveCurrent =
-      element.previousElementSibling.previousElementSibling;
-
-    applyFocusSnapItemAttr(twoItemsAboveCurrent);
-
-    twoItemsAboveCurrent.focus();
+    // default action
+    applyFocusSnapItemAttr(twoAboveCurrentFocused);
+    twoAboveCurrentFocused.focus();
+    twoAboveCurrentFocused.scrollIntoView();
 
     console.log("pageup");
   },
@@ -3160,26 +2913,25 @@ const methodsForKeyboardScroll = {
     element,
     width,
     posindex,
-    callToRender,
-    scrollMethodObj,
-    defaultActionFuncsObj,
-    reorderArrayFuncsObj,
-    createArrayFuncsObj
+    keyScrollFuncObj,
+    defaultActionFuncsObj
   ) => {
     event.preventDefault();
 
     if (posindex == "nine") {
       return;
     }
+    const twoBelowCurrentFocused =
+      element.nextElementSibling.nextElementSibling;
+    // const { moveFirstItemToEndOfList, moveFirstTwoItemsToEnd } =
+    //   reorderArrayFuncsObj;
+    // const {
+    //   createNewOrderedArrayIndexTwo,
+    //   createNewOrderedArrayIndexThree,
+    //   createNewOrderedArrayIndexSix,
+    //   createNewOrderedArrayIndexSeven,
+    // } = createArrayFuncsObj;
 
-    const { moveFirstItemToEndOfList, moveFirstTwoItemsToEnd } =
-      reorderArrayFuncsObj;
-    const {
-      createNewOrderedArrayIndexTwo,
-      createNewOrderedArrayIndexThree,
-      createNewOrderedArrayIndexSix,
-      createNewOrderedArrayIndexSeven,
-    } = createArrayFuncsObj;
     const { changeCurrentSnapItemAttr, applyFocusSnapItemAttr } =
       defaultActionFuncsObj;
     // check if posindex is "one", "seven" or "eight"
@@ -3192,44 +2944,31 @@ const methodsForKeyboardScroll = {
 
     if (width <= 375) {
       if (posindex == "one") {
-        const firstItemToBottomPosindexOne = moveFirstItemToEndOfList(element);
-        const arrayForPageDownOneIndex = createNewOrderedArrayIndexTwo(
-          firstItemToBottomPosindexOne,
-          "3",
-          callToRender
-        );
+        applyFocusSnapItemAttr(twoBelowCurrentFocused);
 
-        callToRender((prevValues) => {
-          return {
-            ...prevValues,
-            bottomOrTopArray: arrayForPageDownOneIndex,
-            targetElement: "pagedownone",
-            clickedBtn: null,
-          };
-        });
+        element.parentElement.setAttribute("data-item-order", "standard");
+
+        twoBelowCurrentFocused.focus();
+        twoBelowCurrentFocused.scrollIntoView();
 
         return;
       }
 
       if (posindex == "seven" || posindex == "eight") {
-        const firstItemToBottomPosindexSevenOrEight =
-          moveFirstItemToEndOfList(element);
+        const lastItem =
+          element.parentElement.children[
+            element.parentElement.children.length - 1
+          ];
 
-        const arrayForPageDownSevenOrEightIndex =
-          createNewOrderedArrayIndexSeven(
-            firstItemToBottomPosindexSevenOrEight,
-            "9",
-            callToRender
-          );
+        applyFocusSnapItemAttr(lastItem);
 
-        callToRender((values) => {
-          return {
-            ...values,
-            bottomOrTopArray: arrayForPageDownSevenOrEightIndex,
-            targetElement: "pagedownseveneight",
-            clickedBtn: null,
-          };
-        });
+        element.parentElement.setAttribute(
+          "data-item-order",
+          "mobile-one-last"
+        );
+
+        lastItem.focus();
+        lastItem.scrollIntoView();
 
         return;
       }
@@ -3241,114 +2980,56 @@ const methodsForKeyboardScroll = {
 
     if (width >= 1440) {
       // one first two to end
-      if (posindex == "one") {
-        const topTwoItemsToEnd = moveFirstTwoItemsToEnd(element);
+      if (posindex == "one" || posindex == "two") {
+        applyFocusSnapItemAttr(twoBelowCurrentFocused);
 
-        const arrayForPageDownIndexOne = createNewOrderedArrayIndexTwo(
-          topTwoItemsToEnd,
-          "3",
-          callToRender
-        );
+        element.parentElement.setAttribute("data-item-order", "standard");
 
-        callToRender((values) => {
-          return {
-            ...values,
-            bottomOrTopArray: arrayForPageDownIndexOne,
-            targetElement: "pagedownindexone",
-            clickedBtn: null,
-          };
-        });
+        twoBelowCurrentFocused.focus();
+        twoBelowCurrentFocused.scrollIntoView();
         return;
       }
-      // two first item to end
-      if (posindex == "two") {
-        const firstItemToBottomIndexTwo = moveFirstItemToEndOfList(element);
 
-        const arrayForPageDownIndexTwo = createNewOrderedArrayIndexThree(
-          firstItemToBottomIndexTwo,
-          "4",
-          callToRender
-        );
-
-        callToRender((prevValues) => {
-          return {
-            ...prevValues,
-            bottomOrTopArray: arrayForPageDownIndexTwo,
-            targetElement: "pagedownindextwo",
-            clickedBtn: null,
-          };
-        });
-        return;
-      }
-      // six first item to end
       if (posindex == "six") {
-        const firstItemToEndIndexSix = moveFirstItemToEndOfList(element);
+        applyFocusSnapItemAttr(twoBelowCurrentFocused);
 
-        const arrayForPageDownIndexSix = createNewOrderedArrayIndexSix(
-          firstItemToEndIndexSix,
-          "8",
-          callToRender
+        element.parentElement.setAttribute(
+          "data-item-order",
+          "desktop-one-last"
         );
 
-        callToRender((prev) => {
-          return {
-            ...prev,
-            bottomOrTopArray: arrayForPageDownIndexSix,
-            targetElement: "pagedownindexsix",
-            clickedBtn: null,
-          };
-        });
+        twoBelowCurrentFocused.focus();
+        twoBelowCurrentFocused.scrollIntoView();
+
         return;
       }
       // seven first two to end
-      if (posindex == "seven") {
-        const firstTwoToEndIndexSeven = moveFirstTwoItemsToEnd(element);
+      if (posindex == "seven" || posindex == "eight") {
+        const lastItem =
+          element.parentElement.children[
+            element.parentElement.children.length - 1
+          ];
 
-        const arrayForPageDownIndexSeven = createNewOrderedArrayIndexSix(
-          firstTwoToEndIndexSeven,
-          "9",
-          callToRender
+        applyFocusSnapItemAttr(lastItem);
+
+        element.parentElement.setAttribute(
+          "data-item-order",
+          "desktop-two-last"
         );
 
-        callToRender((values) => {
-          return {
-            ...values,
-            bottomOrTopArray: arrayForPageDownIndexSeven,
-            targetElement: "pagedownindexseven",
-            clickedBtn: null,
-          };
-        });
-        return;
-      }
-      // eight first item to end
-      if (posindex == "eight") {
-        const firstItemToEndIndexEight = moveFirstItemToEndOfList(element);
+        lastItem.focus();
+        lastItem.scrollIntoView();
 
-        const arrayForPageDownIndexEight = createNewOrderedArrayIndexSix(
-          firstItemToEndIndexEight,
-          "9",
-          callToRender
-        );
-
-        callToRender((prevValues) => {
-          return {
-            ...prevValues,
-            bottomOrTopArray: arrayForPageDownIndexEight,
-            targetElement: "pagedownindexeight",
-            clickedBtn: null,
-          };
-        });
         return;
       }
     }
 
     // select next next sibling element
 
-    const twoItemsBelowCurrent = element.nextElementSibling.nextElementSibling;
+    applyFocusSnapItemAttr(twoBelowCurrentFocused);
 
-    applyFocusSnapItemAttr(twoItemsBelowCurrent);
-
-    twoItemsBelowCurrent.focus();
+    twoBelowCurrentFocused.focus();
+    twoBelowCurrentFocused.scrollIntoView();
 
     console.log("pagedown");
   },
@@ -3380,11 +3061,11 @@ export function keyboardScrollThroughSnapItems(event) {
    * **/
   if (methodsForKeyboardScroll[event.code]) {
     // set tabindex to "-1"
-    currentFocusedSnapItem.setAttribute("tabindex", "-1");
+    // currentFocusedSnapItem.setAttribute("tabindex", "-1");
     // aria-hidden "true"
-    currentFocusedSnapItem.setAttribute("aria-hidden", "true");
+    // currentFocusedSnapItem.setAttribute("aria-hidden", "true");
     // remove id attribute
-    currentFocusedSnapItem.removeAttribute("id");
+    // currentFocusedSnapItem.removeAttribute("id");
 
     methodsForKeyboardScroll[event.code](
       event,

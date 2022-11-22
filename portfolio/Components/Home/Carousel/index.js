@@ -1105,7 +1105,7 @@ export default function Carousel({ children, ...props }) {
         >
           <span className={CarouselStyles[`btn-content-wrapper`]}>
             <span className={CarouselStyles[`btn-text`]}>
-              swipe right go back.
+              Go back to Home page.
             </span>
             <FaArrowRight className={CarouselStyles[`arrow-right`]} />
           </span>

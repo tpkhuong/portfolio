@@ -63,7 +63,7 @@ export default function Intro({ children, ...props }) {
       >
         <span className={IntroStyles[`btn-content-wrapper`]}>
           <FaArrowLeft className={IntroStyles[`arrow-left`]} />
-          <span className={IntroStyles[`btn-text`]}>swipe left projects.</span>
+          <span className={IntroStyles[`btn-text`]}>Go to Projects.</span>
         </span>
       </button>
     </div>
