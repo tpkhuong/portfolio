@@ -12,7 +12,6 @@ export default function Project({
   hidden,
   label,
   idAttr,
-  renderSnapItems,
 }) {
   return idAttr ? (
     <div
@@ -24,8 +23,8 @@ export default function Project({
       role="group"
       id={idAttr}
       aria-roledescription="slide"
-      onTouchEnd={touchEndForMobile.bind({ renderSnapItems })}
-      onTouchStart={touchStartForMobile.bind({ renderSnapItems })}
+      onTouchEnd={touchEndForMobile}
+      onTouchStart={touchStartForMobile}
     >
       <span>{spanContent}</span>
     </div>
@@ -38,8 +37,8 @@ export default function Project({
       aria-label={label}
       role="group"
       aria-roledescription="slide"
-      onTouchEnd={touchEndForMobile.bind({ renderSnapItems })}
-      onTouchStart={touchStartForMobile.bind({ renderSnapItems })}
+      onTouchEnd={touchEndForMobile}
+      onTouchStart={touchStartForMobile}
     >
       <span>{spanContent}</span>
     </div>
