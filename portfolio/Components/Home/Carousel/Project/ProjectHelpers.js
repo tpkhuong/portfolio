@@ -342,7 +342,7 @@ export function touchEndForMobile(event) {
           currentFocusedSnapItem,
           touchEventApplyFocusSnapItemAttr,
           "standard",
-          null,
+          "mouse",
           null
         );
         return;
@@ -354,7 +354,7 @@ export function touchEndForMobile(event) {
           currentFocusedSnapItem,
           touchEventApplyFocusSnapItemAttr,
           "mobile-one-last",
-          null,
+          "mouse",
           null
         );
         return;
@@ -365,8 +365,8 @@ export function touchEndForMobile(event) {
         touchEventVerticalMovementHelper["up"]["bottom"][targetPosIndex](
           currentFocusedSnapItem,
           touchEventApplyFocusSnapItemAttr,
-          "mobile-one-first",
-          null,
+          "mobile-nine-first",
+          "mouse",
           null
         );
         return;
@@ -389,8 +389,8 @@ export function touchEndForMobile(event) {
         touchEventVerticalMovementHelper["down"]["top"][targetPosIndex](
           currentFocusedSnapItem,
           touchEventApplyFocusSnapItemAttr,
-          "standard",
-          null,
+          "mobile-one-last",
+          "mouse",
           null
         );
         return;
@@ -401,8 +401,8 @@ export function touchEndForMobile(event) {
         touchEventVerticalMovementHelper["down"]["top"][targetPosIndex](
           currentFocusedSnapItem,
           touchEventApplyFocusSnapItemAttr,
-          "mobile-one-last",
-          null,
+          "mobile-nine-first",
+          "mouse",
           null
         );
         return;
@@ -413,8 +413,8 @@ export function touchEndForMobile(event) {
         touchEventVerticalMovementHelper["down"]["bottom"][targetPosIndex](
           currentFocusedSnapItem,
           touchEventApplyFocusSnapItemAttr,
-          "mobile-nine-first",
-          null,
+          "standard",
+          "mouse",
           null
         );
         return;
