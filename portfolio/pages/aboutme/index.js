@@ -4,6 +4,7 @@ import AboutStyles from "../../styles/AboutMe.module.css";
 import LogoNavbarContainer from "../../Components/Shared/LogoNavbar";
 import MobileMenu from "../../Components/Shared/MobileMenu";
 import Main from "../../Components/Shared/Main";
+import ResumeInfo from "../../Components/About/Resume/index";
 import Footer from "../../Components/Shared/Footer";
 
 export default function AboutMe({ children, ...props }) {
@@ -26,6 +27,7 @@ export default function AboutMe({ children, ...props }) {
       <Main>
         <div className={AboutStyles[`info-selection-snippet-container`]}>
           {/* learn about me selection and selected info section container */}
+          <ResumeInfo />
           {/* snippet container */}
         </div>
       </Main>

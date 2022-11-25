@@ -1,0 +1,23 @@
+.tab-close-btn {
+  background-color: transparent;
+}
+
+.tab-icon {
+  width: 21px;
+}
+
+.css-bracket {
+  color: var(--color-curly-bracket);
+}
+
+.css-selector {
+  color: var(--color-html-attrValue-css-attrSelector);
+}
+
+.css-property {
+  color: var(--color-css-declaration);
+}
+
+.css-property-value {
+  color: var(--color-neutral-white);
+}

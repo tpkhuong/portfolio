@@ -1,0 +1,59 @@
+.tab-close-btn {
+  background-color: transparent;
+}
+
+.tab-icon {
+  width: 21px;
+}
+
+.js-style-exp-container p:nth-child(n + 2):nth-child(-n + 12) {
+  padding-inline-start: 8px;
+}
+
+.js-style-exp-container p:nth-child(n + 8):nth-child(-n + 11) {
+  padding-inline-start: 16px;
+}
+
+.spacer-inline {
+  margin-inline: 8px;
+}
+
+.spacer-end {
+  margin-inline-end: 8px;
+}
+
+.js-keyword,
+.obj-key,
+.comma,
+.js-array-bracket {
+  color: var(--color-js-let-const-properties);
+}
+
+.js-variable {
+  color: var(--color-js-variable);
+}
+
+.obj-value,
+.responsibility {
+  color: var(--color-js-obj-value);
+}
+
+.js-bracket {
+  color: var(--color-curly-bracket);
+}
+
+.obj-value::before,
+.responsibility::before {
+  content: open-quote;
+  color: var(--color-js-quote);
+}
+
+.obj-value::after,
+.responsibility::after {
+  content: close-quote;
+  color: var(--color-js-quote);
+}
+
+.semi-colon {
+  color: var(--color-js-quote);
+}
