@@ -5,6 +5,7 @@ import LogoNavbarContainer from "../../Components/Shared/LogoNavbar";
 import MobileMenu from "../../Components/Shared/MobileMenu";
 import Main from "../../Components/Shared/Main";
 import ResumeInfo from "../../Components/About/Resume/index";
+import Snippet from "../../Components/About/Snippet/Snippet";
 import Footer from "../../Components/Shared/Footer";
 
 export default function AboutMe({ children, ...props }) {
@@ -24,14 +25,16 @@ export default function AboutMe({ children, ...props }) {
       <header role="banner">
         <LogoNavbarContainer pageName="aboutme" />
       </header>
-      <Main>
+      <Main aboutPage="true">
         <div className={AboutStyles[`info-selection-snippet-container`]}>
           {/* learn about me selection and selected info section container */}
           <ResumeInfo />
           {/* snippet container */}
+          <Snippet />
         </div>
       </Main>
       <MobileMenu />
+      <Footer />
       {/* LearnAboutme-Selection */}
       {/* Selector */}
       {/* Passion */}

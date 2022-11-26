@@ -1,0 +1,24 @@
+/* desktop */
+
+.info-selection-snippet-container {
+  --tab-btn-bg: transparent;
+  --tab-container-display: flex;
+  --tab-container-align: center;
+  --tab-font-size: var(--font-size-18px);
+  --tab-tag-font-weight: 600;
+  --tab-icon-width: 45px;
+  --tag-font-size: 1.2rem;
+  --tab-container-border: var(--border-lines);
+
+  --btn-file-padding-block: 10px;
+  --btn-file-padding-left: 15px;
+  --btn-file-flex-gap: 10px;
+}
+
+@media screen and (min-width: 90rem) {
+  .info-selection-snippet-container {
+    display: grid;
+    grid-template-columns: 64.85% 1fr;
+    min-height: 100%;
+  }
+}

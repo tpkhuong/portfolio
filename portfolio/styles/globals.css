@@ -18,6 +18,7 @@
   --color-primary-button-text-color: hsl(208, 87%, 3%);
   --color-primary-button: hsl(26, 99%, 68%);
   --color-primary-button-hover: hsl(26, 100%, 71%);
+  --color-contacts-icon: hsl(210, 22%, 48%);
   --color-default-button: hsl(210, 36%, 17%);
   --color-default-button-hover: hsl(210, 36%, 23%);
   --color-js-let-const-properties: hsl(276, 68%, 75%);
@@ -32,7 +33,7 @@
   --color-html-attrValue-css-attrSelector: hsl(84, 66%, 73%);
   --color-css-declaration: hsl(174, 42%, 65%);
   --color-htmlfileicon: hsl(12, 78%, 52%);
-  --color-cssfileicon: hsl(228, 78%, 52%);
+  --color-cssfileicon: hsl(207, 90%, 54%);
   --color-jsfileicon: hsl(53, 93%, 54%);
 
   /* neutral */
@@ -81,6 +82,7 @@
   /* --heading-xxsm: 0.9375rem; */
   --font-size-28px: 1.75rem;
   --font-size-20px: 1.25rem;
+  --font-size-18px: 1.125rem;
   --font-size-14px: 0.875rem;
   --font-size-12px: 0.75rem;
   --font-size-9px: 0.5625rem;

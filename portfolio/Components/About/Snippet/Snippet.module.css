@@ -1,0 +1,30 @@
+/* mobile */
+
+.tab-close-btn {
+  background-color: var(--tab-btn-bg);
+}
+
+.tab-container {
+  display: var(--tab-container-display);
+  align-items: var(--tab-container-align);
+  font-size: var(--tab-font-size);
+  font-weight: var(--tab-tag-font-weight);
+  padding-inline-start: var(--btn-file-padding-left);
+  border-block-end: var(--tab-container-border);
+}
+
+.tab-icon {
+  width: var(--tab-icon-width);
+}
+
+.tag {
+  font-size: var(--tag-font-size);
+  font-weight: var(--tab-tag-font-weight);
+}
+
+.tab-close-btn[data-isRefreshClicked="true"] .tab-icon {
+  rotate: 1turn;
+  transition: rotate 1s ease-out;
+}
+
+/* desktop */

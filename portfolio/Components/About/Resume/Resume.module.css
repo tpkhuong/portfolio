@@ -1,0 +1,123 @@
+/* file selected */
+
+/* arrow */
+
+.selector-btn[data-isselected="true"] .file-right-icon {
+  transform: rotate(90deg);
+  transition: transform 1s ease-out;
+}
+
+.selector-btn[data-isselected="false"] .file-right-icon {
+  transform: rotate(0deg);
+  transition: transform 1s ease-in;
+}
+
+/* file icon */
+
+.selector-btn[data-isselected="true"] .html-icon {
+  fill: var(--color-htmlfileicon);
+}
+
+.selector-btn[data-isselected="true"] .css-icon {
+  fill: var(--color-cssfileicon);
+}
+
+.selector-btn[data-isselected="true"] .js-icon {
+  fill: var(--color-jsfileicon);
+}
+
+/* file name */
+
+.selector-btn[data-isselected="true"] .file-name {
+  color: var(--color-neutral-white);
+}
+
+/* mobile */
+
+.resume-container {
+  padding-inline-start: 54px;
+}
+
+.file-selector .arrow-text-container {
+  padding-block-end: 9px;
+}
+
+.contact-container .arrow-text-container {
+  border-block-end: var(--border-lines);
+}
+
+.arrow-text-container {
+  color: var(--color-neutral-white);
+  display: flex;
+  padding-block: var(--btn-file-padding-block);
+  padding-inline-start: var(--btn-file-padding-left);
+  gap: var(--btn-file-flex-gap);
+}
+
+.arrow-text-container h2 {
+  font-size: var(--font-size-18px);
+  font-weight: 400;
+}
+
+.selectors-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-block: 26px;
+  border-block: var(--border-lines);
+  padding-inline-start: var(--btn-file-padding-left);
+}
+
+.selector-btn {
+  display: flex;
+  gap: 10px;
+  background: transparent;
+}
+
+.contact-info {
+  padding-inline-start: var(--btn-file-padding-left);
+  margin-block-start: 10px;
+}
+
+.contact-info a {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.contact-info a:first-child {
+  margin-block-end: 8px;
+}
+
+.contact-email-icon {
+  transform: translateY(1px);
+}
+
+.resume-sections-container {
+  position: relative;
+  border-inline: var(--border-lines);
+}
+
+.redirect-to-info-selector {
+  position: relative;
+}
+
+.empty-section {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  height: min-content;
+}
+
+.learn-more-contact-container {
+  border-inline-start: var(--border-lines);
+}
+
+/* desktop */
+
+@media screen and (min-width: 90rem) {
+  .resume-container {
+    display: grid;
+    grid-template-columns: 249.2px 1fr;
+  }
+}
