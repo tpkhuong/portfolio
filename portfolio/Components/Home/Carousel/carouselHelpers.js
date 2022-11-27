@@ -892,7 +892,6 @@ export function clickNextSnapItem(event) {
         return;
       }
     }
-
     scrollingDownHelper(currentFocusedItem);
     nextSnapSibling(currentFocusedItem, windowWidth);
     document.getElementById("currentFocused").focus();

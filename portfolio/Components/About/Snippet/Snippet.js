@@ -33,7 +33,32 @@ export default function Snippet({ children, ...props }) {
         </button>
       </div>
       {/* content */}
-      <div className={SnippetStyles[`snippet-container`]}></div>
+      <div className={SnippetStyles[`snippet-container`]}>
+        {/* instructions */}
+        {/* our solution */}
+        <TestComponent>
+          {{ element: "var", attr: "hello" }}
+          {{ element: "const", attr: "world" }}
+          &#123;
+        </TestComponent>
+      </div>
+    </div>
+  );
+}
+
+function TestComponent({ children }) {
+  return (
+    <div>
+      {children.map((item, index) => {
+        const { element, attr } = item;
+        console.log(item.hasOwnProperty("element"));
+        return (
+          <span
+            className={SnippetStyles[`${attr ? attr : "bracket"}`]}
+            key={Math.random() * index}
+          >{`${!item.hasOwnProperty("element") ? item : element}`}</span>
+        );
+      })}
     </div>
   );
 }

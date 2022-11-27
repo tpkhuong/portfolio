@@ -29,7 +29,7 @@
 }
 
 .css-property {
-  color: var(--color-css-declaration);
+  color: var(--color-css-declaration-js-obj-access);
 }
 
 .css-property-value {

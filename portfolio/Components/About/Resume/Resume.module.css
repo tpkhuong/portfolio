@@ -35,15 +35,11 @@
 /* mobile */
 
 .resume-container {
-  padding-inline-start: 54px;
+  height: 100%;
 }
 
 .file-selector .arrow-text-container {
   padding-block-end: 9px;
-}
-
-.contact-container .arrow-text-container {
-  border-block-end: var(--border-lines);
 }
 
 .arrow-text-container {
@@ -74,9 +70,12 @@
   background: transparent;
 }
 
-.contact-info {
-  padding-inline-start: var(--btn-file-padding-left);
-  margin-block-start: 10px;
+.contact-container {
+  display: none;
+}
+
+.contact-container .arrow-text-container {
+  border-block-end: var(--border-lines);
 }
 
 .contact-info a {
@@ -95,22 +94,49 @@
 
 .resume-sections-container {
   position: relative;
-  border-inline: var(--border-lines);
+  min-height: 68%;
 }
 
 .redirect-to-info-selector {
   position: relative;
 }
 
-.empty-section {
+.empty-btn {
+  /* transition: ; */
   position: absolute;
   inset: 0;
   margin: auto;
   height: min-content;
+  display: block;
+  /* font-size: var(--font-size-20px); */
+  border-radius: 4px;
+  background-color: var(--color-main-text);
+  /* width: max-content; */
 }
 
-.learn-more-contact-container {
-  border-inline-start: var(--border-lines);
+.empty-btn[data-emptybtnclicked="true"] .empty-btn-wrapper {
+  transition: transform 250ms ease-out, box-shadow 250ms ease-out;
+  transform: translateX(0px) translateY(0px);
+  box-shadow: 0px 0px 1px 0px white;
+}
+
+.empty-btn-wrapper {
+  transition: transform 250ms ease-out, box-shadow 250ms ease-out;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  padding-block: 16px;
+  background-color: var(--color-life);
+  border-radius: 4px;
+  color: var(--color-neutral-white);
+  transform: translateX(10px) translateY(-7px);
+  box-shadow: -10px 7px 1px 0px white;
+}
+
+.empty-btn-text {
+  display: block;
 }
 
 /* desktop */
@@ -119,5 +145,23 @@
   .resume-container {
     display: grid;
     grid-template-columns: 249.2px 1fr;
+  }
+
+  .contact-container {
+    display: revert;
+  }
+
+  .contact-info {
+    padding-inline-start: var(--btn-file-padding-left);
+    margin-block-start: 10px;
+  }
+
+  .learn-more-contact-container {
+    border-inline-start: var(--border-lines);
+  }
+
+  .resume-sections-container {
+    position: relative;
+    border-inline: var(--border-lines);
   }
 }

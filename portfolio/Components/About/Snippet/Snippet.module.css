@@ -10,7 +10,7 @@
   font-size: var(--tab-font-size);
   font-weight: var(--tab-tag-font-weight);
   padding-inline-start: var(--btn-file-padding-left);
-  border-block-end: var(--tab-container-border);
+  border-block-start: var(--tab-container-border);
 }
 
 .tab-icon {
@@ -27,4 +27,23 @@
   transition: rotate 1s ease-out;
 }
 
+.hello {
+  color: red;
+}
+
+.world {
+  color: blue;
+}
+
+.bracket {
+  color: aquamarine;
+}
+
 /* desktop */
+
+@media screen and (min-width: 90rem) {
+  .tab-container {
+    border-block-end: var(--tab-container-border);
+    border-block-start: none;
+  }
+}

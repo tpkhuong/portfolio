@@ -181,14 +181,43 @@ export default function ResumeInfo({ children, ...props }) {
       {/* resume-sections-container */}
       <div className={ResumeStyles[`resume-sections-container`]}>
         {/* inline border */}
-        {renderInfo ? (
-          <button className={ResumeStyles[`empty-section`]}>
-            Select a File to view info.
+        {!renderInfo ? (
+          <button
+            onClick={(event) => {
+              document.getElementById("html").focus();
+
+              event.target
+                .closest("BUTTON")
+                .getAttribute("data-emptybtnclicked") === ""
+                ? event.target
+                    .closest("BUTTON")
+                    .setAttribute("data-emptybtnclicked", "true")
+                : null;
+
+              setTimeout(() => {
+                event.target
+                  .closest("BUTTON")
+                  .getAttribute("data-emptybtnclicked") === "true"
+                  ? event.target
+                      .closest("BUTTON")
+                      .setAttribute("data-emptybtnclicked", "")
+                  : null;
+              }, 500);
+            }}
+            data-emptybtnclicked=""
+            className={ResumeStyles[`empty-btn`]}
+          >
+            <span className={ResumeStyles[`empty-btn-wrapper`]}>
+              <span className={ResumeStyles[`empty-btn-text`]}>
+                Select a File to view info.
+              </span>
+            </span>
           </button>
         ) : null}
-        {/* <Passion />
-        <Skills />
-        <Professional /> */}
+        {renderInfo == "yup" ? <h3>Hello world!</h3> : null}
+        {/* <Passion /> */}
+        {/* <Skills /> */}
+        {/* <Professional /> */}
       </div>
     </div>
   );
