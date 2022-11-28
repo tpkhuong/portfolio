@@ -1,3 +1,22 @@
+.snippet-container {
+  /* parentheses: js variable color */
+  --parentheses: var(--color-js-variable);
+  /* curly brackets:curly-bracket */
+  --curly-brackets: var(--color-curly-bracket);
+  /* array brackets: js variable color */
+  --array-brackets: var(--color-js-variable);
+  /* operators: js-let-const-properties */
+  --operators: var(--color-js-let-const-properties);
+  /* keyword: js-let-const-properties */
+  --js-keywords: var(--color-js-let-const-properties);
+  /* variables: js-variable */
+  --js-variables: var(--color-js-variable);
+  /* number: --color-html-tag-css-year */
+  --js-numbers: var(--color-html-tag-css-year);
+  /* string: js obj value */
+  --js-strings: var(--color-js-obj-value);
+}
+
 /* mobile */
 
 .tab-close-btn {

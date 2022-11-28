@@ -37,9 +37,13 @@ export default function Snippet({ children, ...props }) {
         {/* instructions */}
         {/* our solution */}
         <TestComponent>
-          {{ element: "var", attr: "hello" }}
-          {{ element: "const", attr: "world" }}
-          &#123;
+          {{ element: "var", typeOfCode: "hello" }}
+          {{ element: "const", typeOfCode: "world" }}
+          {{ element: ";", typeOfCode: "semi-colon" }}
+          {{ element: "=", typeOfCode: "assign-opr" }}
+          <span data-bracket="curly" id="hello">
+            &#123;
+          </span>
         </TestComponent>
       </div>
     </div>
@@ -50,13 +54,32 @@ function TestComponent({ children }) {
   return (
     <div>
       {children.map((item, index) => {
-        const { element, attr } = item;
+        const { element, typeOfCode } = item;
         console.log(item.hasOwnProperty("element"));
-        return (
+        const copyObj = !item.hasOwnProperty("element")
+          ? { ...item.props }
+          : null;
+        if (copyObj) {
+          console.log(copyObj["data-bracket"]);
+          console.log(copyObj.children);
+        }
+
+        return !item.hasOwnProperty("element") ? (
           <span
-            className={SnippetStyles[`${attr ? attr : "bracket"}`]}
+            data-typeofbracket={copyObj["data-bracket"]}
+            className={SnippetStyles[`js-code`]}
             key={Math.random() * index}
-          >{`${!item.hasOwnProperty("element") ? item : element}`}</span>
+          >
+            {copyObj.children}
+          </span>
+        ) : (
+          <span
+            data-typeofjscode={`${typeOfCode}`}
+            className={SnippetStyles[`js-code`]}
+            key={Math.random() * index}
+          >
+            {element}
+          </span>
         );
       })}
     </div>
