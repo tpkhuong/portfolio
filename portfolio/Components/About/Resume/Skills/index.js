@@ -7,7 +7,7 @@ export default function Skills({ children }) {
     <div className={SkillsStyles[`tab-skills-container`]}>
       <div className={SkillsStyles[`tab-container`]}>
         {/* inline-end border */}
-        <span>Education</span>
+        <h2>Education</h2>
         <button className={SkillsStyles[`tab-close-btn`]}>
           <IoClose className={SkillsStyles[`tab-icon`]} />
         </button>

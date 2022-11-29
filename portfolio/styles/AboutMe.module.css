@@ -3,7 +3,6 @@
 .info-selection-snippet-container {
   display: flex;
   flex-direction: column;
-  height: 100%;
 }
 
 /* desktop */
@@ -21,11 +20,15 @@
   --btn-file-padding-block: 10px;
   --btn-file-padding-left: 15px;
   --btn-file-flex-gap: 10px;
+
+  --resume-snippet-content-container-height: 725px;
+  --resume-snippet-content-container-overflow: scroll;
 }
 
 @media screen and (min-width: 90rem) {
   .info-selection-snippet-container {
     display: grid;
-    grid-template-columns: 64.85% 1fr;
+    grid-template-columns: 65% 1fr;
+    /* height: 100%; */
   }
 }

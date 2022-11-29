@@ -7,7 +7,7 @@ export default function Professional({ children }) {
     <div className={ProfessionalStyles[`tab-professional-container`]}>
       <div className={ProfessionalStyles[`tab-container`]}>
         {/* inline-end border */}
-        <span>Professional Experience</span>
+        <h2>Professional Experience</h2>
         <button className={ProfessionalStyles[`tab-close-btn`]}>
           <IoClose className={ProfessionalStyles[`tab-icon`]} />
         </button>

@@ -2,13 +2,47 @@ import React from "react";
 import SnippetStyles from "./Snippet.module.css";
 import { MdRefresh } from "react-icons/md";
 
+const testObj = [
+  {
+    element: "function",
+    typeOfCode: "obj-dot-access",
+    spacerValue: "inline-end",
+  },
+  {
+    element: "const",
+    typeOfCode: "string",
+    spacerValue: "inline-end",
+  },
+  { element: ";", typeOfCode: "operator", spacerValue: "inline" },
+  {
+    element: "=",
+    typeOfCode: "operator",
+    spacerValue: "inline-start",
+  },
+  {
+    element: "{",
+    typeOfCode: "operator",
+    spacerValue: "inline-start",
+  },
+  {
+    element: "(",
+    typeOfCode: "operator",
+    spacerValue: "inline-start",
+  },
+  {
+    element: "]",
+    typeOfCode: "operator",
+    spacerValue: "inline-start",
+  },
+];
+
 export default function Snippet({ children, ...props }) {
   return (
     <div className={SnippetStyles[`snippet-container`]}>
       {/* tab */}
       <div className={SnippetStyles[`tab-container`]}>
         {/* inline-end border */}
-        <span>Load Code Snippet</span>
+        <h2>Load New Code Snippet</h2>
         <button
           data-isrefreshclicked="false"
           className={SnippetStyles[`tab-close-btn`]}
@@ -33,48 +67,126 @@ export default function Snippet({ children, ...props }) {
         </button>
       </div>
       {/* content */}
-      <div className={SnippetStyles[`snippet-container`]}>
+      <div className={SnippetStyles[`snippet-content-container`]}>
         {/* instructions */}
         {/* our solution */}
-        <TestComponent>
-          {{ element: "var", typeOfCode: "hello" }}
-          {{ element: "const", typeOfCode: "world" }}
-          {{ element: ";", typeOfCode: "semi-colon" }}
-          {{ element: "=", typeOfCode: "assign-opr" }}
-          <span data-bracket="curly" id="hello">
+        <CodeLine testAttr={testObj}>
+          {{
+            element: "function",
+            typeOfCode: "obj-dot-access",
+            spacerValue: "inline-end",
+          }}
+          {{
+            element: "const",
+            typeOfCode: "string",
+            spacerValue: "inline-end",
+          }}
+          {{ element: ";", typeOfCode: "operator", spacerValue: "inline" }}
+          {{
+            element: "=",
+            typeOfCode: "operator",
+            spacerValue: "inline-start",
+          }}
+          {{
+            element: "{",
+            typeOfCode: "operator",
+            spacerValue: "inline-start",
+          }}
+          {{
+            element: "(",
+            typeOfCode: "operator",
+            spacerValue: "inline-start",
+          }}
+          {{
+            element: "]",
+            typeOfCode: "operator",
+            spacerValue: "inline-start",
+          }}
+          {/* <span data-spacer="inline" data-bracket="curly">
             &#123;
           </span>
-        </TestComponent>
+          <span data-spacer="inline" data-bracket="array">
+            &#93;
+          </span>
+          <span data-spacer="inline" data-bracket="parentheses">
+            &#41;
+          </span> */}
+        </CodeLine>
+        {/* <div>
+          <div className={SnippetStyles[`challenge-container`]}>
+            <h3>challenge</h3>
+          </div>
+          <div className={SnippetStyles[`code-container`]}>
+            <h3>solution</h3>
+            <div className={SnippetStyles[`code`]}>
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Corrupti quidem laboriosam, molestiae amet delectus sit ipsam
+                laudantium, optio non necessitatibus neque dolorum iure sunt,
+                enim explicabo consequatur illum deleniti nulla. Voluptatum ab,
+                doloremque soluta eaque veniam provident autem unde accusantium
+                obcaecati. Tempora ut rem vitae reiciendis, voluptatibus, ipsam
+                delectus accusamus repudiandae esse voluptatem similique
+                eveniet, a autem ducimus provident corporis. Optio facilis
+                distinctio earum ab reiciendis sit recusandae quidem aspernatur,
+                pariatur nihil accusamus voluptatum tenetur, dolorem ipsa
+                accusantium eum quod molestias cupiditate fuga odit
+                necessitatibus. Libero possimus dolor illo aliquam. Ex
+                asperiores velit vitae ea vel deleniti maiores, totam, facere
+                facilis nisi veritatis? Quisquam tenetur id unde officia a iusto
+                veritatis. Magni, rerum error! Repellat suscipit laborum iste
+                delectus enim? Quidem, praesentium debitis vel magni nobis
+                libero quisquam quibusdam quam officiis in quos iusto saepe
+                inventore porro dignissimos, dolores aliquid id, quod veniam
+                obcaecati quae molestiae similique necessitatibus! Error, iure!
+                Perspiciatis expedita sapiente iure soluta aut saepe tenetur ea
+                sunt facilis consequatur provident ducimus, non dolor veritatis
+                sint earum odit, nulla officia praesentium? Fugit inventore esse
+                molestiae odio similique delectus? Sint ad soluta architecto
+                quos eius fugiat, iste quia ipsum eveniet doloremque temporibus
+                assumenda perferendis, voluptates iure ipsa distinctio voluptas,
+                similique nobis nulla dolorum ducimus? Aliquid omnis molestias
+                nostrum dolores! Alias repellat, impedit nobis atque libero
+                placeat ipsa, natus quae non at dolor? Quas aliquam perspiciatis
+                earum. Dolores delectus quae nostrum. Sed eaque eius debitis
+                asperiores autem numquam facilis vero? Reprehenderit, dolorum.
+                Rem aliquid corrupti laudantium repudiandae, dolores vero
+                numquam, debitis, quaerat natus iste aut quibusdam saepe
+                eligendi a error autem temporibus reiciendis culpa tempore
+                deserunt. Eos beatae ipsum earum. Explicabo, non modi, ab
+                architecto velit dolores excepturi illum praesentium accusantium
+                inventore, totam repellendus soluta veniam dolorem sequi enim
+                quae
+              </p>
+            </div>
+          </div>
+        </div> */}
       </div>
     </div>
   );
 }
 
-function TestComponent({ children }) {
+function CodeLine({ children, testAttr }) {
+  console.log(testAttr);
   return (
     <div>
       {children.map((item, index) => {
-        const { element, typeOfCode } = item;
+        const { element, typeOfCode, spacerValue } = item;
         console.log(item.hasOwnProperty("element"));
-        const copyObj = !item.hasOwnProperty("element")
-          ? { ...item.props }
-          : null;
-        if (copyObj) {
-          console.log(copyObj["data-bracket"]);
-          console.log(copyObj.children);
-        }
 
         return !item.hasOwnProperty("element") ? (
           <span
-            data-typeofbracket={copyObj["data-bracket"]}
+            data-typeofbracket={item.props["data-bracket"]}
+            data-typeofspacer={item.props[`data-spacer`]}
             className={SnippetStyles[`js-code`]}
             key={Math.random() * index}
           >
-            {copyObj.children}
+            {item.props.children}
           </span>
         ) : (
           <span
-            data-typeofjscode={`${typeOfCode}`}
+            data-typeofjscode={typeOfCode}
+            data-typeofspacer={spacerValue}
             className={SnippetStyles[`js-code`]}
             key={Math.random() * index}
           >

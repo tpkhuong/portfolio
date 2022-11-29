@@ -1,5 +1,5 @@
 .main[data-isaboutpage="true"] {
-  height: calc(100% * 1 - 124px);
+  /* height: calc(100% * 1 - 124px); */
 }
 
 .main {

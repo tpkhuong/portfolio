@@ -181,7 +181,7 @@ export default function ResumeInfo({ children, ...props }) {
       {/* resume-sections-container */}
       <div className={ResumeStyles[`resume-sections-container`]}>
         {/* inline border */}
-        {!renderInfo ? (
+        {/* {!renderInfo ? (
           <button
             onClick={(event) => {
               document.getElementById("html").focus();
@@ -214,8 +214,81 @@ export default function ResumeInfo({ children, ...props }) {
             </span>
           </button>
         ) : null}
-        {renderInfo == "yup" ? <h3>Hello world!</h3> : null}
-        {/* <Passion /> */}
+        {renderInfo == "yup" ? (
+          <h3>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti
+            quidem laboriosam, molestiae amet delectus sit ipsam laudantium,
+            optio non necessitatibus neque dolorum iure sunt, enim explicabo
+            consequatur illum deleniti nulla. Voluptatum ab, doloremque soluta
+            eaque veniam provident autem unde accusantium obcaecati. Tempora ut
+            rem vitae reiciendis, voluptatibus, ipsam delectus accusamus
+            repudiandae esse voluptatem similique eveniet, a autem ducimus
+            provident corporis. Optio facilis distinctio earum ab reiciendis sit
+            recusandae quidem aspernatur, pariatur nihil accusamus voluptatum
+            tenetur, dolorem ipsa accusantium eum quod molestias cupiditate fuga
+            odit necessitatibus. Libero possimus dolor illo aliquam. Ex
+            asperiores velit vitae ea vel deleniti maiores, totam, facere
+            facilis nisi veritatis? Quisquam tenetur id unde officia a iusto
+            veritatis. Magni, rerum error! Repellat suscipit laborum iste
+            delectus enim? Quidem, praesentium debitis vel magni nobis libero
+            quisquam quibusdam quam officiis in quos iusto saepe inventore porro
+            dignissimos, dolores aliquid id, quod veniam obcaecati quae
+            molestiae similique necessitatibus! Error, iure! Perspiciatis
+            expedita sapiente iure soluta aut saepe tenetur ea sunt facilis
+            consequatur provident ducimus, non dolor veritatis sint earum odit,
+            nulla officia praesentium? Fugit inventore esse molestiae odio
+            similique delectus? Sint ad soluta architecto quos eius fugiat, iste
+            quia ipsum eveniet doloremque temporibus assumenda perferendis,
+            voluptates iure ipsa distinctio voluptas, similique nobis nulla
+            dolorum ducimus? Aliquid omnis molestias nostrum dolores! Alias
+            repellat, impedit nobis atque libero placeat ipsa, natus quae non at
+            dolor? Quas aliquam perspiciatis earum. Dolores delectus quae
+            nostrum. Sed eaque eius debitis asperiores autem numquam facilis
+            vero? Reprehenderit, dolorum. Rem aliquid corrupti laudantium
+            repudiandae, dolores vero numquam, debitis, quaerat natus iste aut
+            quibusdam saepe eligendi a error autem temporibus reiciendis culpa
+            tempore deserunt. Eos beatae ipsum earum. Explicabo, non modi, ab
+            architecto velit dolores excepturi illum praesentium accusantium
+            inventore, totam repellendus soluta veniam dolorem sequi enim quae
+            id amet quos autem. Error obcaecati ea quo iste saepe? Tempore
+            eligendi consequatur sunt porro, aliquid fugit ad cumque voluptatem
+            voluptatum unde, adipisci beatae explicabo dicta sequi earum error
+            quod aliquam. Repellendus voluptas vero facere placeat quia nihil
+            dolorum ex? Animi rem, nisi beatae dicta saepe consectetur suscipit!
+            Adipisci, est praesentium. Consequatur aliquam saepe ut omnis fuga
+            facilis, nesciunt, dignissimos a aspernatur dolore culpa
+            repellendus. Iusto commodi quos velit dignissimos. Quas ducimus
+            doloribus nam? Error in ipsum fugiat eligendi ullam vitae tenetur
+            optio dignissimos exercitationem repudiandae, ut deserunt illum
+            ipsa. Asperiores consectetur error, atque inventore quis illum
+            aliquam laudantium deserunt. Consequuntur ipsa voluptas voluptate,
+            dignissimos nesciunt enim earum iste culpa quasi, eligendi eaque
+            necessitatibus nisi repellat adipisci accusamus consectetur
+            voluptatibus possimus quam blanditiis? Ut temporibus placeat, nisi
+            maiores ex molestiae! Consectetur sequi impedit nisi, rem ut
+            sapiente enim, obcaecati consequuntur veritatis, perferendis minus
+            excepturi. Eum eius animi itaque pariatur soluta illo aut, dolore
+            voluptates, ab mollitia odio fugiat, numquam ipsam? Tempore sequi
+            iusto, ea quas nemo iure itaque explicabo fugit sunt error minima
+            dolore nobis quos distinctio atque dolor, aut ex. At est nulla
+            numquam. Suscipit quisquam animi nemo reiciendis? Nulla omnis odio
+            pariatur veritatis, magnam illum. Cupiditate maiores accusamus
+            tenetur incidunt quasi temporibus nisi veniam earum eveniet fuga
+            dignissimos magnam error quae nihil ratione, quam beatae
+            perspiciatis ea. Voluptatum. Delectus, in. Quam voluptas alias
+            molestiae tempore ipsam atque aliquid corporis fugit perferendis
+            beatae, distinctio sequi ut. Ad aut mollitia ipsam eaque laborum
+            nostrum ducimus ab, repudiandae unde atque fuga. In dolores nostrum,
+            tenetur debitis quam, autem incidunt consequuntur quod mollitia
+            numquam optio distinctio recusandae nesciunt, assumenda pariatur
+            aliquam illo quia molestiae sapiente error sint porro ducimus.
+            Consequatur, eos cumque! Provident praesentium nemo repellendus rem
+            magnam ad corporis officiis, dicta illo voluptatem, quo animi
+            suscipit amet illum quae fugiat labore inventore, consequatur iure
+            quod ullam aliquid? Suscipit rem aliquid sequi?
+          </h3>
+        ) : null} */}
+        <Passion />
         {/* <Skills /> */}
         {/* <Professional /> */}
       </div>

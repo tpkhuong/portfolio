@@ -11,6 +11,11 @@
   border-block-end: var(--tab-container-border);
 }
 
+.tab-container h2 {
+  font-size: var(--tab-font-size);
+  font-weight: var(--tab-tag-font-weight);
+}
+
 .tab-icon {
   width: var(--tab-icon-width);
 }
@@ -70,4 +75,11 @@
 
 .semi-colon {
   color: var(--color-js-quote);
+}
+
+@media screen and (min-width: 90rem) {
+  .professional-container {
+    height: var(--resume-snippet-content-container-height);
+    overflow-y: var(--resume-snippet-content-container-overflow);
+  }
 }

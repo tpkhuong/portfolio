@@ -5,10 +5,13 @@
 .tab-container {
   display: var(--tab-container-display);
   align-items: var(--tab-container-align);
-  font-size: var(--tab-font-size);
-  font-weight: var(--tab-tag-font-weight);
   padding-inline-start: var(--btn-file-padding-left);
   border-block-end: var(--tab-container-border);
+}
+
+.tab-container h2 {
+  font-size: var(--tab-font-size);
+  font-weight: var(--tab-tag-font-weight);
 }
 
 .tab-icon {
@@ -34,4 +37,11 @@
 
 .css-property-value {
   color: var(--color-neutral-white);
+}
+
+@media screen and (min-width: 90rem) {
+  .skills-container {
+    height: var(--resume-snippet-content-container-height);
+    overflow-y: var(--resume-snippet-content-container-overflow);
+  }
 }
