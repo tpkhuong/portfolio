@@ -1,42 +1,25 @@
 import React from "react";
 import SnippetStyles from "./Snippet.module.css";
 import { MdRefresh } from "react-icons/md";
-
-const testObj = [
-  {
-    element: "function",
-    typeOfCode: "obj-dot-access",
-    spacerValue: "inline-end",
-  },
-  {
-    element: "const",
-    typeOfCode: "string",
-    spacerValue: "inline-end",
-  },
-  { element: ";", typeOfCode: "operator", spacerValue: "inline" },
-  {
-    element: "=",
-    typeOfCode: "operator",
-    spacerValue: "inline-start",
-  },
-  {
-    element: "{",
-    typeOfCode: "operator",
-    spacerValue: "inline-start",
-  },
-  {
-    element: "(",
-    typeOfCode: "operator",
-    spacerValue: "inline-start",
-  },
-  {
-    element: "]",
-    typeOfCode: "operator",
-    spacerValue: "inline-start",
-  },
-];
+import CodeBlock from "./CodeBlock/index";
 
 export default function Snippet({ children, ...props }) {
+  const memoizedInitialValues = React.useMemo(() => {
+    return {
+      codeBlockIndex: 0,
+      arrayOfSnippetObj: [
+        { title: "FirstTitle" },
+        { title: "SecondTitle" },
+        { title: "ThirdTitle" },
+        { title: "FourthTitle" },
+        { title: "FifthTitle" },
+      ],
+    };
+  }, []);
+
+  const [{ codeBlockIndex, arrayOfSnippetObj }, setTest] = React.useState(
+    memoizedInitialValues
+  );
   return (
     <div className={SnippetStyles[`snippet-container`]}>
       {/* tab */}
@@ -51,6 +34,24 @@ export default function Snippet({ children, ...props }) {
               event.target
                 .closest("BUTTON")
                 .setAttribute("data-isrefreshclicked", "true");
+              console.log(codeBlockIndex);
+              if (codeBlockIndex == 4) {
+                console.log(codeBlockIndex);
+                setTest((preValues) => {
+                  return {
+                    ...preValues,
+                    codeBlockIndex: 0,
+                  };
+                });
+                return;
+              }
+              console.log(codeBlockIndex);
+              setTest((preValues) => {
+                return {
+                  ...preValues,
+                  codeBlockIndex: codeBlockIndex + 1,
+                };
+              });
             }
             setTimeout(() => {
               event.target
@@ -70,8 +71,16 @@ export default function Snippet({ children, ...props }) {
       <div className={SnippetStyles[`snippet-content-container`]}>
         {/* instructions */}
         {/* our solution */}
-        <CodeLine testAttr={testObj}>
-          {{
+        <h3>{arrayOfSnippetObj[codeBlockIndex].title}</h3>
+        <CodeBlock selectedIndex={codeBlockIndex}></CodeBlock>
+        <span>_testTitle</span>
+        <span>[[3],[1, 2, 3],</span>
+        <span>[4, 5, 6],</span>
+        <span>[9, 8, 9]]</span>
+        {/* <CodeLine testAttr={testObj}>
+          {testObj.first}
+        </CodeLine> */}
+        {/* {{
             element: "function",
             typeOfCode: "obj-dot-access",
             spacerValue: "inline-end",
@@ -101,8 +110,8 @@ export default function Snippet({ children, ...props }) {
             element: "]",
             typeOfCode: "operator",
             spacerValue: "inline-start",
-          }}
-          {/* <span data-spacer="inline" data-bracket="curly">
+          }} */}
+        {/* <span data-spacer="inline" data-bracket="curly">
             &#123;
           </span>
           <span data-spacer="inline" data-bracket="array">
@@ -111,7 +120,7 @@ export default function Snippet({ children, ...props }) {
           <span data-spacer="inline" data-bracket="parentheses">
             &#41;
           </span> */}
-        </CodeLine>
+        {/* <CodeLine>{testObj.second}</CodeLine> */}
         {/* <div>
           <div className={SnippetStyles[`challenge-container`]}>
             <h3>challenge</h3>

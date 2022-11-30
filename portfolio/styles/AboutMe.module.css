@@ -8,6 +8,9 @@
 /* desktop */
 
 .info-selection-snippet-container {
+  --container-padding-block: 24px;
+  --container-padding-inline: 15px;
+
   --tab-btn-bg: transparent;
   --tab-container-display: flex;
   --tab-container-align: center;

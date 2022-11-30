@@ -1,3 +1,8 @@
+.professional-container {
+  padding: var(--container-padding-inline);
+  padding-block: var(--container-padding-block);
+}
+
 .tab-close-btn {
   background-color: var(--tab-btn-bg);
 }

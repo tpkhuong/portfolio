@@ -1,0 +1,49 @@
+/* mobile */
+
+/* non brackets */
+.js-code[data-typeofjscode="variable"],
+.js-code[data-typeofjscode="array"] {
+  color: var(--array-brackets-js-variables);
+}
+
+.js-code[data-typeofjscode="keyword"],
+.js-code[data-typeofjscode="operator"],
+.js-code[data-typeofjscode="parentheses"] {
+  color: var(--parentheses-operators-js-keywords);
+}
+
+.js-code[data-typeofjscode="obj-dot-access"] {
+  color: var(--color-css-declaration-js-obj-access);
+}
+
+.js-code[data-typeofjscode="number"] {
+  color: var(--js-numbers);
+}
+
+.js-code[data-typeofjscode="string"] {
+  color: var(--js-strings);
+}
+
+/* brackets */
+
+.js-code[data-typeofjscode="curly"] {
+  color: var(--curly-brackets);
+}
+
+/* spacer */
+
+.js-code[data-typeofspacer="inline-start"] {
+  margin-inline-start: var(--jscode-spacer);
+}
+.js-code[data-typeofspacer="inline-end"] {
+  margin-inline-end: var(--jscode-spacer);
+}
+.js-code[data-typeofspacer="inline"] {
+  margin-inline: var(--jscode-spacer);
+}
+
+.code-line-container {
+  display: block;
+}
+
+/* desktop */
