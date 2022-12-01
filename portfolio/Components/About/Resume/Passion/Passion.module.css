@@ -1,6 +1,12 @@
+.tab-passion-container {
+  display: var(--tab-component-container-display);
+  flex-direction: var(--tab-component-container-direction);
+}
+
 .passion-container {
   padding: var(--container-padding-inline);
   padding-block: var(--container-padding-block);
+  border-block-start: var(--container-border-block-start);
 }
 
 .tab-close-btn {
@@ -11,7 +17,7 @@
   display: var(--tab-container-display);
   align-items: var(--tab-container-align);
   padding-inline-start: var(--btn-file-padding-left);
-  border-block-end: var(--tab-container-border);
+  padding-inline-end: var(--passion-skills-prof-tab-container-padding);
 }
 
 .tab-container h2 {
@@ -54,7 +60,12 @@
 
 @media screen and (min-width: 90rem) {
   .passion-container {
-    height: var(--resume-snippet-content-container-height);
+    max-height: var(--resume-snippet-content-container-height);
     overflow-y: var(--resume-snippet-content-container-overflow);
+  }
+
+  .tab-container {
+    align-self: var(--tab-container-align-self);
+    border-inline-end: var(--tab-container-border);
   }
 }

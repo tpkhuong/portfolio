@@ -173,7 +173,7 @@ export default function ResumeInfo({ children, ...props }) {
             {/* phone */}
             <a href="tel:3233849875">
               <FaPhoneAlt className={ResumeStyles[`contact-phone-icon`]} />
-              <span>3233849875</span>
+              <span>323-384-9875</span>
             </a>
           </div>
         </div>

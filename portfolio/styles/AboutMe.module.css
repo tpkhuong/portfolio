@@ -8,23 +8,30 @@
 /* desktop */
 
 .info-selection-snippet-container {
+  --tab-component-container-display: flex;
+  --tab-component-container-direction: column;
+
   --container-padding-block: 24px;
   --container-padding-inline: 15px;
+  --container-border-block-start: var(--border-lines);
 
   --tab-btn-bg: transparent;
   --tab-container-display: flex;
   --tab-container-align: center;
+  --tab-container-align-self: flex-start;
+  --passion-skills-prof-tab-container-padding: 4px;
+  --tab-container-border: var(--border-lines);
+
   --tab-font-size: var(--font-size-18px);
   --tab-tag-font-weight: 600;
   --tab-icon-width: 45px;
   --tag-font-size: 1.2rem;
-  --tab-container-border: var(--border-lines);
 
   --btn-file-padding-block: 10px;
   --btn-file-padding-left: 15px;
   --btn-file-flex-gap: 10px;
 
-  --resume-snippet-content-container-height: 725px;
+  --resume-snippet-content-container-height: 730px;
   --resume-snippet-content-container-overflow: scroll;
 }
 
