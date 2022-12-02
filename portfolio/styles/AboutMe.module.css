@@ -15,6 +15,12 @@
   --container-padding-inline: 15px;
   --container-border-block-start: var(--border-lines);
 
+  --mobile-resumeinfo-container-padding-block: 24px;
+  --mobile-resumeinfo-container-padding-inline: 15px;
+
+  /* --desktop-resumeinfo-container-padding-block: 24px; */
+  --desktop-resumeinfo-container-padding-inline: 45px;
+
   --tab-btn-bg: transparent;
   --tab-container-display: flex;
   --tab-container-align: center;

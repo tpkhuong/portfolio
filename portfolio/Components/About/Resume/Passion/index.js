@@ -2,13 +2,30 @@ import React from "react";
 import PassionStyles from "./Passion.module.css";
 import { IoClose } from "react-icons/io5";
 
-export default function Passion({ children }) {
+export default function Passion({ children, setStateFunc }) {
   return (
     <div className={PassionStyles[`tab-passion-container`]}>
       <div className={PassionStyles[`tab-container`]}>
         {/* inline-end border */}
         <h2>Brief Introduction</h2>
-        <button className={PassionStyles[`tab-close-btn`]}>
+        <button
+          role="button"
+          onClick={(event) => {
+            document
+              .getElementById("html")
+              .setAttribute("data-isselected", "false");
+
+            setStateFunc((values) => {
+              return {
+                ...values,
+                renderInfo: null,
+                panelButtonClicked: "passion",
+              };
+            });
+          }}
+          aria-label="close brief introduction panel"
+          className={PassionStyles[`tab-close-btn`]}
+        >
           <IoClose className={PassionStyles[`tab-icon`]} />
         </button>
       </div>
@@ -16,7 +33,64 @@ export default function Passion({ children }) {
         <HtmlItem tagContent="Title">
           <h2>This is Title</h2>
         </HtmlItem>
-        <p>
+
+        <HtmlItem tagContent="Paragraph">
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti
+            quidem laboriosam, molestiae amet delectus sit ipsam laudantium,
+            optio
+          </p>
+        </HtmlItem>
+        <HtmlItem tagContent="Paragraph">
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti
+            quidem laboriosam, molestiae amet delectus sit ipsam laudantium,
+            optio
+          </p>
+        </HtmlItem>
+        <HtmlItem tagContent="Paragraph">
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti
+            quidem laboriosam, molestiae amet delectus sit ipsam laudantium,
+            optio
+          </p>
+        </HtmlItem>
+        <HtmlItem tagContent="Paragraph">
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti
+            quidem laboriosam, molestiae amet delectus sit ipsam laudantium,
+            optio
+          </p>
+        </HtmlItem>
+        <HtmlItem tagContent="Paragraph">
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti
+            quidem laboriosam, molestiae amet delectus sit ipsam laudantium,
+            optio
+          </p>
+        </HtmlItem>
+        <HtmlItem tagContent="Paragraph">
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti
+            quidem laboriosam, molestiae amet delectus sit ipsam laudantium,
+            optio
+          </p>
+        </HtmlItem>
+        <HtmlItem tagContent="Paragraph">
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti
+            quidem laboriosam, molestiae amet delectus sit ipsam laudantium,
+            optio
+          </p>
+        </HtmlItem>
+        <HtmlItem tagContent="Paragraph">
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti
+            quidem laboriosam, molestiae amet delectus sit ipsam laudantium,
+            optio
+          </p>
+        </HtmlItem>
+        {/* <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti
           quidem laboriosam, molestiae amet delectus sit ipsam laudantium, optio
           non necessitatibus neque dolorum iure sunt, enim explicabo consequatur
@@ -50,7 +124,7 @@ export default function Passion({ children }) {
           Eos beatae ipsum earum. Explicabo, non modi, ab architecto velit
           dolores excepturi illum praesentium accusantium inventore, totam
           repellendus soluta veniam dolorem sequi enim quae
-        </p>
+        </p> */}
       </div>
     </div>
   );
@@ -63,7 +137,7 @@ function HtmlItem({ children, tagContent }) {
       {/* font-weight 600 */}
       {/* <MdChevronLeft /> */}
       {/* <CgFormatSlash /> */}
-      <div>
+      <div className={PassionStyles[`html-container`]}>
         <div className={`${PassionStyles["opening"]} ${PassionStyles[`tag`]}`}>
           <span className={PassionStyles[`tag-sign`]}>&lt;</span>
           <span className={PassionStyles[`tag-name`]}>{tagContent}</span>

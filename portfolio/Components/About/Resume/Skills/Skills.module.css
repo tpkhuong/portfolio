@@ -4,8 +4,8 @@
 }
 
 .skills-container {
-  padding: var(--container-padding-inline);
-  padding-block: var(--container-padding-block);
+  padding: var(--mobile-resumeinfo-container-padding-inline);
+  padding-block: var(--mobile-resumeinfo-container-padding-block);
   border-block-start: var(--container-border-block-start);
 }
 
@@ -54,6 +54,7 @@
   .skills-container {
     max-height: var(--resume-snippet-content-container-height);
     overflow-y: var(--resume-snippet-content-container-overflow);
+    padding-inline: var(--desktop-resumeinfo-container-padding-inline);
   }
 
   .tab-container {

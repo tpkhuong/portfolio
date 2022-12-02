@@ -2,13 +2,30 @@ import React from "react";
 import SkillsStyles from "./Skills.module.css";
 import { IoClose } from "react-icons/io5";
 
-export default function Skills({ children }) {
+export default function Skills({ children, setStateFunc }) {
   return (
     <div className={SkillsStyles[`tab-skills-container`]}>
       <div className={SkillsStyles[`tab-container`]}>
         {/* inline-end border */}
         <h2>Education</h2>
-        <button className={SkillsStyles[`tab-close-btn`]}>
+        <button
+          role="button"
+          onClick={(event) => {
+            document
+              .getElementById("html")
+              .setAttribute("data-isselected", "false");
+
+            setStateFunc((values) => {
+              return {
+                ...values,
+                renderInfo: null,
+                panelButtonClicked: "skills",
+              };
+            });
+          }}
+          aria-label="close skills panel"
+          className={SkillsStyles[`tab-close-btn`]}
+        >
           <IoClose className={SkillsStyles[`tab-icon`]} />
         </button>
       </div>

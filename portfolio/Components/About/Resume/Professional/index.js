@@ -2,13 +2,30 @@ import React from "react";
 import ProfessionalStyles from "./Professional.module.css";
 import { IoClose } from "react-icons/io5";
 
-export default function Professional({ children }) {
+export default function Professional({ children, setStateFunc }) {
   return (
     <div className={ProfessionalStyles[`tab-professional-container`]}>
       <div className={ProfessionalStyles[`tab-container`]}>
         {/* inline-end border */}
         <h2>Professional Experience</h2>
-        <button className={ProfessionalStyles[`tab-close-btn`]}>
+        <button
+          role="button"
+          onClick={(event) => {
+            document
+              .getElementById("js")
+              .setAttribute("data-isselected", "false");
+
+            setStateFunc((values) => {
+              return {
+                ...values,
+                renderInfo: null,
+                panelButtonClicked: "professional",
+              };
+            });
+          }}
+          aria-label="close professional experience panel"
+          className={ProfessionalStyles[`tab-close-btn`]}
+        >
           <IoClose className={ProfessionalStyles[`tab-icon`]} />
         </button>
       </div>

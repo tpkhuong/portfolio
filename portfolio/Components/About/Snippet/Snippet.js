@@ -8,11 +8,41 @@ export default function Snippet({ children, ...props }) {
     return {
       codeBlockIndex: 0,
       arrayOfSnippetObj: [
-        { title: "FirstTitle" },
-        { title: "SecondTitle" },
-        { title: "ThirdTitle" },
-        { title: "FourthTitle" },
-        { title: "FifthTitle" },
+        {
+          title: "_RandomRange",
+          description: "_Instructions",
+          textContent:
+            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti quidem laboriosam, molestiae amet delectus sit ipsam laudantium, optio non necessitatibus neque dolorum iure sunt, enim explicabo consequaturillum deleniti nulla.",
+          codeBlockTitle: "_Solution:",
+        },
+        {
+          title: "_RandomRange2",
+          description: "_Instructions",
+          textContent:
+            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti quidem laboriosam, molestiae amet delectus sit ipsam laudantium, optio non necessitatibus neque dolorum iure sunt, enim explicabo consequaturillum deleniti nulla.",
+          codeBlockTitle: "_Solution:",
+        },
+        {
+          title: "_RandomRange3",
+          description: "_Instructions",
+          textContent:
+            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti quidem laboriosam, molestiae amet delectus sit ipsam laudantium, optio non necessitatibus neque dolorum iure sunt, enim explicabo consequaturillum deleniti nulla.",
+          codeBlockTitle: "_Solution:",
+        },
+        {
+          title: "_RandomRange4",
+          description: "_Instructions",
+          textContent:
+            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti quidem laboriosam, molestiae amet delectus sit ipsam laudantium, optio non necessitatibus neque dolorum iure sunt, enim explicabo consequaturillum deleniti nulla.",
+          codeBlockTitle: "_Solution:",
+        },
+        {
+          title: "_RandomRange5",
+          description: "_Instructions",
+          textContent:
+            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti quidem laboriosam, molestiae amet delectus sit ipsam laudantium, optio non necessitatibus neque dolorum iure sunt, enim explicabo consequaturillum deleniti nulla.",
+          codeBlockTitle: "_Solution:",
+        },
       ],
     };
   }, []);
@@ -28,6 +58,7 @@ export default function Snippet({ children, ...props }) {
         <h2>Load New Code Snippet</h2>
         <button
           data-isrefreshclicked="false"
+          role="button"
           className={SnippetStyles[`tab-close-btn`]}
           onClick={(event) => {
             if (event.target.closest("BUTTON")) {
@@ -70,13 +101,22 @@ export default function Snippet({ children, ...props }) {
       {/* content */}
       <div className={SnippetStyles[`snippet-content-container`]}>
         {/* instructions */}
+        <div className={SnippetStyles[`instructions-container`]}>
+          <h3 className={SnippetStyles[`challenge-title`]}>
+            {arrayOfSnippetObj[codeBlockIndex].title}
+          </h3>
+          <h4 className={SnippetStyles[`sub-title`]}>
+            {arrayOfSnippetObj[codeBlockIndex].description}
+          </h4>
+          <p>{arrayOfSnippetObj[codeBlockIndex].textContent}</p>
+        </div>
         {/* our solution */}
-        <h3>{arrayOfSnippetObj[codeBlockIndex].title}</h3>
-        <CodeBlock selectedIndex={codeBlockIndex}></CodeBlock>
-        <span>_testTitle</span>
-        <span>[[3],[1, 2, 3],</span>
-        <span>[4, 5, 6],</span>
-        <span>[9, 8, 9]]</span>
+        <div className={SnippetStyles[`solution-container`]}>
+          <h4 className={SnippetStyles[`sub-title`]}>
+            {arrayOfSnippetObj[codeBlockIndex].codeBlockTitle}
+          </h4>
+          <CodeBlock selectedIndex={codeBlockIndex}></CodeBlock>
+        </div>
         {/* <CodeLine testAttr={testObj}>
           {testObj.first}
         </CodeLine> */}

@@ -8,7 +8,23 @@ import { FaHtml5, FaCss3Alt, FaJs, FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
 export default function ResumeInfo({ children, ...props }) {
-  const [renderInfo, setResumeInfo] = React.useState(null);
+  const memoizedInitialValues = React.useMemo(() => {
+    return {
+      panelButtonClicked: null,
+      renderInfo: null,
+    };
+  }, []);
+
+  const [{ panelButtonClicked, renderInfo }, setResumeInfo] = React.useState({
+    memoizedInitialValues,
+  });
+
+  React.useEffect(() => {
+    panelButtonClicked
+      ? document.getElementById("emptyresumeinfo").focus()
+      : null;
+  }, [panelButtonClicked]);
+
   return (
     <div className={ResumeStyles[`resume-container`]}>
       {/* learn-more-contact-container */}
@@ -59,6 +75,14 @@ export default function ResumeInfo({ children, ...props }) {
                         "false"
                       )
                     : null;
+
+                  setResumeInfo((prevValues) => {
+                    return {
+                      ...prevValues,
+                      renderInfo: "passion",
+                      panelButtonClicked: null,
+                    };
+                  });
                 }
 
                 if (buttonID == "css") {
@@ -84,6 +108,14 @@ export default function ResumeInfo({ children, ...props }) {
                         "false"
                       )
                     : null;
+
+                  setResumeInfo((prevValues) => {
+                    return {
+                      ...prevValues,
+                      renderInfo: "skills",
+                      panelButtonClicked: null,
+                    };
+                  });
                 }
 
                 if (buttonID == "js") {
@@ -110,6 +142,14 @@ export default function ResumeInfo({ children, ...props }) {
                         "false"
                       )
                     : null;
+
+                  setResumeInfo((prevValues) => {
+                    return {
+                      ...prevValues,
+                      renderInfo: "professional",
+                      panelButtonClicked: null,
+                    };
+                  });
                 }
               }
             }}
@@ -181,8 +221,9 @@ export default function ResumeInfo({ children, ...props }) {
       {/* resume-sections-container */}
       <div className={ResumeStyles[`resume-sections-container`]}>
         {/* inline border */}
-        {/* {!renderInfo ? (
+        {!renderInfo ? (
           <button
+            id="emptyresumeinfo"
             onClick={(event) => {
               document.getElementById("html").focus();
 
@@ -214,7 +255,22 @@ export default function ResumeInfo({ children, ...props }) {
             </span>
           </button>
         ) : null}
-        {renderInfo == "yup" ? (
+        {renderInfo == "passion" ? (
+          <Passion setStateFunc={setResumeInfo} />
+        ) : null}
+        {renderInfo == "skills" ? (
+          <Skills setStateFunc={setResumeInfo} />
+        ) : null}
+        {renderInfo == "professional" ? (
+          <Professional setStateFunc={setResumeInfo} />
+        ) : null}
+      </div>
+    </div>
+  );
+}
+
+{
+  /* {renderInfo == "yup" ? (
           <h3>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti
             quidem laboriosam, molestiae amet delectus sit ipsam laudantium,
@@ -287,11 +343,5 @@ export default function ResumeInfo({ children, ...props }) {
             suscipit amet illum quae fugiat labore inventore, consequatur iure
             quod ullam aliquid? Suscipit rem aliquid sequi?
           </h3>
-        ) : null} */}
-        <Passion />
-        {/* <Skills /> */}
-        {/* <Professional /> */}
-      </div>
-    </div>
-  );
+        ) : null} */
 }

@@ -28,12 +28,6 @@
   flex-direction: var(--tab-component-container-direction);
 }
 
-.snippet-content-container {
-  padding: var(--container-padding-inline);
-  padding-block: var(--container-padding-block);
-  border-block-start: var(--container-border-block-start);
-}
-
 /* mobile */
 
 .tab-close-btn {
@@ -67,16 +61,24 @@
   transition: rotate 1s ease-out;
 }
 
-.hello {
-  color: red;
+.snippet-content-container {
+  padding: var(--container-padding-inline);
+  padding-block: var(--container-padding-block);
+  border-block-start: var(--container-border-block-start);
 }
 
-.world {
-  color: blue;
+.instructions-container {
+  margin-block-end: 36px;
 }
 
-.bracket {
-  color: aquamarine;
+.challenge-title {
+  font-size: var(--font-size-28px);
+  margin-block-end: 24px;
+}
+
+.sub-title {
+  margin-block-end: 16px;
+  font-size: var(--font-size-20px);
 }
 
 /* desktop */
