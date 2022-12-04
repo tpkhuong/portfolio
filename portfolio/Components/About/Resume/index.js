@@ -157,7 +157,6 @@ export default function ResumeInfo({ children, ...props }) {
             {/* block border */}
             {/* html */}
             <button
-              tabIndex="-1"
               data-isselected="false"
               id="html"
               className={ResumeStyles[`selector-btn`]}

@@ -56,6 +56,31 @@ export default function Professional({ children, setStateFunc }) {
             elements.
           </span>
         </ProfessionalExp>
+        <ProfessionalExp
+          profVariable="professionalExperienceTwo"
+          company="Homestead Hospice"
+          city="Atlanta"
+          state="Georgia"
+          position="IT Support"
+          date="October 2018 - July 2020"
+        >
+          <span>
+            Assist IT team by developing Microsoft Powershell script to import
+            bulk user accounts from CSV file to Active Directory.
+          </span>
+          <span>
+            Created Microsoft Powershell script to export Active Directory Users
+            information and Computer information.
+          </span>
+          <span>
+            Created Mapped Drive to deploy software and files to User accounts
+            in Windows Server.
+          </span>
+          <span>
+            Assist department in setting up laptops, tablets, smartphones,
+            desktops for new hires.
+          </span>
+        </ProfessionalExp>
       </div>
     </div>
   );
@@ -150,7 +175,7 @@ function ProfessionalExp({
         <span className={ProfessionalStyles[`comma`]}>,</span>
       </p>
       {/* responsibilities content */}
-      <p>
+      <p className={ProfessionalStyles[`spacer-block-start`]}>
         <span className={ProfessionalStyles[`js-array-bracket`]}>&#93;</span>
         <span className={ProfessionalStyles[`comma`]}>,</span>
       </p>

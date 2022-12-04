@@ -31,65 +31,82 @@ export default function Passion({ children, setStateFunc }) {
       </div>
       <div className={PassionStyles[`passion-container`]}>
         <HtmlItem tagContent="Title">
-          <h2>This is Title</h2>
+          <h2>Journey in Inclusive Web Development.</h2>
         </HtmlItem>
 
-        <HtmlItem tagContent="Paragraph">
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti
-            quidem laboriosam, molestiae amet delectus sit ipsam laudantium,
-            optio
-          </p>
+        <div className={PassionStyles[`style-container`]}>
+          <HtmlItem tagContent="Paragraph">
+            <p>I am a self-taught Web Inclusive Developer.</p>
+          </HtmlItem>
+          <HtmlItem tagContent="Paragraph">
+            <p>
+              Always had a passion of helping people. Passion of helping people
+              any way I can, led to my journey of learning Web Development.
+            </p>
+          </HtmlItem>
+        </div>
+
+        {/* quick story */}
+
+        <HtmlItem tagContent="Title">
+          <h2>Quick story</h2>
         </HtmlItem>
-        <HtmlItem tagContent="Paragraph">
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti
-            quidem laboriosam, molestiae amet delectus sit ipsam laudantium,
-            optio
-          </p>
+
+        <div className={PassionStyles[`style-container`]}>
+          <HtmlItem tagContent="Paragraph">
+            <p>How I started learning Web Development.</p>
+          </HtmlItem>
+          <HtmlItem tagContent="Paragraph">
+            <p>
+              While working with Homestead Hospice as an IT support, one of the
+              laptops had an popup error message window. In that error message,
+              there was a code. I copied the error code and perform a google
+              search. Most of the results were in a language, I couldn't read.
+              The language was a Computer Programming Language. I felt helpless.
+              I hated that feeling.
+            </p>
+          </HtmlItem>
+          <HtmlItem tagContent="Paragraph">
+            <p>
+              But I am grateful for that experience and the feeling of
+              helplessness because that experience sparked the question of,
+              "What If I speak Computer and understood code?" If I speak the
+              same language as computer, I can better understand computer errors
+              and better help people when they get a computer error.
+            </p>
+          </HtmlItem>
+          <HtmlItem tagContent="Paragraph">
+            <p>
+              Having the knowledge of building Web Applications and Web sites,
+              won't help better solve PC computer errors. I'm fine with that
+              because I get help people in another way by building Inclusive Web
+              Applications and Inclusive Web Sites.
+            </p>
+          </HtmlItem>
+        </div>
+
+        {/* passion */}
+
+        <HtmlItem tagContent="Title">
+          <h2>Passion</h2>
         </HtmlItem>
-        <HtmlItem tagContent="Paragraph">
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti
-            quidem laboriosam, molestiae amet delectus sit ipsam laudantium,
-            optio
-          </p>
-        </HtmlItem>
-        <HtmlItem tagContent="Paragraph">
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti
-            quidem laboriosam, molestiae amet delectus sit ipsam laudantium,
-            optio
-          </p>
-        </HtmlItem>
-        <HtmlItem tagContent="Paragraph">
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti
-            quidem laboriosam, molestiae amet delectus sit ipsam laudantium,
-            optio
-          </p>
-        </HtmlItem>
-        <HtmlItem tagContent="Paragraph">
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti
-            quidem laboriosam, molestiae amet delectus sit ipsam laudantium,
-            optio
-          </p>
-        </HtmlItem>
-        <HtmlItem tagContent="Paragraph">
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti
-            quidem laboriosam, molestiae amet delectus sit ipsam laudantium,
-            optio
-          </p>
-        </HtmlItem>
-        <HtmlItem tagContent="Paragraph">
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti
-            quidem laboriosam, molestiae amet delectus sit ipsam laudantium,
-            optio
-          </p>
-        </HtmlItem>
+
+        <div className={PassionStyles[`style-container`]}>
+          <HtmlItem tagContent="Paragraph">
+            <p>
+              I love building interactive Web sites/applications. Making the
+              sites/applications, the most inclusive as I can with my current
+              skills/knowledge.
+            </p>
+          </HtmlItem>
+          <HtmlItem tagContent="Paragraph">
+            <p>
+              Doing my best to build inclusive websites/applications, while
+              learning web development. The goal is to build as many inclusive
+              applications and sites before I leave this earth.
+            </p>
+          </HtmlItem>
+        </div>
         {/* <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti
           quidem laboriosam, molestiae amet delectus sit ipsam laudantium, optio

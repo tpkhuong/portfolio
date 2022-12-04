@@ -9,6 +9,10 @@
   border-block-start: var(--container-border-block-start);
 }
 
+.professional-container > * + * {
+  margin-block-start: 16px;
+}
+
 .tab-close-btn {
   background-color: var(--tab-btn-bg);
 }
@@ -37,11 +41,12 @@
 }
 
 .js-style-exp-container p:nth-child(n + 2):nth-child(-n + 12) {
-  padding-inline-start: 8px;
+  padding-inline-start: 14px;
 }
 
 .js-style-exp-container p:nth-child(n + 8):nth-child(-n + 11) {
-  padding-inline-start: 16px;
+  padding-inline-start: 30px;
+  margin-block-start: 10px;
 }
 
 .spacer-inline {
@@ -50,6 +55,10 @@
 
 .spacer-end {
   margin-inline-end: 8px;
+}
+
+.spacer-block-start {
+  margin-block-start: 10px;
 }
 
 .js-keyword,

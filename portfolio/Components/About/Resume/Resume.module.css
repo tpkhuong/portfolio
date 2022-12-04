@@ -2,6 +2,11 @@
 
 /* arrow */
 
+.selector-btn {
+  position: relative;
+  width: max-content;
+}
+
 .selector-btn[data-isselected="true"] .file-right-icon {
   transform: rotate(90deg);
   transition: transform 1s ease-out;
@@ -24,6 +29,34 @@
 
 .selector-btn[data-isselected="true"] .js-icon {
   fill: var(--color-jsfileicon);
+}
+
+/* underline file selector buttons */
+
+.selector-btn::after {
+  content: "";
+  background-color: whitesmoke;
+  height: 2px;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+}
+
+.selector-btn[id="html"][data-isselected="true"].selector-btn::after {
+  background-color: var(--color-htmlfileicon);
+}
+
+.selector-btn[id="css"][data-isselected="true"].selector-btn::after {
+  background-color: var(--color-cssfileicon);
+}
+
+.selector-btn[id="js"][data-isselected="true"].selector-btn::after {
+  background-color: var(--color-jsfileicon);
+}
+
+.selector-btn[data-isselected="true"].selector-btn::after {
+  width: 100%;
 }
 
 /* file name */

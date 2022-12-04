@@ -73,6 +73,10 @@ export default function Carousel({ children, ...props }) {
     window.addEventListener("resize", resizeWatcher);
 
     console.log("scrollChildren", scrollChildren);
+
+    return function cleanUp() {
+      window.removeEventListener("resize", resizeWatcher);
+    };
   }, []);
 
   return (

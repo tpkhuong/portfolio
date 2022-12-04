@@ -33,7 +33,26 @@ export default function Skills({ children, setStateFunc }) {
         <CSSRule
           selector="College"
           property="University"
+          inlineEndSpacer=""
           propertyValue="California State University of Northridge;"
+        />
+        <CSSRule
+          selector="Degree"
+          property="Bachelor of Science"
+          inlineEndSpacer=""
+          propertyValue="Business Administration Finance;"
+        />
+        <CSSRule
+          selector="Year-Completed"
+          property="Graduated"
+          inlineEndSpacer=""
+          propertyValue="2008;"
+        />
+        <CSSRule
+          selector="Cisco-Certificate"
+          property="Cisco Certified Entry Level Tech"
+          inlineEndSpacer=""
+          propertyValue="May 2018;"
         />
       </div>
     </div>
@@ -48,11 +67,17 @@ function CSSRule({ children, selector, property, propertyValue }) {
         <p>
           <span className={SkillsStyles[`css-bracket`]}>&#91;</span>
           <span className={SkillsStyles[`css-selector`]}>{selector}</span>
-          <span className={SkillsStyles[`css-bracket`]}>&#93;</span>
+          <span
+            className={`${SkillsStyles[`css-bracket`]} ${
+              SkillsStyles[`spacer-inline-end`]
+            }`}
+          >
+            &#93;
+          </span>
           <span className={SkillsStyles[`css-bracket`]}>&#123;</span>
         </p>
         {/* property and property value */}
-        <p>
+        <p className={SkillsStyles[`css-property-container`]}>
           <span className={SkillsStyles[`css-property`]}>{property}</span>
           <span>:</span>
           <span className={SkillsStyles[`css-property-value`]}>

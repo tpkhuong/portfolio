@@ -9,9 +9,22 @@
   border-block-start: var(--container-border-block-start);
 }
 
-.passion-container > * + * {
-  margin-block-end: 16px;
+.style-container {
+  margin-block: 24px;
+  padding-inline-start: 24px;
 }
+
+.style-container > * + * {
+  margin-block-start: 16px;
+}
+
+/* .passion-container .html-container:not(:nth-child(1)) {
+  margin-block-start: 16px;
+}
+
+.passion-container .html-container:nth-child(2) {
+  margin-block-start: 32px;
+} */
 
 .tab-close-btn {
   background-color: var(--tab-btn-bg);
@@ -60,6 +73,9 @@
 
 .element-content {
   color: var(--color-neutral-white);
+  padding-inline: 18px;
+  padding-inline-end: 5px;
+  display: inline-block;
 }
 
 @media screen and (min-width: 90rem) {
@@ -69,8 +85,16 @@
     padding-inline: var(--desktop-resumeinfo-container-padding-inline);
   }
 
+  .style-container {
+    padding-inline-start: 42px;
+  }
+
   .tab-container {
     align-self: var(--tab-container-align-self);
     border-inline-end: var(--tab-container-border);
+  }
+
+  .element-content {
+    padding-inline-start: 18px;
   }
 }

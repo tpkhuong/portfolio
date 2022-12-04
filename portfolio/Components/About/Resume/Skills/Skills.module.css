@@ -9,6 +9,10 @@
   border-block-start: var(--container-border-block-start);
 }
 
+.skills-container > * + * {
+  margin-block-start: 16px;
+}
+
 .tab-close-btn {
   background-color: var(--tab-btn-bg);
 }
@@ -38,8 +42,16 @@
   color: var(--color-curly-bracket);
 }
 
+.spacer-inline-end {
+  margin-inline-end: 8px;
+}
+
 .css-selector {
-  color: var(--color-html-attrValue-css-attrSelector);
+  color: var(--color-html-tag-css-year);
+}
+
+.css-property-container {
+  padding-inline-start: 20px;
 }
 
 .css-property {
@@ -60,5 +72,9 @@
   .tab-container {
     align-self: var(--tab-container-align-self);
     border-inline-end: var(--tab-container-border);
+  }
+
+  .css-property-container {
+    padding-inline-start: 28px;
   }
 }
