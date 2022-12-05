@@ -21,6 +21,7 @@ export default function Projects({ children }) {
         Skip to Main Content
       </a>
       <header role="banner"></header>
+      <h1>this is projects page</h1>
     </React.Fragment>
   );
 }

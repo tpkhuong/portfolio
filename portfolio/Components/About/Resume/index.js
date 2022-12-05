@@ -55,7 +55,8 @@ export default function ResumeInfo({ children, ...props }) {
                 if (buttonID == "html") {
                   const htmlBtn = document.getElementById(buttonID);
 
-                  htmlBtn.getAttribute("data-isselected") == "false"
+                  htmlBtn.getAttribute("data-isselected") == "false" ||
+                  htmlBtn.getAttribute("data-isselected") === ""
                     ? htmlBtn.setAttribute("data-isselected", "true")
                     : null;
 
@@ -88,7 +89,8 @@ export default function ResumeInfo({ children, ...props }) {
                 if (buttonID == "css") {
                   const cssBtn = document.getElementById(buttonID);
 
-                  cssBtn.getAttribute("data-isselected") == "false"
+                  cssBtn.getAttribute("data-isselected") == "false" ||
+                  cssBtn.getAttribute("data-isselected") === ""
                     ? cssBtn.setAttribute("data-isselected", "true")
                     : null;
 
@@ -121,7 +123,8 @@ export default function ResumeInfo({ children, ...props }) {
                 if (buttonID == "js") {
                   const jsBtn = document.getElementById(buttonID);
 
-                  jsBtn.getAttribute("data-isselected") == "false"
+                  jsBtn.getAttribute("data-isselected") == "false" ||
+                  jsBtn.getAttribute("data-isselected") === ""
                     ? jsBtn.setAttribute("data-isselected", "true")
                     : null;
 
@@ -157,7 +160,7 @@ export default function ResumeInfo({ children, ...props }) {
             {/* block border */}
             {/* html */}
             <button
-              data-isselected="false"
+              data-isselected=""
               id="html"
               className={ResumeStyles[`selector-btn`]}
             >
@@ -170,7 +173,7 @@ export default function ResumeInfo({ children, ...props }) {
             </button>
             {/* css */}
             <button
-              data-isselected="false"
+              data-isselected=""
               id="css"
               className={ResumeStyles[`selector-btn`]}
             >
@@ -180,7 +183,7 @@ export default function ResumeInfo({ children, ...props }) {
             </button>
             {/* js */}
             <button
-              data-isselected="false"
+              data-isselected=""
               id="js"
               className={ResumeStyles[`selector-btn`]}
             >

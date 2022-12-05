@@ -17,6 +17,10 @@
   transition: transform 1s ease-in;
 }
 
+.selector-btn[data-isselected="true"] .file-right-icon path {
+  fill: var(--color-neutral-white);
+}
+
 /* file icon */
 
 .selector-btn[data-isselected="true"] .html-icon {
@@ -36,6 +40,7 @@
 .selector-btn::after {
   content: "";
   background-color: whitesmoke;
+  width: 0%;
   height: 2px;
   display: inline-block;
   position: absolute;
@@ -43,20 +48,30 @@
   bottom: -3px;
 }
 
-.selector-btn[id="html"][data-isselected="true"].selector-btn::after {
+.selector-btn[id="html"].selector-btn::after {
   background-color: var(--color-htmlfileicon);
 }
 
-.selector-btn[id="css"][data-isselected="true"].selector-btn::after {
+.selector-btn[id="css"].selector-btn::after {
   background-color: var(--color-cssfileicon);
 }
 
-.selector-btn[id="js"][data-isselected="true"].selector-btn::after {
+.selector-btn[id="js"].selector-btn::after {
   background-color: var(--color-jsfileicon);
 }
 
 .selector-btn[data-isselected="true"].selector-btn::after {
-  width: 100%;
+  animation: showBtnUnderline 1s ease-out forwards;
+  animation-delay: 1050ms;
+  /* width: 100%;
+  transition: width 1s ease-out;
+  transition-delay: 1200ms; */
+}
+
+.selector-btn[data-isselected="false"].selector-btn::after {
+  animation: hideUnderline 1s ease-out backwards;
+  /* width: 0%;
+  transition: width 1s ease-in; */
 }
 
 /* file name */
@@ -211,6 +226,25 @@
     position: relative;
     border-inline: var(--border-lines);
     height: 774px;
+  }
+}
+
+@keyframes showBtnUnderline {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes hideUnderline {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
   }
 }
 
