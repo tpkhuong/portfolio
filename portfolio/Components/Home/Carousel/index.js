@@ -10,7 +10,7 @@ import {
   resizeMobileToDesktop,
   resizeDesktopToMobile,
 } from "./carouselHelpers";
-import { FaArrowRight, FaArrowUp, FaArrowDown } from "react-icons/fa";
+import { FaArrowLeft, FaArrowUp, FaArrowDown } from "react-icons/fa";
 import Project from "./Project";
 
 export default function Carousel({ children, ...props }) {
@@ -207,10 +207,10 @@ export default function Carousel({ children, ...props }) {
           onClick={swipeRightBtn}
         >
           <span className={CarouselStyles[`btn-content-wrapper`]}>
+            <FaArrowLeft className={CarouselStyles[`arrow-left`]} />
             <span className={CarouselStyles[`btn-text`]}>
               Go back to Home page.
             </span>
-            <FaArrowRight className={CarouselStyles[`arrow-right`]} />
           </span>
         </button>
       </div>

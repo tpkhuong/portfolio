@@ -1,0 +1,65 @@
+/* mobile */
+
+.skill-level-projects-card-container {
+  display: grid;
+}
+
+.arrow-text-container {
+  display: flex;
+  gap: 10px;
+  padding-block: 9.3px;
+  padding-inline-start: 18px;
+}
+
+.down-arrow {
+  fill: var(--color-neutral-white);
+}
+
+.arrow-text-container h2 {
+  font-size: var(--font-size-18px);
+  font-weight: 400;
+  color: var(--color-neutral-white);
+}
+
+.skill-level-checkboxes-container {
+  border-top: var(--border-lines);
+}
+
+.tab-container {
+  display: flex;
+  align-items: center;
+  border-top: var(--border-lines);
+}
+
+.tab-title {
+  font-size: var(--font-size-18px);
+}
+
+.close-proj-btn {
+  background-color: transparent;
+}
+
+.close-icon {
+  width: 45px;
+}
+
+.project-cards-container {
+  height: 300px;
+  border-top: var(--border-lines);
+}
+
+/* desktop */
+
+@media screen and (min-width: 90rem) {
+  .skill-level-projects-card-container {
+    grid-template-columns: max-content 1fr;
+  }
+
+  .skill-level-container {
+    border-inline: var(--border-lines);
+  }
+
+  .tab-container {
+    border-top: revert;
+  }
+}

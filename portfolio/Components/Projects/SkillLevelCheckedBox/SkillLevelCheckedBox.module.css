@@ -1,0 +1,69 @@
+/* mobile */
+
+/* skill checkbox unchecked */
+
+.skill-level-btn[aria-checked="true"] .checkbox {
+  border-color: transparent;
+  background-color: var(--color-contacts-icon);
+}
+
+.skill-level-btn[aria-checked="false"] .checkbox {
+  border-color: var(--color-primary-border);
+}
+
+.skill-level-btn[aria-checked="true"] .checked-icon {
+  opacity: 1;
+}
+
+.skill-level-btn[aria-checked="true"] .text {
+  color: var(--color-neutral-white);
+}
+
+.skill-level-btn[aria-checked="true"] .level-icon[data-typeoflevel="novice"] {
+  fill: var(--color-htmlfileicon);
+}
+.skill-level-btn[aria-checked="true"] .level-icon[data-typeoflevel="junior"] {
+  fill: var(--color-cssfileicon);
+}
+.skill-level-btn[aria-checked="true"]
+  .level-icon[data-typeoflevel="intermediate"] {
+  fill: var(--color-jsfileicon);
+}
+.skill-level-btn[aria-checked="true"] .level-icon[data-typeoflevel="advanced"] {
+  fill: var(--color-reactfileicon);
+}
+
+/* skill checkbox checked */
+
+.skill-level-btn {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox {
+  border: 1px solid;
+  display: inline-block;
+  padding: 5px;
+  border-radius: 2px;
+}
+
+.checked-icon {
+  fill: var(--color-neutral-white);
+  opacity: 0;
+}
+
+.level-icon-container {
+  margin-inline: 24px;
+  margin-inline-end: 10px;
+}
+
+.level-icon {
+  width: 24px;
+}
+
+.text::first-letter {
+  text-transform: capitalize;
+}
+
+/* desktop */

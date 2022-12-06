@@ -10,35 +10,35 @@ export default function Snippet({ children, ...props }) {
       arrayOfSnippetObj: [
         {
           title: "_RandomRange",
-          description: "_Instructions",
+          description: "_Instructions:",
           textContent:
             "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti quidem laboriosam, molestiae amet delectus sit ipsam laudantium, optio non necessitatibus neque dolorum iure sunt, enim explicabo consequaturillum deleniti nulla.",
           codeBlockTitle: "_Solution:",
         },
         {
           title: "_RandomRange2",
-          description: "_Instructions",
+          description: "_Instructions:",
           textContent:
             "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti quidem laboriosam, molestiae amet delectus sit ipsam laudantium, optio non necessitatibus neque dolorum iure sunt, enim explicabo consequaturillum deleniti nulla.",
           codeBlockTitle: "_Solution:",
         },
         {
           title: "_RandomRange3",
-          description: "_Instructions",
+          description: "_Instructions:",
           textContent:
             "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti quidem laboriosam, molestiae amet delectus sit ipsam laudantium, optio non necessitatibus neque dolorum iure sunt, enim explicabo consequaturillum deleniti nulla.",
           codeBlockTitle: "_Solution:",
         },
         {
           title: "_RandomRange4",
-          description: "_Instructions",
+          description: "_Instructions:",
           textContent:
             "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti quidem laboriosam, molestiae amet delectus sit ipsam laudantium, optio non necessitatibus neque dolorum iure sunt, enim explicabo consequaturillum deleniti nulla.",
           codeBlockTitle: "_Solution:",
         },
         {
           title: "_RandomRange5",
-          description: "_Instructions",
+          description: "_Instructions:",
           textContent:
             "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti quidem laboriosam, molestiae amet delectus sit ipsam laudantium, optio non necessitatibus neque dolorum iure sunt, enim explicabo consequaturillum deleniti nulla.",
           codeBlockTitle: "_Solution:",
@@ -103,7 +103,7 @@ export default function Snippet({ children, ...props }) {
         {/* instructions */}
         <div className={SnippetStyles[`instructions-container`]}>
           <h3 className={SnippetStyles[`challenge-title`]}>
-            {arrayOfSnippetObj[codeBlockIndex].title}
+            {arrayOfSnippetObj[codeBlockIndex].title}:
           </h3>
           <h4 className={SnippetStyles[`sub-title`]}>
             {arrayOfSnippetObj[codeBlockIndex].description}

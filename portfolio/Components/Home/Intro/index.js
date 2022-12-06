@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import IntroStyles from "./Intro.module.css";
 import { swipeLeftBtn } from "./introHelpers";
-import { FaChevronRight, FaArrowLeft } from "react-icons/fa";
+import { FaChevronRight, FaArrowRight } from "react-icons/fa";
 import { GoLocation } from "react-icons/go";
 
 export default function Intro({ children, ...props }) {
@@ -62,8 +62,8 @@ export default function Intro({ children, ...props }) {
         onClick={swipeLeftBtn}
       >
         <span className={IntroStyles[`btn-content-wrapper`]}>
-          <FaArrowLeft className={IntroStyles[`arrow-left`]} />
           <span className={IntroStyles[`btn-text`]}>Go to Projects.</span>
+          <FaArrowRight className={IntroStyles[`arrow-right`]} />
         </span>
       </button>
     </div>

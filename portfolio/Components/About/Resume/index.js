@@ -4,7 +4,13 @@ import Passion from "./Passion/index";
 import Skills from "./Skills";
 import Professional from "./Professional";
 import { GoTriangleDown, GoChevronRight } from "react-icons/go";
-import { FaHtml5, FaCss3Alt, FaJs, FaPhoneAlt } from "react-icons/fa";
+import {
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaPhoneAlt,
+  FaArrowUp,
+} from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
 export default function ResumeInfo({ children, ...props }) {
@@ -224,38 +230,41 @@ export default function ResumeInfo({ children, ...props }) {
       <div className={ResumeStyles[`resume-sections-container`]}>
         {/* inline border */}
         {!renderInfo ? (
-          <button
-            id="emptyresumeinfo"
-            onClick={(event) => {
-              document.getElementById("html").focus();
-
-              event.target
-                .closest("BUTTON")
-                .getAttribute("data-emptybtnclicked") === ""
-                ? event.target
+          <React.Fragment>
+            <div className={ResumeStyles[`select-file-arrow-btn-wrapper`]}>
+              <FaArrowUp className={ResumeStyles[`file-indicator-arrow`]} />
+              <button
+                id="emptyresumeinfo"
+                onClick={(event) => {
+                  document.getElementById("html").focus();
+                  event.target
                     .closest("BUTTON")
-                    .setAttribute("data-emptybtnclicked", "true")
-                : null;
-
-              setTimeout(() => {
-                event.target
-                  .closest("BUTTON")
-                  .getAttribute("data-emptybtnclicked") === "true"
-                  ? event.target
+                    .getAttribute("data-emptybtnclicked") === ""
+                    ? event.target
+                        .closest("BUTTON")
+                        .setAttribute("data-emptybtnclicked", "true")
+                    : null;
+                  setTimeout(() => {
+                    event.target
                       .closest("BUTTON")
-                      .setAttribute("data-emptybtnclicked", "")
-                  : null;
-              }, 500);
-            }}
-            data-emptybtnclicked=""
-            className={ResumeStyles[`empty-btn`]}
-          >
-            <span className={ResumeStyles[`empty-btn-wrapper`]}>
-              <span className={ResumeStyles[`empty-btn-text`]}>
-                Select a File to view info.
-              </span>
-            </span>
-          </button>
+                      .getAttribute("data-emptybtnclicked") === "true"
+                      ? event.target
+                          .closest("BUTTON")
+                          .setAttribute("data-emptybtnclicked", "")
+                      : null;
+                  }, 500);
+                }}
+                data-emptybtnclicked=""
+                className={ResumeStyles[`empty-btn`]}
+              >
+                <span className={ResumeStyles[`empty-btn-wrapper`]}>
+                  <span className={ResumeStyles[`empty-btn-text`]}>
+                    Select a File to view info.
+                  </span>
+                </span>
+              </button>
+            </div>
+          </React.Fragment>
         ) : null}
         {renderInfo == "passion" ? (
           <Passion setStateFunc={setResumeInfo} />

@@ -35,6 +35,7 @@
   --color-htmlfileicon: hsl(12, 78%, 52%);
   --color-cssfileicon: hsl(207, 90%, 54%);
   --color-jsfileicon: hsl(53, 93%, 54%);
+  --color-reactfileicon: hsl(193, 95%, 68%);
 
   /* neutral */
   --color-neutral-black: hsl(0, 0%, 0%);
