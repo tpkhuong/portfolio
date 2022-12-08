@@ -25,7 +25,7 @@ export default function SkillLevel({ children, textContent, level, testData }) {
                 event.target.closest("BUTTON").getAttribute("id")
               )
             );
-            testState(objOfValues.testArray);
+            testState(event.target.closest("BUTTON").getAttribute("id"));
             return;
           }
 
@@ -39,13 +39,17 @@ export default function SkillLevel({ children, textContent, level, testData }) {
               }
             );
             objOfValues.testArray = [...arrayWithoutIdOfClickedBtn];
-            console.log(
-              objOfValues.testArray.includes(
-                event.target.closest("BUTTON").getAttribute("id")
-              )
-            );
-            console.log(objOfValues.testArray, "objOfValues.testArray");
-            testState(objOfValues.testArray);
+            if (testValue == "same") {
+              testState("different");
+              return;
+            }
+            // console.log(
+            //   objOfValues.testArray.includes(
+            //     event.target.closest("BUTTON").getAttribute("id")
+            //   )
+            // );
+            // console.log(objOfValues.testArray, "objOfValues.testArray");
+            testState("same");
           }
         }
       }}

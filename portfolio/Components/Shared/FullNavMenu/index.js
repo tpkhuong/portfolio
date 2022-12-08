@@ -22,6 +22,9 @@ export default function FullNavMenu({ children, currentPage }) {
                 {currentPage == arrayOfHref[index] ? (
                   <a
                     data-iscurrentpage="true"
+                    data-isprojectpage={
+                      arrayOfHref[index] == "projects" ? "true" : "false"
+                    }
                     role="menuitem"
                     className={FullNavStyles[`navlink`]}
                   >
@@ -31,7 +34,13 @@ export default function FullNavMenu({ children, currentPage }) {
                     </span>
                   </a>
                 ) : (
-                  <a role="menuitem" className={FullNavStyles[`navlink`]}>
+                  <a
+                    role="menuitem"
+                    data-notcurrentprojectpage={
+                      arrayOfHref[index] == "projects" ? "true" : "false"
+                    }
+                    className={FullNavStyles[`navlink`]}
+                  >
                     <span className={FullNavStyles[`underscore`]}>_</span>
                     <span className={FullNavStyles[`link-text`]}>
                       {linktext}

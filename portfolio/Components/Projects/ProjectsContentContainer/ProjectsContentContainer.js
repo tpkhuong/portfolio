@@ -44,6 +44,63 @@ function Content() {
               }
             )}
           </ul>
+          {/* add/remove all */}
+          <div
+            onClick={(event) => {
+              const btnClicked = event.target.closest("BUTTON");
+
+              btnClicked.getAttribute("data-allbtnclicked") == "false" ||
+              btnClicked.getAttribute("data-allbtnclicked") === ""
+                ? btnClicked.setAttribute("data-allbtnclicked", "true")
+                : btnClicked.setAttribute("data-allbtnclicked", "false");
+
+              setTimeout(() => {
+                btnClicked.getAttribute("data-allbtnclicked") == "true"
+                  ? btnClicked.setAttribute("data-allbtnclicked", "false")
+                  : btnClicked.setAttribute("data-allbtnclicked", "true");
+              }, 800);
+
+              const idOfButton = btnClicked.getAttribute("id");
+
+              if (idOfButton == "add-all") {
+                objOfValues.testArray = [
+                  "novice",
+                  "junior",
+                  "intermediate",
+                  "advanced",
+                ];
+
+                testState("all");
+              }
+
+              if (idOfButton == "remove-all") {
+                objOfValues.testArray = [];
+
+                testState("remove");
+              }
+            }}
+            className={ProjectsContentStyles[`add-remove-btns-wrapper`]}
+          >
+            <button
+              data-allbtnclicked=""
+              id="add-all"
+              className={ProjectsContentStyles[`add-all-btn`]}
+            >
+              <span className={ProjectsContentStyles[`add-all-btn-wrapper`]}>
+                CHECK ALL
+              </span>
+            </button>
+            <button
+              data-allbtnclicked=""
+              id="remove-all"
+              className={ProjectsContentStyles[`remove-all-btn`]}
+            >
+              <span className={ProjectsContentStyles[`remove-all-btn-wrapper`]}>
+                UNCHECK ALL
+              </span>
+            </button>
+          </div>
+          <Learning>Hello World</Learning>
         </aside>
         <div className={ProjectsContentStyles[`tab-cards-container`]}>
           <div className={ProjectsContentStyles[`tab-container`]}>
@@ -62,13 +119,51 @@ function Content() {
             </button>
           </div>
           <ul className={ProjectsContentStyles[`project-cards-container`]}>
-            {objOfValues.testArray.map(function makeCards(item, index) {
-              return (
-                <li key={Math.random() * index}>
-                  <span>{item}</span>
-                </li>
-              );
-            })}
+            {objOfValues.testArray.length == 0 ? (
+              <div
+                className={
+                  ProjectsContentStyles[`select-skill-level-btn-wrapper`]
+                }
+              >
+                <button
+                  id="projectshidden"
+                  onClick={(event) => {
+                    document.getElementById("novice").focus();
+                    event.target
+                      .closest("BUTTON")
+                      .getAttribute("data-projectshidden") === ""
+                      ? event.target
+                          .closest("BUTTON")
+                          .setAttribute("data-projectshidden", "true")
+                      : null;
+                    setTimeout(() => {
+                      event.target
+                        .closest("BUTTON")
+                        .getAttribute("data-projectshidden") === "true"
+                        ? event.target
+                            .closest("BUTTON")
+                            .setAttribute("data-projectshidden", "")
+                        : null;
+                    }, 900);
+                  }}
+                  data-projectshidden=""
+                  className={ProjectsContentStyles[`empty-btn`]}
+                >
+                  <span className={ProjectsContentStyles[`empty-btn-wrapper`]}>
+                    <span>Go to Projects tab.</span>
+                    <span>Check box to see Projects</span>
+                  </span>
+                </button>
+              </div>
+            ) : (
+              objOfValues.testArray.map(function makeCards(item, index) {
+                return (
+                  <li key={Math.random() * index}>
+                    <span>{item}</span>
+                  </li>
+                );
+              })
+            )}
           </ul>
         </div>
       </div>
@@ -77,3 +172,23 @@ function Content() {
 }
 
 export const ProjectsContentContainer = Content();
+
+function Learning({ children }) {
+  return (
+    <React.Fragment>
+      <span data-show="" className={ProjectsContentStyles[`letter-container`]}>
+        {children.split("").map(function showLetter(letter, index) {
+          return (
+            <span
+              data-position={`${index}`}
+              className={ProjectsContentStyles[`letter`]}
+              key={Math.random() * index}
+            >
+              {letter}
+            </span>
+          );
+        })}
+      </span>
+    </React.Fragment>
+  );
+}

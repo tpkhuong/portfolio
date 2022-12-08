@@ -201,7 +201,7 @@ export default function ResumeInfo({ children, ...props }) {
             </button>
           </div>
         </div>
-        {/* content */}
+        {/* contact */}
         <div className={ResumeStyles[`contact-container`]}>
           <div className={ResumeStyles[`arrow-text-container`]}>
             {/* hide at mobile size */}

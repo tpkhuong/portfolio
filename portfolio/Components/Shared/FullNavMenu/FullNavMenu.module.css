@@ -39,12 +39,33 @@
   animation: blinking 1250ms ease-in-out alternate infinite;
 }
 
+[data-isProjectPage="true"] .underscore {
+  animation: projectpageblinking 1250ms ease-in-out alternate infinite;
+  display: inline-block;
+}
+
+[data-notcurrentprojectpage="true"] .underscore {
+  display: inline-block;
+  transform: translateY(3px);
+}
+
 @keyframes blinking {
   0% {
     opacity: 1;
   }
   100% {
     opacity: 0;
+  }
+}
+
+@keyframes projectpageblinking {
+  0% {
+    opacity: 1;
+    transform: translateY(3px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(3px);
   }
 }
 
