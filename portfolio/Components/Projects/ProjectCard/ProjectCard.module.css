@@ -1,0 +1,137 @@
+/* mobile */
+
+.project-container {
+  display: flex;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* home page */
+
+[data-projectorhomepage="home"].project-container {
+  max-width: 610px;
+}
+
+/* img */
+
+[data-projectorhomepage="home"] .img {
+  /* max-width: 610px; */
+}
+
+/* content container */
+
+[data-projectorhomepage="home"] .content-container {
+  /* max-width: 610px; */
+}
+
+/* projects page */
+
+[data-projectorhomepage="projects"].project-container {
+  max-width: 550px;
+}
+
+/* img */
+
+[data-projectorhomepage="projects"] .img {
+  max-width: 200px;
+}
+
+/* content container */
+
+[data-projectorhomepage="projects"] .content-container {
+  /* max-width: 610px; */
+  padding: 24px;
+}
+
+[data-projectorhomepage="projects"] .title {
+  margin-block-end: 8px;
+}
+
+[data-projectorhomepage="projects"] .tech-title {
+}
+
+[data-projectorhomepage="projects"] .title-tech-container {
+  display: flex;
+  gap: 8px;
+}
+
+[data-projectorhomepage="projects"] .tech-container {
+  display: flex;
+  gap: 8px;
+}
+
+[data-projectorhomepage="projects"] .description {
+  margin-block: 12px;
+}
+
+[data-projectorhomepage="projects"] .links-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content-container {
+  background-color: hsl(208, 84%, 5%);
+}
+
+.title {
+  font-size: 1.5rem;
+}
+
+.title-tech-container {
+  font-weight: 600;
+}
+
+.tech-title {
+  color: var(--color-neutral-white);
+}
+
+.tech-container {
+  list-style: none;
+}
+
+.tech-container span {
+  text-transform: uppercase;
+}
+
+.html {
+  color: var(--color-htmlfileicon);
+}
+
+.css {
+  color: var(--color-cssfileicon);
+}
+
+.js {
+  color: var(--color-jsfileicon);
+}
+
+.react {
+  color: var(--color-reactfileicon);
+}
+
+.description {
+  color: var(--color-neutral-white);
+}
+
+.project-link,
+.code-link {
+  display: flex;
+  gap: 8px;
+}
+
+.site-icon,
+.github-icon {
+  width: 24px;
+}
+
+.links-container a:hover path,
+.links-container a:focus path {
+  fill: var(--color-neutral-white);
+}
+
+.links-container a:focus span,
+.links-container a:hover span {
+  color: var(--color-neutral-white);
+}
+
+/* desktop */

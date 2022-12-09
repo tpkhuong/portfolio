@@ -192,6 +192,7 @@
 .letter-container {
   display: block;
   position: relative;
+  background-color: transparent;
 }
 
 .letter-container::before {
@@ -206,122 +207,132 @@
 
 /* vertical bar */
 
-[data-show="true"].letter-container::before {
-  animation: moveRightVerticalLine 2500ms ease-out forwards;
+[data-showletter="true"].letter-container::before {
+  animation: moveRightVerticalLine 3500ms ease-out forwards;
 }
 
-[data-show="false"].letter-container::before {
-  animation: moveLeftVerticalLine 2500ms ease-out forwards;
+[data-showletter="false"].letter-container::before {
+  animation: moveLeftVerticalLine 3500ms ease-out forwards;
+}
+
+/* blinking line */
+
+[data-blinking="true"].letter-container::before {
+  animation: leftblinking 1500ms ease-in-out forwards reverse infinite;
+}
+
+[data-blinking="false"].letter-container::before {
+  animation: rightblinking 1500ms ease-in-out forwards reverse infinite;
 }
 
 /* letters */
 
 .letter[data-position] {
   opacity: 0;
-  transition: opacity 250ms ease-out;
+  transition: opacity 350ms ease-out;
 }
 
 /* show */
 
-[data-show="true"] .letter[data-position="0"] {
+[data-showletter="true"] .letter[data-position="0"] {
   opacity: 1;
 }
-[data-show="true"] .letter[data-position="1"] {
+[data-showletter="true"] .letter[data-position="1"] {
   opacity: 1;
-  transition-delay: 250ms;
+  transition-delay: 350ms;
 }
-[data-show="true"] .letter[data-position="2"] {
+[data-showletter="true"] .letter[data-position="2"] {
   opacity: 1;
-  transition-delay: 500ms;
+  transition-delay: 700ms;
 }
-[data-show="true"] .letter[data-position="3"] {
+[data-showletter="true"] .letter[data-position="3"] {
   opacity: 1;
-  transition-delay: 750ms;
+  transition-delay: 1050ms;
 }
-[data-show="true"] .letter[data-position="4"] {
+[data-showletter="true"] .letter[data-position="4"] {
   opacity: 1;
-  transition-delay: 1000ms;
+  transition-delay: 1400ms;
 }
-[data-show="true"] .letter[data-position="5"] {
-  opacity: 1;
-  transition-delay: 1250ms;
-}
-[data-show="true"] .letter[data-position="6"] {
-  opacity: 1;
-  transition-delay: 1500ms;
-}
-[data-show="true"] .letter[data-position="7"] {
+[data-showletter="true"] .letter[data-position="5"] {
   opacity: 1;
   transition-delay: 1750ms;
 }
-[data-show="true"] .letter[data-position="8"] {
+[data-showletter="true"] .letter[data-position="6"] {
   opacity: 1;
-  transition-delay: 2000ms;
+  transition-delay: 2100ms;
 }
-[data-show="true"] .letter[data-position="9"] {
+[data-showletter="true"] .letter[data-position="7"] {
   opacity: 1;
-  transition-delay: 2250ms;
+  transition-delay: 2450ms;
 }
-[data-show="true"] .letter[data-position="10"] {
+[data-showletter="true"] .letter[data-position="8"] {
   opacity: 1;
-  transition-delay: 2500ms;
+  transition-delay: 2800ms;
+}
+[data-showletter="true"] .letter[data-position="9"] {
+  opacity: 1;
+  transition-delay: 3150ms;
+}
+[data-showletter="true"] .letter[data-position="10"] {
+  opacity: 1;
+  transition-delay: 3500ms;
 }
 
 /* hide */
 
-[data-show="false"] .letter[data-position] {
+[data-showletter="false"] .letter[data-position] {
   opacity: 0;
 }
 
-[data-show="false"] .letter[data-position="10"] {
+[data-showletter="false"] .letter[data-position="10"] {
   opacity: 0;
 }
-[data-show="false"] .letter[data-position="9"] {
+[data-showletter="false"] .letter[data-position="9"] {
   opacity: 0;
-  transition-delay: 250ms;
+  transition-delay: 350ms;
 }
-[data-show="false"] .letter[data-position="8"] {
+[data-showletter="false"] .letter[data-position="8"] {
   opacity: 0;
-  transition-delay: 500ms;
+  transition-delay: 700ms;
 }
-[data-show="false"] .letter[data-position="7"] {
+[data-showletter="false"] .letter[data-position="7"] {
   opacity: 0;
-  transition-delay: 750ms;
+  transition-delay: 1050ms;
 }
-[data-show="false"] .letter[data-position="6"] {
+[data-showletter="false"] .letter[data-position="6"] {
   opacity: 0;
-  transition-delay: 1000ms;
+  transition-delay: 1400ms;
 }
-[data-show="false"] .letter[data-position="5"] {
-  opacity: 0;
-  transition-delay: 1250ms;
-}
-[data-show="false"] .letter[data-position="4"] {
-  opacity: 0;
-  transition-delay: 1500ms;
-}
-[data-show="false"] .letter[data-position="3"] {
+[data-showletter="false"] .letter[data-position="5"] {
   opacity: 0;
   transition-delay: 1750ms;
 }
-[data-show="false"] .letter[data-position="2"] {
+[data-showletter="false"] .letter[data-position="4"] {
   opacity: 0;
-  transition-delay: 2000ms;
+  transition-delay: 2100ms;
 }
-[data-show="false"] .letter[data-position="1"] {
+[data-showletter="false"] .letter[data-position="3"] {
   opacity: 0;
-  transition-delay: 2250ms;
+  transition-delay: 2450ms;
 }
-[data-show="false"] .letter[data-position="0"] {
+[data-showletter="false"] .letter[data-position="2"] {
   opacity: 0;
-  transition-delay: 2500ms;
+  transition-delay: 2800ms;
+}
+[data-showletter="false"] .letter[data-position="1"] {
+  opacity: 0;
+  transition-delay: 3150ms;
+}
+[data-showletter="false"] .letter[data-position="0"] {
+  opacity: 0;
+  transition-delay: 3500ms;
 }
 
 /* animate vertical bar */
 
 @keyframes moveRightVerticalLine {
   0% {
-    transform: translateX(0);
+    transform: translateX(-3px);
   }
 
   9% {
@@ -339,19 +350,19 @@
   45% {
     transform: translateX(calc(9.6px * 5));
   }
-  54% {
+  54.5% {
     transform: translateX(calc(9.6px * 6));
   }
-  63% {
+  63.6% {
     transform: translateX(calc(9.6px * 7));
   }
-  72% {
+  72.7% {
     transform: translateX(calc(9.6px * 8));
   }
-  80% {
+  81.8% {
     transform: translateX(calc(9.6px * 9));
   }
-  88% {
+  90.9% {
     transform: translateX(calc(9.6px * 10));
   }
   100% {
@@ -395,6 +406,30 @@
     transform: translateX(calc(105.6px - (9.6px * 1) 0));
   }
   100% {
-    transform: translateX(0);
+    transform: translateX(-3px);
+  }
+}
+
+@keyframes leftblinking {
+  0% {
+    opacity: 1;
+    /* transform: translateX(0px); */
+  }
+
+  100% {
+    opacity: 0;
+    /* transform: translateX(0px); */
+  }
+}
+
+@keyframes rightblinking {
+  0% {
+    opacity: 1;
+    transform: translateX(107px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(107px);
   }
 }
