@@ -1,6 +1,6 @@
 .intro-wrapper {
   /* vh - navbar - footer */
-  min-height: calc(100vh - 70px - 58px);
+  min-height: calc(100vh - 70px - 54px);
   /* display: flex; */
   flex-direction: column;
   padding-block: 62px;

@@ -26,7 +26,7 @@ export default function Project({
       onTouchEnd={touchEndForMobile}
       onTouchStart={touchStartForMobile}
     >
-      <span>{spanContent}</span>
+      {children}
     </div>
   ) : (
     <div
@@ -40,7 +40,7 @@ export default function Project({
       onTouchEnd={touchEndForMobile}
       onTouchStart={touchStartForMobile}
     >
-      <span>{spanContent}</span>
+      {children}
     </div>
   );
 }

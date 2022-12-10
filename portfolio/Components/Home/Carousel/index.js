@@ -10,8 +10,10 @@ import {
   resizeMobileToDesktop,
   resizeDesktopToMobile,
 } from "./carouselHelpers";
-import { FaArrowLeft, FaArrowUp, FaArrowDown } from "react-icons/fa";
 import Project from "./Project";
+import ProjectCard from "../../Projects/ProjectCard";
+import { arrayOfObjForProjectCard } from "../../Projects/ProjectCard/ProjectInfoObj";
+import { FaArrowLeft, FaArrowUp, FaArrowDown } from "react-icons/fa";
 
 export default function Carousel({ children, ...props }) {
   // const memoizedInitialValues = React.useMemo(() => {
@@ -40,6 +42,7 @@ export default function Carousel({ children, ...props }) {
     if (window.innerWidth <= 375) {
       scrollContainer.setAttribute("data-item-order", "mobile-nine-first");
       scrollContainer.scrollBy(0, 1);
+      // document.getElementById("currentFocused").scrollIntoView();
     }
 
     if (window.innerWidth >= 1440) {
@@ -132,7 +135,18 @@ export default function Carousel({ children, ...props }) {
               tab="0"
               spanContent="1"
               idAttr="currentFocused"
-            />
+            >
+              <ProjectCard
+                page="home"
+                imgSrc={arrayOfObjForProjectCard[0].imgInfo.imgSrc}
+                imgText={arrayOfObjForProjectCard[0].imgInfo.altText}
+                title={arrayOfObjForProjectCard[0].title}
+                techArray={arrayOfObjForProjectCard[0].tech}
+                description={arrayOfObjForProjectCard[0].description}
+                viewProject={arrayOfObjForProjectCard[0].links.viewProject}
+                viewCode={arrayOfObjForProjectCard[0].links.viewCode}
+              />
+            </Project>
             <Project
               hidden="true"
               label="2 of 9"
@@ -140,7 +154,9 @@ export default function Carousel({ children, ...props }) {
               pos="two"
               tab="-1"
               spanContent="2"
-            />
+            >
+              <span>2</span>
+            </Project>
             <Project
               hidden="true"
               label="3 of 9"
@@ -148,7 +164,9 @@ export default function Carousel({ children, ...props }) {
               pos="three"
               tab="-1"
               spanContent="3"
-            />
+            >
+              <span>3</span>
+            </Project>
             <Project
               hidden="true"
               label="4 of 9"
@@ -156,7 +174,9 @@ export default function Carousel({ children, ...props }) {
               pos="four"
               tab="-1"
               spanContent="4"
-            />
+            >
+              <span>4</span>
+            </Project>
             <Project
               hidden="true"
               label="5 of 9"
@@ -164,7 +184,9 @@ export default function Carousel({ children, ...props }) {
               pos="five"
               tab="-1"
               spanContent="5"
-            />
+            >
+              5
+            </Project>
             <Project
               hidden="true"
               label="6 of 9"
@@ -172,7 +194,9 @@ export default function Carousel({ children, ...props }) {
               pos="six"
               tab="-1"
               spanContent="6"
-            />
+            >
+              <span>6</span>
+            </Project>
             <Project
               hidden="true"
               label="7 of 9"
@@ -180,7 +204,9 @@ export default function Carousel({ children, ...props }) {
               pos="seven"
               tab="-1"
               spanContent="7"
-            />
+            >
+              <span>7</span>
+            </Project>
             <Project
               hidden="true"
               label="8 of 9"
@@ -188,7 +214,9 @@ export default function Carousel({ children, ...props }) {
               pos="eight"
               tab="-1"
               spanContent="8"
-            />
+            >
+              <span>8</span>
+            </Project>
             <Project
               hidden="true"
               label="9 of 9"
@@ -196,7 +224,9 @@ export default function Carousel({ children, ...props }) {
               pos="nine"
               tab="-1"
               spanContent="9"
-            />
+            >
+              <span>9</span>
+            </Project>
           </React.Fragment>
         </div>
         {/* swipe right */}

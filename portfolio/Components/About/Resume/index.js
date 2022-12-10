@@ -3,6 +3,8 @@ import ResumeStyles from "./Resume.module.css";
 import Passion from "./Passion/index";
 import Skills from "./Skills";
 import Professional from "./Professional";
+// import ProjectCard from "../../Projects/ProjectCard";
+// import { objOfInfo } from "../../Projects/ProjectCard/ProjectInfoObj";
 import { GoTriangleDown, GoChevronRight } from "react-icons/go";
 import {
   FaHtml5,
@@ -231,6 +233,16 @@ export default function ResumeInfo({ children, ...props }) {
         {/* inline border */}
         {!renderInfo ? (
           <React.Fragment>
+            {/* <ProjectCard
+              page="projects"
+              imgSrc={objOfInfo.imgInfo.imgSrc}
+              imgText={objOfInfo.imgInfo.altText}
+              title={objOfInfo.title}
+              techArray={objOfInfo.tech}
+              description={objOfInfo.description}
+              viewProject={objOfInfo.links.viewProject}
+              viewCode={objOfInfo.links.viewCode}
+            /> */}
             <div className={ResumeStyles[`select-file-arrow-btn-wrapper`]}>
               <FaArrowUp className={ResumeStyles[`file-indicator-arrow`]} />
               <button

@@ -11,16 +11,16 @@ but we want to allow them to click on <a> buttons
   /* snap to the snap container */
   scroll-snap-align: center;
   scroll-snap-stop: always;
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   flex-basis: 350px;
   border-radius: 8px;
   /* position: relative; */
 }
 
 .snap-item > * {
-  font-size: 7rem;
+  /* font-size: 7rem; */
   color: var(--color-neutral-white);
   /* position: absolute;
   inset: 0;

@@ -13,6 +13,7 @@ export default function ProjectCard({
   description,
   viewProject,
   viewCode,
+  keyMap,
 }) {
   return (
     <article
@@ -20,7 +21,6 @@ export default function ProjectCard({
       data-projectorhomepage={page}
       aria-labelledby="project-title"
     >
-      <h2 className="visually-hidden"></h2>
       <img className={ProjectCardStyles[`img`]} src={imgSrc} alt={imgText} />
       <div className={ProjectCardStyles[`content-container`]}>
         <h2 id="project-title" className={ProjectCardStyles[`title`]}>

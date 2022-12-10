@@ -2,7 +2,7 @@ import React from "react";
 import ProjectsContentStyles from "./ProjectsContentContainer.module.css";
 import SkillLevel from "../SkillLevelCheckedBox";
 import ProjectCard from "../ProjectCard/index";
-import { objOfInfo } from "../ProjectCard/ProjectInfoObj";
+import { arrayOfObjForProjectCard } from "../ProjectCard/ProjectInfoObj";
 import { GoTriangleDown } from "react-icons/go";
 import { IoClose } from "react-icons/io5";
 
@@ -121,61 +121,67 @@ function Content() {
             </button>
           </div>
           <ul className={ProjectsContentStyles[`project-cards-container`]}>
-            {objOfValues.testArray.length == 0 ? (
-              <ProjectCard
-                page="projects"
-                imgSrc={objOfInfo.imgInfo.imgSrc}
-                imgText={objOfInfo.imgInfo.altText}
-                title={objOfInfo.title}
-                techArray={objOfInfo.tech}
-                description={objOfInfo.description}
-                viewProject={objOfInfo.links.viewProject}
-                viewCode={objOfInfo.links.viewCode}
-              />
-            ) : (
-              // <div
-              //   className={
-              //     ProjectsContentStyles[`select-skill-level-btn-wrapper`]
-              //   }
-              // >
-              //   <button
-              //     id="projectshidden"
-              //     onClick={(event) => {
-              //       document.getElementById("novice").focus();
-              //       event.target
-              //         .closest("BUTTON")
-              //         .getAttribute("data-projectshidden") === ""
-              //         ? event.target
-              //             .closest("BUTTON")
-              //             .setAttribute("data-projectshidden", "true")
-              //         : null;
-              //       setTimeout(() => {
-              //         event.target
-              //           .closest("BUTTON")
-              //           .getAttribute("data-projectshidden") === "true"
-              //           ? event.target
-              //               .closest("BUTTON")
-              //               .setAttribute("data-projectshidden", "")
-              //           : null;
-              //       }, 900);
-              //     }}
-              //     data-projectshidden=""
-              //     className={ProjectsContentStyles[`empty-btn`]}
-              //   >
-              //     <span className={ProjectsContentStyles[`empty-btn-wrapper`]}>
-              //       <span>Go to Projects tab.</span>
-              //       <span>Check box to see Projects</span>
-              //     </span>
-              //   </button>
-              // </div>
-              objOfValues.testArray.map(function makeCards(item, index) {
-                return (
-                  <li key={Math.random() * index}>
-                    <span>{item}</span>
-                  </li>
-                );
-              })
-            )}
+            {objOfValues.testArray.length == 0
+              ? arrayOfObjForProjectCard.map(function makeProjectCard(
+                  obj,
+                  index
+                ) {
+                  return (
+                    <ProjectCard
+                      key={Math.random() * index}
+                      page="projects"
+                      imgSrc={obj.imgInfo.imgSrc}
+                      imgText={obj.imgInfo.altText}
+                      title={obj.title}
+                      techArray={obj.tech}
+                      description={obj.description}
+                      viewProject={obj.links.viewProject}
+                      viewCode={obj.links.viewCode}
+                    />
+                  );
+                })
+              : // <div
+                //   className={
+                //     ProjectsContentStyles[`select-skill-level-btn-wrapper`]
+                //   }
+                // >
+                //   <button
+                //     id="projectshidden"
+                //     onClick={(event) => {
+                //       document.getElementById("novice").focus();
+                //       event.target
+                //         .closest("BUTTON")
+                //         .getAttribute("data-projectshidden") === ""
+                //         ? event.target
+                //             .closest("BUTTON")
+                //             .setAttribute("data-projectshidden", "true")
+                //         : null;
+                //       setTimeout(() => {
+                //         event.target
+                //           .closest("BUTTON")
+                //           .getAttribute("data-projectshidden") === "true"
+                //           ? event.target
+                //               .closest("BUTTON")
+                //               .setAttribute("data-projectshidden", "")
+                //           : null;
+                //       }, 900);
+                //     }}
+                //     data-projectshidden=""
+                //     className={ProjectsContentStyles[`empty-btn`]}
+                //   >
+                //     <span className={ProjectsContentStyles[`empty-btn-wrapper`]}>
+                //       <span>Go to Projects tab.</span>
+                //       <span>Check box to see Projects</span>
+                //     </span>
+                //   </button>
+                // </div>
+                objOfValues.testArray.map(function makeCards(item, index) {
+                  return (
+                    <li key={Math.random() * index}>
+                      <span>{item}</span>
+                    </li>
+                  );
+                })}
           </ul>
         </div>
       </div>
@@ -253,4 +259,99 @@ function Learning({ children }) {
       </button>
     </React.Fragment>
   );
+}
+
+function note() {
+  {
+    /* <ProjectCard
+                  page="projects"
+                  imgSrc={objOfInfo.imgInfo.imgSrc}
+                  imgText={objOfInfo.imgInfo.altText}
+                  title={objOfInfo.title}
+                  techArray={objOfInfo.tech}
+                  description={objOfInfo.description}
+                  viewProject={objOfInfo.links.viewProject}
+                  viewCode={objOfInfo.links.viewCode}
+                />
+                <ProjectCard
+                  page="projects"
+                  imgSrc={objOfInfo.imgInfo.imgSrc}
+                  imgText={objOfInfo.imgInfo.altText}
+                  title={objOfInfo.title}
+                  techArray={objOfInfo.tech}
+                  description={objOfInfo.description}
+                  viewProject={objOfInfo.links.viewProject}
+                  viewCode={objOfInfo.links.viewCode}
+                />
+                <ProjectCard
+                  page="projects"
+                  imgSrc={objOfInfo.imgInfo.imgSrc}
+                  imgText={objOfInfo.imgInfo.altText}
+                  title={objOfInfo.title}
+                  techArray={objOfInfo.tech}
+                  description={objOfInfo.description}
+                  viewProject={objOfInfo.links.viewProject}
+                  viewCode={objOfInfo.links.viewCode}
+                />
+                <ProjectCard
+                  page="projects"
+                  imgSrc={objOfInfo.imgInfo.imgSrc}
+                  imgText={objOfInfo.imgInfo.altText}
+                  title={objOfInfo.title}
+                  techArray={objOfInfo.tech}
+                  description={objOfInfo.description}
+                  viewProject={objOfInfo.links.viewProject}
+                  viewCode={objOfInfo.links.viewCode}
+                />
+                <ProjectCard
+                  page="projects"
+                  imgSrc={objOfInfo.imgInfo.imgSrc}
+                  imgText={objOfInfo.imgInfo.altText}
+                  title={objOfInfo.title}
+                  techArray={objOfInfo.tech}
+                  description={objOfInfo.description}
+                  viewProject={objOfInfo.links.viewProject}
+                  viewCode={objOfInfo.links.viewCode}
+                />
+                <ProjectCard
+                  page="projects"
+                  imgSrc={objOfInfo.imgInfo.imgSrc}
+                  imgText={objOfInfo.imgInfo.altText}
+                  title={objOfInfo.title}
+                  techArray={objOfInfo.tech}
+                  description={objOfInfo.description}
+                  viewProject={objOfInfo.links.viewProject}
+                  viewCode={objOfInfo.links.viewCode}
+                />
+                <ProjectCard
+                  page="projects"
+                  imgSrc={objOfInfo.imgInfo.imgSrc}
+                  imgText={objOfInfo.imgInfo.altText}
+                  title={objOfInfo.title}
+                  techArray={objOfInfo.tech}
+                  description={objOfInfo.description}
+                  viewProject={objOfInfo.links.viewProject}
+                  viewCode={objOfInfo.links.viewCode}
+                />
+                <ProjectCard
+                  page="projects"
+                  imgSrc={objOfInfo.imgInfo.imgSrc}
+                  imgText={objOfInfo.imgInfo.altText}
+                  title={objOfInfo.title}
+                  techArray={objOfInfo.tech}
+                  description={objOfInfo.description}
+                  viewProject={objOfInfo.links.viewProject}
+                  viewCode={objOfInfo.links.viewCode}
+                />
+                <ProjectCard
+                  page="projects"
+                  imgSrc={objOfInfo.imgInfo.imgSrc}
+                  imgText={objOfInfo.imgInfo.altText}
+                  title={objOfInfo.title}
+                  techArray={objOfInfo.tech}
+                  description={objOfInfo.description}
+                  viewProject={objOfInfo.links.viewProject}
+                  viewCode={objOfInfo.links.viewCode}
+                /> */
+  }
 }

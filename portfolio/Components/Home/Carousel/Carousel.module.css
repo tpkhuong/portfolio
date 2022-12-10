@@ -1,5 +1,5 @@
 .project-wrapper {
-  margin-block-end: 62px;
+  margin-block-end: 28px;
   align-self: end;
   scroll-snap-align: start;
   scroll-snap-stop: always;
@@ -21,7 +21,7 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
   padding-inline: 16px;
-  flex-basis: 350px;
+  flex-basis: 480px;
 }
 
 /*** 
@@ -149,7 +149,7 @@ mobile snap item orders
 
 .control-buttons-wrapper {
   position: absolute;
-  top: -72px;
+  top: -70px;
   left: 16px;
 }
 
@@ -178,7 +178,7 @@ mobile snap item orders
 } */
 
 .swipe-right-btn {
-  margin-block-start: 110px;
+  margin-block-start: 32px;
   margin-inline: auto;
   display: block;
   /* font-size: var(--font-size-20px); */

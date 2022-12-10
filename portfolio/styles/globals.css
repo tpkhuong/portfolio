@@ -219,7 +219,7 @@ body {
   background-color: var(--color-primary-dark-blue);
   color: var(--color-main-text);
   font-size: var(--heading-reg);
-  padding: 2px;
+  /* padding: 2px; */
 }
 
 /* Improve media defaults */

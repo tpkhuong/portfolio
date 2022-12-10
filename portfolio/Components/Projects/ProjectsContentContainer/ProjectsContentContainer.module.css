@@ -110,6 +110,10 @@
 .project-cards-container {
   /* height: 300px; */
   border-top: var(--border-lines);
+  display: flex;
+  padding: 16px;
+  gap: 16px;
+  flex-direction: column;
 }
 
 /* check a box btn */
@@ -149,44 +153,6 @@
   color: var(--color-neutral-white);
   transform: translateX(9.5px) translateY(6px);
   box-shadow: -10px -6px 1px 0px white;
-}
-
-/* desktop */
-
-@media screen and (min-width: 90rem) {
-  .skill-level-projects-card-container {
-    grid-template-columns: max-content 1fr;
-    padding-inline-start: 57px;
-  }
-
-  .skill-level-container {
-    border-inline: var(--border-lines);
-  }
-
-  .skill-level-checkboxes-container {
-    padding-block: 24px;
-    padding-inline-end: 26px;
-  }
-
-  .tab-container {
-    border-top: revert;
-    width: max-content;
-    border-inline-end: var(--border-lines);
-    padding-inline-end: 8px;
-  }
-
-  .project-cards-container {
-    min-height: 730px;
-    overflow-y: scroll;
-    position: relative;
-  }
-
-  .select-skill-level-btn-wrapper {
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    height: min-content;
-  }
 }
 
 .letter-container {
@@ -326,6 +292,51 @@
 [data-showletter="false"] .letter[data-position="0"] {
   opacity: 0;
   transition-delay: 3500ms;
+}
+
+/* desktop */
+
+@media screen and (min-width: 90rem) {
+  .skill-level-projects-card-container {
+    grid-template-columns: max-content 1fr;
+    padding-inline-start: 57px;
+  }
+
+  .skill-level-container {
+    border-inline: var(--border-lines);
+  }
+
+  .skill-level-checkboxes-container {
+    padding-block: 24px;
+    padding-inline-end: 26px;
+  }
+
+  .tab-container {
+    border-top: revert;
+    width: max-content;
+    border-inline-end: var(--border-lines);
+    padding-inline-end: 8px;
+  }
+
+  .project-cards-container {
+    max-height: 730px;
+    overflow-y: scroll;
+    position: relative;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(530px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(260px, auto));
+    align-content: flex-start;
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .select-skill-level-btn-wrapper {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    height: min-content;
+  }
 }
 
 /* animate vertical bar */
