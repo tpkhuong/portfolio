@@ -184,11 +184,11 @@
 /* blinking line */
 
 [data-blinking="true"].letter-container::before {
-  animation: leftblinking 1500ms ease-in-out forwards reverse infinite;
+  animation: leftblinking 1500ms ease-in-out reverse both infinite;
 }
 
 [data-blinking="false"].letter-container::before {
-  animation: rightblinking 1500ms ease-in-out forwards reverse infinite;
+  animation: rightblinking 1500ms ease-in-out reverse both infinite;
 }
 
 /* letters */
@@ -319,7 +319,7 @@
   }
 
   .project-cards-container {
-    max-height: 730px;
+    min-height: 730px;
     overflow-y: scroll;
     position: relative;
 
@@ -423,24 +423,24 @@
 
 @keyframes leftblinking {
   0% {
-    opacity: 1;
+    opacity: 0;
     /* transform: translateX(0px); */
   }
 
   100% {
-    opacity: 0;
+    opacity: 1;
     /* transform: translateX(0px); */
   }
 }
 
 @keyframes rightblinking {
   0% {
-    opacity: 1;
+    opacity: 0;
     transform: translateX(107px);
   }
 
   100% {
-    opacity: 0;
+    opacity: 1;
     transform: translateX(107px);
   }
 }

@@ -37,7 +37,12 @@ function Content() {
                 return (
                   <li key={Math.random() * index}>
                     <SkillLevel
-                      testData={{ objOfValues, testValue, testState }}
+                      testData={{
+                        objOfValues,
+                        arrayOfObjForProjectCard,
+                        testValue,
+                        testState,
+                      }}
                       level={item}
                       textContent={item}
                     />
@@ -106,12 +111,17 @@ function Content() {
         </aside>
         <div className={ProjectsContentStyles[`tab-cards-container`]}>
           <div className={ProjectsContentStyles[`tab-container`]}>
-            <h2 className={ProjectsContentStyles[`tab-title`]}>Skill Level</h2>
+            <h2
+              id="skill-tab-title"
+              className={ProjectsContentStyles[`tab-title`]}
+            >
+              Showing:
+            </h2>
             <button
               onClick={(event) => {
                 console.log(objOfValues.testArray);
                 if (objOfValues.testArray.length > 0) {
-                  objOfValues.testArray.pop();
+                  objOfValues.testArray = [];
                   testState("close");
                 }
               }}
@@ -121,12 +131,46 @@ function Content() {
             </button>
           </div>
           <ul className={ProjectsContentStyles[`project-cards-container`]}>
-            {objOfValues.testArray.length == 0
-              ? arrayOfObjForProjectCard.map(function makeProjectCard(
-                  obj,
-                  index
-                ) {
-                  return (
+            {objOfValues.testArray.length == 0 ? (
+              <div
+                className={
+                  ProjectsContentStyles[`select-skill-level-btn-wrapper`]
+                }
+              >
+                <button
+                  id="projectshidden"
+                  onClick={(event) => {
+                    document.getElementById("novice").focus();
+                    event.target
+                      .closest("BUTTON")
+                      .getAttribute("data-projectshidden") === ""
+                      ? event.target
+                          .closest("BUTTON")
+                          .setAttribute("data-projectshidden", "true")
+                      : null;
+                    setTimeout(() => {
+                      event.target
+                        .closest("BUTTON")
+                        .getAttribute("data-projectshidden") === "true"
+                        ? event.target
+                            .closest("BUTTON")
+                            .setAttribute("data-projectshidden", "")
+                        : null;
+                    }, 900);
+                  }}
+                  data-projectshidden=""
+                  className={ProjectsContentStyles[`empty-btn`]}
+                >
+                  <span className={ProjectsContentStyles[`empty-btn-wrapper`]}>
+                    <span>Go to Projects tab.</span>
+                    <span>Check box to see Projects</span>
+                  </span>
+                </button>
+              </div>
+            ) : (
+              objOfValues.testArray.map(function makeCards(item, index) {
+                return (
+                  <li key={Math.random() * index}>
                     <ProjectCard
                       key={Math.random() * index}
                       page="projects"
@@ -138,50 +182,10 @@ function Content() {
                       viewProject={obj.links.viewProject}
                       viewCode={obj.links.viewCode}
                     />
-                  );
-                })
-              : // <div
-                //   className={
-                //     ProjectsContentStyles[`select-skill-level-btn-wrapper`]
-                //   }
-                // >
-                //   <button
-                //     id="projectshidden"
-                //     onClick={(event) => {
-                //       document.getElementById("novice").focus();
-                //       event.target
-                //         .closest("BUTTON")
-                //         .getAttribute("data-projectshidden") === ""
-                //         ? event.target
-                //             .closest("BUTTON")
-                //             .setAttribute("data-projectshidden", "true")
-                //         : null;
-                //       setTimeout(() => {
-                //         event.target
-                //           .closest("BUTTON")
-                //           .getAttribute("data-projectshidden") === "true"
-                //           ? event.target
-                //               .closest("BUTTON")
-                //               .setAttribute("data-projectshidden", "")
-                //           : null;
-                //       }, 900);
-                //     }}
-                //     data-projectshidden=""
-                //     className={ProjectsContentStyles[`empty-btn`]}
-                //   >
-                //     <span className={ProjectsContentStyles[`empty-btn-wrapper`]}>
-                //       <span>Go to Projects tab.</span>
-                //       <span>Check box to see Projects</span>
-                //     </span>
-                //   </button>
-                // </div>
-                objOfValues.testArray.map(function makeCards(item, index) {
-                  return (
-                    <li key={Math.random() * index}>
-                      <span>{item}</span>
-                    </li>
-                  );
-                })}
+                  </li>
+                );
+              })
+            )}
           </ul>
         </div>
       </div>
