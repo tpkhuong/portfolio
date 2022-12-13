@@ -126,6 +126,7 @@ export default function Carousel({ children, ...props }) {
           onKeyDown={keyboardScrollThroughSnapItems}
         >
           {/* aria-hidden all on projects except project with tabindex 0 */}
+          {/* loop through arrayOfObjForProjectCard render project card for each obj in array */}
           <React.Fragment>
             <Project
               hidden="false"

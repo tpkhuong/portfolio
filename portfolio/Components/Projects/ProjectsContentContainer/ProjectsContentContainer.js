@@ -8,7 +8,10 @@ import { IoClose } from "react-icons/io5";
 
 function Content() {
   const objOfValues = {
+    copiedArrayOfObjs: [...arrayOfObjForProjectCard],
     testArray: [],
+    arrayForProjCardsTab: ["novice", "junior", "intermediate", "advanced"],
+    arrayOfSkillLevelStrings: [],
   };
   return function innerFunc({ children }) {
     const [testValue, testState] = React.useState("false");
@@ -70,19 +73,36 @@ function Content() {
               const idOfButton = btnClicked.getAttribute("id");
 
               if (idOfButton == "add-all") {
+                console.log(objOfValues.arrayOfObjForProjectCard);
+                objOfValues.arrayOfSkillLevelStrings = [
+                  ...objOfValues.arrayOfSkillLevelStrings,
+                  ,
+                  ...objOfValues.arrayForProjCardsTab,
+                ];
+
                 objOfValues.testArray = [
-                  "novice",
-                  "junior",
-                  "intermediate",
-                  "advanced",
+                  ...objOfValues.testArray,
+                  ...objOfValues.copiedArrayOfObjs,
                 ];
 
                 testState("all");
               }
 
               if (idOfButton == "remove-all") {
-                objOfValues.testArray = [];
+                removeAllAndCloseBtnHelper(objOfValues);
 
+                // objOfValues.arrayForProjCardsTab = [
+                //   "novice",
+                //   "junior",
+                //   "intermediate",
+                //   "advanced",
+                // ];
+
+                // objOfValues.arrayOfSkillLevelStrings = [];
+
+                // objOfValues.testArray = [];
+
+                // objOfValues.copiedArrayOfObjs = [...arrayOfObjForProjectCard];
                 testState("remove");
               }
             }}
@@ -115,13 +135,62 @@ function Content() {
               id="skill-tab-title"
               className={ProjectsContentStyles[`tab-title`]}
             >
-              Showing:
+              <span>Showing:</span>
+              {objOfValues.arrayOfSkillLevelStrings.map((item, index, list) => {
+                const firstLetter = item[0].toUpperCase();
+                const restOfStr = item.slice(1);
+                const concatLetters = [firstLetter, ...restOfStr].join("");
+
+                const itemWithCommaBasedOnIndex =
+                  list.length - 1 == index
+                    ? concatLetters
+                    : `${concatLetters},`;
+                return (
+                  <span key={Math.random() * index}>
+                    {itemWithCommaBasedOnIndex}
+                  </span>
+                );
+                // return index != 3 ? (
+                //   <span
+                //     key={Math.random() * index}
+                //   >{` ${concatLetters},`}</span>
+                // ) : (
+                //   <span key={Math.random() * index}>{` ${concatLetters}`}</span>
+                // );
+                // index != 3
+                //     ? [firstLetter, ...restOfStr, ",", " "].join("")
+                //     :
+              })}
+
+              {/* <span>Novice,</span>
+              <span>Junior,</span>
+              <span>Intermediate,</span>
+              <span>Advanced</span> */}
+              {/* <span className={ProjectsContentStyles[`test-container`]}>
+                Showing: <span id="dynamic-level-shown"></span>
+              </span> */}
             </h2>
+            {/* <span>Novice,</span>
+            <span>Junior,</span>
+            <span>Advanced</span> */}
             <button
+              aria-label="remove all project cards"
               onClick={(event) => {
                 console.log(objOfValues.testArray);
                 if (objOfValues.testArray.length > 0) {
-                  objOfValues.testArray = [];
+                  removeAllAndCloseBtnHelper(objOfValues);
+                  // objOfValues.arrayForProjCardsTab = [
+                  //   "novice",
+                  //   "junior",
+                  //   "intermediate",
+                  //   "advanced",
+                  // ];
+
+                  // objOfValues.arrayOfSkillLevelStrings = [];
+
+                  // objOfValues.testArray = [];
+
+                  // objOfValues.copiedArrayOfObjs = [...arrayOfObjForProjectCard];
                   testState("close");
                 }
               }}
@@ -168,11 +237,10 @@ function Content() {
                 </button>
               </div>
             ) : (
-              objOfValues.testArray.map(function makeCards(item, index) {
+              objOfValues.testArray.map(function makeCards(obj, index) {
                 return (
                   <li key={Math.random() * index}>
                     <ProjectCard
-                      key={Math.random() * index}
                       page="projects"
                       imgSrc={obj.imgInfo.imgSrc}
                       imgText={obj.imgInfo.altText}
@@ -194,6 +262,16 @@ function Content() {
 }
 
 export const ProjectsContentContainer = Content();
+
+function removeAllAndCloseBtnHelper(obj) {
+  obj.arrayForProjCardsTab = ["novice", "junior", "intermediate", "advanced"];
+
+  obj.arrayOfSkillLevelStrings = [];
+
+  obj.testArray = [];
+
+  obj.copiedArrayOfObjs = [...arrayOfObjForProjectCard];
+}
 
 function Learning({ children }) {
   return (
