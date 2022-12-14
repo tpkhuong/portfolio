@@ -1,6 +1,5 @@
 .env.local
+.next
 /ideas
-/node_modules/
-/portfolio/node_modules
 /portfolio/node_modules
 /portfolio/.next
