@@ -16,44 +16,60 @@ export const arrayOfObjForProjectCard = [
     level: "novice",
   },
   {
-    homePagePosIndex: "five",
-    imgInfo: {
-      imgSrc: "/tipcalculator2.jpg",
-      altText: "Cool Things",
-    },
-    title: "_Calculator-App5",
-    tech: ["html", "css", "js", "novice"],
-    description:
-      "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips Medium. nice tips.",
-    links: {
-      viewProject: "http:stuff",
-      viewCode: "http:coolstuff",
-    },
-    level: "novice",
-  },
-  {
-    homePagePosIndex: "nine",
-    imgInfo: {
-      imgSrc: "/tipcalculator2.jpg",
-      altText: "Cool Things",
-    },
-    title: "_Calculator-App9",
-    tech: ["html", "css", "js", "novice"],
-    description:
-      "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips Medium. nice tips.",
-    links: {
-      viewProject: "http:stuff",
-      viewCode: "http:coolstuff",
-    },
-    level: "novice",
-  },
-  {
     homePagePosIndex: "two",
     imgInfo: {
       imgSrc: "/tipcalculator2.jpg",
       altText: "Cool Things",
     },
     title: "_Calculator-App2",
+    tech: ["html", "css", "js", "novice"],
+    description:
+      "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips Medium. nice tips.",
+    links: {
+      viewProject: "http:stuff",
+      viewCode: "http:coolstuff",
+    },
+    level: "novice",
+  },
+  {
+    homePagePosIndex: "three",
+    imgInfo: {
+      imgSrc: "/tipcalculator2.jpg",
+      altText: "Cool Things",
+    },
+    title: "_Calculator-App3",
+    tech: ["html", "css", "js", "novice"],
+    description:
+      "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips Medium. nice tips.",
+    links: {
+      viewProject: "http:stuff",
+      viewCode: "http:coolstuff",
+    },
+    level: "novice",
+  },
+  {
+    homePagePosIndex: "four",
+    imgInfo: {
+      imgSrc: "/tipcalculator2.jpg",
+      altText: "Cool Things",
+    },
+    title: "_Calculator-App4",
+    tech: ["html", "css", "js", "junior"],
+    description:
+      "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips Medium. nice tips.",
+    links: {
+      viewProject: "http:stuff",
+      viewCode: "http:coolstuff",
+    },
+    level: "junior",
+  },
+  {
+    homePagePosIndex: "five",
+    imgInfo: {
+      imgSrc: "/tipcalculator2.jpg",
+      altText: "Cool Things",
+    },
+    title: "_Calculator-App5",
     tech: ["html", "css", "js", "junior"],
     description:
       "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips Medium. nice tips.",
@@ -70,22 +86,6 @@ export const arrayOfObjForProjectCard = [
       altText: "Cool Things",
     },
     title: "_Calculator-App6",
-    tech: ["html", "css", "js", "junior"],
-    description:
-      "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips Medium. nice tips.",
-    links: {
-      viewProject: "http:stuff",
-      viewCode: "http:coolstuff",
-    },
-    level: "junior",
-  },
-  {
-    homePagePosIndex: "three",
-    imgInfo: {
-      imgSrc: "/tipcalculator2.jpg",
-      altText: "Cool Things",
-    },
-    title: "_Calculator-App3",
     tech: ["html", "css", "js", "intermediate"],
     description:
       "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips Medium. nice tips.",
@@ -112,12 +112,12 @@ export const arrayOfObjForProjectCard = [
     level: "intermediate",
   },
   {
-    homePagePosIndex: "four",
+    homePagePosIndex: "eight",
     imgInfo: {
       imgSrc: "/tipcalculator2.jpg",
       altText: "Cool Things",
     },
-    title: "_Calculator-App4",
+    title: "_Calculator-App8",
     tech: ["html", "css", "js", "advanced"],
     description:
       "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips Medium. nice tips.",
@@ -129,12 +129,12 @@ export const arrayOfObjForProjectCard = [
   },
 
   {
-    homePagePosIndex: "eight",
+    homePagePosIndex: "nine",
     imgInfo: {
       imgSrc: "/tipcalculator2.jpg",
       altText: "Cool Things",
     },
-    title: "_Calculator-App8",
+    title: "_Calculator-App9",
     tech: ["html", "css", "js", "advanced"],
     description:
       "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips Medium. nice tips.",

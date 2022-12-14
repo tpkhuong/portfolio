@@ -2,11 +2,20 @@ import React from "react";
 import SkillLevelStyles from "./SkillLevelCheckedBox.module.css";
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaCheck } from "react-icons/fa";
 
-export default function SkillLevel({ children, textContent, level, testData }) {
-  console.log(testData);
-  const { objOfValues, arrayOfObjForProjectCard, testValue, testState } =
-    testData;
-  console.log(objOfValues.testArray.includes(level));
+export default function SkillLevel({
+  children,
+  textContent,
+  level,
+  projCardData,
+}) {
+  console.log(projCardData);
+  const {
+    objOfValues,
+    arrayOfObjForProjectCard,
+    projCardValue,
+    setProjCardState,
+  } = projCardData;
+  console.log(objOfValues.arrayOfCardsToRender.includes(level));
   return (
     <button
       className={SkillLevelStyles[`skill-level-btn`]}
@@ -18,8 +27,8 @@ export default function SkillLevel({ children, textContent, level, testData }) {
         if (event.target.closest("BUTTON")) {
           const clickedBtn = event.target.closest("BUTTON");
           const idStringValue = clickedBtn.getAttribute("id");
-          //   console.log(objOfValues.testArray, "objOfValues.testArray");
-          //   console.log(objOfValues.testArray, event.target.closest("BUTTON").getAttribute("id"));
+          //   console.log(objOfValues.arrayOfCardsToRender, "objOfValues.arrayOfCardsToRender");
+          //   console.log(objOfValues.arrayOfCardsToRender, event.target.closest("BUTTON").getAttribute("id"));
 
           if (clickedBtn.getAttribute("aria-checked") == "false") {
             // use filter method then match obj level property to idStringValue
@@ -38,11 +47,16 @@ export default function SkillLevel({ children, textContent, level, testData }) {
                 return obj.level != idStringValue;
               });
 
+            console.log(
+              objOfValues.copiedArrayOfObjs,
+              "objOfValues.copiedArrayOfObjs"
+            );
+
             objOfValues.arrayOfSkillLevelStrings.push(idStringValue);
 
             // add objs to array
-            objOfValues.testArray = [
-              ...objOfValues.testArray,
+            objOfValues.arrayOfCardsToRender = [
+              ...objOfValues.arrayOfCardsToRender,
               ...filteredOutObjs,
             ];
 
@@ -54,10 +68,7 @@ export default function SkillLevel({ children, textContent, level, testData }) {
                 return str != idStringValue;
               });
 
-            console.log(
-              objOfValues.arrayForProjCardsTab,
-              "objOfValues.arrayForProjCardsTab"
-            );
+            console.log(objOfValues, "objOfValues");
 
             // document.getElementById("dynamic-level-shown").innerText =
             //   objOfValues.arrayOfSkillLevelStrings
@@ -70,19 +81,20 @@ export default function SkillLevel({ children, textContent, level, testData }) {
             //     })
             //     .join(",");
 
-            testState(event.target.closest("BUTTON").getAttribute("id"));
+            setProjCardState(event.target.closest("BUTTON").getAttribute("id"));
             return;
           }
 
           if (clickedBtn.getAttribute("aria-checked") == "true") {
             console.log(objOfValues, "objOfValues");
-            // filter out id of button from objOfValues.testArray
+            // filter out id of button from objOfValues.arrayOfCardsToRender
             // const idStringValue = clickedBtn.getAttribute("id");
-            const arrayOfObjNotMatchedId = objOfValues.testArray.filter(
-              function removeClickedBtnId(obj, index) {
-                return obj.level != idStringValue;
-              }
-            );
+            const arrayOfObjNotMatchedId =
+              objOfValues.arrayOfCardsToRender.filter(
+                function removeClickedBtnId(obj, index) {
+                  return obj.level != idStringValue;
+                }
+              );
 
             objOfValues.arrayOfSkillLevelStrings =
               objOfValues.arrayOfSkillLevelStrings.filter(
@@ -97,11 +109,13 @@ export default function SkillLevel({ children, textContent, level, testData }) {
                 idStringValue,
               ];
               console.log(idStringValue, "idStringValue");
-              const arrayOfClickedBtnObjs = objOfValues.testArray.filter(
-                function getObjs(obj, index) {
+              const arrayOfClickedBtnObjs =
+                objOfValues.arrayOfCardsToRender.filter(function getObjs(
+                  obj,
+                  index
+                ) {
                   return obj.level == idStringValue;
-                }
-              );
+                });
               console.log(arrayOfClickedBtnObjs, "arrayOfClickedBtnObjs");
 
               objOfValues.copiedArrayOfObjs = [
@@ -109,28 +123,35 @@ export default function SkillLevel({ children, textContent, level, testData }) {
                 ...arrayOfClickedBtnObjs,
               ];
 
-              console.log(
-                objOfValues.copiedArrayOfObjs,
-                "objOfValues.copiedArrayOfObjs"
-              );
+              console.log(objOfValues, "objOfValues");
+              // console.log(
+              //   objOfValues.copiedArrayOfObjs,
+              //   "objOfValues.copiedArrayOfObjs"
+              // );
             }
-            console.log(objOfValues.testArray, "objOfValues.testArray");
+            console.log(
+              objOfValues.arrayOfCardsToRender,
+              "objOfValues.arrayOfCardsToRender"
+            );
 
-            objOfValues.testArray = [...arrayOfObjNotMatchedId];
+            objOfValues.arrayOfCardsToRender = [...arrayOfObjNotMatchedId];
 
-            console.log(objOfValues.testArray, "objOfValues.testArray");
+            console.log(
+              objOfValues.arrayOfCardsToRender,
+              "objOfValues.arrayOfCardsToRender"
+            );
 
-            if (testValue == "same") {
-              testState("different");
+            if (projCardValue == "same") {
+              setProjCardState("different");
               return;
             }
             // console.log(
-            //   objOfValues.testArray.includes(
+            //   objOfValues.arrayOfCardsToRender.includes(
             //     event.target.closest("BUTTON").getAttribute("id")
             //   )
             // );
-            // console.log(objOfValues.testArray, "objOfValues.testArray");
-            testState("same");
+            // console.log(objOfValues.arrayOfCardsToRender, "objOfValues.arrayOfCardsToRender");
+            setProjCardState("same");
           }
         }
       }}

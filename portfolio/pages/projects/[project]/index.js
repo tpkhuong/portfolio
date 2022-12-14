@@ -25,7 +25,16 @@ export default function SingleProject({ children, data }) {
       </a>
       <LogoNavbarContainer pageName="projects" />
       <header className={SingleProjectStyles[`header`]} role="banner"></header>
-      <Main></Main>
+      <Main>
+        {/* sidebar */}
+        {/* three containers */}
+        {/* table of content */}
+        {/* project links */}
+        {/* project workflow */}
+        {/* three containers */}
+        {/* individual project content */}
+        {/* project images/screenshots */}
+      </Main>
       <MobileMenu></MobileMenu>
       <Footer></Footer>
       <h2

@@ -44,7 +44,7 @@
 @media screen and (min-width: 90rem) {
   .info-selection-snippet-container {
     display: grid;
-    grid-template-columns: 65% 1fr;
+    grid-template-columns: 64.8% 1fr;
     /* height: 100%; */
   }
 }

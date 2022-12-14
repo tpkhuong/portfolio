@@ -16,6 +16,7 @@ import { arrayOfObjForProjectCard } from "../../Projects/ProjectCard/ProjectInfo
 import { FaArrowLeft, FaArrowUp, FaArrowDown } from "react-icons/fa";
 
 export default function Carousel({ children, ...props }) {
+  const copiedArray = [...arrayOfObjForProjectCard];
   // const memoizedInitialValues = React.useMemo(() => {
   //   return {
   //     bottomOrTopArray: null,
@@ -127,7 +128,53 @@ export default function Carousel({ children, ...props }) {
         >
           {/* aria-hidden all on projects except project with tabindex 0 */}
           {/* loop through arrayOfObjForProjectCard render project card for each obj in array */}
-          <React.Fragment>
+          {copiedArray.map(function makeProject(obj, index) {
+            return index == 0 ? (
+              <Project
+                key={Math.random() * index}
+                hidden="false"
+                label={`${index + 1} of 9`}
+                classText="snap-item"
+                pos={obj.homePagePosIndex}
+                tab="0"
+                spanContent={`${index + 1}`}
+                idAttr="currentFocused"
+              >
+                <ProjectCard
+                  page="home"
+                  imgSrc={obj.imgInfo.imgSrc}
+                  imgText={obj.imgInfo.altText}
+                  title={obj.title}
+                  techArray={obj.tech}
+                  description={obj.description}
+                  viewProject={obj.links.viewProject}
+                  viewCode={obj.links.viewCode}
+                />
+              </Project>
+            ) : (
+              <Project
+                key={Math.random() * index}
+                hidden="true"
+                label={`${index + 1} of 9`}
+                classText="snap-item"
+                pos={obj.homePagePosIndex}
+                tab="-1"
+                spanContent={`${index + 1}`}
+              >
+                <ProjectCard
+                  page="home"
+                  imgSrc={obj.imgInfo.imgSrc}
+                  imgText={obj.imgInfo.altText}
+                  title={obj.title}
+                  techArray={obj.tech}
+                  description={obj.description}
+                  viewProject={obj.links.viewProject}
+                  viewCode={obj.links.viewCode}
+                />
+              </Project>
+            );
+          })}
+          {/* <React.Fragment>
             <Project
               hidden="false"
               label="1 of 9"
@@ -228,7 +275,7 @@ export default function Carousel({ children, ...props }) {
             >
               <span>9</span>
             </Project>
-          </React.Fragment>
+          </React.Fragment> */}
         </div>
         {/* swipe right */}
         <button

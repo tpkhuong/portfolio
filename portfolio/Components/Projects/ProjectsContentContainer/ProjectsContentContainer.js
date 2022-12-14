@@ -9,12 +9,12 @@ import { IoClose } from "react-icons/io5";
 function Content() {
   const objOfValues = {
     copiedArrayOfObjs: [...arrayOfObjForProjectCard],
-    testArray: [],
+    arrayOfCardsToRender: [],
     arrayForProjCardsTab: ["novice", "junior", "intermediate", "advanced"],
     arrayOfSkillLevelStrings: [],
   };
   return function innerFunc({ children }) {
-    const [testValue, testState] = React.useState("false");
+    const [projCardValue, setProjCardState] = React.useState("false");
     return (
       <div
         className={ProjectsContentStyles[`skill-level-projects-card-container`]}
@@ -40,11 +40,11 @@ function Content() {
                 return (
                   <li key={Math.random() * index}>
                     <SkillLevel
-                      testData={{
+                      projCardData={{
                         objOfValues,
                         arrayOfObjForProjectCard,
-                        testValue,
-                        testState,
+                        projCardValue,
+                        setProjCardState,
                       }}
                       level={item}
                       textContent={item}
@@ -72,23 +72,57 @@ function Content() {
 
               const idOfButton = btnClicked.getAttribute("id");
 
-              if (idOfButton == "add-all") {
+              // check if check btns are checked
+
+              const allChecked = [
+                "novice",
+                "junior",
+                "intermediate",
+                "advanced",
+              ].every(function areBtnsChecked(str, index) {
+                return (
+                  document.getElementById(str).getAttribute("aria-checked") ==
+                  "true"
+                );
+              });
+
+              // check if check btns are unchecked
+
+              const allUnchecked = [
+                "novice",
+                "junior",
+                "intermediate",
+                "advanced",
+              ].every(function areBtnsUnchecked(str, index) {
+                return (
+                  document.getElementById(str).getAttribute("aria-checked") ==
+                  "false"
+                );
+              });
+
+              if (idOfButton == "add-all" && !allChecked) {
                 console.log(objOfValues.arrayOfObjForProjectCard);
+                console.log(objOfValues, "objOfValues");
+
                 objOfValues.arrayOfSkillLevelStrings = [
                   ...objOfValues.arrayOfSkillLevelStrings,
-                  ,
                   ...objOfValues.arrayForProjCardsTab,
                 ];
 
-                objOfValues.testArray = [
-                  ...objOfValues.testArray,
+                objOfValues.arrayOfCardsToRender = [
+                  ...objOfValues.arrayOfCardsToRender,
                   ...objOfValues.copiedArrayOfObjs,
                 ];
 
-                testState("all");
+                objOfValues.copiedArrayOfObjs = [];
+                objOfValues.arrayForProjCardsTab = [];
+
+                console.log(objOfValues, "objOfValues");
+
+                setProjCardState("all");
               }
 
-              if (idOfButton == "remove-all") {
+              if (idOfButton == "remove-all" && !allUnchecked) {
                 removeAllAndCloseBtnHelper(objOfValues);
 
                 // objOfValues.arrayForProjCardsTab = [
@@ -100,10 +134,10 @@ function Content() {
 
                 // objOfValues.arrayOfSkillLevelStrings = [];
 
-                // objOfValues.testArray = [];
+                // objOfValues.arrayOfCardsToRender = [];
 
                 // objOfValues.copiedArrayOfObjs = [...arrayOfObjForProjectCard];
-                testState("remove");
+                setProjCardState("remove");
               }
             }}
             className={ProjectsContentStyles[`add-remove-btns-wrapper`]}
@@ -176,8 +210,8 @@ function Content() {
             <button
               aria-label="remove all project cards"
               onClick={(event) => {
-                console.log(objOfValues.testArray);
-                if (objOfValues.testArray.length > 0) {
+                console.log(objOfValues.arrayOfCardsToRender);
+                if (objOfValues.arrayOfCardsToRender.length > 0) {
                   removeAllAndCloseBtnHelper(objOfValues);
                   // objOfValues.arrayForProjCardsTab = [
                   //   "novice",
@@ -188,10 +222,10 @@ function Content() {
 
                   // objOfValues.arrayOfSkillLevelStrings = [];
 
-                  // objOfValues.testArray = [];
+                  // objOfValues.arrayOfCardsToRender = [];
 
                   // objOfValues.copiedArrayOfObjs = [...arrayOfObjForProjectCard];
-                  testState("close");
+                  setProjCardState("close");
                 }
               }}
               className={ProjectsContentStyles[`close-proj-btn`]}
@@ -200,7 +234,7 @@ function Content() {
             </button>
           </div>
           <ul className={ProjectsContentStyles[`project-cards-container`]}>
-            {objOfValues.testArray.length == 0 ? (
+            {objOfValues.arrayOfCardsToRender.length == 0 ? (
               <div
                 className={
                   ProjectsContentStyles[`select-skill-level-btn-wrapper`]
@@ -237,7 +271,10 @@ function Content() {
                 </button>
               </div>
             ) : (
-              objOfValues.testArray.map(function makeCards(obj, index) {
+              objOfValues.arrayOfCardsToRender.map(function makeCards(
+                obj,
+                index
+              ) {
                 return (
                   <li key={Math.random() * index}>
                     <ProjectCard
@@ -268,7 +305,7 @@ function removeAllAndCloseBtnHelper(obj) {
 
   obj.arrayOfSkillLevelStrings = [];
 
-  obj.testArray = [];
+  obj.arrayOfCardsToRender = [];
 
   obj.copiedArrayOfObjs = [...arrayOfObjForProjectCard];
 }

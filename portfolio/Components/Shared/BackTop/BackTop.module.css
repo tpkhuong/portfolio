@@ -1,0 +1,39 @@
+/* mobile */
+
+.back-top-btn[data-backtopbtnshown="false"] {
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+
+.back-top-btn[data-backtopbtnshown="true"] {
+  opacity: 1;
+  transition: opacity 1s ease-out;
+}
+
+.back-top-btn {
+  background-color: hsl(208, 84%, 5%);
+  font-size: 1.2rem;
+  display: inline-flex;
+  padding: 10px;
+  padding-inline: 26px;
+  border-radius: 100vw;
+  font-weight: 600;
+}
+
+.arrow-up + span {
+  margin-inline-start: 10px;
+}
+
+/* desktop */
+
+@media screen and (min-width: 90rem) {
+  .back-top-btn {
+    font-size: 1.7rem;
+    padding: 16px;
+    padding-inline: 30px;
+  }
+
+  .arrow-up + span {
+    margin-inline-start: 16px;
+  }
+}

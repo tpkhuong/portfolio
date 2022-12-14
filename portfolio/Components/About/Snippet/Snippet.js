@@ -50,10 +50,23 @@ export default function Snippet({ children, ...props }) {
   const [{ codeBlockIndex, arrayOfSnippetObj }, setTest] = React.useState(
     memoizedInitialValues
   );
+
+  React.useEffect(() => {
+    const scrollWatcher = debounce(function watchStuff() {
+      console.log(isScrolledIntoView(document.getElementById("selectors")));
+    }, 800);
+
+    window.addEventListener("scroll", scrollWatcher);
+
+    return function remove() {
+      window.removeEventListener("scroll", scrollWatcher);
+    };
+  }, []);
+
   return (
     <div className={SnippetStyles[`snippet-container`]}>
       {/* tab */}
-      <div className={SnippetStyles[`tab-container`]}>
+      <div id="selectors" className={SnippetStyles[`tab-container`]}>
         {/* inline-end border */}
         <h2>Load New Code Snippet</h2>
         <button
@@ -245,4 +258,30 @@ function CodeLine({ children, testAttr }) {
       })}
     </div>
   );
+}
+
+function isScrolledIntoView(element) {
+  const rect = element.getBoundingClientRect();
+  const elementTop = rect.top;
+  const elementBottom = rect.bottom;
+
+  const isVisible = elementTop >= 0 && elementBottom <= window.innerHeight;
+
+  return isVisible;
+}
+
+function debounce(func, wait, immediate) {
+  var timeout;
+  return function () {
+    var context = this,
+      args = arguments;
+    var later = function () {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
 }

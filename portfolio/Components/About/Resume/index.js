@@ -292,6 +292,16 @@ export default function ResumeInfo({ children, ...props }) {
   );
 }
 
+function isScrolledIntoView(element) {
+  const rect = element.getBoundingClientRect();
+  const elementTop = rect.top;
+  const elementBottom = rect.bottom;
+
+  const isVisible = elementTop >= 0 && elementBottom <= window.innerHeight;
+
+  return isVisible;
+}
+
 {
   /* {renderInfo == "yup" ? (
           <h3>
