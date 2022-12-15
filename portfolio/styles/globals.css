@@ -323,7 +323,13 @@ a:not([class]) {
 }
 
 /* Make sure users can't select button text */
-:where(button, button[type], input[type="button"], input[type="submit"], input[type="reset"]),
+:where(
+    button,
+    button[type],
+    input[type="button"],
+    input[type="submit"],
+    input[type="reset"]
+  ),
 :where(input[type="file"])::-webkit-file-upload-button,
 :where(input[type="file"])::file-selector-button {
   -webkit-tap-highlight-color: transparent;
@@ -333,7 +339,13 @@ a:not([class]) {
 }
 
 /* Disabled cursor for disabled buttons */
-:where(button, button[type], input[type="button"], input[type="submit"], input[type="reset"])[disabled] {
+:where(
+    button,
+    button[type],
+    input[type="button"],
+    input[type="submit"],
+    input[type="reset"]
+  )[disabled] {
   cursor: not-allowed;
 }
 
@@ -442,3 +454,9 @@ a {
 /* .leaflet-container {
   height: 150px;
 } */
+
+@media screen and (max-width: 23.75rem) {
+  [role="banner"] {
+    min-height: 65px;
+  }
+}

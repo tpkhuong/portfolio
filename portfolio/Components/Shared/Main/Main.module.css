@@ -6,3 +6,9 @@
   position: relative;
   border-inline: var(--border-lines);
 }
+
+@media screen and (max-width: 23.75rem) {
+  .main {
+    /* margin-block-start: 64px; */
+  }
+}

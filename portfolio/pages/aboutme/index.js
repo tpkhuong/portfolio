@@ -7,6 +7,10 @@ import Main from "../../Components/Shared/Main";
 import ResumeInfo from "../../Components/About/Resume/index";
 import Snippet from "../../Components/About/Snippet/Snippet";
 import Footer from "../../Components/Shared/Footer";
+import {
+  BackTopArrow,
+  TopScreenSpan,
+} from "../../Components/Shared/BackTop/BackTop";
 
 export default function AboutMe({ children, ...props }) {
   return (
@@ -22,6 +26,7 @@ export default function AboutMe({ children, ...props }) {
       <a href="#main-content" className="skip-link">
         Skip to Main Content
       </a>
+      <TopScreenSpan isMobile="true" hrefValue="top-of-screen-mobile" />
       <header role="banner">
         <LogoNavbarContainer pageName="aboutme" />
       </header>
@@ -35,6 +40,7 @@ export default function AboutMe({ children, ...props }) {
       </Main>
       <MobileMenu />
       <Footer />
+      <BackTopArrow isMobile="true" hrefValue="top-of-screen-mobile" />
       {/* LearnAboutme-Selection */}
       {/* Selector */}
       {/* Passion */}

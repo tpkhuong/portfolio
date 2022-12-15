@@ -10,6 +10,10 @@
   transition: opacity 1s ease-out;
 }
 
+.back-top-btn[data-linkbtndesktop="true"] {
+  display: none;
+}
+
 .back-top-btn {
   background-color: hsl(208, 84%, 5%);
   font-size: 1.2rem;
@@ -24,16 +28,47 @@
   margin-inline-start: 10px;
 }
 
+.top-span {
+  position: absolute;
+  top: 0;
+}
+
+.top-span[data-spandesktop="true"] {
+  display: none;
+}
+
 /* desktop */
 
 @media screen and (min-width: 90rem) {
+  .back-top-btn[data-linkbtnmobile="true"] {
+    display: none;
+  }
+
+  .back-top-btn[data-linkbtndesktop="true"] {
+    display: inline-flex;
+  }
+
+  .back-top-btn[data-currentpage="aboutme"] {
+    position: sticky;
+    bottom: 0px;
+    left: 330px;
+  }
+
   .back-top-btn {
-    font-size: 1.7rem;
-    padding: 16px;
-    padding-inline: 30px;
+    /* font-size: 1.7rem; */
+    /* padding: 16px; */
+    /* padding-inline: 30px; */
   }
 
   .arrow-up + span {
     margin-inline-start: 16px;
+  }
+
+  .top-span[data-spanmobile="true"] {
+    display: none;
+  }
+
+  .top-span[data-spandesktop="true"] {
+    display: revert;
   }
 }

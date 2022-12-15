@@ -296,7 +296,7 @@ export default function Carousel({ children, ...props }) {
   );
 }
 
-function debounce(func, wait, immediate) {
+export function debounce(func, wait, immediate) {
   var timeout;
   return function () {
     var context = this,

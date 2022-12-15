@@ -1,5 +1,11 @@
 import React from "react";
 import PassionStyles from "./Passion.module.css";
+import { debounce } from "../../../Home/Carousel";
+import {
+  BackTopArrow,
+  TopScreenSpan,
+  isScrolledElementInView,
+} from "../../../Shared/BackTop/BackTop";
 import { IoClose } from "react-icons/io5";
 
 export default function Passion({ children, setStateFunc }) {
@@ -30,6 +36,7 @@ export default function Passion({ children, setStateFunc }) {
         </button>
       </div>
       <div className={PassionStyles[`passion-container`]}>
+        <TopScreenSpan isDesktop="true" hrefValue="top-of-screen-desktop" />
         <HtmlItem tagContent="Title">
           <h2>Journey in Inclusive Web Development.</h2>
         </HtmlItem>
@@ -107,6 +114,12 @@ export default function Passion({ children, setStateFunc }) {
             </p>
           </HtmlItem>
         </div>
+        <BackTopArrow
+          idAttr="back-top-desktop"
+          isDeaktop="true"
+          hrefValue="top-of-screen-desktop"
+          currentPage="aboutme"
+        />
         {/* <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti
           quidem laboriosam, molestiae amet delectus sit ipsam laudantium, optio

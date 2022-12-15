@@ -6,7 +6,7 @@
 
 .mobile-menu-wrapper {
   display: none;
-  position: absolute;
+  position: fixed;
   background-color: var(--color-primary-dark-blue);
   inset: 2px;
   top: 64px;

@@ -8,7 +8,7 @@ import FullNavMenu from "../FullNavMenu";
 export default function LogoNavbarContainer({ children, pageName }) {
   // const isDesktop = useMediaQuery("min", 1440);
   return (
-    <div id="top-of-screen" className={LogoNavStyles[`logo-nav-container`]}>
+    <div className={LogoNavStyles[`logo-nav-container`]}>
       {/* display flex */}
       {/* logo */}
       <Link href="/">

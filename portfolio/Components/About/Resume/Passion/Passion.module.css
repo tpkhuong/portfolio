@@ -80,6 +80,7 @@
 
 @media screen and (min-width: 90rem) {
   .passion-container {
+    position: relative;
     max-height: var(--resume-snippet-content-container-height);
     overflow-y: var(--resume-snippet-content-container-overflow);
     padding-inline: var(--desktop-resumeinfo-container-padding-inline);

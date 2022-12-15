@@ -3,6 +3,7 @@ import ResumeStyles from "./Resume.module.css";
 import Passion from "./Passion/index";
 import Skills from "./Skills";
 import Professional from "./Professional";
+import { BackTopArrow } from "../../Shared/BackTop/BackTop";
 // import ProjectCard from "../../Projects/ProjectCard";
 // import { objOfInfo } from "../../Projects/ProjectCard/ProjectInfoObj";
 import { GoTriangleDown, GoChevronRight } from "react-icons/go";
@@ -290,16 +291,6 @@ export default function ResumeInfo({ children, ...props }) {
       </div>
     </div>
   );
-}
-
-function isScrolledIntoView(element) {
-  const rect = element.getBoundingClientRect();
-  const elementTop = rect.top;
-  const elementBottom = rect.bottom;
-
-  const isVisible = elementTop >= 0 && elementBottom <= window.innerHeight;
-
-  return isVisible;
 }
 
 {

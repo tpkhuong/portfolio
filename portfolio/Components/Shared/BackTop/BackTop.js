@@ -2,18 +2,51 @@ import React from "react";
 import BackTopStyles from "./BackTop.module.css";
 import { FaArrowUp } from "react-icons/fa";
 
-export default function BackTopArrow({ children }) {
+export function BackTopArrow({
+  children,
+  isMobile,
+  isDeaktop,
+  hrefValue,
+  idAttr,
+  currentPage,
+}) {
   return (
     <React.Fragment>
       <a
-        id="back-top"
+        id={idAttr}
         data-backtopbtnshown=""
-        href="#top-of-screen"
+        href={`#${hrefValue}`}
+        data-linkbtnmobile={isMobile}
+        data-currentpage={currentPage}
+        data-linkbtndesktop={isDeaktop}
         className={BackTopStyles[`back-top-btn`]}
       >
         <FaArrowUp className={BackTopStyles[`arrow-up`]} />
-        <span>Back to Top</span>
+        <span className={BackTopStyles[`btn-content`]}>Back to Top</span>
       </a>
     </React.Fragment>
   );
+}
+
+export function TopScreenSpan({ children, isMobile, isDesktop, hrefValue }) {
+  return (
+    <React.Fragment>
+      <span
+        className={BackTopStyles[`top-span`]}
+        data-spanmobile={isMobile}
+        data-spandesktop={isDesktop}
+        id={hrefValue}
+      ></span>
+    </React.Fragment>
+  );
+}
+
+export function isScrolledElementInView(element) {
+  const rect = element.getBoundingClientRect();
+  const elementTop = rect.top;
+  const elementBottom = rect.bottom;
+
+  const isVisible = elementTop >= 0 && elementBottom <= window.innerHeight;
+
+  return isVisible;
 }

@@ -9,6 +9,12 @@
     padding: 18px;
     padding-inline-end: 28px;
     justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-color: var(--color-primary-dark-blue);
   }
 }
 

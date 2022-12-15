@@ -3,7 +3,7 @@ import Head from "next/head";
 import ProjectsStyles from "../../styles/Projects.module.css";
 import MobileMenu from "../../Components/Shared/MobileMenu";
 import SkillLevel from "../../Components/Projects/SkillLevelCheckedBox/index";
-import BackTopArrow from "../../Components/Shared/BackTop/BackTop";
+import { BackTopArrow } from "../../Components/Shared/BackTop/BackTop";
 import { ProjectsContentContainer } from "../../Components/Projects/ProjectsContentContainer/ProjectsContentContainer";
 import LogoNavbarContainer from "../../Components/Shared/LogoNavbar";
 import Main from "../../Components/Shared/Main";
