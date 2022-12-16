@@ -9,6 +9,24 @@ import {
 import { IoClose } from "react-icons/io5";
 
 export default function Passion({ children, setStateFunc }) {
+  React.useEffect(() => {
+    if (window.innerWidth >= 1440) {
+      const scrollWatcher = debounce(function watchElement() {
+        console.log(
+          isScrolledElementInView(
+            document.getElementById("title-watcher"),
+            document.getElementById("passion-scroll"),
+            100
+          )
+        );
+      }, 80);
+
+      document
+        .getElementById("passion-scroll")
+        .addEventListener("scroll", scrollWatcher);
+    }
+  }, []);
+
   return (
     <div className={PassionStyles[`tab-passion-container`]}>
       <div className={PassionStyles[`tab-container`]}>
@@ -35,9 +53,12 @@ export default function Passion({ children, setStateFunc }) {
           <IoClose className={PassionStyles[`tab-icon`]} />
         </button>
       </div>
-      <div className={PassionStyles[`passion-container`]}>
-        <TopScreenSpan isDesktop="true" hrefValue="top-of-screen-desktop" />
-        <HtmlItem tagContent="Title">
+      <div id="passion-scroll" className={PassionStyles[`passion-container`]}>
+        <TopScreenSpan
+          isDesktop="true"
+          hrefValue="aboutme-desktop-to-top-screen"
+        />
+        <HtmlItem scrollId="title-watcher" tagContent="Title">
           <h2>Journey in Inclusive Web Development.</h2>
         </HtmlItem>
 
@@ -117,7 +138,7 @@ export default function Passion({ children, setStateFunc }) {
         <BackTopArrow
           idAttr="back-top-desktop"
           isDeaktop="true"
-          hrefValue="top-of-screen-desktop"
+          hrefValue="aboutme-desktop-to-top-screen"
           currentPage="aboutme"
         />
         {/* <p>
@@ -160,14 +181,14 @@ export default function Passion({ children, setStateFunc }) {
   );
 }
 
-function HtmlItem({ children, tagContent }) {
+function HtmlItem({ children, tagContent, scrollId }) {
   return (
     <React.Fragment>
       {/* font-size 1.2rem */}
       {/* font-weight 600 */}
       {/* <MdChevronLeft /> */}
       {/* <CgFormatSlash /> */}
-      <div className={PassionStyles[`html-container`]}>
+      <div id={scrollId} className={PassionStyles[`html-container`]}>
         <div className={`${PassionStyles["opening"]} ${PassionStyles[`tag`]}`}>
           <span className={PassionStyles[`tag-sign`]}>&lt;</span>
           <span className={PassionStyles[`tag-name`]}>{tagContent}</span>

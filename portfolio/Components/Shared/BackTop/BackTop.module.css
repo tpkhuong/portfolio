@@ -10,6 +10,12 @@
   transition: opacity 1s ease-out;
 }
 
+.back-top-btn[data-linkbtnmobile="true"] {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+}
+
 .back-top-btn[data-linkbtndesktop="true"] {
   display: none;
 }
@@ -39,11 +45,19 @@
 
 /* desktop */
 
-@media screen and (min-width: 90rem) {
+@media screen and (max-height: 250px) {
+  .back-top-btn {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 23.44rem) {
   .back-top-btn[data-linkbtnmobile="true"] {
     display: none;
   }
+}
 
+@media screen and (min-width: 90rem) {
   .back-top-btn[data-linkbtndesktop="true"] {
     display: inline-flex;
   }

@@ -3,7 +3,10 @@ import Head from "next/head";
 import ProjectsStyles from "../../styles/Projects.module.css";
 import MobileMenu from "../../Components/Shared/MobileMenu";
 import SkillLevel from "../../Components/Projects/SkillLevelCheckedBox/index";
-import { BackTopArrow } from "../../Components/Shared/BackTop/BackTop";
+import {
+  BackTopArrow,
+  TopScreenSpan,
+} from "../../Components/Shared/BackTop/BackTop";
 import { ProjectsContentContainer } from "../../Components/Projects/ProjectsContentContainer/ProjectsContentContainer";
 import LogoNavbarContainer from "../../Components/Shared/LogoNavbar";
 import Main from "../../Components/Shared/Main";
@@ -27,6 +30,10 @@ export default function Projects({ children }) {
       <a href="#main-content" className="skip-link">
         Skip to Main Content
       </a>
+      <TopScreenSpan
+        isMobile="true"
+        hrefValue="projects-mobile-to-top-screen"
+      />
       <header role="banner">
         <LogoNavbarContainer pageName="projects" />
       </header>
@@ -36,7 +43,11 @@ export default function Projects({ children }) {
       </Main>
       <MobileMenu />
       <Footer />
-      <BackTopArrow />
+      <BackTopArrow
+        isMobile="true"
+        idAttr="mobile-projects-backtop"
+        hrefValue="projects-mobile-to-top-screen"
+      />
     </React.Fragment>
   );
 }

@@ -2,6 +2,8 @@ import React from "react";
 import ProjectsContentStyles from "./ProjectsContentContainer.module.css";
 import SkillLevel from "../SkillLevelCheckedBox";
 import ProjectCard from "../ProjectCard/index";
+import { debounce } from "../../Home/Carousel";
+import { isScrolledElementInView } from "../../Shared/BackTop/BackTop";
 import { arrayOfObjForProjectCard } from "../ProjectCard/ProjectInfoObj";
 import { GoTriangleDown } from "react-icons/go";
 import { IoClose } from "react-icons/io5";
@@ -15,6 +17,47 @@ function Content() {
   };
   return function innerFunc({ children }) {
     const [projCardValue, setProjCardState] = React.useState("false");
+
+    React.useEffect(() => {
+      if (window.innerWidth <= 375) {
+        const projectsScrollWatcher = debounce(function watchProjects() {
+          if (
+            !isScrolledElementInView(
+              document.getElementById("skill-level-label"),
+              window,
+              0
+            )
+          ) {
+            document
+              .getElementById("mobile-projects-backtop")
+              .getAttribute("data-backtopbtnshown") == "false"
+              ? document
+                  .getElementById("mobile-projects-backtop")
+                  .setAttribute("data-backtopbtnshown", "true")
+              : document
+                  .getElementById("mobile-projects-backtop")
+                  .setAttribute("data-backtopbtnshown", "false");
+          } else {
+            document
+              .getElementById("mobile-projects-backtop")
+              .getAttribute("data-backtopbtnshown") == "true"
+              ? document
+                  .getElementById("mobile-projects-backtop")
+                  .setAttribute("data-backtopbtnshown", "false")
+              : document
+                  .getElementById("mobile-projects-backtop")
+                  .setAttribute("data-backtopbtnshown", "true");
+          }
+        }, 80);
+
+        window.addEventListener("scroll", projectsScrollWatcher);
+
+        return function cleanUp() {
+          return window.removeEventListener("scroll", projectsScrollWatcher);
+        };
+      }
+    }, []);
+
     return (
       <div
         className={ProjectsContentStyles[`skill-level-projects-card-container`]}

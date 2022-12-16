@@ -6,6 +6,7 @@
 
 .mobile-menu-wrapper {
   display: none;
+  border-radius: 8px;
   position: fixed;
   background-color: var(--color-primary-dark-blue);
   inset: 2px;
@@ -31,4 +32,15 @@
   padding: 18px;
   padding-inline-end: 0px;
   color: var(--color-neutral-white);
+}
+
+@media screen and (max-height: 250px) {
+  .mobile-menu-wrapper {
+    position: absolute;
+    inset: 0px;
+    bottom: -1038px;
+    border-inline: var(--border-lines);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
 }

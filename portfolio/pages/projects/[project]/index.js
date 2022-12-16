@@ -7,6 +7,7 @@ import Main from "../../../Components/Shared/Main";
 import Footer from "../../../Components/Shared/Footer";
 import { server } from "../../../config/index";
 import axios from "axios";
+import { GoTriangleDown, GoLinkExternal, GoMarkGithub } from "react-icons/go";
 
 export default function SingleProject({ children, data }) {
   console.log(data);
@@ -26,17 +27,55 @@ export default function SingleProject({ children, data }) {
       <LogoNavbarContainer pageName="projects" />
       <header className={SingleProjectStyles[`header`]} role="banner"></header>
       <Main>
-        {/* sidebar */}
-        {/* three containers */}
-        {/* table of content */}
-        {/* project links */}
-        {/* project workflow */}
-        {/* three containers */}
-        {/* individual project content */}
-        {/* project images/screenshots */}
+        <div
+          className={
+            SingleProjectStyles[`toc-project-content-images-container`]
+          }
+        >
+          {/* sidebar */}
+          <aside
+            role="complementary"
+            className={SingleProjectStyles[`toc-links-work-flow-container`]}
+          >
+            {/* three containers */}
+            <div className={SingleProjectStyles[`toc-container`]}>
+              {/* table of content */}
+              <div className={SingleProjectStyles[`toc-tab-container`]}></div>
+              <div
+                className={SingleProjectStyles[`toc-content-container`]}
+              ></div>
+            </div>
+            <div className={SingleProjectStyles[`links-container`]}>
+              {/* project links */}
+              <div className={SingleProjectStyles[`links-tab-container`]}></div>
+              <div
+                className={SingleProjectStyles[`links-content-container`]}
+              ></div>
+            </div>
+            <div className={SingleProjectStyles[`work-flow-container`]}>
+              {/* project workflow */}
+              <div
+                className={SingleProjectStyles[`work-flow-tab-container`]}
+              ></div>
+              <div
+                className={SingleProjectStyles[`work-flow-content-container`]}
+              ></div>
+            </div>
+            {/* three containers */}
+          </aside>
+          <section
+            aria-labelledby=""
+            className={SingleProjectStyles[`content-container`]}
+          >
+            {/* individual project content */}
+          </section>
+          <div className={SingleProjectStyles[`images-container`]}>
+            {/* project images/screenshots */}
+          </div>
+        </div>
       </Main>
-      <MobileMenu></MobileMenu>
-      <Footer></Footer>
+      <MobileMenu />
+      <Footer />
       <h2
         className={SingleProjectStyles[`title`]}
       >{`this is single project. Title is ${data.title}`}</h2>

@@ -1,11 +1,11 @@
 import React from "react";
 import MainStyles from "./Main.module.css";
 
-export default function Main({ children, aboutPage }) {
+export default function Main({ children, whichPage }) {
   return (
     <main
       id="main-content"
-      data-isaboutpage={aboutPage}
+      data-currpage={whichPage}
       className={MainStyles[`main`]}
       role="main"
     >

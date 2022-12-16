@@ -37,6 +37,10 @@
   width: 24px;
 }
 
+.footer[data-iszoomed="true"] {
+  display: none;
+}
+
 @media screen and (max-width: 378px) {
   .footer {
     justify-content: space-between;

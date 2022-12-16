@@ -52,15 +52,13 @@ export default function Snippet({ children, ...props }) {
   );
 
   React.useEffect(() => {
-    const scrollWatcher = debounce(function watchStuff() {
-      console.log(isScrolledIntoView(document.getElementById("selectors")));
-    }, 800);
-
-    window.addEventListener("scroll", scrollWatcher);
-
-    return function remove() {
-      window.removeEventListener("scroll", scrollWatcher);
-    };
+    // const scrollWatcher = debounce(function watchStuff() {
+    //   console.log(isScrolledIntoView(document.getElementById("selectors")));
+    // }, 800);
+    // window.addEventListener("scroll", scrollWatcher);
+    // return function remove() {
+    //   window.removeEventListener("scroll", scrollWatcher);
+    // };
   }, []);
 
   return (

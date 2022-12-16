@@ -6,7 +6,12 @@ import { FaLinkedin, FaTwitter, FaGithub } from "react-icons/fa";
 export default function Footer({ children, ...props }) {
   // display flex on footer element
   return (
-    <footer role="content-info" className={FooterStyles[`footer`]}>
+    <footer
+      id="main-footer"
+      data-iszoomed=""
+      role="content-info"
+      className={FooterStyles[`footer`]}
+    >
       {/* text */}
       <span className={FooterStyles[`text`]}>connent with me:</span>
       {/* social media links  */}

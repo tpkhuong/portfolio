@@ -3,7 +3,11 @@ import ResumeStyles from "./Resume.module.css";
 import Passion from "./Passion/index";
 import Skills from "./Skills";
 import Professional from "./Professional";
-import { BackTopArrow } from "../../Shared/BackTop/BackTop";
+import { debounce } from "../../Home/Carousel";
+import {
+  BackTopArrow,
+  isScrolledElementInView,
+} from "../../Shared/BackTop/BackTop";
 // import ProjectCard from "../../Projects/ProjectCard";
 // import { objOfInfo } from "../../Projects/ProjectCard/ProjectInfoObj";
 import { GoTriangleDown, GoChevronRight } from "react-icons/go";
@@ -32,6 +36,41 @@ export default function ResumeInfo({ children, ...props }) {
     panelButtonClicked
       ? document.getElementById("emptyresumeinfo").focus()
       : null;
+
+    if (window.innerWidth <= 375) {
+      // mobile
+      const scrollWatcher = debounce(function watchScroll() {
+        if (
+          !isScrolledElementInView(document.getElementById("files"), window, 0)
+        ) {
+          document
+            .getElementById("mobile-about-backtop")
+            .getAttribute("data-backtopbtnshown") == "false"
+            ? document
+                .getElementById("mobile-about-backtop")
+                .setAttribute("data-backtopbtnshown", "true")
+            : document
+                .getElementById("mobile-about-backtop")
+                .setAttribute("data-backtopbtnshown", "false");
+        } else {
+          document
+            .getElementById("mobile-about-backtop")
+            .getAttribute("data-backtopbtnshown") == "true"
+            ? document
+                .getElementById("mobile-about-backtop")
+                .setAttribute("data-backtopbtnshown", "false")
+            : document
+                .getElementById("mobile-about-backtop")
+                .setAttribute("data-backtopbtnshown", "true");
+        }
+      }, 80);
+
+      window.addEventListener("scroll", scrollWatcher);
+
+      return function cleanUp() {
+        window.removeEventListener("scroll", scrollWatcher);
+      };
+    }
   }, [panelButtonClicked]);
 
   return (

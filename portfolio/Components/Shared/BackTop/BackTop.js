@@ -14,7 +14,7 @@ export function BackTopArrow({
     <React.Fragment>
       <a
         id={idAttr}
-        data-backtopbtnshown=""
+        data-backtopbtnshown="false"
         href={`#${hrefValue}`}
         data-linkbtnmobile={isMobile}
         data-currentpage={currentPage}
@@ -41,12 +41,21 @@ export function TopScreenSpan({ children, isMobile, isDesktop, hrefValue }) {
   );
 }
 
-export function isScrolledElementInView(element) {
+export function isScrolledElementInView(element, container, addHeight) {
   const rect = element.getBoundingClientRect();
   const elementTop = rect.top;
   const elementBottom = rect.bottom;
 
-  const isVisible = elementTop >= 0 && elementBottom <= window.innerHeight;
+  const containerHeight = !container.getBoundingClientRect
+    ? container.innerHeight
+    : container.getBoundingClientRect().height - addHeight;
+
+  console.log(
+    container.getBoundingClientRect,
+    "container.getBoundingClientRect"
+  );
+  console.log(containerHeight, "containerHeight");
+  const isVisible = elementTop >= 0 && elementBottom <= containerHeight;
 
   return isVisible;
 }

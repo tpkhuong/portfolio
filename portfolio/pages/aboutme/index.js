@@ -26,11 +26,11 @@ export default function AboutMe({ children, ...props }) {
       <a href="#main-content" className="skip-link">
         Skip to Main Content
       </a>
-      <TopScreenSpan isMobile="true" hrefValue="top-of-screen-mobile" />
+      <TopScreenSpan isMobile="true" hrefValue="aboutme-mobile-to-top-screen" />
       <header role="banner">
         <LogoNavbarContainer pageName="aboutme" />
       </header>
-      <Main aboutPage="true">
+      <Main>
         <div className={AboutStyles[`info-selection-snippet-container`]}>
           {/* learn about me selection and selected info section container */}
           <ResumeInfo />
@@ -40,7 +40,11 @@ export default function AboutMe({ children, ...props }) {
       </Main>
       <MobileMenu />
       <Footer />
-      <BackTopArrow isMobile="true" hrefValue="top-of-screen-mobile" />
+      <BackTopArrow
+        idAttr="mobile-about-backtop"
+        isMobile="true"
+        hrefValue="aboutme-mobile-to-top-screen"
+      />
       {/* LearnAboutme-Selection */}
       {/* Selector */}
       {/* Passion */}
