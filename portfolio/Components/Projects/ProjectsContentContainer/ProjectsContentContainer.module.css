@@ -326,13 +326,15 @@
   }
 
   .project-cards-container {
-    min-height: 730px;
+    height: 730px;
     overflow-y: scroll;
     position: relative;
 
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(530px, 1fr));
-    grid-template-rows: repeat(auto-fit, minmax(260px, auto));
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* grid-template-columns: repeat(auto-fit, minmax(530px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(260px, auto)); */
     align-content: flex-start;
     padding: 20px;
     gap: 16px;

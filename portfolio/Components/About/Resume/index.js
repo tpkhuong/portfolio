@@ -40,8 +40,19 @@ export default function ResumeInfo({ children, ...props }) {
     if (window.innerWidth <= 375) {
       // mobile
       const scrollWatcher = debounce(function watchScroll() {
+        // console.log(
+        //   isScrolledElementInView(
+        //     document.getElementById("file-selector-tab"),
+        //     window,
+        //     0
+        //   )
+        // );
         if (
-          !isScrolledElementInView(document.getElementById("files"), window, 0)
+          !isScrolledElementInView(
+            document.getElementById("file-selector-tab"),
+            window,
+            0
+          )
         ) {
           document
             .getElementById("mobile-about-backtop")
@@ -49,9 +60,7 @@ export default function ResumeInfo({ children, ...props }) {
             ? document
                 .getElementById("mobile-about-backtop")
                 .setAttribute("data-backtopbtnshown", "true")
-            : document
-                .getElementById("mobile-about-backtop")
-                .setAttribute("data-backtopbtnshown", "false");
+            : null;
         } else {
           document
             .getElementById("mobile-about-backtop")
@@ -59,9 +68,7 @@ export default function ResumeInfo({ children, ...props }) {
             ? document
                 .getElementById("mobile-about-backtop")
                 .setAttribute("data-backtopbtnshown", "false")
-            : document
-                .getElementById("mobile-about-backtop")
-                .setAttribute("data-backtopbtnshown", "true");
+            : null;
         }
       }, 80);
 
@@ -88,7 +95,7 @@ export default function ResumeInfo({ children, ...props }) {
             {/* arrow down */}
             <GoTriangleDown className={ResumeStyles[`triangle-down`]} />
             {/* hide at mobile size */}
-            <h2 id="files">Info Selector</h2>
+            <h2 id="file-selector-tab">Info Selector</h2>
           </div>
 
           {/* selectors-container */}

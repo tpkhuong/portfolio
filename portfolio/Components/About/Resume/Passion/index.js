@@ -12,13 +12,31 @@ export default function Passion({ children, setStateFunc }) {
   React.useEffect(() => {
     if (window.innerWidth >= 1440) {
       const scrollWatcher = debounce(function watchElement() {
-        console.log(
-          isScrolledElementInView(
+        if (
+          !isScrolledElementInView(
             document.getElementById("title-watcher"),
-            document.getElementById("passion-scroll"),
-            100
+            window,
+            0
           )
-        );
+        ) {
+          console.log("false");
+          document
+            .getElementById("desktop-resume-backtop")
+            .getAttribute("data-backtopbtnshown") == "false"
+            ? document
+                .getElementById("desktop-resume-backtop")
+                .setAttribute("data-backtopbtnshown", "true")
+            : null;
+        } else {
+          console.log("true");
+          document
+            .getElementById("desktop-resume-backtop")
+            .getAttribute("data-backtopbtnshown") == "true"
+            ? document
+                .getElementById("desktop-resume-backtop")
+                .setAttribute("data-backtopbtnshown", "false")
+            : null;
+        }
       }, 80);
 
       document
@@ -136,7 +154,7 @@ export default function Passion({ children, setStateFunc }) {
           </HtmlItem>
         </div>
         <BackTopArrow
-          idAttr="back-top-desktop"
+          idAttr="desktop-resume-backtop"
           isDeaktop="true"
           hrefValue="aboutme-desktop-to-top-screen"
           currentPage="aboutme"

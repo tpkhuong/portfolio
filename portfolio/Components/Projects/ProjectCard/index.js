@@ -13,10 +13,12 @@ export default function ProjectCard({
   description,
   viewProject,
   viewCode,
+  scrollId,
   keyMap,
 }) {
   return (
     <article
+      id={scrollId}
       className={ProjectCardStyles[`project-container`]}
       data-projectorhomepage={page}
       aria-labelledby="project-title"

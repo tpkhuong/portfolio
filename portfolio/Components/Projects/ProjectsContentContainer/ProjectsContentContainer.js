@@ -3,7 +3,11 @@ import ProjectsContentStyles from "./ProjectsContentContainer.module.css";
 import SkillLevel from "../SkillLevelCheckedBox";
 import ProjectCard from "../ProjectCard/index";
 import { debounce } from "../../Home/Carousel";
-import { isScrolledElementInView } from "../../Shared/BackTop/BackTop";
+import {
+  BackTopArrow,
+  TopScreenSpan,
+  isScrolledElementInView,
+} from "../../Shared/BackTop/BackTop";
 import { arrayOfObjForProjectCard } from "../ProjectCard/ProjectInfoObj";
 import { GoTriangleDown } from "react-icons/go";
 import { IoClose } from "react-icons/io5";
@@ -19,6 +23,7 @@ function Content() {
     const [projCardValue, setProjCardState] = React.useState("false");
 
     React.useEffect(() => {
+      // mobile
       if (window.innerWidth <= 375) {
         const projectsScrollWatcher = debounce(function watchProjects() {
           if (
@@ -34,9 +39,7 @@ function Content() {
               ? document
                   .getElementById("mobile-projects-backtop")
                   .setAttribute("data-backtopbtnshown", "true")
-              : document
-                  .getElementById("mobile-projects-backtop")
-                  .setAttribute("data-backtopbtnshown", "false");
+              : null;
           } else {
             document
               .getElementById("mobile-projects-backtop")
@@ -44,9 +47,7 @@ function Content() {
               ? document
                   .getElementById("mobile-projects-backtop")
                   .setAttribute("data-backtopbtnshown", "false")
-              : document
-                  .getElementById("mobile-projects-backtop")
-                  .setAttribute("data-backtopbtnshown", "true");
+              : null;
           }
         }, 80);
 
@@ -55,6 +56,24 @@ function Content() {
         return function cleanUp() {
           return window.removeEventListener("scroll", projectsScrollWatcher);
         };
+      }
+
+      // desktop
+
+      if (window.innerWidth >= 1440) {
+        const projectCardsWatcher = debounce(function watchCards() {
+          console.log(
+            isScrolledElementInView(
+              document.getElementById("first-project-card"),
+              window,
+              0
+            )
+          );
+        }, 80);
+
+        document
+          .getElementById("project-cards-scroll")
+          .addEventListener("scroll", projectCardsWatcher);
       }
     }, []);
 
@@ -276,7 +295,14 @@ function Content() {
               <IoClose className={ProjectsContentStyles[`close-icon`]} />
             </button>
           </div>
-          <ul className={ProjectsContentStyles[`project-cards-container`]}>
+          <ul
+            id="project-cards-scroll"
+            className={ProjectsContentStyles[`project-cards-container`]}
+          >
+            <TopScreenSpan
+              isDesktop="true"
+              hrefValue="cards-container-desktop-to-top-screen"
+            />
             {objOfValues.arrayOfCardsToRender.length == 0 ? (
               <div
                 className={
@@ -318,7 +344,21 @@ function Content() {
                 obj,
                 index
               ) {
-                return (
+                return index == 0 ? (
+                  <li key={Math.random() * index}>
+                    <ProjectCard
+                      scrollId="first-project-card"
+                      page="projects"
+                      imgSrc={obj.imgInfo.imgSrc}
+                      imgText={obj.imgInfo.altText}
+                      title={obj.title}
+                      techArray={obj.tech}
+                      description={obj.description}
+                      viewProject={obj.links.viewProject}
+                      viewCode={obj.links.viewCode}
+                    />
+                  </li>
+                ) : (
                   <li key={Math.random() * index}>
                     <ProjectCard
                       page="projects"
@@ -334,6 +374,12 @@ function Content() {
                 );
               })
             )}
+            <BackTopArrow
+              idAttr="desktop-resume-backtop"
+              isDeaktop="true"
+              hrefValue="cards-container-desktop-to-top-screen"
+              currentPage="singleproject"
+            />
           </ul>
         </div>
       </div>
