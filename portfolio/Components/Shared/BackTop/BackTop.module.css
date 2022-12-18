@@ -68,11 +68,11 @@
     left: 330px;
   }
 
-  .back-top-btn[data-currentpage="singleproject"] {
+  /* .back-top-btn[data-currentpage="singleproject"] {
     position: sticky;
     top: 645px;
     margin-inline-start: auto;
-  }
+  } */
 
   .back-top-btn {
     /* font-size: 1.7rem; */

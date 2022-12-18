@@ -60,21 +60,46 @@ function Content() {
 
       // desktop
 
-      if (window.innerWidth >= 1440) {
-        const projectCardsWatcher = debounce(function watchCards() {
-          console.log(
-            isScrolledElementInView(
-              document.getElementById("first-project-card"),
-              window,
-              0
-            )
-          );
-        }, 80);
+      // if (window.innerWidth >= 1440) {
+      //   const projectCardsWatcher = debounce(function watchCards() {
+      //     console.log(
+      //       isScrolledElementInView(
+      //         document.getElementById("first-project-card"),
+      //         window,
+      //         0
+      //       )
+      //     );
+      //     if (
+      //       !isScrolledElementInView(
+      //         document.getElementById("first-project-card"),
+      //         window,
+      //         0
+      //       )
+      //     ) {
+      //       console.log("false");
+      //       document
+      //         .getElementById("desktop-resume-backtop")
+      //         .getAttribute("data-backtopbtnshown") == "false"
+      //         ? document
+      //             .getElementById("desktop-resume-backtop")
+      //             .setAttribute("data-backtopbtnshown", "true")
+      //         : null;
+      //     } else {
+      //       console.log("true");
+      //       document
+      //         .getElementById("desktop-resume-backtop")
+      //         .getAttribute("data-backtopbtnshown") == "true"
+      //         ? document
+      //             .getElementById("desktop-resume-backtop")
+      //             .setAttribute("data-backtopbtnshown", "false")
+      //         : null;
+      //     }
+      //   }, 80);
 
-        document
-          .getElementById("project-cards-scroll")
-          .addEventListener("scroll", projectCardsWatcher);
-      }
+      //   document
+      //     .getElementById("project-cards-scroll")
+      //     .addEventListener("scroll", projectCardsWatcher);
+      // }
     }, []);
 
     return (
@@ -299,10 +324,10 @@ function Content() {
             id="project-cards-scroll"
             className={ProjectsContentStyles[`project-cards-container`]}
           >
-            <TopScreenSpan
+            {/* <TopScreenSpan
               isDesktop="true"
               hrefValue="cards-container-desktop-to-top-screen"
-            />
+            /> */}
             {objOfValues.arrayOfCardsToRender.length == 0 ? (
               <div
                 className={
@@ -374,12 +399,14 @@ function Content() {
                 );
               })
             )}
-            <BackTopArrow
-              idAttr="desktop-resume-backtop"
-              isDeaktop="true"
-              hrefValue="cards-container-desktop-to-top-screen"
-              currentPage="singleproject"
-            />
+            {/* <span className={ProjectsContentStyles[`arrow-container`]}>
+              <BackTopArrow
+                idAttr="desktop-resume-backtop"
+                isDeaktop="true"
+                hrefValue="cards-container-desktop-to-top-screen"
+                currentPage="singleproject"
+              />
+            </span> */}
           </ul>
         </div>
       </div>
