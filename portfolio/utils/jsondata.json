@@ -4,18 +4,14 @@
       "title": "hello there",
       "sidebar": {
         "toc": [
-          { "content": "_Instructions:", "typeoftitle": "title" },
-          { "content": "_Users should be able to:", "typeoftitle": "subtitle" },
-          { "content": "_Process:", "typeoftitle": "title" },
-          { "content": "_Build with / Tech Used:", "typeoftitle": "subtitle" },
-          { "content": "_Things we learned:", "typeoftitle": "subtitle" },
-          { "content": "_Features Added:", "typeoftitle": "subtitle" },
-          { "content": "_Inclusion features Added:", "typeoftitle": "subtitle" }
+          { "content": "Instructions:", "typeOfTitle": "title" },
+          { "content": "Users should be able to:", "typeOfTitle": "subtitle" },
+          { "content": "Process:", "typeOfTitle": "title" },
+          { "content": "Build with / Tech Used:", "typeOfTitle": "subtitle" },
+          { "content": "Things we learned:", "typeOfTitle": "subtitle" },
+          { "content": "Features Added:", "typeOfTitle": "subtitle" },
+          { "content": "Inclusion features Added:", "typeOfTitle": "subtitle" }
         ],
-        "projectlinks": {
-          "live": "https://someplacecool.io",
-          "code": "https://github/projectURL.com"
-        },
         "workflow": [
           "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
           "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
@@ -48,13 +44,7 @@
           "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
           "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
         ]
-      },
-      "images": [
-        "/tipcalculator2.jpg",
-        "/tipcalculator2.jpg",
-        "/tipcalculator2.jpg",
-        "/tipcalculator2.jpg"
-      ]
+      }
     },
     "second": {
       "title": "world"

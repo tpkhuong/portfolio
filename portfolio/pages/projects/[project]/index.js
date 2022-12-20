@@ -11,7 +11,7 @@ import { GoTriangleDown, GoLinkExternal, GoMarkGithub } from "react-icons/go";
 import { IoClose } from "react-icons/io5";
 
 export default function SingleProject({ children, data }) {
-  console.log(data["img-container"]);
+  console.log(data, "app");
   return (
     <React.Fragment>
       <Head>
@@ -49,9 +49,23 @@ export default function SingleProject({ children, data }) {
                   Table of Contents
                 </span>
               </div>
-              <div
-                className={SingleProjectStyles[`toc-content-container`]}
-              ></div>
+              <ul className={SingleProjectStyles[`toc-content-container`]}>
+                {/* {data.first.sidebar.toc.map(function tableOfContent(
+                  tableObj,
+                  index
+                ) {
+                  return (
+                    <li
+                      className={
+                        SingleProjectStyles[`toc-${tableObj.typeOfTitle}`]
+                      }
+                      key={Math.random() * index}
+                    >
+                      {tableObj.content}
+                    </li>
+                  );
+                })} */}
+              </ul>
             </div>
             <div className={SingleProjectStyles[`links-container`]}>
               {/* project links */}
@@ -63,9 +77,24 @@ export default function SingleProject({ children, data }) {
                   Project Links
                 </span>
               </div>
-              <div
-                className={SingleProjectStyles[`links-content-container`]}
-              ></div>
+              <div className={SingleProjectStyles[`links-content-container`]}>
+                <a href="https://coolstuff.io">
+                  <span className={SingleProjectStyles[`link-icon`]}>
+                    <GoLinkExternal />
+                  </span>
+                  <span className={SingleProjectStyles[`link-text`]}>
+                    {/* {data.first.sidebar.projectlinks.live} */}
+                  </span>
+                </a>
+                <a href="https://coolstufftoo.io">
+                  <span className={SingleProjectStyles[`link-icon`]}>
+                    <GoMarkGithub />
+                  </span>
+                  <span className={SingleProjectStyles[`link-text`]}>
+                    {/* {data.first.sidebar.projectlinks.code} */}
+                  </span>
+                </a>
+              </div>
             </div>
             <div className={SingleProjectStyles[`work-flow-container`]}>
               {/* project workflow */}
@@ -79,7 +108,14 @@ export default function SingleProject({ children, data }) {
               </div>
               <div
                 className={SingleProjectStyles[`work-flow-content-container`]}
-              ></div>
+              >
+                {/* {data.first.sidebar.workflow.map(function makeParagraph(
+                  paragraph,
+                  index
+                ) {
+                  return <p key={Math.random() * index}>{paragraph}</p>;
+                })} */}
+              </div>
             </div>
             {/* three containers */}
           </aside>
@@ -105,15 +141,181 @@ export default function SingleProject({ children, data }) {
             </div>
           </div>
         </div>
-        <h2
-          className={SingleProjectStyles[`title`]}
-        >{`this is single project. Title is ${data.title}`}</h2>
+        <h2 className={SingleProjectStyles[`title`]}></h2>
+        {/* {`this is single project. Title is ${data.first.title}`} */}
       </Main>
       <MobileMenu />
       <Footer />
     </React.Fragment>
   );
 }
+
+// export async function getStaticPaths() {
+//   const projectPaths = [
+//     ["projects", "first"],
+//     ["projects", "second"],
+//     ["projects", "third"],
+//     ["projects", "fourth"],
+//     ["projects", "fifth"],
+//   ];
+//   const paths = projectPaths.map(function makgeProjectPaths(path) {
+//     const [projects, project] = path;
+
+//     return {
+//       params: { projects, project },
+//     };
+//   });
+//   console.log(paths, "paths");
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// }
+
+// export async function getStaticProps(context) {
+//   // console.log(context, "context");
+//   const response = await fetch(
+//     `${server}/api/${context.params.projects}/${context.params.project}`
+//   );
+//   // console.log(response, "response");
+//   const data = await response.json();
+//   console.log(data, "frontend");
+//   return {
+//     props: { data },
+//   };
+// }
+
+function LinkContent({ children, text }) {
+  return (
+    <React.Fragment>
+      <span className={SingleProjectStyles[`link-icon`]}>{children}</span>
+      <span className={SingleProjectStyles[`link-content`]}>{text}</span>
+    </React.Fragment>
+  );
+}
+
+// function note() {
+// {
+//     "title": "hello there",
+//     "sidebar": {
+//       "toc": [
+//         { "content": "Instructions:", "typeOfTitle": "title" },
+//         { "content": "Users should be able to:", "typeOfTitle": "subtitle" },
+//         { "content": "Process:", "typeOfTitle": "title" },
+//         { "content": "Build with / Tech Used:", "typeOfTitle": "subtitle" },
+//         { "content": "Things we learned:", "typeOfTitle": "subtitle" },
+//         { "content": "Features Added:", "typeOfTitle": "subtitle" },
+//         { "content": "Inclusion features Added:", "typeOfTitle": "subtitle" }
+//       ],
+//       "projectlinks": {
+//         "live": "https://someplacecool.io",
+//         "code": "https://github/projectURL.com"
+//       },
+//       "workflow": [
+//         "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+//         "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+//         "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+//       ]
+//     },
+//     "main": {
+//       "instructions": [
+//         "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+//         "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+//       ],
+//       "userable": [
+//         "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+//         "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+//       ],
+//       "buildtech": [
+//         "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+//         "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+//         "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+//       ],
+//       "learned": [
+//         "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+//       ],
+//       "features": [
+//         "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+//         "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+//       ],
+//       "inclusion": [
+//         "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+//         "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+//         "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+//       ]
+//     },
+//     "images": [
+//       "/tipcalculator2.jpg",
+//       "/tipcalculator2.jpg",
+//       "/tipcalculator2.jpg",
+//       "/tipcalculator2.jpg"
+//     ]
+//   }
+// }
+
+// {
+//       "title": "hello there",
+//       "sidebar": {
+//         "toc": [
+//           { "content": "Instructions:", "typeOfTitle": "title" },
+//           { "content": "Users should be able to:", "typeOfTitle": "subtitle" },
+//           { "content": "Process:", "typeOfTitle": "title" },
+//           { "content": "Build with / Tech Used:", "typeOfTitle": "subtitle" },
+//           { "content": "Things we learned:", "typeOfTitle": "subtitle" },
+//           { "content": "Features Added:", "typeOfTitle": "subtitle" },
+//           { "content": "Inclusion features Added:", "typeOfTitle": "subtitle" }
+//         ],
+//         "projectlinks": {
+//           "live": "https://someplacecool.io",
+//           "code": "https://github/projectURL.com"
+//         },
+//         "workflow": [
+//           "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+//           "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+//           "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+//         ]
+//       },
+//       "main": {
+//         "instructions": [
+//           "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+//           "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+//         ],
+//         "userable": [
+//           "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+//           "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+//         ],
+//         "buildtech": [
+//           "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+//           "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+//           "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+//         ],
+//         "learned": [
+//           "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+//         ],
+//         "features": [
+//           "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+//           "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+//         ],
+//         "inclusion": [
+//           "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+//           "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+//           "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+//         ]
+//       },
+//       "images": [
+//         "/tipcalculator2.jpg",
+//         "/tipcalculator2.jpg",
+//         "/tipcalculator2.jpg",
+//         "/tipcalculator2.jpg"
+//       ]
+// }
+
+// "images": [
+//         "/tipcalculator2.jpg",
+//         "/tipcalculator2.jpg",
+//         "/tipcalculator2.jpg",
+//         "/tipcalculator2.jpg"
+//       ]
 
 export async function getStaticPaths() {
   const projectPaths = ["first", "second", "third", "fourth", "fifth"];
@@ -131,12 +333,12 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  const response = await axios(
+  const response = await fetch(
     `${server}/api/projects/${context.params.project}`
   );
   //   console.log(response, "response");
-  const data = response.data;
-
+  const data = await response.json();
+  // console.log(data, "frontend");
   return {
     props: { data },
   };

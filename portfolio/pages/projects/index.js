@@ -13,8 +13,11 @@ import Main from "../../Components/Shared/Main";
 import Footer from "../../Components/Shared/Footer";
 import { GoTriangleDown } from "react-icons/go";
 import { IoClose } from "react-icons/io5";
+import axios from "axios";
+import { server } from "../../config";
+import { projectData } from "../../utils/data";
 
-const Content = save();
+// const Content = save();
 
 export default function Projects({ children }) {
   return (
@@ -39,7 +42,7 @@ export default function Projects({ children }) {
       </header>
       <Main>
         {/* <Content /> */}
-        <ProjectsContentContainer />
+        {/* <ProjectsContentContainer /> */}
       </Main>
       <MobileMenu />
       <Footer />
@@ -52,61 +55,79 @@ export default function Projects({ children }) {
   );
 }
 
-function save() {
-  const array = [];
-  return function innerFunc({ children }) {
-    const [testValue, testState] = React.useState(null);
+// export async function getStaticPaths() {
+//   return {
+//     paths: [{ params: { projects: "projects" } }],
+//     fallback: false,
+//   };
+// }
 
-    return (
-      <div className={ProjectsStyles[`skill-level-projects-card-container`]}>
-        <aside
-          role="complementary"
-          className={ProjectsStyles[`skill-level-container`]}
-        >
-          {/* skill selector */}
-          <div className={ProjectsStyles[`arrow-text-container`]}>
-            <GoTriangleDown className={ProjectsStyles[`down-arrow`]} />
-            <h2 id="skill-level-label">Projects</h2>
-          </div>
-          <ul
-            role="group"
-            aria-describedby="skill-level-label"
-            className={ProjectsStyles[`skill-level-checkboxes-container`]}
-          >
-            {["novice", "junior", "intermediate", "advanced"].map(
-              function makeListItem(item, index) {
-                return (
-                  <li key={Math.random() * index}>
-                    <SkillLevel
-                      testData={{ array, testState }}
-                      level={item}
-                      textContent={item}
-                    />
-                  </li>
-                );
-              }
-            )}
-          </ul>
-        </aside>
-        <div className={ProjectsStyles[`tab-cards-container`]}>
-          <div className={ProjectsStyles[`tab-container`]}>
-            <h2 className={ProjectsStyles[`tab-title`]}>Skill Level</h2>
-            <button
-              onClick={(event) => {
-                console.log(array);
-                if (array.length > 0) {
-                  array.pop();
-                  testState("close");
-                }
-              }}
-              className={ProjectsStyles[`close-proj-btn`]}
-            >
-              <IoClose className={ProjectsStyles[`close-icon`]} />
-            </button>
-          </div>
-          <div className={ProjectsStyles[`project-cards-container`]}></div>
-        </div>
-      </div>
-    );
-  };
-}
+// export async function getStaticProps(context) {
+//   // console.log(context);
+//   const response = await fetch(`${server}/api/${context.params.projects}`);
+//   console.log(response);
+//   const data = await response.json();
+//   console.log(data);
+//   return {
+//     props: { data },
+//   };
+// }
+
+// function save() {
+//   const array = [];
+//   return function innerFunc({ children }) {
+//     const [testValue, testState] = React.useState(null);
+
+//     return (
+//       <div className={ProjectsStyles[`skill-level-projects-card-container`]}>
+//         <aside
+//           role="complementary"
+//           className={ProjectsStyles[`skill-level-container`]}
+//         >
+//           {/* skill selector */}
+//           <div className={ProjectsStyles[`arrow-text-container`]}>
+//             <GoTriangleDown className={ProjectsStyles[`down-arrow`]} />
+//             <h2 id="skill-level-label">Projects</h2>
+//           </div>
+//           <ul
+//             role="group"
+//             aria-describedby="skill-level-label"
+//             className={ProjectsStyles[`skill-level-checkboxes-container`]}
+//           >
+//             {["novice", "junior", "intermediate", "advanced"].map(
+//               function makeListItem(item, index) {
+//                 return (
+//                   <li key={Math.random() * index}>
+//                     <SkillLevel
+//                       testData={{ array, testState }}
+//                       level={item}
+//                       textContent={item}
+//                     />
+//                   </li>
+//                 );
+//               }
+//             )}
+//           </ul>
+//         </aside>
+//         <div className={ProjectsStyles[`tab-cards-container`]}>
+//           <div className={ProjectsStyles[`tab-container`]}>
+//             <h2 className={ProjectsStyles[`tab-title`]}>Skill Level</h2>
+//             <button
+//               onClick={(event) => {
+//                 console.log(array);
+//                 if (array.length > 0) {
+//                   array.pop();
+//                   testState("close");
+//                 }
+//               }}
+//               className={ProjectsStyles[`close-proj-btn`]}
+//             >
+//               <IoClose className={ProjectsStyles[`close-icon`]} />
+//             </button>
+//           </div>
+//           <div className={ProjectsStyles[`project-cards-container`]}></div>
+//         </div>
+//       </div>
+//     );
+//   };
+// }
