@@ -42,7 +42,7 @@ export default function Projects({ children }) {
       </header>
       <Main>
         {/* <Content /> */}
-        {/* <ProjectsContentContainer /> */}
+        <ProjectsContentContainer />
       </Main>
       <MobileMenu />
       <Footer />

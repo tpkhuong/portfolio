@@ -10,7 +10,7 @@
 //   res.status(200).json(projects[req.query.project]);
 // }
 
-import data from "../../../../utils/jsondata.json";
+import data from "../../../../utils/data.json";
 
 export default async function projectHandler(req, res) {
   // console.log(req.query.project, "req.query");

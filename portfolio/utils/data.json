@@ -1,0 +1,125 @@
+{
+  "projects": {
+    "first": {
+      "title": "hello there",
+      "sidebar": {
+        "toc": [
+          {
+            "content": "Instructions",
+            "typeOfTitle": "title",
+            "tocHref": "instructions"
+          },
+          {
+            "content": "Users should be able to",
+            "typeOfTitle": "subtitle",
+            "tocHref": "users-interactions"
+          },
+          {
+            "content": "Process",
+            "typeOfTitle": "title",
+            "tocHref": "process"
+          },
+          {
+            "content": "Build with / Tech Used",
+            "typeOfTitle": "subtitle",
+            "tocHref": "tech-used"
+          },
+          {
+            "content": "Things we learned",
+            "typeOfTitle": "subtitle",
+            "tocHref": "things-learned"
+          },
+          {
+            "content": "Features Added",
+            "typeOfTitle": "subtitle",
+            "tocHref": "features"
+          },
+          {
+            "content": "Inclusion features Added",
+            "typeOfTitle": "subtitle",
+            "tocHref": "inclusion-features"
+          }
+        ],
+        "projectlinks": {
+          "live": "https://someplacecool.io",
+          "code": "https://github/projectURL.com"
+        },
+        "workflow": [
+          "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+          "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+          "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+        ]
+      },
+      "main": {
+        "instructions": {
+          "text": [
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+          ],
+          "hrefForToc": "instructions"
+        },
+        "userable": {
+          "text": [
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+          ],
+          "hrefForToc": "users-interactions"
+        },
+        "process": {
+          "text": [
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+          ],
+          "hrefForToc": "process"
+        },
+        "buildtech": {
+          "text": [
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+          ],
+          "hrefForToc": "tech-used"
+        },
+        "learned": {
+          "text": [
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+          ],
+          "hrefForToc": "things-learned"
+        },
+        "features": {
+          "text": [
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+          ],
+          "hrefForToc": "features"
+        },
+        "inclusion": {
+          "text": [
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+          ],
+          "hrefForToc": "inclusion-features"
+        }
+      },
+      "images": [
+        "/tipcalculator2.jpg",
+        "/tipcalculator2.jpg",
+        "/tipcalculator2.jpg",
+        "/tipcalculator2.jpg"
+      ]
+    },
+    "second": {
+      "title": "world"
+    },
+    "third": {
+      "title": "this is js"
+    },
+    "fourth": {
+      "title": "this is html"
+    },
+    "fifth": {
+      "title": "Los Angeles"
+    }
+  }
+}

@@ -44,10 +44,10 @@
   display: inline-block;
 }
 
-[data-notcurrentprojectpage="true"] .underscore {
+/* [data-notcurrentprojectpage="true"] .underscore {
   display: inline-block;
   transform: translateY(3px);
-}
+} */
 
 @keyframes blinking {
   0% {
