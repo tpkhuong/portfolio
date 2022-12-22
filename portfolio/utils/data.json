@@ -1,7 +1,7 @@
 {
   "projects": {
     "first": {
-      "title": "hello there",
+      "title": "_Project1",
       "sidebar": {
         "toc": [
           {
@@ -52,6 +52,7 @@
       },
       "main": {
         "instructions": {
+          "title": "_Instructions",
           "text": [
             "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
             "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
@@ -59,6 +60,7 @@
           "hrefForToc": "instructions"
         },
         "userable": {
+          "title": "_Users should be able to",
           "text": [
             "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
             "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
@@ -66,6 +68,7 @@
           "hrefForToc": "users-interactions"
         },
         "process": {
+          "title": "_Process",
           "text": [
             "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
             "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
@@ -73,6 +76,7 @@
           "hrefForToc": "process"
         },
         "buildtech": {
+          "title": "_Build with / Tech Used",
           "text": [
             "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
             "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
@@ -81,12 +85,14 @@
           "hrefForToc": "tech-used"
         },
         "learned": {
+          "title": "_Things we learned",
           "text": [
             "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
           ],
           "hrefForToc": "things-learned"
         },
         "features": {
+          "title": "_Features Added",
           "text": [
             "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
             "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
@@ -94,6 +100,7 @@
           "hrefForToc": "features"
         },
         "inclusion": {
+          "title": "_Inclusion features Added",
           "text": [
             "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
             "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
@@ -103,10 +110,10 @@
         }
       },
       "images": [
-        "/tipcalculator2.jpg",
-        "/tipcalculator2.jpg",
-        "/tipcalculator2.jpg",
-        "/tipcalculator2.jpg"
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image1" },
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "images2" },
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image3" },
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image4" }
       ]
     },
     "second": {

@@ -15,7 +15,7 @@ export default function SingleProject({ children, data }) {
   return (
     <React.Fragment>
       <Head>
-        <title>Project Title</title>
+        <title>{data.title}</title>
         <link
           rel="shortcut icon"
           href="/favicon-32x32.png"
@@ -128,19 +128,183 @@ export default function SingleProject({ children, data }) {
               className={SingleProjectStyles[`tab-content-container`]}
             >
               <div className={SingleProjectStyles[`tab-container`]}>
-                <span aria-hidden="true">Go Back</span>
-                <button
+                <span
+                  className={SingleProjectStyles[`tab-content`]}
+                  aria-hidden="true"
+                >
+                  Go to Projects Page
+                </span>
+                <a
+                  href="/projects"
                   aria-label="go back to project selection page"
                   className={SingleProjectStyles[`close-btn`]}
                 >
                   <IoClose className={SingleProjectStyles[`close-icon`]} />
-                </button>
+                </a>
               </div>
-              <div className={SingleProjectStyles[`content`]}></div>
+              <div className={SingleProjectStyles[`content`]}>
+                {/* title */}
+                <h1
+                  id={data.title}
+                  className={SingleProjectStyles[`main-title`]}
+                >
+                  {data.title}
+                </h1>
+
+                {/* instructions */}
+                <h2
+                  id={data.main.instructions.hrefForToc}
+                  className={`${SingleProjectStyles[`content-title`]} ${
+                    SingleProjectStyles[`space-bottom`]
+                  }`}
+                >
+                  {data.main.instructions.title}
+                </h2>
+
+                <div className={SingleProjectStyles[`paragraphs-wrapper`]}>
+                  {data.main.instructions.text.map(
+                    function makeInstructionsParagraph(text, index) {
+                      return <p key={Math.random() * index}>{text}</p>;
+                    }
+                  )}
+                </div>
+
+                {/* users should be */}
+                <h3
+                  id={data.main.userable.hrefForToc}
+                  className={`${SingleProjectStyles[`content-subtitle`]} ${
+                    SingleProjectStyles[`space-vertical`]
+                  }`}
+                >
+                  {data.main.userable.title}
+                </h3>
+
+                <div className={SingleProjectStyles[`paragraphs-wrapper`]}>
+                  {data.main.userable.text.map(function makeUserableParagraph(
+                    text,
+                    index
+                  ) {
+                    return <p key={Math.random() * index}>{text}</p>;
+                  })}
+                </div>
+
+                {/* process */}
+                <h2
+                  id={data.main.process.hrefForToc}
+                  className={`${SingleProjectStyles[`content-title`]} ${
+                    SingleProjectStyles[`space-vertical`]
+                  }`}
+                >
+                  {data.main.process.title}
+                </h2>
+
+                <div className={SingleProjectStyles[`paragraphs-wrapper`]}>
+                  {data.main.process.text.map(function makeProcessParagraph(
+                    text,
+                    index
+                  ) {
+                    return <p key={Math.random() * index}>{text}</p>;
+                  })}
+                </div>
+
+                {/* build with */}
+                <h3
+                  id={data.main.buildtech.hrefForToc}
+                  className={`${SingleProjectStyles[`content-subtitle`]} ${
+                    SingleProjectStyles[`space-vertical`]
+                  }`}
+                >
+                  {data.main.buildtech.title}
+                </h3>
+
+                <div className={SingleProjectStyles[`paragraphs-wrapper`]}>
+                  {data.main.buildtech.text.map(function makeBuildtechParagraph(
+                    text,
+                    index
+                  ) {
+                    return <p key={Math.random() * index}>{text}</p>;
+                  })}
+                </div>
+
+                {/* things we learned */}
+                <h3
+                  id={data.main.learned.hrefForToc}
+                  className={`${SingleProjectStyles[`content-subtitle`]} ${
+                    SingleProjectStyles[`space-vertical`]
+                  }`}
+                >
+                  {data.main.learned.title}
+                </h3>
+
+                <div className={SingleProjectStyles[`paragraphs-wrapper`]}>
+                  {data.main.learned.text.map(function makeLearnedParagraph(
+                    text,
+                    index
+                  ) {
+                    return <p key={Math.random() * index}>{text}</p>;
+                  })}
+                </div>
+
+                {/* features added */}
+                <h3
+                  id={data.main.features.hrefForToc}
+                  className={`${SingleProjectStyles[`content-subtitle`]} ${
+                    SingleProjectStyles[`space-vertical`]
+                  }`}
+                >
+                  {data.main.features.title}
+                </h3>
+
+                <div className={SingleProjectStyles[`paragraphs-wrapper`]}>
+                  {data.main.features.text.map(function makeFeaturesParagraph(
+                    text,
+                    index
+                  ) {
+                    return <p key={Math.random() * index}>{text}</p>;
+                  })}
+                </div>
+
+                {/* inclustion added */}
+                <h3
+                  id={data.main.inclusion.hrefForToc}
+                  className={`${SingleProjectStyles[`content-subtitle`]} ${
+                    SingleProjectStyles[`space-vertical`]
+                  }`}
+                >
+                  {data.main.inclusion.title}
+                </h3>
+
+                <div className={SingleProjectStyles[`paragraphs-wrapper`]}>
+                  {data.main.inclusion.text.map(function makeInclusionParagraph(
+                    text,
+                    index
+                  ) {
+                    return <p key={Math.random() * index}>{text}</p>;
+                  })}
+                </div>
+              </div>
+
               {/* individual project content */}
             </section>
-            <div className={SingleProjectStyles[`images-container`]}>
+            <div className={SingleProjectStyles[`project-images-container`]}>
+              <div className={SingleProjectStyles[`images-tab-container`]}>
+                <span className={SingleProjectStyles[`images-tab-content`]}>
+                  Preview Images
+                </span>
+              </div>
               {/* project images/screenshots */}
+              <div className={SingleProjectStyles[`preview-images-container`]}>
+                {data.images.map(function imgContainer(obj, index) {
+                  return (
+                    <div
+                      key={Math.random() * index}
+                      className={SingleProjectStyles[`image-container`]}
+                    >
+                      <img src={obj.imgSrc} alt={obj.imgText} />
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>

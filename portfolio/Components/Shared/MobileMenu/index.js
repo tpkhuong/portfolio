@@ -28,7 +28,7 @@ export default function MobileMenu({ children, ...props }) {
                 className={MobileMenuStyles[`navitem`]}
                 role="none"
               >
-                <Link href={index === 0 ? "/" : `${arrayOfHref[index]}`}>
+                <Link href={`/${index === 0 ? "" : `${arrayOfHref[index]}`}`}>
                   <a role="menuitem" className={MobileMenuStyles[`navlink`]}>
                     <span className={MobileMenuStyles[`underscore`]}>_</span>
                     <span className={MobileMenuStyles[`linktext`]}>

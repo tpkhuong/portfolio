@@ -1,5 +1,21 @@
 /* mobile */
 
+.toc-project-content-images-container {
+  --main-content-spacer: 18px;
+}
+
+.space-top {
+  margin-block-start: var(--main-content-spacer);
+}
+
+.space-bottom {
+  margin-block-end: var(--main-content-spacer);
+}
+
+.space-vertical {
+  margin-block: var(--main-content-spacer);
+}
+
 /* sidebar */
 
 .toc-tab-container,
@@ -111,11 +127,126 @@
 
 /* main */
 
+.tab-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  padding-block: 10px;
+  padding-inline-start: 15px;
+}
+
+.tab-content {
+  font-weight: 600;
+  font-size: var(--font-size-18px);
+}
+
+.close-btn {
+  background-color: transparent;
+}
+
+.close-icon {
+  width: 36px;
+}
+
 .content {
-  height: 730px;
-  overflow-y: scroll;
+  border-block: var(--border-lines);
+  padding: 18px;
+  padding-inline-start: 32px;
+}
+
+.main-title {
+  margin-block-end: 24px;
+}
+
+.content-title {
+  color: var(--color-neutral-white);
+}
+
+.paragraphs-wrapper {
+  margin-inline-start: 24px;
+}
+
+.paragraphs-wrapper > * + * {
+  margin-block-start: 16px;
 }
 
 /* images */
 
+.images-tab-container {
+  padding: 10px;
+  padding-inline-start: 15px;
+}
+
+.images-tab-content {
+  font-size: var(--font-size-18px);
+  font-weight: 600;
+}
+
+.preview-images-container {
+  border-block-start: var(--border-lines);
+  padding: 18px;
+}
+
+.preview-images-container > * + * {
+  margin-block-start: 16px;
+}
+
+.image-container {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
 /* desktop */
+
+@media screen and (min-width: 90rem) {
+  .toc-project-content-images-container {
+    display: flex;
+  }
+  /* sidebar */
+  .toc-links-work-flow-container {
+    flex-basis: 50%;
+    height: 730px;
+    overflow-y: scroll;
+  }
+  /* toc */
+  /* project links */
+  /* project workflow */
+
+  .work-flow-container {
+    border-bottom: revert;
+  }
+
+  /* main */
+
+  .content-images-container {
+    display: flex;
+  }
+
+  .tab-content-container {
+    border-inline: var(--border-lines);
+  }
+
+  .tab-container {
+    border-inline-end: var(--border-lines);
+    padding-block: 5px;
+    padding-inline-end: 8px;
+    width: max-content;
+  }
+
+  .content {
+    height: 730px;
+    overflow-y: scroll;
+    border-block: revert;
+    border-block-start: var(--border-lines);
+  }
+  /* images */
+  .project-images-container {
+    flex-basis: 97%;
+  }
+
+  .preview-images-container {
+    height: 730px;
+    overflow-y: scroll;
+  }
+}
