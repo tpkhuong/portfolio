@@ -5,6 +5,12 @@ import LogoNavbarContainer from "../../../Components/Shared/LogoNavbar";
 import MobileMenu from "../../../Components/Shared/MobileMenu";
 import Main from "../../../Components/Shared/Main";
 import Footer from "../../../Components/Shared/Footer";
+import { debounce } from "../../../Components/Home/Carousel";
+import {
+  BackTopArrow,
+  TopScreenSpan,
+  isScrolledElementInView,
+} from "../../../Components/Shared/BackTop/BackTop";
 import { server } from "../../../config/index";
 import { GoTriangleDown, GoLinkExternal, GoMarkGithub } from "react-icons/go";
 import { IoClose } from "react-icons/io5";
@@ -12,6 +18,48 @@ import axios from "axios";
 
 export default function SingleProject({ children, data }) {
   console.log(data, "app in single project component");
+  React.useEffect(() => {
+    // mobile scroll to top add event to window
+    if (window.innerWidth <= 375) {
+      const mobileScrollWatcher = debounce(function watchTableElement() {
+        console.log(
+          isScrolledElementInView(
+            document.getElementById("mobile-element-watcher"),
+            window,
+            0
+          )
+        );
+      }, 80);
+
+      window.addEventListener("scroll", mobileScrollWatcher);
+
+      return function mobileCleanUp() {
+        window.removeEventListener("scroll", mobileScrollWatcher);
+      };
+    }
+    // desktop scroll to top add event to scroll container
+    if (window.innerWidth >= 1440) {
+      const desktopScrollWatcher = debounce(function watchSpanElement() {
+        console.log(
+          isScrolledElementInView(
+            document.getElementById("desktop-element-watcher"),
+            window,
+            80
+          )
+        );
+      }, 80);
+
+      document
+        .getElementById("single-project-scroll")
+        .addEventListener("scroll", desktopScrollWatcher);
+
+      return function desktopCleanUp() {
+        document
+          .getElementById("single-project-scroll")
+          .removeEventListener("scroll", desktopScrollWatcher);
+      };
+    }
+  }, []);
   return (
     <React.Fragment>
       <Head>
@@ -25,6 +73,10 @@ export default function SingleProject({ children, data }) {
       <a href="#main-content" className="skip-link">
         Skip to Main Content
       </a>
+      <TopScreenSpan
+        isMobile="true"
+        hrefValue="mobile-single-project-top-screen"
+      />
       <LogoNavbarContainer pageName="projects" />
       <header className={SingleProjectStyles[`header`]} role="banner"></header>
       <Main>
@@ -45,7 +97,10 @@ export default function SingleProject({ children, data }) {
                 <GoTriangleDown
                   className={SingleProjectStyles[`triangle-down`]}
                 />
-                <span className={SingleProjectStyles[`tab-content`]}>
+                <span
+                  id="mobile-element-watcher"
+                  className={SingleProjectStyles[`tab-content`]}
+                >
                   Table of Contents
                 </span>
               </div>
@@ -142,10 +197,21 @@ export default function SingleProject({ children, data }) {
                   <IoClose className={SingleProjectStyles[`close-icon`]} />
                 </a>
               </div>
-              <div className={SingleProjectStyles[`content`]}>
+              <div
+                id="single-project-scroll"
+                className={SingleProjectStyles[`content`]}
+              >
+                <TopScreenSpan
+                  isDesktop="true"
+                  hrefValue="desktop-single-project-top-screen"
+                />
                 {/* title */}
+                <span
+                  className="visually-hidden"
+                  id="desktop-element-watcher"
+                ></span>
                 <h1
-                  id={data.title}
+                  id="project-title"
                   className={SingleProjectStyles[`main-title`]}
                 >
                   {data.title}
@@ -282,6 +348,11 @@ export default function SingleProject({ children, data }) {
                     return <p key={Math.random() * index}>{text}</p>;
                   })}
                 </div>
+                <BackTopArrow
+                  isDeaktop="true"
+                  id="desktop-single-project-backtop"
+                  hrefValue="desktop-single-project-top-screen"
+                />
               </div>
 
               {/* individual project content */}
@@ -313,10 +384,14 @@ export default function SingleProject({ children, data }) {
       </Main>
       <MobileMenu />
       <Footer />
+      <BackTopArrow
+        isMobile="true"
+        id="mobile-single-project-backtop"
+        hrefValue="mobile-single-project-top-screen"
+      />
     </React.Fragment>
   );
 }
-
 // export async function getStaticPaths() {
 //   const projectPaths = [
 //     ["projects", "first"],

@@ -22,7 +22,6 @@
 .links-tab-container,
 .work-flow-tab-container {
   color: var(--color-neutral-white);
-  font-weight: 500;
   display: flex;
   gap: 10px;
   align-items: center;
@@ -56,7 +55,7 @@
 
 .toc-title a,
 .toc-subtitle a {
-  font-weight: 600;
+  /* font-weight: 600; */
   position: relative;
   display: inline-block;
 }
@@ -137,7 +136,7 @@
 }
 
 .tab-content {
-  font-weight: 600;
+  /* font-weight: 600; */
   font-size: var(--font-size-18px);
 }
 
@@ -180,7 +179,7 @@
 
 .images-tab-content {
   font-size: var(--font-size-18px);
-  font-weight: 600;
+  /* font-weight: 600; */
 }
 
 .preview-images-container {
@@ -205,9 +204,7 @@
   }
   /* sidebar */
   .toc-links-work-flow-container {
-    flex-basis: 50%;
-    height: 730px;
-    overflow-y: scroll;
+    flex-basis: 59%;
   }
   /* toc */
   /* project links */
@@ -215,6 +212,11 @@
 
   .work-flow-container {
     border-bottom: revert;
+  }
+
+  .work-flow-content-container {
+    height: 215px;
+    overflow-y: scroll;
   }
 
   /* main */
