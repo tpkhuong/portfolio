@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import ContantStyles from "../../styles/ContantMe.Module.css";
+import ContactStyles from "../../styles/ContantMe.Module.css";
 import LogoNavbarContainer from "../../Components/Shared/LogoNavbar";
 import MobileMenu from "../../Components/Shared/MobileMenu";
 import Main from "../../Components/Shared/Main";

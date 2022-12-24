@@ -241,6 +241,11 @@
     overflow-y: scroll;
     border-block: revert;
     border-block-start: var(--border-lines);
+    position: relative;
+  }
+
+  .span-desktop-watcher {
+    height: 2px;
   }
   /* images */
   .project-images-container {

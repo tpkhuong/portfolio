@@ -15,20 +15,38 @@ import { server } from "../../../config/index";
 import { GoTriangleDown, GoLinkExternal, GoMarkGithub } from "react-icons/go";
 import { IoClose } from "react-icons/io5";
 import axios from "axios";
-
+// data-backtopbtnshown
 export default function SingleProject({ children, data }) {
-  console.log(data, "app in single project component");
+  // console.log(data, "app in single project component");
   React.useEffect(() => {
     // mobile scroll to top add event to window
     if (window.innerWidth <= 375) {
       const mobileScrollWatcher = debounce(function watchTableElement() {
-        console.log(
-          isScrolledElementInView(
+        if (
+          !isScrolledElementInView(
             document.getElementById("mobile-element-watcher"),
             window,
             0
           )
-        );
+        ) {
+          console.log("false");
+          document
+            .getElementById("mobile-single-project-backtop")
+            .getAttribute("data-backtopbtnshown") == "false"
+            ? document
+                .getElementById("mobile-single-project-backtop")
+                .setAttribute("data-backtopbtnshown", "true")
+            : null;
+        } else {
+          console.log("true");
+          document
+            .getElementById("mobile-single-project-backtop")
+            .getAttribute("data-backtopbtnshown") == "true"
+            ? document
+                .getElementById("mobile-single-project-backtop")
+                .setAttribute("data-backtopbtnshown", "false")
+            : null;
+        }
       }, 80);
 
       window.addEventListener("scroll", mobileScrollWatcher);
@@ -40,13 +58,32 @@ export default function SingleProject({ children, data }) {
     // desktop scroll to top add event to scroll container
     if (window.innerWidth >= 1440) {
       const desktopScrollWatcher = debounce(function watchSpanElement() {
-        console.log(
-          isScrolledElementInView(
-            document.getElementById("desktop-element-watcher"),
+        if (
+          !isScrolledElementInView(
+            document.getElementById("project-title"),
             window,
-            80
+            0
           )
-        );
+        ) {
+          console.log("false");
+
+          document
+            .getElementById("desktop-single-project-backtop")
+            .getAttribute("data-backtopbtnshown") == "false"
+            ? document
+                .getElementById("desktop-single-project-backtop")
+                .setAttribute("data-backtopbtnshown", "true")
+            : null;
+        } else {
+          console.log("true");
+          document
+            .getElementById("desktop-single-project-backtop")
+            .getAttribute("data-backtopbtnshown") == "true"
+            ? document
+                .getElementById("desktop-single-project-backtop")
+                .setAttribute("data-backtopbtnshown", "false")
+            : null;
+        }
       }, 80);
 
       document
@@ -206,10 +243,6 @@ export default function SingleProject({ children, data }) {
                   hrefValue="desktop-single-project-top-screen"
                 />
                 {/* title */}
-                <span
-                  className="visually-hidden"
-                  id="desktop-element-watcher"
-                ></span>
                 <h1
                   id="project-title"
                   className={SingleProjectStyles[`main-title`]}
@@ -350,7 +383,8 @@ export default function SingleProject({ children, data }) {
                 </div>
                 <BackTopArrow
                   isDeaktop="true"
-                  id="desktop-single-project-backtop"
+                  currentPage="singleprojectpage"
+                  idAttr="desktop-single-project-backtop"
                   hrefValue="desktop-single-project-top-screen"
                 />
               </div>
@@ -386,7 +420,7 @@ export default function SingleProject({ children, data }) {
       <Footer />
       <BackTopArrow
         isMobile="true"
-        id="mobile-single-project-backtop"
+        idAttr="mobile-single-project-backtop"
         hrefValue="mobile-single-project-top-screen"
       />
     </React.Fragment>
