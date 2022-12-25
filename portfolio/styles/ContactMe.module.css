@@ -1,0 +1,57 @@
+/* mobile */
+
+/* aside */
+
+/* tab container */
+
+.tab-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-block-end: var(--border-lines);
+  padding-block: 9.3px;
+  padding-inline-start: 18px;
+}
+
+.triangle-down {
+  fill: var(--color-neutral-white);
+  width: 20px;
+}
+
+.text {
+  color: var(--color-neutral-white);
+  font-size: var(--font-size-18px);
+  font-weight: 400;
+}
+
+.tab-content {
+  padding: 18px;
+  padding-inline-start: 28px;
+}
+
+.email-container:hover path:not([fill="none"]),
+.email-container:focus path:not([fill="none"]),
+.phone-container:hover path,
+.phone-container:focus path {
+  fill: var(--color-neutral-white);
+}
+
+.email-container:hover span,
+.email-container:focus span,
+.phone-container:hover span,
+.phone-container:focus span {
+  color: var(--color-neutral-white);
+}
+
+.email-container {
+  display: inline-block;
+  margin-block-end: 16px;
+}
+
+.email-container,
+.phone-container {
+  display: flex;
+  gap: 10px;
+}
+
+/* desktop */

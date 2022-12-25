@@ -261,14 +261,20 @@ export default function ResumeInfo({ children, ...props }) {
           </div>
           <div className={ResumeStyles[`contact-info`]}>
             {/* email */}
-            <a href="https://tpkhuong@gmail.com">
+            <a
+              className={ResumeStyles[`resume-email-container`]}
+              href="https://tpkhuong@gmail.com"
+            >
               {/* icon */}
               <MdEmail className={ResumeStyles[`contact-email-icon`]} />
               {/* text */}
               <span>user@gmail.com</span>
             </a>
             {/* phone */}
-            <a href="tel:3233849875">
+            <a
+              className={ResumeStyles[`resume-phone-container`]}
+              href="tel:3233849875"
+            >
               <FaPhoneAlt className={ResumeStyles[`contact-phone-icon`]} />
               <span>323-384-9875</span>
             </a>

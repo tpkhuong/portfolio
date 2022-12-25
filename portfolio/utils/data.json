@@ -117,7 +117,120 @@
       ]
     },
     "second": {
-      "title": "world"
+      "title": "world",
+      "sidebar": {
+        "toc": [
+          {
+            "content": "Instructions",
+            "typeOfTitle": "title",
+            "tocHref": "instructions"
+          },
+          {
+            "content": "Users should be able to",
+            "typeOfTitle": "subtitle",
+            "tocHref": "users-interactions"
+          },
+          {
+            "content": "Process",
+            "typeOfTitle": "title",
+            "tocHref": "process"
+          },
+          {
+            "content": "Build with / Tech Used",
+            "typeOfTitle": "subtitle",
+            "tocHref": "tech-used"
+          },
+          {
+            "content": "Things we learned",
+            "typeOfTitle": "subtitle",
+            "tocHref": "things-learned"
+          },
+          {
+            "content": "Features Added",
+            "typeOfTitle": "subtitle",
+            "tocHref": "features"
+          },
+          {
+            "content": "Inclusion features Added",
+            "typeOfTitle": "subtitle",
+            "tocHref": "inclusion-features"
+          }
+        ],
+        "projectlinks": {
+          "live": "https://someplacecool.io",
+          "code": "https://github/projectURL.com"
+        },
+        "workflow": [
+          "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+          "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+          "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+        ]
+      },
+      "main": {
+        "instructions": {
+          "title": "_Instructions",
+          "text": [
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+          ],
+          "hrefForToc": "instructions"
+        },
+        "userable": {
+          "title": "_Users should be able to",
+          "text": [
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+          ],
+          "hrefForToc": "users-interactions"
+        },
+        "process": {
+          "title": "_Process",
+          "text": [
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+          ],
+          "hrefForToc": "process"
+        },
+        "buildtech": {
+          "title": "_Build with / Tech Used",
+          "text": [
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+          ],
+          "hrefForToc": "tech-used"
+        },
+        "learned": {
+          "title": "_Things we learned",
+          "text": [
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+          ],
+          "hrefForToc": "things-learned"
+        },
+        "features": {
+          "title": "_Features Added",
+          "text": [
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+          ],
+          "hrefForToc": "features"
+        },
+        "inclusion": {
+          "title": "_Inclusion features Added",
+          "text": [
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+          ],
+          "hrefForToc": "inclusion-features"
+        }
+      },
+      "images": [
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image1" },
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "images2" },
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image3" },
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image4" }
+      ]
     },
     "third": {
       "title": "this is js"

@@ -114,8 +114,9 @@ export default function SingleProject({ children, data }) {
         isMobile="true"
         hrefValue="mobile-single-project-top-screen"
       />
-      <LogoNavbarContainer pageName="projects" />
-      <header className={SingleProjectStyles[`header`]} role="banner"></header>
+      <header className={SingleProjectStyles[`header`]} role="banner">
+        <LogoNavbarContainer pageName="projects" />
+      </header>
       <Main>
         <div
           className={

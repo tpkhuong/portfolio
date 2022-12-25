@@ -112,6 +112,11 @@
   padding-inline-start: var(--btn-file-padding-left);
 }
 
+.selector-btn:hover .file-right-icon,
+.selector-btn:focus .file-right-icon {
+  fill: var(--color-neutral-white);
+}
+
 .selector-btn {
   display: flex;
   gap: 10px;
@@ -124,6 +129,20 @@
 
 .contact-container .arrow-text-container {
   border-block-end: var(--border-lines);
+}
+
+.resume-email-container:hover path:not([fill="none"]),
+.resume-email-container:focus path:not([fill="none"]),
+.resume-phone-container:hover path,
+.resume-phone-container:focus path {
+  fill: var(--color-neutral-white);
+}
+
+.resume-email-container:hover span,
+.resume-email-container:focus span,
+.resume-phone-container:hover span,
+.resume-phone-container:focus span {
+  color: var(--color-neutral-white);
 }
 
 .contact-info a {

@@ -45,12 +45,6 @@ export default function AboutMe({ children, ...props }) {
         isMobile="true"
         hrefValue="aboutme-mobile-to-top-screen"
       />
-      {/* LearnAboutme-Selection */}
-      {/* Selector */}
-      {/* Passion */}
-      {/* Professional */}
-      {/* Skills */}
-      {/* Snippet Showcase */}
     </React.Fragment>
   );
 }
