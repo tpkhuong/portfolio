@@ -1,0 +1,27 @@
+/* mobile */
+
+.inputs-sent-message-container > * + * {
+  margin-block-start: 16px;
+}
+
+.label-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.label-input-container input,
+.label-input-container textarea {
+  background-color: hsl(208, 84%, 5%);
+  border: var(--border-lines);
+  border-radius: 4px;
+}
+
+.submit-btn {
+  color: var(--color-neutral-white);
+  background-color: var(--color-default-button);
+  border-radius: 4px;
+}
+
+/* desktop */
+/* --color-default-button */

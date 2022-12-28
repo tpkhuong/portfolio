@@ -27,6 +27,7 @@
 .tab-content {
   padding: 18px;
   padding-inline-start: 28px;
+  border-block-end: var(--border-lines);
 }
 
 .email-container:hover path:not([fill="none"]),
@@ -55,3 +56,8 @@
 }
 
 /* desktop */
+@media screen and (min-width: 90rem) {
+  .tab-content {
+    border-block-end: revert;
+  }
+}
