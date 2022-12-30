@@ -8,6 +8,7 @@ export default function MessageInputs({ children }) {
       <form
         role="form"
         data-showmodal="false"
+        id="inputs-form"
         className={InputsStyles[`inputs-sent-message-container`]}
       >
         {/* inputs */}
@@ -32,13 +33,16 @@ export default function MessageInputs({ children }) {
           type="button"
           onClick={(event) => {
             if (!showModal) {
+              // hide form
+              document
+                .getElementById("inputs-form")
+                .getAttribute("data-showmodal") == "false"
+                ? document
+                    .getElementById("inputs-form")
+                    .setAttribute("data-showmodal", "true")
+                : null;
               // show modal
               setModalState(true);
-              return;
-            }
-            if (showModal) {
-              // hide modal
-              setModalState(false);
               return;
             }
           }}
@@ -52,13 +56,13 @@ export default function MessageInputs({ children }) {
         {/* modal container */}
       </form>
       {showModal ? (
-        <SentMessageModal hideModalFunc={{ showModal, setModalState }} />
+        <SentMessageModal hideModalFuncObj={{ showModal, setModalState }} />
       ) : null}
     </div>
   );
 }
 
-function SentMessageModal({ children, hideModalFunc }) {
+function SentMessageModal({ children, hideModalFuncObj }) {
   return (
     <div className={InputsStyles[`sent-message-modal-container`]}>
       {/* modal */}
@@ -70,8 +74,21 @@ function SentMessageModal({ children, hideModalFunc }) {
         </p>
         <button
           onClick={(event) => {
-            console.log(hideModalFunc.showModal);
-            console.log(hideModalFunc.setModalState);
+            console.log(hideModalFuncObj.showModal);
+            console.log(hideModalFuncObj.setModalState);
+            if (hideModalFuncObj.showModal) {
+              // show form
+              document
+                .getElementById("inputs-form")
+                .getAttribute("data-showmodal") == "true"
+                ? document
+                    .getElementById("inputs-form")
+                    .setAttribute("data-showmodal", "false")
+                : null;
+              // hide modal
+              setModalState(false);
+              return;
+            }
           }}
           className={InputsStyles[`new-message-btn`]}
           role="button"
@@ -79,6 +96,7 @@ function SentMessageModal({ children, hideModalFunc }) {
           send-new-message
         </button>
       </div>
+      <div className={InputsStyles} id="hello"></div>
     </div>
   );
 }
