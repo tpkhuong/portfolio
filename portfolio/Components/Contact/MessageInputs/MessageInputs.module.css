@@ -6,15 +6,15 @@
 
 .inputs-sent-message-container {
   padding: 18px;
-  padding-block: 36px;
+  /* padding-block: 36px; */
 }
 
 .inputs-sent-message-container > * + * {
   margin-block-start: 16px;
 }
 
-.margin-block-start-42px {
-  margin-block-start: 42px;
+.margin-block-start-large {
+  margin-block-start: 32px;
 }
 
 .label-input-container {
@@ -35,12 +35,19 @@
   border-color: red;
 }
 
+.submit-btn {
+  padding: 9px;
+}
+
+.new-message-btn {
+  padding: 16px;
+}
+
 .submit-btn,
 .new-message-btn {
   color: var(--color-neutral-white);
   background-color: var(--color-default-button);
   border-radius: 4px;
-  padding: 16px;
   padding-inline: 24px;
 }
 
@@ -48,7 +55,7 @@
 
 .sent-message-modal-container {
   padding: 18px;
-  padding-block-start: 125px;
+  padding-block-start: 130px;
   padding-block-end: 58.2%;
   text-align: center;
 }
@@ -60,4 +67,23 @@
 }
 
 /* desktop */
-/* --color-default-button */
+
+@media screen and (min-width: 90rem) {
+  .inputs-modal-container {
+    border-inline-end: var(--border-lines);
+  }
+  .inputs-sent-message-container {
+    padding: 94px;
+    padding-block: 115px;
+  }
+
+  .sent-message-modal-container {
+    padding: 82px;
+    padding-block: 273px;
+  }
+
+  .description {
+    margin-block: 42px;
+    margin-block-start: 14px;
+  }
+}

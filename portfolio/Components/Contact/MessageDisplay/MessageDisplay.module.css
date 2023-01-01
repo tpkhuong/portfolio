@@ -1,7 +1,12 @@
 /* mobile */
 
-.message-display-container {
-  display: none;
+@media screen and (max-width: 23.625rem) {
+  .message-display-container {
+    display: none;
+  }
 }
 
 /* desktop */
+
+@media screen and (min-width: 90rem) {
+}

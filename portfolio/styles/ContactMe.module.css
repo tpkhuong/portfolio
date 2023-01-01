@@ -25,7 +25,7 @@
 }
 
 .tab-content {
-  padding: 18px;
+  padding: 16px;
   padding-inline-start: 28px;
   border-block-end: var(--border-lines);
 }
@@ -57,6 +57,21 @@
 
 /* desktop */
 @media screen and (min-width: 90rem) {
+  .contact-input-display-container {
+    display: grid;
+    grid-template-columns: 1fr 80.7%;
+    padding-inline-start: 36px;
+  }
+
+  .message-inputs-display-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contact-tab-container {
+    border-inline: var(--border-lines);
+  }
+
   .tab-content {
     border-block-end: revert;
   }

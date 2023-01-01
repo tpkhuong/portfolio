@@ -35,7 +35,7 @@ export default function Contact({ children }) {
         <LogoNavbarContainer pageName="contactme" />
       </header>
       <Main>
-        <div>
+        <div className={ContactStyles[`contact-input-display-container`]}>
           {/* sidebar */}
           <aside
             className={ContactStyles[`contact-tab-container`]}

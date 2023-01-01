@@ -22,7 +22,7 @@ export default function MessageInputs({ children }) {
         </div>
         <div
           className={`${InputsStyles[`label-input-container`]} ${
-            InputsStyles[`margin-block-start-42px`]
+            InputsStyles[`margin-block-start-large`]
           }`}
         >
           <label htmlFor="message">_message:</label>
@@ -70,7 +70,7 @@ function SentMessageModal({ children, hideModalFuncObj }) {
         <h2 className="visually-hidden">Message Sent</h2>
         <h2 className={InputsStyles[`title`]}>Thank You!</h2>
         <p className={InputsStyles[`description`]}>
-          Your message has been accepted. You will recieve answer really soon!
+          Your message has been accepted. You will receive answer really soon!
         </p>
         <button
           onClick={(event) => {
@@ -86,7 +86,7 @@ function SentMessageModal({ children, hideModalFuncObj }) {
                     .setAttribute("data-showmodal", "false")
                 : null;
               // hide modal
-              setModalState(false);
+              hideModalFuncObj.setModalState(false);
               return;
             }
           }}
