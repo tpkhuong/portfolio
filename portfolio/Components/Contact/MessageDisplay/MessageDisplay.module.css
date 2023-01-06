@@ -1,4 +1,67 @@
 /* mobile */
+/* var(--color-js-let-const-properties) */
+/* var(--color-js-variable) */
+/* var(--color-curly-bracket) */
+/* var(--color-css-declaration-js-obj-access) */
+/* var(--color-js-obj-value) */
+
+.message-display-container{
+  --js-const-obj-property:var(--color-js-let-const-properties);
+  --js-variable:var(--color-js-variable);
+  --document-button-form: var(--color-css-declaration-js-obj-access);
+  --js-obj:var(--color-js-obj-value);
+  --quote:var(--color-js-quote);
+  --parentheses-bracket:var(--color-js-let-const-properties);
+  --curly-bracket:var(--color-curly-bracket);
+}
+
+.const-obj-prop{
+  color: var(--js-const-obj-property);
+}
+
+.variable{
+  color: var(--js-variable);
+}
+
+.document-button-form{
+color: var(--document-button-form);
+}
+
+.selector-property-content{
+color: var(--js-obj);
+}
+
+.parentheses{
+  color: yellow;
+}
+
+.curly{
+  color: var(--curly-bracket);
+}
+
+.quote{
+  color: var(--quote);
+}
+
+.white-text{
+  color: var(--color-neutral-white);
+}
+
+.margin-inline-end{
+  margin-inline-end: 10px;
+}
+
+.padding-inline-start-small{
+  padding-inline-start: 16px;
+}
+
+.padding-inline-start-medium{
+  padding-inline-start: 20px;
+}
+
+.margin-block-start-start{
+  margin-block-start: 6px;
+}
 
 @media screen and (max-width: 23.625rem) {
   .message-display-container {
@@ -9,4 +72,23 @@
 /* desktop */
 
 @media screen and (min-width: 90rem) {
+  .code-line{
+    position: relative;
+  }
+  .code-line::before{
+    content: attr(data-linenumber);
+    color: var(--color-main-text);
+    position: absolute;
+    left: -42px;
+  }
+
+  .hide{
+    opacity: 0;
+  }
+  .message-display-container {
+    height: 777.2px;
+    overflow-y: scroll;
+    padding: 92px;
+    padding-block: 134.6px;
+  }
 }

@@ -97,7 +97,6 @@ export default function ResumeInfo({ children, ...props }) {
             {/* hide at mobile size */}
             <h2 id="file-selector-tab">Info Selector</h2>
           </div>
-
           {/* selectors-container */}
           <div
             className={ResumeStyles[`selectors-container`]}

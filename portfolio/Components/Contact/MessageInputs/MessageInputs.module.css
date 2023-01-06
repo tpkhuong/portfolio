@@ -69,11 +69,14 @@
 /* desktop */
 
 @media screen and (min-width: 90rem) {
+  .min-width{
+    min-width: 350px;
+  }
   .inputs-modal-container {
     border-inline-end: var(--border-lines);
   }
   .inputs-sent-message-container {
-    padding: 94px;
+    padding: 64px;
     padding-block: 134.6px;
   }
 

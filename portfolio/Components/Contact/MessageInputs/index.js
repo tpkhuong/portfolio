@@ -12,7 +12,7 @@ export default function MessageInputs({ children }) {
         className={InputsStyles[`inputs-sent-message-container`]}
       >
         {/* inputs */}
-        <div className={InputsStyles[`label-input-container`]}>
+        <div className={`${InputsStyles[`label-input-container`]} ${InputsStyles[`min-width`]}`}>
           <label htmlFor="name">_name:</label>
           <input id="name" type="text" />
         </div>

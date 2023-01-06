@@ -59,13 +59,13 @@
 @media screen and (min-width: 90rem) {
   .contact-input-display-container {
     display: grid;
-    grid-template-columns: 1fr 80.7%;
-    padding-inline-start: 36px;
+    grid-template-columns: 1fr 78.7%;
+    /* padding-inline-start: 36px; */
   }
 
   .message-inputs-display-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr auto;
   }
 
   .contact-tab-container {
