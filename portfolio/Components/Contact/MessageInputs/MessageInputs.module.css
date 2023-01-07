@@ -44,7 +44,8 @@
 }
 
 .submit-btn,
-.new-message-btn {
+.new-message-btn,
+.clear-btn {
   color: var(--color-neutral-white);
   background-color: var(--color-default-button);
   border-radius: 4px;
@@ -72,12 +73,20 @@
   .min-width{
     min-width: 350px;
   }
+
   .inputs-modal-container {
     border-inline-end: var(--border-lines);
   }
+
   .inputs-sent-message-container {
-    padding: 64px;
+    padding: 50px;
     padding-block: 134.6px;
+  }
+
+  .submit-clear-btns-container{
+    display: grid;
+    grid-auto-flow: column;
+    gap: 24px;
   }
 
   .sent-message-modal-container {

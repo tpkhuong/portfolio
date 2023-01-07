@@ -1,8 +1,27 @@
 import React from "react";
 import InputsStyles from "./MessageInputs.module.css";
+import { updateMessageDisplayContent } from "../MessageDisplay/messageDisplayHelpers";
 
 export default function MessageInputs({ children }) {
   const [showModal, setModalState] = React.useState(false);
+  React.useEffect(()=>{
+    // name
+    const nameDisplay = updateMessageDisplayContent.bind({contentElement:document.getElementById("name-content")});
+    // email
+    const emailDisplay = updateMessageDisplayContent.bind({contentElement:document.getElementById("email-content")});
+    // message
+    const messageDisplay = updateMessageDisplayContent.bind({contentElement:document.getElementById("message-content")});
+
+    document.getElementById("name").addEventListener("keyup", nameDisplay);
+    document.getElementById("email").addEventListener("keyup", emailDisplay);
+    document.getElementById("message").addEventListener("keyup", messageDisplay);
+    
+    return function cleanUp(){
+      document.getElementById("name").removeEventListener("keyup", nameDisplay);
+      document.getElementById("email").removeEventListener("keyup", emailDisplay);
+      document.getElementById("message").removeEventListener("keyup", messageDisplay);
+    }
+  },[])
   return (
     <div className={InputsStyles[`inputs-modal-container`]}>
       <form
@@ -29,28 +48,37 @@ export default function MessageInputs({ children }) {
           <textarea name="" id="message" cols="30" rows="10"></textarea>
         </div>
         {/* sent message */}
-        <button
-          type="button"
-          onClick={(event) => {
-            if (!showModal) {
-              // hide form
-              document
-                .getElementById("inputs-form")
-                .getAttribute("data-showmodal") == "false"
-                ? document
-                    .getElementById("inputs-form")
-                    .setAttribute("data-showmodal", "true")
-                : null;
-              // show modal
-              setModalState(true);
-              return;
-            }
-          }}
-          className={InputsStyles[`submit-btn`]}
-          aria-label="submit message"
-        >
-          submit-message
-        </button>
+        <div className={InputsStyles[`submit-clear-btns-container`]}>
+          {/* submit */}
+          <button
+            type="button"
+            onClick={(event) => {
+              if (!showModal) {
+                // reset input to empty strings
+                // hide form
+                document
+                  .getElementById("inputs-form")
+                  .getAttribute("data-showmodal") == "false"
+                  ? document
+                      .getElementById("inputs-form")
+                      .setAttribute("data-showmodal", "true")
+                  : null;
+                // show modal
+                setModalState(true);
+                return;
+              }
+            }}
+            className={InputsStyles[`submit-btn`]}
+            aria-label="submit message"
+          >
+            submit-message
+          </button>
+          {/* clear */}
+          <button className={InputsStyles[`clear-btn`]} type="button" aria-label="clear inputs">
+              clear-inputs
+          </button>
+        </div>
+        {/* add clear inputs btn */}
         {/* <div className={InputsStyles[`button-modal-container`]}>
         </div> */}
         {/* modal container */}
@@ -77,6 +105,7 @@ function SentMessageModal({ children, hideModalFuncObj }) {
             console.log(hideModalFuncObj.showModal);
             console.log(hideModalFuncObj.setModalState);
             if (hideModalFuncObj.showModal) {
+              // reset message display to default
               // show form
               document
                 .getElementById("inputs-form")

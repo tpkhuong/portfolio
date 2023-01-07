@@ -88,7 +88,8 @@ color: var(--js-obj);
   .message-display-container {
     height: 777.2px;
     overflow-y: scroll;
-    padding: 92px;
+    padding: 84px;
     padding-block: 134.6px;
+    padding-block-start: 165px;
   }
 }
