@@ -19,7 +19,9 @@ export default async function projectHandler(req, res) {
 
   console.log(projects[req.query.project], "projects[req.query.project]");
 
-  res.status(200).json(projects[req.query.project]);
+  res
+    .status(200)
+    .json({ flow: projects.workflow, project: projects[req.query.project] });
 }
 
 // [projects] dir

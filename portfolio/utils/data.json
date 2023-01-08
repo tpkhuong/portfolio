@@ -1,5 +1,14 @@
 {
   "projects": {
+    "workflow": [
+      "Every project starts the same way. Before we start coding, we go through the design of the web site with our pen and paper.",
+      "Looking at mobile and desktop layout of every page of the web site and we build the structure of the web page. The HTML file.",
+      "We break down each page into small sections then we break down each small sections into smaller components.",
+      "When we are making our small components for each page, we are thinking of which HTML element is best for each components.",
+      "Once we have a solid HTML structure of our web site and we decide the Tech Stack we want to use, we start coding.",
+      "The coding process starts with building the project file structure.",
+      "After the project file structure is complete, we start coding the structure of the web page, HTML code then the styles (CSS code) then function/behavior of the web site (JavaScript)."
+    ],
     "first": {
       "title": "_Project1",
       "sidebar": {
@@ -43,12 +52,7 @@
         "projectlinks": {
           "live": "https://someplacecool.io",
           "code": "https://github/projectURL.com"
-        },
-        "workflow": [
-          "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
-          "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
-          "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
-        ]
+        }
       },
       "main": {
         "instructions": {
@@ -159,12 +163,7 @@
         "projectlinks": {
           "live": "https://someplacecool.io",
           "code": "https://github/projectURL.com"
-        },
-        "workflow": [
-          "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
-          "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
-          "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
-        ]
+        }
       },
       "main": {
         "instructions": {

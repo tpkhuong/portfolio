@@ -18,6 +18,7 @@ import axios from "axios";
 // data-backtopbtnshown
 export default function SingleProject({ children, data }) {
   // console.log(data, "app in single project component");
+  console.log(data.flow);
   React.useEffect(() => {
     // mobile scroll to top add event to window
     if (window.innerWidth <= 375) {
@@ -100,7 +101,7 @@ export default function SingleProject({ children, data }) {
   return (
     <React.Fragment>
       <Head>
-        <title>{data.title}</title>
+        <title>{data.project.title}</title>
         <link
           rel="shortcut icon"
           href="/favicon-32x32.png"
@@ -143,7 +144,10 @@ export default function SingleProject({ children, data }) {
                 </span>
               </div>
               <ul className={SingleProjectStyles[`toc-content-container`]}>
-                {data.sidebar.toc.map(function tableOfContent(tableObj, index) {
+                {data.project.sidebar.toc.map(function tableOfContent(
+                  tableObj,
+                  index
+                ) {
                   return (
                     <li
                       className={
@@ -170,7 +174,7 @@ export default function SingleProject({ children, data }) {
               <div className={SingleProjectStyles[`links-content-container`]}>
                 <a
                   className={SingleProjectStyles[`link-container`]}
-                  href={data.sidebar.projectlinks.live}
+                  href={data.project.sidebar.projectlinks.live}
                 >
                   <span className={SingleProjectStyles[`link-icon`]}>
                     <GoLinkExternal />
@@ -181,7 +185,7 @@ export default function SingleProject({ children, data }) {
                 </a>
                 <a
                   className={SingleProjectStyles[`link-container`]}
-                  href={data.sidebar.projectlinks.code}
+                  href={data.project.sidebar.projectlinks.code}
                 >
                   <span className={SingleProjectStyles[`link-icon`]}>
                     <GoMarkGithub />
@@ -205,10 +209,7 @@ export default function SingleProject({ children, data }) {
               <div
                 className={SingleProjectStyles[`work-flow-content-container`]}
               >
-                {data.sidebar.workflow.map(function makeParagraph(
-                  paragraph,
-                  index
-                ) {
+                {data.flow.map(function makeParagraph(paragraph, index) {
                   return <p key={Math.random() * index}>{paragraph}</p>;
                 })}
               </div>
@@ -248,21 +249,21 @@ export default function SingleProject({ children, data }) {
                   id="project-title"
                   className={SingleProjectStyles[`main-title`]}
                 >
-                  {data.title}
+                  {data.project.title}
                 </h1>
 
                 {/* instructions */}
                 <h2
-                  id={data.main.instructions.hrefForToc}
+                  id={data.project.main.instructions.hrefForToc}
                   className={`${SingleProjectStyles[`content-title`]} ${
                     SingleProjectStyles[`space-bottom`]
                   }`}
                 >
-                  {data.main.instructions.title}
+                  {data.project.main.instructions.title}
                 </h2>
 
                 <div className={SingleProjectStyles[`paragraphs-wrapper`]}>
-                  {data.main.instructions.text.map(
+                  {data.project.main.instructions.text.map(
                     function makeInstructionsParagraph(text, index) {
                       return <p key={Math.random() * index}>{text}</p>;
                     }
@@ -271,116 +272,110 @@ export default function SingleProject({ children, data }) {
 
                 {/* users should be */}
                 <h3
-                  id={data.main.userable.hrefForToc}
+                  id={data.project.main.userable.hrefForToc}
                   className={`${SingleProjectStyles[`content-subtitle`]} ${
                     SingleProjectStyles[`space-vertical`]
                   }`}
                 >
-                  {data.main.userable.title}
+                  {data.project.main.userable.title}
                 </h3>
 
                 <div className={SingleProjectStyles[`paragraphs-wrapper`]}>
-                  {data.main.userable.text.map(function makeUserableParagraph(
-                    text,
-                    index
-                  ) {
-                    return <p key={Math.random() * index}>{text}</p>;
-                  })}
+                  {data.project.main.userable.text.map(
+                    function makeUserableParagraph(text, index) {
+                      return <p key={Math.random() * index}>{text}</p>;
+                    }
+                  )}
                 </div>
 
                 {/* process */}
                 <h2
-                  id={data.main.process.hrefForToc}
+                  id={data.project.main.process.hrefForToc}
                   className={`${SingleProjectStyles[`content-title`]} ${
                     SingleProjectStyles[`space-vertical`]
                   }`}
                 >
-                  {data.main.process.title}
+                  {data.project.main.process.title}
                 </h2>
 
                 <div className={SingleProjectStyles[`paragraphs-wrapper`]}>
-                  {data.main.process.text.map(function makeProcessParagraph(
-                    text,
-                    index
-                  ) {
-                    return <p key={Math.random() * index}>{text}</p>;
-                  })}
+                  {data.project.main.process.text.map(
+                    function makeProcessParagraph(text, index) {
+                      return <p key={Math.random() * index}>{text}</p>;
+                    }
+                  )}
                 </div>
 
                 {/* build with */}
                 <h3
-                  id={data.main.buildtech.hrefForToc}
+                  id={data.project.main.buildtech.hrefForToc}
                   className={`${SingleProjectStyles[`content-subtitle`]} ${
                     SingleProjectStyles[`space-vertical`]
                   }`}
                 >
-                  {data.main.buildtech.title}
+                  {data.project.main.buildtech.title}
                 </h3>
 
                 <div className={SingleProjectStyles[`paragraphs-wrapper`]}>
-                  {data.main.buildtech.text.map(function makeBuildtechParagraph(
-                    text,
-                    index
-                  ) {
-                    return <p key={Math.random() * index}>{text}</p>;
-                  })}
+                  {data.project.main.buildtech.text.map(
+                    function makeBuildtechParagraph(text, index) {
+                      return <p key={Math.random() * index}>{text}</p>;
+                    }
+                  )}
                 </div>
 
                 {/* things we learned */}
                 <h3
-                  id={data.main.learned.hrefForToc}
+                  id={data.project.main.learned.hrefForToc}
                   className={`${SingleProjectStyles[`content-subtitle`]} ${
                     SingleProjectStyles[`space-vertical`]
                   }`}
                 >
-                  {data.main.learned.title}
+                  {data.project.main.learned.title}
                 </h3>
 
                 <div className={SingleProjectStyles[`paragraphs-wrapper`]}>
-                  {data.main.learned.text.map(function makeLearnedParagraph(
-                    text,
-                    index
-                  ) {
-                    return <p key={Math.random() * index}>{text}</p>;
-                  })}
+                  {data.project.main.learned.text.map(
+                    function makeLearnedParagraph(text, index) {
+                      return <p key={Math.random() * index}>{text}</p>;
+                    }
+                  )}
                 </div>
 
                 {/* features added */}
                 <h3
-                  id={data.main.features.hrefForToc}
+                  id={data.project.main.features.hrefForToc}
                   className={`${SingleProjectStyles[`content-subtitle`]} ${
                     SingleProjectStyles[`space-vertical`]
                   }`}
                 >
-                  {data.main.features.title}
+                  {data.project.main.features.title}
                 </h3>
 
                 <div className={SingleProjectStyles[`paragraphs-wrapper`]}>
-                  {data.main.features.text.map(function makeFeaturesParagraph(
-                    text,
-                    index
-                  ) {
-                    return <p key={Math.random() * index}>{text}</p>;
-                  })}
+                  {data.project.main.features.text.map(
+                    function makeFeaturesParagraph(text, index) {
+                      return <p key={Math.random() * index}>{text}</p>;
+                    }
+                  )}
                 </div>
 
                 {/* inclustion added */}
                 <h3
-                  id={data.main.inclusion.hrefForToc}
+                  id={data.project.main.inclusion.hrefForToc}
                   className={`${SingleProjectStyles[`content-subtitle`]} ${
                     SingleProjectStyles[`space-vertical`]
                   }`}
                 >
-                  {data.main.inclusion.title}
+                  {data.project.main.inclusion.title}
                 </h3>
 
                 <div className={SingleProjectStyles[`paragraphs-wrapper`]}>
-                  {data.main.inclusion.text.map(function makeInclusionParagraph(
-                    text,
-                    index
-                  ) {
-                    return <p key={Math.random() * index}>{text}</p>;
-                  })}
+                  {data.project.main.inclusion.text.map(
+                    function makeInclusionParagraph(text, index) {
+                      return <p key={Math.random() * index}>{text}</p>;
+                    }
+                  )}
                 </div>
                 <BackTopArrow
                   isDeaktop="true"
@@ -400,7 +395,7 @@ export default function SingleProject({ children, data }) {
               </div>
               {/* project images/screenshots */}
               <div className={SingleProjectStyles[`preview-images-container`]}>
-                {data.images.map(function imgContainer(obj, index) {
+                {data.project.images.map(function imgContainer(obj, index) {
                   return (
                     <div
                       key={Math.random() * index}
@@ -415,7 +410,7 @@ export default function SingleProject({ children, data }) {
           </div>
         </div>
         {/* <h2 className={SingleProjectStyles[`title`]}></h2> */}
-        {/* {`this is single project. Title is ${data.first.title}`} */}
+        {/* {`this is single project. Title is ${data.project.first.title}`} */}
       </Main>
       <MobileMenu />
       <Footer />

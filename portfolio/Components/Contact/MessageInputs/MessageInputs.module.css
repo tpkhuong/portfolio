@@ -71,7 +71,7 @@
 
 @media screen and (min-width: 90rem) {
   .min-width{
-    min-width: 350px;
+    width: 379px;
   }
 
   .inputs-modal-container {

@@ -4,24 +4,26 @@ import { updateMessageDisplayContent } from "../MessageDisplay/messageDisplayHel
 
 export default function MessageInputs({ children }) {
   const [showModal, setModalState] = React.useState(false);
-  React.useEffect(()=>{
+  React.useEffect(() => {
     // name
-    const nameDisplay = updateMessageDisplayContent.bind({contentElement:document.getElementById("name-content")});
+    const nameDisplay = updateMessageDisplayContent.bind({
+      contentElement: document.getElementById("name-content"),
+    });
     // email
-    const emailDisplay = updateMessageDisplayContent.bind({contentElement:document.getElementById("email-content")});
+    const emailDisplay = updateMessageDisplayContent.bind({
+      contentElement: document.getElementById("email-content"),
+    });
     // message
-    const messageDisplay = updateMessageDisplayContent.bind({contentElement:document.getElementById("message-content")});
+    const messageDisplay = updateMessageDisplayContent.bind({
+      contentElement: document.getElementById("message-content"),
+    });
 
     document.getElementById("name").addEventListener("keyup", nameDisplay);
     document.getElementById("email").addEventListener("keyup", emailDisplay);
-    document.getElementById("message").addEventListener("keyup", messageDisplay);
-    
-    return function cleanUp(){
-      document.getElementById("name").removeEventListener("keyup", nameDisplay);
-      document.getElementById("email").removeEventListener("keyup", emailDisplay);
-      document.getElementById("message").removeEventListener("keyup", messageDisplay);
-    }
-  },[])
+    document
+      .getElementById("message")
+      .addEventListener("keyup", messageDisplay);
+  }, []);
   return (
     <div className={InputsStyles[`inputs-modal-container`]}>
       <form
@@ -31,7 +33,11 @@ export default function MessageInputs({ children }) {
         className={InputsStyles[`inputs-sent-message-container`]}
       >
         {/* inputs */}
-        <div className={`${InputsStyles[`label-input-container`]} ${InputsStyles[`min-width`]}`}>
+        <div
+          className={`${InputsStyles[`label-input-container`]} ${
+            InputsStyles[`min-width`]
+          }`}
+        >
           <label htmlFor="name">_name:</label>
           <input id="name" type="text" />
         </div>
@@ -54,7 +60,6 @@ export default function MessageInputs({ children }) {
             type="button"
             onClick={(event) => {
               if (!showModal) {
-                // reset input to empty strings
                 // hide form
                 document
                   .getElementById("inputs-form")
@@ -63,6 +68,10 @@ export default function MessageInputs({ children }) {
                       .getElementById("inputs-form")
                       .setAttribute("data-showmodal", "true")
                   : null;
+                // reset input to empty strings
+                document.getElementById("name").value = "";
+                document.getElementById("email").value = "";
+                document.getElementById("message").value = "";
                 // show modal
                 setModalState(true);
                 return;
@@ -74,8 +83,27 @@ export default function MessageInputs({ children }) {
             submit-message
           </button>
           {/* clear */}
-          <button className={InputsStyles[`clear-btn`]} type="button" aria-label="clear inputs">
-              clear-inputs
+          <button
+            onClick={(event) => {
+              // reset inputs and display message to default
+              // name
+              document.getElementById("name").value = "";
+              document.getElementById("name-content").innerText =
+                "Hi, Awesome Person. Enter your name";
+              // email
+              document.getElementById("email").value = "";
+              document.getElementById("email-content").innerText =
+                "youareloved@byeveryone.com";
+              // message
+              document.getElementById("message").value = "";
+              document.getElementById("message-content").innerText =
+                "Enjoy your day!!!";
+            }}
+            className={InputsStyles[`clear-btn`]}
+            type="button"
+            aria-label="clear inputs"
+          >
+            clear-inputs
           </button>
         </div>
         {/* add clear inputs btn */}
@@ -106,6 +134,12 @@ function SentMessageModal({ children, hideModalFuncObj }) {
             console.log(hideModalFuncObj.setModalState);
             if (hideModalFuncObj.showModal) {
               // reset message display to default
+              document.getElementById("name-content").innerText =
+                "Hi, Awesome Person. Enter your name";
+              document.getElementById("email-content").innerText =
+                "youareloved@byeveryone.com";
+              document.getElementById("message-content").innerText =
+                "Enjoy your day!!!";
               // show form
               document
                 .getElementById("inputs-form")
