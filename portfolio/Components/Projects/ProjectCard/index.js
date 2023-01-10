@@ -23,7 +23,15 @@ export default function ProjectCard({
       data-projectorhomepage={page}
       aria-labelledby="project-title"
     >
-      <img className={ProjectCardStyles[`img`]} src={imgSrc} alt={imgText} />
+      <picture>
+        <source media="(min-width: 1440px)" srcSet={imgSrc.desktop} />
+        <img
+          className={ProjectCardStyles[`img`]}
+          src={imgSrc.mobile}
+          alt={imgText}
+        />
+      </picture>
+      {/* mobile is default */}
       <div className={ProjectCardStyles[`content-container`]}>
         <h2 id="project-title" className={ProjectCardStyles[`title`]}>
           {title}

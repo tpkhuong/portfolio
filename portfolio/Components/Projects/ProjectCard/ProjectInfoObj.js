@@ -2,13 +2,18 @@ export const arrayOfObjForProjectCard = [
   {
     homePagePosIndex: "one",
     imgInfo: {
-      imgSrc: "/tipcalculator2.jpg",
+      imgSrc: {
+        // desktop: "/tipcalculator2.jpg",
+        // mobile: "/tipcalculator2.jpg",
+        desktop: "/faq/mobile-design.jpg",
+        mobile: "/faq/desktop-design.jpg",
+      },
       altText: "Cool Things",
     },
-    title: "_Calculator-App1",
+    title: "_FAQ Accordion Card",
     tech: ["html", "css", "js", "novice"],
     description:
-      "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips Medium. nice tips.",
+      "Simple accordion style FAQ section component. Clicking on a question will reveal the answer.",
     links: {
       viewProject: "http:stuff",
       viewCode: "http:coolstuff",
@@ -18,7 +23,12 @@ export const arrayOfObjForProjectCard = [
   {
     homePagePosIndex: "two",
     imgInfo: {
-      imgSrc: "/tipcalculator2.jpg",
+      imgSrc: {
+        // desktop: "/tipcalculator2.jpg",
+        // mobile: "/tipcalculator2.jpg",
+        desktop: "/tip-calculator/mobile-design.jpg",
+        mobile: "/tip-calculator/desktop-design.jpg",
+      },
       altText: "Cool Things",
     },
     title: "_Calculator-App2",

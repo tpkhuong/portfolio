@@ -65,6 +65,19 @@
 
 /* mobile */
 
+/* .project-container {
+  border-radius: 8px;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 200px 280px;
+  flex-direction: column;
+}
+
+.project-container img {
+  height: 100%;
+  width: 100%;
+} */
+
 .project-container {
   border-radius: 8px;
   overflow: hidden;
