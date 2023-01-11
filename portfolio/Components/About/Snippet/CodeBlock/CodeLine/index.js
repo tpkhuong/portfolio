@@ -4,6 +4,7 @@ import CodeLineStyles from "./CodeLine.module.css";
 export default function CodeLine({ children, linespacer }) {
   return (
     <span
+      // linespacer is for indentation
       data-linespacer={linespacer}
       className={CodeLineStyles[`code-line-container`]}
     >

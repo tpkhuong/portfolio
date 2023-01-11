@@ -86,7 +86,8 @@
 }
 
 .project-container img {
-  max-height: 200px;
+  height: 200px;
+  width: 100%;
 }
 
 .content-container {
@@ -138,20 +139,21 @@
   /* img */
 
   [data-projectorhomepage="home"] .img {
-    /* max-width: 610px; */
+    width: 200px;
+    height: 350px;
   }
 
   /* content container */
 
   [data-projectorhomepage="home"] .content-container {
     width: 100%;
-    flex-basis: revert;
+    flex-basis: 410px;
     padding: 24px;
   }
 
   [data-projectorhomepage="home"] .title {
     margin-block-end: 24px;
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   [data-projectorhomepage="home"] .description {
@@ -171,10 +173,11 @@
 
   /* img */
 
-  [data-projectorhomepage="home"] .img,
   [data-projectorhomepage="projects"] .img {
-    max-width: 200px;
+    max-width: revert;
     max-height: revert;
+    width: 200px;
+    height: 288px;
   }
 
   /* content container */
@@ -182,12 +185,13 @@
   [data-projectorhomepage="projects"] .content-container {
     /* max-width: 610px; */
     padding: 24px;
-    flex-basis: revert;
-    display: revert;
+    flex-basis: 410px;
+    /* display: revert; */
   }
 
   [data-projectorhomepage="projects"] .title {
     /* margin-block-end: 8px; */
+    font-size: 1.4rem;
   }
 
   [data-projectorhomepage="projects"] .tech-title {
@@ -208,6 +212,7 @@
   }
 
   [data-projectorhomepage="projects"] .links-container {
+    margin-block: revert;
     margin-block-start: auto;
   }
 }

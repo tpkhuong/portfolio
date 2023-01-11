@@ -73,6 +73,7 @@ const testObj = {
 export default function SolutionOne({ children }) {
   return (
     <code>
+      {/* linespacer is for indentation */}
       <CodeLine linespacer="hello">{testObj.first}</CodeLine>
       <CodeLine linespacer="world">{testObj.second}</CodeLine>
     </code>
