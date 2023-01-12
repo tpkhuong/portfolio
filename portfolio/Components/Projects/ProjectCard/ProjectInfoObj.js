@@ -10,8 +10,8 @@ export const arrayOfObjForProjectCard = [
       },
       altText: "Cool Things",
     },
-    title: "_FAQ Accordion Card",
-    tech: ["html", "css", "js", "novice"],
+    title: "_FAQ-Accordion-Card",
+    tech: ["html", "css", "js"],
     description:
       "Simple accordion style FAQ section component. Clicking on a question will reveal the answer.",
     links: {
@@ -32,7 +32,7 @@ export const arrayOfObjForProjectCard = [
       altText: "Cool Things",
     },
     title: "_Coming-Soon-Page",
-    tech: ["html", "css", "js", "novice"],
+    tech: ["html", "css", "js"],
     description:
       "Testing CSS and form validation skillings building a Coming Soon page for an apparel company with email form validation.",
     links: {
@@ -52,10 +52,10 @@ export const arrayOfObjForProjectCard = [
       },
       altText: "Cool Things",
     },
-    title: "_Crowdfunding Page",
-    tech: ["html", "css", "js", "junior"],
+    title: "_Crowdfunding-Page",
+    tech: ["html", "css", "js"],
     description:
-      "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips Medium. nice tips.",
+      "Layout and state management challenge. Our challenge is to keep track of visitors pledge changes.",
     links: {
       viewProject: "http:stuff",
       viewCode: "http:coolstuff",
@@ -74,9 +74,9 @@ export const arrayOfObjForProjectCard = [
       altText: "Cool Things",
     },
     title: "_Tip-Calculator",
-    tech: ["html", "css", "js", "junior"],
+    tech: ["html", "css", "js"],
     description:
-      "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips Medium. nice tips.",
+      "Improving our JavaScript skills. Calculate tip based on tip % and number of people.",
     links: {
       viewProject: "http:stuff",
       viewCode: "http:coolstuff",
@@ -94,10 +94,10 @@ export const arrayOfObjForProjectCard = [
       },
       altText: "Cool Things",
     },
-    title: "_Interactive Pricing",
-    tech: ["html", "css", "js", "junior"],
+    title: "_Interactive-Pricing",
+    tech: ["html", "css", "js"],
     description:
-      "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips Medium. nice tips.",
+      "Pricing component that will allow users to toggle between monthly and yearly with an interactive progress bar.",
     links: {
       viewProject: "http:stuff",
       viewCode: "http:coolstuff",
@@ -115,10 +115,10 @@ export const arrayOfObjForProjectCard = [
       },
       altText: "Cool Things",
     },
-    title: "_Multi-Page Website",
-    tech: ["html", "css", "js", "intermediate"],
+    title: "_Multi-Page-Website",
+    tech: ["html", "css", "js", "react", "nextjs"],
     description:
-      "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips Medium. nice tips.",
+      "Four page website. Form validation for the contact page and using mapping API to show locations.",
     links: {
       viewProject: "http:stuff",
       viewCode: "http:coolstuff",
@@ -137,9 +137,9 @@ export const arrayOfObjForProjectCard = [
       altText: "Cool Things",
     },
     title: "_Rock Paper Scissors",
-    tech: ["html", "css", "js", "intermediate"],
+    tech: ["html", "css", "js", "react"],
     description:
-      "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips Medium. nice tips.",
+      "Fun web app of the classic game Rock, Paper, Scissiors. Maintain user's score using browser local storage.",
     links: {
       viewProject: "http:stuff",
       viewCode: "http:coolstuff",
@@ -158,9 +158,9 @@ export const arrayOfObjForProjectCard = [
       altText: "Cool Things",
     },
     title: "_E-commerce Website",
-    tech: ["html", "css", "js", "advanced"],
+    tech: ["html", "css", "js", "react", "nextjs"],
     description:
-      "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips Medium. nice tips.",
+      "Users will be able to register an account. Checkout and cart information user entered will persistent on webpage refresh.",
     links: {
       viewProject: "http:stuff",
       viewCode: "http:coolstuff",

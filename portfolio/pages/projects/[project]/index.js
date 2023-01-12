@@ -144,7 +144,7 @@ export default function SingleProject({ children, data }) {
                 </span>
               </div>
               <ul className={SingleProjectStyles[`toc-content-container`]}>
-                {data.project.sidebar.toc.map(function tableOfContent(
+                {data.tableContent.map(function tableOfContent(
                   tableObj,
                   index
                 ) {
@@ -254,20 +254,24 @@ export default function SingleProject({ children, data }) {
 
                 {/* instructions */}
                 <h2
-                  id={data.project.main.instructions.hrefForToc}
+                  id={data.brief.hrefForToc}
                   className={`${SingleProjectStyles[`content-title`]} ${
                     SingleProjectStyles[`space-bottom`]
                   }`}
                 >
-                  {data.project.main.instructions.title}
+                  {data.brief.title}
                 </h2>
 
                 <div className={SingleProjectStyles[`paragraphs-wrapper`]}>
-                  {data.project.main.instructions.text.map(
-                    function makeInstructionsParagraph(text, index) {
-                      return <p key={Math.random() * index}>{text}</p>;
-                    }
-                  )}
+                  <p className={SingleProjectStyles[`intro`]}>
+                    {data.project.main.intro}
+                  </p>
+                  {data.brief.text.map(function makeInstructionsParagraph(
+                    text,
+                    index
+                  ) {
+                    return <p key={Math.random() * index}>{text}</p>;
+                  })}
                 </div>
 
                 {/* users should be */}

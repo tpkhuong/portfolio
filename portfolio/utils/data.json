@@ -9,60 +9,65 @@
       "The coding process starts with building the project file structure.",
       "After the project file structure is complete, we start coding the structure of the web page, HTML code then the styles (CSS code) then function/behavior of the web site (JavaScript)."
     ],
+    "sidebar": {
+      "toc": [
+        {
+          "content": "Instructions",
+          "typeOfTitle": "title",
+          "tocHref": "instructions"
+        },
+        {
+          "content": "Users should be able to",
+          "typeOfTitle": "subtitle",
+          "tocHref": "users-interactions"
+        },
+        {
+          "content": "Process",
+          "typeOfTitle": "title",
+          "tocHref": "process"
+        },
+        {
+          "content": "Build with / Tech Used",
+          "typeOfTitle": "subtitle",
+          "tocHref": "tech-used"
+        },
+        {
+          "content": "Things we learned",
+          "typeOfTitle": "subtitle",
+          "tocHref": "things-learned"
+        },
+        {
+          "content": "Features Added",
+          "typeOfTitle": "subtitle",
+          "tocHref": "features"
+        },
+        {
+          "content": "Inclusion features Added",
+          "typeOfTitle": "subtitle",
+          "tocHref": "inclusion-features"
+        }
+      ]
+    },
+    "instructions": {
+      "title": "_Instructions",
+      "text": [
+        "Use any tools you like to help you complete the challenge. Once you decide on the tools you want to build with, download the starter code.",
+        "Set up the project with version control (e.g. Git). Read the README.md file and have a look around the project.",
+        "Get colors, fonts etc from the style-guide.md file. Set up your project/file architecture however you want.",
+        "Start Coding!!!"
+      ],
+      "hrefForToc": "instructions"
+    },
     "first": {
-      "title": "_Project1",
+      "title": "_FAQ Accordion Card",
       "sidebar": {
-        "toc": [
-          {
-            "content": "Instructions",
-            "typeOfTitle": "title",
-            "tocHref": "instructions"
-          },
-          {
-            "content": "Users should be able to",
-            "typeOfTitle": "subtitle",
-            "tocHref": "users-interactions"
-          },
-          {
-            "content": "Process",
-            "typeOfTitle": "title",
-            "tocHref": "process"
-          },
-          {
-            "content": "Build with / Tech Used",
-            "typeOfTitle": "subtitle",
-            "tocHref": "tech-used"
-          },
-          {
-            "content": "Things we learned",
-            "typeOfTitle": "subtitle",
-            "tocHref": "things-learned"
-          },
-          {
-            "content": "Features Added",
-            "typeOfTitle": "subtitle",
-            "tocHref": "features"
-          },
-          {
-            "content": "Inclusion features Added",
-            "typeOfTitle": "subtitle",
-            "tocHref": "inclusion-features"
-          }
-        ],
         "projectlinks": {
           "live": "https://someplacecool.io",
           "code": "https://github/projectURL.com"
         }
       },
       "main": {
-        "instructions": {
-          "title": "_Instructions",
-          "text": [
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
-          ],
-          "hrefForToc": "instructions"
-        },
+        "intro": "The challenge is to build out this FAQ accordion card and get it looking as close to the design as possible.",
         "userable": {
           "title": "_Users should be able to",
           "text": [
@@ -123,57 +128,13 @@
     "second": {
       "title": "world",
       "sidebar": {
-        "toc": [
-          {
-            "content": "Instructions",
-            "typeOfTitle": "title",
-            "tocHref": "instructions"
-          },
-          {
-            "content": "Users should be able to",
-            "typeOfTitle": "subtitle",
-            "tocHref": "users-interactions"
-          },
-          {
-            "content": "Process",
-            "typeOfTitle": "title",
-            "tocHref": "process"
-          },
-          {
-            "content": "Build with / Tech Used",
-            "typeOfTitle": "subtitle",
-            "tocHref": "tech-used"
-          },
-          {
-            "content": "Things we learned",
-            "typeOfTitle": "subtitle",
-            "tocHref": "things-learned"
-          },
-          {
-            "content": "Features Added",
-            "typeOfTitle": "subtitle",
-            "tocHref": "features"
-          },
-          {
-            "content": "Inclusion features Added",
-            "typeOfTitle": "subtitle",
-            "tocHref": "inclusion-features"
-          }
-        ],
         "projectlinks": {
           "live": "https://someplacecool.io",
           "code": "https://github/projectURL.com"
         }
       },
       "main": {
-        "instructions": {
-          "title": "_Instructions",
-          "text": [
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
-          ],
-          "hrefForToc": "instructions"
-        },
+        "intro": "The challenge is to build out this coming soon page and get it looking as close to the design as possible.",
         "userable": {
           "title": "_Users should be able to",
           "text": [

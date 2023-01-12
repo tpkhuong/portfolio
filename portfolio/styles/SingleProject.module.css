@@ -162,6 +162,13 @@
   color: var(--color-neutral-white);
 }
 
+.content-subtitle {
+  width: max-content;
+  border-bottom: var(--border-lines);
+  border-color: currentColor;
+  color: var(--color-js-variable);
+}
+
 .paragraphs-wrapper {
   margin-inline-start: 24px;
 }

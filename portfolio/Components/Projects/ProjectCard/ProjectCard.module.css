@@ -38,6 +38,10 @@
   color: var(--color-reactfileicon);
 }
 
+.next {
+  color: var(--color-neutral-white);
+}
+
 .description {
   color: var(--color-neutral-white);
 }
