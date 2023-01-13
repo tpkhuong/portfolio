@@ -249,6 +249,7 @@
     border-block: revert;
     border-block-start: var(--border-lines);
     position: relative;
+    padding-inline-end: 80px;
   }
 
   .span-desktop-watcher {

@@ -284,13 +284,17 @@ export default function SingleProject({ children, data }) {
                   {data.project.main.userable.title}
                 </h3>
 
-                <div className={SingleProjectStyles[`paragraphs-wrapper`]}>
+                <ul className={SingleProjectStyles[`paragraphs-wrapper`]}>
                   {data.project.main.userable.text.map(
                     function makeUserableParagraph(text, index) {
-                      return <p key={Math.random() * index}>{text}</p>;
+                      return (
+                        <li key={Math.random() * index}>
+                          <span>{text}</span>
+                        </li>
+                      );
                     }
                   )}
-                </div>
+                </ul>
 
                 {/* process */}
                 <h2
