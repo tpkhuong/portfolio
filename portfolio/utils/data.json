@@ -89,33 +89,40 @@
         "buildtech": {
           "title": "_Build with / Tech Used",
           "text": [
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+            "HTML and CSS",
+            "Decided to complete bonus challenge and make the accordion feature without using any JavaScript code."
           ],
           "hrefForToc": "tech-used"
         },
         "learned": {
           "title": "_Things we learned",
           "text": [
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+            "Without using any JavaScript to implement the accordion feature, we want a way to target the answer content/element when user click on a question.",
+            "We solve this challenge by using the input with type 'radio' and label method.",
+            "Our HTML structure is, we want the element that contain the answer content to be a sibling of the input and label.",
+            "Each faq/answer will have an input, label and span element(for the answer content).",
+            "We used the pseudo-class selector :checked on the input type 'radio' and target the span element(answer content).",
+            "When the 'radio' is not checked the span element will have a declaration of display: none.",
+            "When the 'radio' is checked the span element containing the answer content will have a declaration of display: inline-block."
           ],
           "hrefForToc": "things-learned"
         },
         "features": {
           "title": "_Features Added",
           "text": [
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+            "Animation added to chevron up arrow and answer content container.",
+            "Chevron Up arrow will rotate to down arrow position and answer will slowly appear when the question label is clicked."
           ],
           "hrefForToc": "features"
         },
         "inclusion": {
           "title": "_Inclusion features Added",
           "text": [
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+            "In order to make the accordin feature inclusive, we would use JavaScript.",
+            "We would add aria-expanded and aria-controsl attribute to our button element.",
+            "Use a selector in CSS that will target the answer to the FAQ questions.",
+            "When user click on a button, we will change the aria-expaned attribute to 'true'.",
+            "Based on our CSS our code will show the answer to the user."
           ],
           "hrefForToc": "inclusion-features"
         }
@@ -128,7 +135,7 @@
       ]
     },
     "second": {
-      "title": "world",
+      "title": "_Intro component with Sign-up Form",
       "sidebar": {
         "projectlinks": {
           "live": "https://someplacecool.io",
@@ -136,12 +143,13 @@
         }
       },
       "main": {
-        "intro": "The challenge is to build out this coming soon page and get it looking as close to the design as possible.",
+        "intro": "The challenge is to build out this landing page and get it looking as close to the design as possible.",
         "userable": {
           "title": "_Users should be able to",
           "text": [
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+            "View the optimal layout for the site depending on their device's screen size.",
+            "See hover states for all interactive elements on the page",
+            "Receive an error message when the form is submitted if: Any input field is empty or The email address is not formatted correctly."
           ],
           "hrefForToc": "users-interactions"
         },
@@ -156,33 +164,32 @@
         "buildtech": {
           "title": "_Build with / Tech Used",
           "text": [
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+            "Mainly used HTML and CSS",
+            "Light JavaScript for client-side form validations."
           ],
           "hrefForToc": "tech-used"
         },
         "learned": {
           "title": "_Things we learned",
           "text": [
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+            "Client-side Validation.",
+            "Using 'novalidate' attribute on form element will not reload page when user click on submit button.",
+            "Checking input validation with each inputs validity.valid using JavsScript.",
+            "Using Position layout on input container and error image element to place error image inside each inputs."
           ],
           "hrefForToc": "things-learned"
         },
         "features": {
           "title": "_Features Added",
-          "text": [
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
-          ],
+          "text": ["Look at Inclusion features added."],
           "hrefForToc": "features"
         },
         "inclusion": {
           "title": "_Inclusion features Added",
           "text": [
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+            "Implemented User notification for the invalid inputs.",
+            "When the input is invalid, our application will let the user know which inputs need their attention.",
+            "The user will be able to tab through the list of invalid inputs and a link provide a way for the user to go the invalid input."
           ],
           "hrefForToc": "inclusion-features"
         }

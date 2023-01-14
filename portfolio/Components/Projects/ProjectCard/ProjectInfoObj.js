@@ -11,7 +11,7 @@ export const arrayOfObjForProjectCard = [
       altText: "Cool Things",
     },
     title: "_FAQ-Accordion-Card",
-    tech: ["html", "css", "js"],
+    tech: ["html", "css"],
     description:
       "Simple accordion style FAQ section component. Clicking on a question will reveal the answer.",
     links: {
@@ -26,15 +26,15 @@ export const arrayOfObjForProjectCard = [
       imgSrc: {
         // desktop: "/tipcalculator2.jpg",
         // mobile: "/tipcalculator2.jpg",
-        desktop: "/newbie/coming-soon/mobile-design.jpg",
-        mobile: "/newbie/coming-soon/desktop-design.jpg",
+        desktop: "/newbie/introForm/mobile-design.jpg",
+        mobile: "/newbie/introForm/desktop-design.jpg",
       },
       altText: "Cool Things",
     },
-    title: "_Coming-Soon-Page",
+    title: "_Intro Component",
     tech: ["html", "css", "js"],
     description:
-      "Testing CSS and form validation skillings building a Coming Soon page for an apparel company with email form validation.",
+      "Testing CSS and form validation skillings building a landing page for a coding company with form validation.",
     links: {
       viewProject: "http:stuff",
       viewCode: "http:coolstuff",
@@ -68,8 +68,8 @@ export const arrayOfObjForProjectCard = [
       imgSrc: {
         // desktop: "/tipcalculator2.jpg",
         // mobile: "/tipcalculator2.jpg",
-        desktop: "/junior/tip-calculator/mobile-design.jpg",
-        mobile: "/junior/tip-calculator/desktop-design.jpg",
+        desktop: "/junior/tipCalculator/mobile-design.jpg",
+        mobile: "/junior/tipCalculator/desktop-design.jpg",
       },
       altText: "Cool Things",
     },
@@ -89,8 +89,8 @@ export const arrayOfObjForProjectCard = [
       imgSrc: {
         // desktop: "/tipcalculator2.jpg",
         // mobile: "/tipcalculator2.jpg",
-        desktop: "/junior/interactive-pricing/mobile-design.jpg",
-        mobile: "/junior/interactive-pricing/desktop-design.jpg",
+        desktop: "/junior/interactivePricing/mobile-design.jpg",
+        mobile: "/junior/interactivePricing/desktop-design.jpg",
       },
       altText: "Cool Things",
     },
@@ -131,8 +131,8 @@ export const arrayOfObjForProjectCard = [
       imgSrc: {
         // desktop: "/tipcalculator2.jpg",
         // mobile: "/tipcalculator2.jpg",
-        desktop: "/advanced/rock-game/mobile-design.jpg",
-        mobile: "/advanced/rock-game/desktop-design.jpg",
+        desktop: "/advanced/rockGame/mobile-design.jpg",
+        mobile: "/advanced/rockGame/desktop-design.jpg",
       },
       altText: "Cool Things",
     },
