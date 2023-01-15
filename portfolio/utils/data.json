@@ -80,10 +80,7 @@
         },
         "process": {
           "title": "_Process",
-          "text": [
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
-          ],
+          "text": [],
           "hrefForToc": "process"
         },
         "buildtech": {
@@ -155,6 +152,271 @@
         },
         "process": {
           "title": "_Process",
+          "text": [],
+          "hrefForToc": "process"
+        },
+        "buildtech": {
+          "title": "_Build with / Tech Used",
+          "text": [
+            "Mainly used HTML and CSS",
+            "Light JavaScript for client-side form validations."
+          ],
+          "hrefForToc": "tech-used"
+        },
+        "learned": {
+          "title": "_Things we learned",
+          "text": [
+            "Client-side Validation.",
+            "Using 'novalidate' attribute on form element and type='button' attribute on button in form will not reload page when user click on submit button.",
+            "Checking input validation with each inputs validity.valid using JavsScript.",
+            "Using Position layout on input container and error image element to place error image inside each inputs."
+          ],
+          "hrefForToc": "things-learned"
+        },
+        "features": {
+          "title": "_Features Added",
+          "text": ["Look at Inclusion features added."],
+          "hrefForToc": "features"
+        },
+        "inclusion": {
+          "title": "_Inclusion features Added",
+          "text": [
+            "We want to show our growth as a Web Inclusive Developer.",
+            "At the time of building the Intro Component Form Application, we did not implement any inclusive features.",
+            "With more experience of building Web Inclusive application.",
+            "One inclusive feature we want to implement is we will add a User notification for the invalid inputs.",
+            "When the input is invalid, our application will let the user know which inputs need their attention.",
+            "The user will be able to tab through the list of invalid inputs and a link provide a way for the user to go the invalid input."
+          ],
+          "hrefForToc": "inclusion-features"
+        }
+      },
+      "images": [
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image1" },
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "images2" },
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image3" },
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image4" }
+      ]
+    },
+    "third": {
+      "title": "_Intro component with Sign-up Form",
+      "sidebar": {
+        "projectlinks": {
+          "live": "https://someplacecool.io",
+          "code": "https://github/projectURL.com"
+        }
+      },
+      "main": {
+        "intro": "The challenge is to build out this crowdfunding product page and get it looking as close to the design as possible.",
+        "userable": {
+          "title": "_Users should be able to",
+          "text": [
+            "View the optimal layout for the site depending on their device's screen size.",
+            "See hover states for all interactive elements on the page",
+            "Make a selection of which pledge to make.",
+            "See an updated progress bar and total money raised based on their pledge total after confirming a pledge.",
+            "See the number of total backers increment by one after confirming a pledge.",
+            "Toggle whether or not the product is bookmarked"
+          ],
+          "hrefForToc": "users-interactions"
+        },
+        "process": {
+          "title": "_Process",
+          "text": [
+            "Note: Please know at the time we built the Crowdfunding pledge application, the application accepted one pledge.",
+            "If we want the application to accept more than one pledge, we would use local storage to keep track of total amount pledge, total number of supporters and days left to reach total amount."
+          ],
+          "hrefForToc": "process"
+        },
+        "buildtech": {
+          "title": "_Build with / Tech Used",
+          "text": ["Mainly used HTML, CSS and vanilla JavaScript."],
+          "hrefForToc": "tech-used"
+        },
+        "learned": {
+          "title": "_Things we learned",
+          "text": [
+            "One of the fun challenges of building this application was the progress bar.",
+            "One solution was we used CSS custom property and JavaScript .style.setProperty method.",
+            "The method on .setProperty() found on the document.documentElement.style object allow us to control the width of the progress bar.",
+            "When we update the CSS custom property by calling .setProperty(), we also update the width of progress bar element."
+          ],
+          "hrefForToc": "things-learned"
+        },
+        "features": {
+          "title": "_Features Added",
+          "text": ["Look at Inclusion features added."],
+          "hrefForToc": "features"
+        },
+        "inclusion": {
+          "title": "_Inclusion features Added",
+          "text": [
+            "Focus the button that activated each modal and place the focus on the reward selected for the reward modal.",
+            "There are two modals for the Crowdfunding page.",
+            "One modal is the reward/amount user want to pledge and the other is Thank you message modal.",
+            "Once the user get to the Thank you message modal, when the user click on the 'Got it' button. Our algorithm will take the user back to the previous modal and placed focus on the button that activate the modal.",
+            "One thing we would change is when the user click on 'Got it' button, our algorithm take the user initial product page."
+          ],
+          "hrefForToc": "inclusion-features"
+        }
+      },
+      "images": [
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image1" },
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "images2" },
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image3" },
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image4" }
+      ]
+    },
+    "fourth": {
+      "title": "_Tip Calculator App",
+      "sidebar": {
+        "projectlinks": {
+          "live": "https://someplacecool.io",
+          "code": "https://github/projectURL.com"
+        }
+      },
+      "main": {
+        "intro": "The challenge is to build out this tip calculator app and get it looking as close to the design as possible.",
+        "userable": {
+          "title": "_Users should be able to",
+          "text": [
+            "View the optimal layout for the site depending on their device's screen size.",
+            "See hover states for all interactive elements on the page",
+            "Calculate the correct tip and total cost of the bill per person."
+          ],
+          "hrefForToc": "users-interactions"
+        },
+        "process": {
+          "title": "_Process",
+          "text": [
+            "Had the most fun building the tip calculator app because it is the one application we can see our friends, family and self using in person."
+          ],
+          "hrefForToc": "process"
+        },
+        "buildtech": {
+          "title": "_Build with / Tech Used",
+          "text": ["Mainly used HTML, CSS and JavaScript."],
+          "hrefForToc": "tech-used"
+        },
+        "learned": {
+          "title": "_Things we learned",
+          "text": [
+            "One important concept of JavaScript we learned while building the tip calculator app is the usefulness of reusable functions.",
+            "We taught ourselves to find a way to calculate the tip total based on different variables passed into our functions.",
+            "Used CSS grid to built equal size buttons for the select tip percentage section of the application."
+          ],
+          "hrefForToc": "things-learned"
+        },
+        "features": {
+          "title": "_Features Added",
+          "text": [
+            "Our algorithm will only calculate total amount and total tip amount for each person once bill amount, tip percentage, and number of people are entered."
+          ],
+          "hrefForToc": "features"
+        },
+        "inclusion": {
+          "title": "_Inclusion features Added",
+          "text": [
+            "Add later:",
+            "Implement a popup modal. It will only appears after the total and tip calculation is complete.",
+            "The popup modal will let the user know the bill total, the selected tip percentage, total number of people, tip amount for each person and total amount for each person."
+          ],
+          "hrefForToc": "inclusion-features"
+        }
+      },
+      "images": [
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image1" },
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "images2" },
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image3" },
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image4" }
+      ]
+    },
+    "fifth": {
+      "title": "_Interactive Pricing Component",
+      "sidebar": {
+        "projectlinks": {
+          "live": "https://someplacecool.io",
+          "code": "https://github/projectURL.com"
+        }
+      },
+      "main": {
+        "intro": "The challenge is to build out this interactive pricing component and get it looking as close to the design as possible.",
+        "userable": {
+          "title": "_Users should be able to",
+          "text": [
+            "View the optimal layout for the site depending on their device's screen size.",
+            "See hover states for all interactive elements on the page",
+            "Use the slider and toggle to see prices for different page view numbers."
+          ],
+          "hrefForToc": "users-interactions"
+        },
+        "process": {
+          "title": "_Process",
+          "text": [],
+          "hrefForToc": "process"
+        },
+        "buildtech": {
+          "title": "_Build with / Tech Used",
+          "text": ["Mainly used HTML, CSS and JavaScript."],
+          "hrefForToc": "tech-used"
+        },
+        "learned": {
+          "title": "_Things we learned",
+          "text": [
+            "The height of the child element will determine the height of the parent element.",
+            "In order for the progress bar feature to work with a mouse and keyboard, all functions that move the progress bar left or right shared the same variable.",
+            "The design of the progress bar uses a custom icon. In order to complete the challenge, we built our own slider component."
+          ],
+          "hrefForToc": "things-learned"
+        },
+        "features": {
+          "title": "_Features Added",
+          "text": [
+            "Add animation to the toggle button, toggle between monthly and yearly billing."
+          ],
+          "hrefForToc": "features"
+        },
+        "inclusion": {
+          "title": "_Inclusion features Added",
+          "text": [
+            "The user can move the slider using arrow keys(up, right, down, and left), page up, page down, home and end keys.",
+            "Screen reader will read the percentage of the progress bar when it is moved.",
+            "Add later: read out the pageviews and amount each month or year once the slider stopped moving for three seconds."
+          ],
+          "hrefForToc": "inclusion-features"
+        }
+      },
+      "images": [
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image1" },
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "images2" },
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image3" },
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image4" }
+      ]
+    },
+    "sixth": {
+      "note": "come back"
+    },
+    "seventh": {
+      "title": "_Intro component with Sign-up Form",
+      "sidebar": {
+        "projectlinks": {
+          "live": "https://someplacecool.io",
+          "code": "https://github/projectURL.com"
+        }
+      },
+      "main": {
+        "intro": "The challenge is to build out this landing page and get it looking as close to the design as possible.",
+        "userable": {
+          "title": "_Users should be able to",
+          "text": [
+            "View the optimal layout for the site depending on their device's screen size.",
+            "See hover states for all interactive elements on the page",
+            "Receive an error message when the form is submitted if: Any input field is empty or The email address is not formatted correctly."
+          ],
+          "hrefForToc": "users-interactions"
+        },
+        "process": {
+          "title": "_Process",
           "text": [
             "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
             "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
@@ -173,7 +435,7 @@
           "title": "_Things we learned",
           "text": [
             "Client-side Validation.",
-            "Using 'novalidate' attribute on form element will not reload page when user click on submit button.",
+            "Using 'novalidate' attribute on form element and type='button' attribute on button in form will not reload page when user click on submit button.",
             "Checking input validation with each inputs validity.valid using JavsScript.",
             "Using Position layout on input container and error image element to place error image inside each inputs."
           ],
@@ -187,7 +449,10 @@
         "inclusion": {
           "title": "_Inclusion features Added",
           "text": [
-            "Implemented User notification for the invalid inputs.",
+            "We want to show our growth as a Web Inclusive Developer.",
+            "At the time of building the Intro Component Form Application, we did not implement any inclusive features.",
+            "With more experience of building Web Inclusive application.",
+            "One inclusive feature we want to implement is we will add a User notification for the invalid inputs.",
             "When the input is invalid, our application will let the user know which inputs need their attention.",
             "The user will be able to tab through the list of invalid inputs and a link provide a way for the user to go the invalid input."
           ],
@@ -201,14 +466,145 @@
         { "imgSrc": "/tipcalculator2.jpg", "imgText": "image4" }
       ]
     },
-    "third": {
-      "title": "this is js"
+    "eighth": {
+      "title": "_Intro component with Sign-up Form",
+      "sidebar": {
+        "projectlinks": {
+          "live": "https://someplacecool.io",
+          "code": "https://github/projectURL.com"
+        }
+      },
+      "main": {
+        "intro": "The challenge is to build out this landing page and get it looking as close to the design as possible.",
+        "userable": {
+          "title": "_Users should be able to",
+          "text": [
+            "View the optimal layout for the site depending on their device's screen size.",
+            "See hover states for all interactive elements on the page",
+            "Receive an error message when the form is submitted if: Any input field is empty or The email address is not formatted correctly."
+          ],
+          "hrefForToc": "users-interactions"
+        },
+        "process": {
+          "title": "_Process",
+          "text": [
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+          ],
+          "hrefForToc": "process"
+        },
+        "buildtech": {
+          "title": "_Build with / Tech Used",
+          "text": [
+            "Mainly used HTML and CSS",
+            "Light JavaScript for client-side form validations."
+          ],
+          "hrefForToc": "tech-used"
+        },
+        "learned": {
+          "title": "_Things we learned",
+          "text": [
+            "Client-side Validation.",
+            "Using 'novalidate' attribute on form element and type='button' attribute on button in form will not reload page when user click on submit button.",
+            "Checking input validation with each inputs validity.valid using JavsScript.",
+            "Using Position layout on input container and error image element to place error image inside each inputs."
+          ],
+          "hrefForToc": "things-learned"
+        },
+        "features": {
+          "title": "_Features Added",
+          "text": ["Look at Inclusion features added."],
+          "hrefForToc": "features"
+        },
+        "inclusion": {
+          "title": "_Inclusion features Added",
+          "text": [
+            "We want to show our growth as a Web Inclusive Developer.",
+            "At the time of building the Intro Component Form Application, we did not implement any inclusive features.",
+            "With more experience of building Web Inclusive application.",
+            "One inclusive feature we want to implement is we will add a User notification for the invalid inputs.",
+            "When the input is invalid, our application will let the user know which inputs need their attention.",
+            "The user will be able to tab through the list of invalid inputs and a link provide a way for the user to go the invalid input."
+          ],
+          "hrefForToc": "inclusion-features"
+        }
+      },
+      "images": [
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image1" },
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "images2" },
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image3" },
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image4" }
+      ]
     },
-    "fourth": {
-      "title": "this is html"
-    },
-    "fifth": {
-      "title": "Los Angeles"
+    "ninth": {
+      "title": "_Intro component with Sign-up Form",
+      "sidebar": {
+        "projectlinks": {
+          "live": "https://someplacecool.io",
+          "code": "https://github/projectURL.com"
+        }
+      },
+      "main": {
+        "intro": "The challenge is to build out this landing page and get it looking as close to the design as possible.",
+        "userable": {
+          "title": "_Users should be able to",
+          "text": [
+            "View the optimal layout for the site depending on their device's screen size.",
+            "See hover states for all interactive elements on the page",
+            "Receive an error message when the form is submitted if: Any input field is empty or The email address is not formatted correctly."
+          ],
+          "hrefForToc": "users-interactions"
+        },
+        "process": {
+          "title": "_Process",
+          "text": [
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
+            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+          ],
+          "hrefForToc": "process"
+        },
+        "buildtech": {
+          "title": "_Build with / Tech Used",
+          "text": [
+            "Mainly used HTML and CSS",
+            "Light JavaScript for client-side form validations."
+          ],
+          "hrefForToc": "tech-used"
+        },
+        "learned": {
+          "title": "_Things we learned",
+          "text": [
+            "Client-side Validation.",
+            "Using 'novalidate' attribute on form element and type='button' attribute on button in form will not reload page when user click on submit button.",
+            "Checking input validation with each inputs validity.valid using JavsScript.",
+            "Using Position layout on input container and error image element to place error image inside each inputs."
+          ],
+          "hrefForToc": "things-learned"
+        },
+        "features": {
+          "title": "_Features Added",
+          "text": ["Look at Inclusion features added."],
+          "hrefForToc": "features"
+        },
+        "inclusion": {
+          "title": "_Inclusion features Added",
+          "text": [
+            "We want to show our growth as a Web Inclusive Developer.",
+            "At the time of building the Intro Component Form Application, we did not implement any inclusive features.",
+            "With more experience of building Web Inclusive application.",
+            "One inclusive feature we want to implement is we will add a User notification for the invalid inputs.",
+            "When the input is invalid, our application will let the user know which inputs need their attention.",
+            "The user will be able to tab through the list of invalid inputs and a link provide a way for the user to go the invalid input."
+          ],
+          "hrefForToc": "inclusion-features"
+        }
+      },
+      "images": [
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image1" },
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "images2" },
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image3" },
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image4" }
+      ]
     }
   }
 }

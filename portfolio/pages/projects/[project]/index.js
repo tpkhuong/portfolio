@@ -306,13 +306,15 @@ export default function SingleProject({ children, data }) {
                   {data.project.main.process.title}
                 </h2>
 
-                <div className={SingleProjectStyles[`paragraphs-wrapper`]}>
-                  {data.project.main.process.text.map(
-                    function makeProcessParagraph(text, index) {
-                      return <p key={Math.random() * index}>{text}</p>;
-                    }
-                  )}
-                </div>
+                {data.project.main.process.text.length > 0 ? (
+                  <div className={SingleProjectStyles[`paragraphs-wrapper`]}>
+                    {data.project.main.process.text.map(
+                      function makeProcessParagraph(text, index) {
+                        return <p key={Math.random() * index}>{text}</p>;
+                      }
+                    )}
+                  </div>
+                ) : null}
 
                 {/* build with */}
                 <h3
