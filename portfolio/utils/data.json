@@ -394,10 +394,7 @@
       ]
     },
     "sixth": {
-      "note": "come back"
-    },
-    "seventh": {
-      "title": "_Intro component with Sign-up Form",
+      "title": "_TODO App",
       "sidebar": {
         "projectlinks": {
           "live": "https://someplacecool.io",
@@ -405,56 +402,131 @@
         }
       },
       "main": {
-        "intro": "The challenge is to build out this landing page and get it looking as close to the design as possible.",
+        "intro": "The challenge is to build out this todo app and get it looking as close to the design as possible.",
         "userable": {
           "title": "_Users should be able to",
           "text": [
             "View the optimal layout for the site depending on their device's screen size.",
             "See hover states for all interactive elements on the page",
-            "Receive an error message when the form is submitted if: Any input field is empty or The email address is not formatted correctly."
+            "Add new todos to the list.",
+            "Mark todos as complete.",
+            "Delete todos from the list.",
+            "Filter by all/active/complete todos.",
+            "Clear all completed todos.",
+            "Toggle light and dark mode.",
+            "Bonus: Drag and drop to reorder items on the list."
           ],
           "hrefForToc": "users-interactions"
         },
         "process": {
           "title": "_Process",
+          "text": [],
+          "hrefForToc": "process"
+        },
+        "buildtech": {
+          "title": "_Build with / Tech Used",
+          "text": ["Mainly used HTML, CSS and JavaScript."],
+          "hrefForToc": "tech-used"
+        },
+        "learned": {
+          "title": "_Things we learned",
           "text": [
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+            "The design asked us to not use the built HTML checked box inputs but build our own with a custom background and hover effect.",
+            "We completed that challenge by changing the element background based to the attribute of the element or the element's parent",
+            "We used CSS custom properties to implement the dark and light theme toggle.",
+            "The CSS custom properties declared on an element will be available to all its children.",
+            "Using closure to keep track of the different arrays, status change of a Todo item from 'active' to 'complete' and when a Todo item is added or deleted.",
+            "Better way to append a list of elements by using DocumentFragment.",
+            "Instead of appending a list of elements to an existing DOM node individual.",
+            "We use create a new element using DocumentFragment append the list of elements to the newly created node.",
+            "Append the newly created DOM node with the list of elements as its children to a existing DOM node in our application.",
+            "Screen reader will announce 'Todo' sounds like 'Toto', we added a space between 'To' and 'Do' making it 'To Do'.",
+            "Move item at bottom of list to top of list and item at top of list to bottom of list based on which item 'top or bottom' has keyboard focused."
           ],
+          "hrefForToc": "things-learned"
+        },
+        "features": {
+          "title": "_Features Added",
+          "text": [
+            "Changing the order of items in either the 'Active' or 'Completed' list will update the order of items in the 'All' list.",
+            "Drag and drop either 'Active' or 'Completed' item in 'All' tab, will update the order in either 'Active' or 'Completed' list based on the item selected.",
+            "Keep track of Todo items left based on the item status either 'Complete' or 'Active'.",
+            "Making the Drag and Drop feature work for both keyboard and mouse users."
+          ],
+          "hrefForToc": "features"
+        },
+        "inclusion": {
+          "title": "_Inclusion features Added",
+          "text": [
+            "Button to annouce instructions for keyboard and screen reader users when that button is focused",
+            "When keyboard user hit 'enter' or 'space' key, our algorithm will let the user know which item is selected.",
+            "Screen reader will let user know the updated order of list items once user select new position of item selected to be Drag and Drop"
+          ],
+          "hrefForToc": "inclusion-features"
+        }
+      },
+      "images": [
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image1" },
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "images2" },
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image3" },
+        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image4" }
+      ]
+    },
+    "seventh": {
+      "title": "_Rock Paper Scissors Game",
+      "sidebar": {
+        "projectlinks": {
+          "live": "https://someplacecool.io",
+          "code": "https://github/projectURL.com"
+        }
+      },
+      "main": {
+        "intro": "The challenge is to build out this Rock, Paper, Scissors game and get it looking as close to the design as possible.",
+        "userable": {
+          "title": "_Users should be able to",
+          "text": [
+            "View the optimal layout for the site depending on their device's screen size.",
+            "Play Rock, Paper, Scissors against the computer.",
+            "Maintain the state of the score after refreshing the browser (optional)."
+          ],
+          "hrefForToc": "users-interactions"
+        },
+        "process": {
+          "title": "_Process",
+          "text": ["First challenge building with React Js."],
           "hrefForToc": "process"
         },
         "buildtech": {
           "title": "_Build with / Tech Used",
           "text": [
-            "Mainly used HTML and CSS",
-            "Light JavaScript for client-side form validations."
+            "HTML for the structure. CSS for the presentation. JavaScript and ReactJs for the main function of game."
           ],
           "hrefForToc": "tech-used"
         },
         "learned": {
           "title": "_Things we learned",
           "text": [
-            "Client-side Validation.",
-            "Using 'novalidate' attribute on form element and type='button' attribute on button in form will not reload page when user click on submit button.",
-            "Checking input validation with each inputs validity.valid using JavsScript.",
-            "Using Position layout on input container and error image element to place error image inside each inputs."
+            "When react component renders or re-renders all its children component will render too.",
+            "Update multiple state values executing useState only once by passing in an object as the value/argument when React.useState is executed. When we call the function that update state, we will pass in a function that returns an object.",
+            "State management in React, 'state' or data of a component can be passed down to its children but not up to its parent.",
+            "*This is before we learned about context in ReactJs*",
+            "Update attribute value of an element based on props passed to React component.",
+            "Using clip-path to hide parts of an element.",
+            "We can have more than one box-shadow on an element. Learned this concept when building the 'winner' rings indicator."
           ],
           "hrefForToc": "things-learned"
         },
         "features": {
           "title": "_Features Added",
-          "text": ["Look at Inclusion features added."],
+          "text": ["Focused indicator on selection buttons."],
           "hrefForToc": "features"
         },
         "inclusion": {
           "title": "_Inclusion features Added",
           "text": [
-            "We want to show our growth as a Web Inclusive Developer.",
-            "At the time of building the Intro Component Form Application, we did not implement any inclusive features.",
-            "With more experience of building Web Inclusive application.",
-            "One inclusive feature we want to implement is we will add a User notification for the invalid inputs.",
-            "When the input is invalid, our application will let the user know which inputs need their attention.",
-            "The user will be able to tab through the list of invalid inputs and a link provide a way for the user to go the invalid input."
+            "Added assistive texts to let keyboard and screen reader users know the function of the arrow keys.",
+            "Hitting (left, up, left or down) arrow keys will loop through sign selections.",
+            "Plan to add: assistive texts to let the screen reader users know the result of the game."
           ],
           "hrefForToc": "inclusion-features"
         }

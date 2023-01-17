@@ -110,20 +110,20 @@ export const arrayOfObjForProjectCard = [
       imgSrc: {
         // desktop: "/tipcalculator2.jpg",
         // mobile: "/tipcalculator2.jpg",
-        desktop: "/advanced/audiophile/mobile-design.jpg",
-        mobile: "/advanced/audiophile/desktop-design.jpg",
+        desktop: "/intermediate/todoApp/mobile-design.jpg",
+        mobile: "/intermediate/todoApp/desktop-design.jpg",
       },
       altText: "Cool Things",
     },
-    title: "_Calculator-App9",
-    tech: ["html", "css", "js", "advanced"],
+    title: "_TODO-App",
+    tech: ["html", "css", "js"],
     description:
-      "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips Medium. nice tips.",
+      "Classic Todo App with dark and light theme toggle with drag and drop reordering.",
     links: {
       viewProject: "http:stuff",
       viewCode: "http:coolstuff",
     },
-    level: "advanced",
+    level: "intermediate",
   },
   {
     homePagePosIndex: "seven",
@@ -144,7 +144,7 @@ export const arrayOfObjForProjectCard = [
       viewProject: "http:stuff",
       viewCode: "http:coolstuff",
     },
-    level: "intermediate",
+    level: "advanced",
   },
   {
     homePagePosIndex: "eight",
@@ -187,7 +187,7 @@ export const arrayOfObjForProjectCard = [
       viewProject: "http:stuff",
       viewCode: "http:coolstuff",
     },
-    level: "intermediate",
+    level: "advanced",
   },
 
   //   {
