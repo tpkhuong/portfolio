@@ -512,7 +512,9 @@
             "*This is before we learned about context in ReactJs*",
             "Update attribute value of an element based on props passed to React component.",
             "Using clip-path to hide parts of an element.",
-            "We can have more than one box-shadow on an element. Learned this concept when building the 'winner' rings indicator."
+            "We can have more than one box-shadow on an element. Learned this concept when building the 'winner' rings indicator.",
+            "React.useEffect runs after the component is rendered.",
+            "When adding an event listener in React.useEffect, make sure to call remove event listener in the function returned when our algorithm execute React.useEffect."
           ],
           "hrefForToc": "things-learned"
         },
@@ -539,7 +541,7 @@
       ]
     },
     "eighth": {
-      "title": "_Intro component with Sign-up Form",
+      "title": "_Audiophile e-commerce website",
       "sidebar": {
         "projectlinks": {
           "live": "https://someplacecool.io",
@@ -547,56 +549,71 @@
         }
       },
       "main": {
-        "intro": "The challenge is to build out this landing page and get it looking as close to the design as possible.",
+        "intro": "The challenge is to build out this multi-page e-commerce website and get it looking as close to the design as possible.",
         "userable": {
           "title": "_Users should be able to",
           "text": [
             "View the optimal layout for the site depending on their device's screen size.",
             "See hover states for all interactive elements on the page",
-            "Receive an error message when the form is submitted if: Any input field is empty or The email address is not formatted correctly."
+            "Add/Remove products from the cart.",
+            "Edit product quantities in the cart.",
+            "Fill in all fields in the checkout.",
+            "Receive form validations if fields are missed or incorrect during checkout.",
+            "See correct checkout totals depending on the products in the cart: Shipping always adds $50 to the order. VAT is calculated as 20% of the product total, excluding shipping.",
+            "See an order confirmation modal after checking out with an order summary.",
+            "Bonus: Keep track of what's in the cart, even after refreshing the browser (localStorage could be used for this if you're not building out a full-stack app)"
           ],
           "hrefForToc": "users-interactions"
         },
         "process": {
           "title": "_Process",
-          "text": [
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
-          ],
+          "text": ["Built a Full-Stack application."],
           "hrefForToc": "process"
         },
         "buildtech": {
           "title": "_Build with / Tech Used",
           "text": [
-            "Mainly used HTML and CSS",
-            "Light JavaScript for client-side form validations."
+            "HTML, CSS, JavaScript and Reactjs for the frontend/client.",
+            "JavaScript and NextJs for the backend/server.",
+            "MongoDB for the database and NextAuth for user authentication."
           ],
           "hrefForToc": "tech-used"
         },
         "learned": {
           "title": "_Things we learned",
           "text": [
-            "Client-side Validation.",
-            "Using 'novalidate' attribute on form element and type='button' attribute on button in form will not reload page when user click on submit button.",
-            "Checking input validation with each inputs validity.valid using JavsScript.",
-            "Using Position layout on input container and error image element to place error image inside each inputs."
+            "Users authentication and authorization.",
+            "Created our own API.",
+            "Working with a MongoDB(database).",
+            "Implement authentication using username and password using NextAuth.",
+            "Using React context to pass data from a child component to a parent component.",
+            "Form validation on the client-side for keyboard and screen reader users."
           ],
           "hrefForToc": "things-learned"
         },
         "features": {
           "title": "_Features Added",
-          "text": ["Look at Inclusion features added."],
+          "text": [
+            "Go back button will take user to previous page.",
+            "Register account and login button take user to register account page or login page.",
+            "Cart item tracker near cart icon will indicate how many products are in the cart but not the cart's quantity.",
+            "Client side and backend form validations.",
+            "Data user enter to checkout form will be persist in case user accidentally leaves our site.",
+            "All Information user entered to checkout forms and cart will be removed when order is place",
+            "Added Billing Address information section for checkout page.",
+            "Allow users to select when their Billing and Shipping address are the same or not for the checkout page.",
+            "Selecting 'Yes' will link Billing Info inputs and Shipping Info inputs, entering data of a Billing Info inputs will update/fill input of Shipping Info.",
+            "After user has entered data for Billing Info inputs, selecting 'Yes' will auto-fill Shipping Info inputs.",
+            "When Shipping Info inputs has data entered, selecting 'No' will remove all shipping info entered.",
+            "Add Later: Clear All and Auto-Fill form button. Login using gmail or social media accounts."
+          ],
           "hrefForToc": "features"
         },
         "inclusion": {
           "title": "_Inclusion features Added",
           "text": [
-            "We want to show our growth as a Web Inclusive Developer.",
-            "At the time of building the Intro Component Form Application, we did not implement any inclusive features.",
-            "With more experience of building Web Inclusive application.",
-            "One inclusive feature we want to implement is we will add a User notification for the invalid inputs.",
-            "When the input is invalid, our application will let the user know which inputs need their attention.",
-            "The user will be able to tab through the list of invalid inputs and a link provide a way for the user to go the invalid input."
+            "Client side validation for checkout, register and login page, letting keyboard and screen reader users know when their entered data is accepted or incorrect.",
+            "Backend validation for checkout, register and login page, assistive text will let users know which inputs need their attention. Each assistive text will have a link that will take users to the inputs that need correcting."
           ],
           "hrefForToc": "inclusion-features"
         }
@@ -609,7 +626,7 @@
       ]
     },
     "ninth": {
-      "title": "_Intro component with Sign-up Form",
+      "title": "_Arch Studio multi-page website",
       "sidebar": {
         "projectlinks": {
           "live": "https://someplacecool.io",
@@ -617,39 +634,39 @@
         }
       },
       "main": {
-        "intro": "The challenge is to build out this landing page and get it looking as close to the design as possible.",
+        "intro": "The challenge is to build out this multi-page website and get it looking as close to the design as possible.",
         "userable": {
           "title": "_Users should be able to",
           "text": [
             "View the optimal layout for the site depending on their device's screen size.",
             "See hover states for all interactive elements on the page",
-            "Receive an error message when the form is submitted if: Any input field is empty or The email address is not formatted correctly."
+            "Receive an error message when the contact form is submitted if: The Name, Email or Message fields are empty should show 'Can't be empty' and The Email is not formatted correctly should show 'Please use a valid email address'",
+            "Bonus: View actual locations on the contact page map (we recommend Leaflet JS for this)."
           ],
           "hrefForToc": "users-interactions"
         },
         "process": {
           "title": "_Process",
           "text": [
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor.",
-            "Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor. Hey! Just checked your website and it looks awesome! Also, I checked your articled on Medium. nice tips. Thanks! Duis aute irure dolor."
+            "Choose this challenge because we wanted to improve our understanding of CSS."
           ],
           "hrefForToc": "process"
         },
         "buildtech": {
           "title": "_Build with / Tech Used",
           "text": [
-            "Mainly used HTML and CSS",
-            "Light JavaScript for client-side form validations."
+            "Mainly used HTML, CSS, and JavaScript",
+            "Used JavaScript and ReactJs for the reusable components."
           ],
           "hrefForToc": "tech-used"
         },
         "learned": {
           "title": "_Things we learned",
           "text": [
-            "Client-side Validation.",
-            "Using 'novalidate' attribute on form element and type='button' attribute on button in form will not reload page when user click on submit button.",
-            "Checking input validation with each inputs validity.valid using JavsScript.",
-            "Using Position layout on input container and error image element to place error image inside each inputs."
+            "Using React component build and style three different navigation menu: one in header, one in footer and one for mobile.",
+            "Map location of company's offices.",
+            "Stacking different elements(an image, title and text content) in one section.",
+            "Apply style to element based on current page the user is on."
           ],
           "hrefForToc": "things-learned"
         },
@@ -661,12 +678,8 @@
         "inclusion": {
           "title": "_Inclusion features Added",
           "text": [
-            "We want to show our growth as a Web Inclusive Developer.",
-            "At the time of building the Intro Component Form Application, we did not implement any inclusive features.",
-            "With more experience of building Web Inclusive application.",
-            "One inclusive feature we want to implement is we will add a User notification for the invalid inputs.",
-            "When the input is invalid, our application will let the user know which inputs need their attention.",
-            "The user will be able to tab through the list of invalid inputs and a link provide a way for the user to go the invalid input."
+            "Inclusive Image Carousel.",
+            "Added later: play and pause feature for the image carousel. Previous and Next button to let use scroll through image carousel."
           ],
           "hrefForToc": "inclusion-features"
         }
