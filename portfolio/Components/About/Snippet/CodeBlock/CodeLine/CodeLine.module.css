@@ -24,6 +24,14 @@
   color: var(--js-strings);
 }
 
+.js-code[data-typeofjscode="source"] {
+  color: var(--js-source-lookup);
+}
+
+.js-code[data-typeofjscode="boolean"] {
+  color: red;
+}
+
 /* brackets */
 
 .js-code[data-typeofjscode="curly"] {

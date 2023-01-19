@@ -59,12 +59,12 @@ const testObj = {
     },
     {
       element: "(",
-      typeOfCode: "operator",
+      typeOfCode: "boolean",
       spacerValue: "inline-start",
     },
     {
       element: "]",
-      typeOfCode: "operator",
+      typeOfCode: "number",
       spacerValue: "inline-start",
     },
   ],
