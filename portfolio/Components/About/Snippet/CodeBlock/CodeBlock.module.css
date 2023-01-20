@@ -2,6 +2,10 @@
 
 .code-bg {
   background-color: var(--code-background);
+  overflow: scroll;
+  max-width: 475px;
+  max-height: 261px;
+  padding: 16px;
 }
 
 /* desktop */

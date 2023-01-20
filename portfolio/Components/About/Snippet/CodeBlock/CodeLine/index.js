@@ -1,21 +1,22 @@
 import React from "react";
 import CodeLineStyles from "./CodeLine.module.css";
 
-export default function CodeLine({ children, linespacer }) {
+export default function CodeLine({ children, indent, blockSpacerValue }) {
   return (
     <span
-      // linespacer is for indentation
-      data-linespacer={linespacer}
+      // indent is for indentation
+      data-indentspacer={indent}
+      data-typeofblockspacer={blockSpacerValue}
       className={CodeLineStyles[`code-line-container`]}
     >
       {children.map((item, index) => {
-        const { element, typeOfCode, spacerValue } = item;
+        const { element, typeOfCode, inlineSpacerValue } = item;
         console.log(item.hasOwnProperty("element"));
 
         return (
           <span
             data-typeofjscode={typeOfCode}
-            data-typeofspacer={spacerValue}
+            data-typeofinlinespacer={inlineSpacerValue}
             className={CodeLineStyles[`js-code`]}
             key={Math.random() * index}
           >

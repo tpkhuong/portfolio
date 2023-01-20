@@ -21,6 +21,13 @@
   --jscode-spacer: 8px;
   /* code background */
   --code-background: hsl(208, 84%, 5%);
+  /* indent */
+  --indent-one: 16px;
+  --indent-two: 32px;
+  --indent-three: 48px;
+  --indent-four: 64px;
+  --indent-five: 80px;
+  --indent-six: 94px;
   /* inline-start space */
   /* inline-end space */
   /* inline space */
@@ -76,9 +83,18 @@
   margin-block-end: 24px;
 }
 
-.sub-title {
+.sub-title,
+.example-title {
   margin-block-end: 16px;
   font-size: var(--font-size-20px);
+}
+
+.example-title {
+  margin-block-start: 16px;
+}
+
+.example-container > * + * {
+  margin-block-start: 8px;
 }
 
 /* desktop */

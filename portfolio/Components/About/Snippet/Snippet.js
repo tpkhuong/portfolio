@@ -9,38 +9,75 @@ export default function Snippet({ children, ...props }) {
       codeBlockIndex: 0,
       arrayOfSnippetObj: [
         {
-          title: "_RandomRange",
+          title: "_ReverseString",
           description: "_Instructions:",
           textContent:
-            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti quidem laboriosam, molestiae amet delectus sit ipsam laudantium, optio non necessitatibus neque dolorum iure sunt, enim explicabo consequaturillum deleniti nulla.",
+            "Write a function, reverseString,  that reverses a string and returns it. The string to reverse is given as an argument in the function.",
+          exmaple: {
+            title: "_Example:",
+            content: [
+              "reverseString('hello') should returns 'olleh'.",
+              "reverseString('Howdy') should returns 'ydwoH'.",
+              "reverseString('Greetings from Earth') should returns 'htraE morf sgniteerG'.",
+            ],
+          },
           codeBlockTitle: "_Solution:",
         },
         {
-          title: "_RandomRange2",
+          title: "_JavaScript Array includes",
           description: "_Instructions:",
           textContent:
-            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti quidem laboriosam, molestiae amet delectus sit ipsam laudantium, optio non necessitatibus neque dolorum iure sunt, enim explicabo consequaturillum deleniti nulla.",
+            "The includes() method returns true if an array contains a specified value. The includes() method returns false if the value is not found. Write a function that takes in an array and value, return true if the array contains the value else return false.",
+          exmaple: {
+            title: "_Example:",
+            content: [
+              "includes([1,2,3,4,5], 5) returns true",
+              "includes(['apple','orange','melo'], 'berry') returns false",
+              "includes(['red','blue','white'], 'blue') returns true",
+            ],
+          },
           codeBlockTitle: "_Solution:",
         },
         {
-          title: "_RandomRange3",
+          title: "_Intersection",
           description: "_Instructions:",
           textContent:
-            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti quidem laboriosam, molestiae amet delectus sit ipsam laudantium, optio non necessitatibus neque dolorum iure sunt, enim explicabo consequaturillum deleniti nulla.",
+            "Construct a function intersection that take in arrays as values and compares the arrays and returns a new array with elements found in all of the arrays passed into the function call.",
+          exmaple: {
+            title: "_Example:",
+            content: [
+              "intersection([5, 10, 15,5,15, 20], [15, 88, 1, 5, 7,15,5], [15,5,1, 10, 15, 5, 20,15]).",
+              "returns [5, 15]",
+            ],
+          },
           codeBlockTitle: "_Solution:",
         },
         {
-          title: "_RandomRange4",
+          title: "_BinarySearch",
           description: "_Instructions:",
           textContent:
-            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti quidem laboriosam, molestiae amet delectus sit ipsam laudantium, optio non necessitatibus neque dolorum iure sunt, enim explicabo consequaturillum deleniti nulla.",
+            "Given a sorted array of n elements, write a function that accepts an array and the search value to search a given element x in array and return the index of x in the array. Consider array is 0 base index.",
+          exmaple: {
+            title: "_Example:",
+            content: [
+              "binarySearch([10, 20, 30, 50, 60, 80, 110, 130, 140, 170], 110) returns 6",
+              "binarySearch([10, 20, 30, 40, 60, 110, 120, 130, 170], 175) returns -1",
+            ],
+          },
           codeBlockTitle: "_Solution:",
         },
         {
-          title: "_RandomRange5",
+          title: "_MergeSort",
           description: "_Instructions:",
           textContent:
-            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti quidem laboriosam, molestiae amet delectus sit ipsam laudantium, optio non necessitatibus neque dolorum iure sunt, enim explicabo consequaturillum deleniti nulla.",
+            "Write a function mergeSort which takes an array of integers as input and returns an array of these integers in sorted order from least to greatest. A good way to implement this is to write one function, for instance merge, which is responsible for merging two sorted arrays, and another function, for instance mergeSort, which is responsible for the recursion that produces single-item arrays to feed into merge.",
+          exmaple: {
+            title: "_Example:",
+            content: [
+              "mergeSort([12, 34, 11, 1, 54, 25, 67, 45])",
+              "returns [1, 11, 12, 25, 34, 45, 54, 67]",
+            ],
+          },
           codeBlockTitle: "_Solution:",
         },
       ],
@@ -120,6 +157,16 @@ export default function Snippet({ children, ...props }) {
             {arrayOfSnippetObj[codeBlockIndex].description}
           </h4>
           <p>{arrayOfSnippetObj[codeBlockIndex].textContent}</p>
+          <h4 className={SnippetStyles[`example-title`]}>
+            {arrayOfSnippetObj[codeBlockIndex].exmaple.title}
+          </h4>
+          <div className={SnippetStyles[`exmaple-container`]}>
+            {arrayOfSnippetObj[codeBlockIndex].exmaple.content.map(
+              function makeText(item, index) {
+                return <p key={Math.random() * index}>{item}</p>;
+              }
+            )}
+          </div>
         </div>
         {/* our solution */}
         <div className={SnippetStyles[`solution-container`]}>

@@ -40,14 +40,39 @@
 
 /* spacer */
 
-.js-code[data-typeofspacer="inline-start"] {
+.js-code[data-typeofinlinespacer="inline-start"] {
   margin-inline-start: var(--jscode-spacer);
 }
-.js-code[data-typeofspacer="inline-end"] {
+.js-code[data-typeofinlinespacer="inline-end"] {
   margin-inline-end: var(--jscode-spacer);
 }
-.js-code[data-typeofspacer="inline"] {
+.js-code[data-typeofinlinespacer="inline"] {
   margin-inline: var(--jscode-spacer);
+}
+
+.code-line-container[data-typeofblockspacer="block-start"] {
+  margin-block-start: 16px;
+}
+
+/* indent */
+
+.code-line-container[data-indentspacer="one-level"] {
+  margin-inline-start: var(--indent-one);
+}
+.code-line-container[data-indentspacer="second-level"] {
+  margin-inline-start: var(--indent-two);
+}
+.code-line-container[data-indentspacer="three-level"] {
+  margin-inline-start: var(--indent-three);
+}
+.code-line-container[data-indentspacer="four-level"] {
+  margin-inline-start: var(--indent-four);
+}
+.code-line-container[data-indentspacer="five-level"] {
+  margin-inline-start: var(--indent-five);
+}
+.code-line-container[data-indentspacer="six-level"] {
+  margin-inline-start: var(--indent-six);
 }
 
 .code-line-container {
