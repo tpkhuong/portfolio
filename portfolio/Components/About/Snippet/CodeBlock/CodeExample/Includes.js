@@ -52,7 +52,7 @@ const codeLineValuesObj = {
     {
       element: "index",
       typeOfCode: "source",
-      inlineSpacerValue: "inline-end",
+      inlineSpacerValue: "none",
     },
     {
       element: "=",
@@ -62,7 +62,7 @@ const codeLineValuesObj = {
     {
       element: "0",
       typeOfCode: "number",
-      inlineSpacerValue: "inline-end",
+      inlineSpacerValue: "none",
     },
     {
       element: ";",
@@ -104,7 +104,7 @@ const codeLineValuesObj = {
     {
       element: "length",
       typeOfCode: "obj-dot-access",
-      inlineSpacerValue: "inline-end",
+      inlineSpacerValue: "none",
     },
     {
       element: ")",
@@ -136,12 +136,12 @@ const codeLineValuesObj = {
     {
       element: "list",
       typeOfCode: "source",
-      inlineSpacerValue: "inline",
+      inlineSpacerValue: "none",
     },
     {
       element: "[",
       typeOfCode: "array",
-      inlineSpacerValue: "inline-end",
+      inlineSpacerValue: "none",
     },
     {
       element: "index",
@@ -183,7 +183,7 @@ const codeLineValuesObj = {
     {
       element: "value",
       typeOfCode: "source",
-      inlineSpacerValue: "inline-end",
+      inlineSpacerValue: "none",
     },
     {
       element: ")",

@@ -59,7 +59,7 @@
 .code-line-container[data-indentspacer="one-level"] {
   margin-inline-start: var(--indent-one);
 }
-.code-line-container[data-indentspacer="second-level"] {
+.code-line-container[data-indentspacer="two-level"] {
   margin-inline-start: var(--indent-two);
 }
 .code-line-container[data-indentspacer="three-level"] {

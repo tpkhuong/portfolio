@@ -77,7 +77,7 @@ const codeLineValuesObj = {
     {
       element: "string",
       typeOfCode: "obj-dot-access",
-      inlineSpacerValue: "inline",
+      inlineSpacerValue: "none",
     },
     {
       element: ".",
