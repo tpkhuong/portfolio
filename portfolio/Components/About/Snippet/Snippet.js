@@ -150,7 +150,11 @@ export default function Snippet({ children, ...props }) {
       <div className={SnippetStyles[`snippet-content-container`]}>
         {/* instructions */}
         <div className={SnippetStyles[`instructions-container`]}>
-          <h3 className={SnippetStyles[`challenge-title`]}>
+          <h3
+            className={`${SnippetStyles[`challenge-title`]} ${
+              SnippetStyles[`white-text`]
+            }`}
+          >
             {arrayOfSnippetObj[codeBlockIndex].title}:
           </h3>
           <h4 className={SnippetStyles[`sub-title`]}>
@@ -170,7 +174,11 @@ export default function Snippet({ children, ...props }) {
         </div>
         {/* our solution */}
         <div className={SnippetStyles[`solution-container`]}>
-          <h4 className={SnippetStyles[`sub-title`]}>
+          <h4
+            className={`${SnippetStyles[`sub-title`]} ${
+              SnippetStyles[`white-text`]
+            }`}
+          >
             {arrayOfSnippetObj[codeBlockIndex].codeBlockTitle}
           </h4>
           <CodeBlock selectedIndex={codeBlockIndex}></CodeBlock>

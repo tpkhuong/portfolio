@@ -44,12 +44,12 @@ const codeLineValuesObj = {
     { element: "=", typeOfCode: "operator", inlineSpacerValue: "inline" },
     {
       element: "[",
-      typeOfCode: "array",
+      typeOfCode: "parentheses",
       inlineSpacerValue: "none",
     },
     {
       element: "]",
-      typeOfCode: "array",
+      typeOfCode: "parentheses",
       inlineSpacerValue: "none",
     },
     {

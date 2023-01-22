@@ -83,6 +83,10 @@
   margin-block-end: 24px;
 }
 
+.white-text {
+  color: var(--color-neutral-white);
+}
+
 .sub-title,
 .example-title {
   margin-block-end: 16px;

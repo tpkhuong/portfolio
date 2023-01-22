@@ -2,7 +2,7 @@ import React from "react";
 import CodeLine from "../CodeLine";
 
 const spacer = {
-  marginBlock: "",
+  marginBlock: "26px",
 };
 
 const codeLineForMergeFunc = {
@@ -152,8 +152,8 @@ const codeLineForMergeFunc = {
     },
     {
       element: "<",
-      typeOfCode: "inline",
-      inlineSpacerValue: "none",
+      typeOfCode: "operator",
+      inlineSpacerValue: "inline",
     },
     {
       element: "firstArray",
@@ -172,8 +172,8 @@ const codeLineForMergeFunc = {
     },
     {
       element: "&&",
-      typeOfCode: "inline",
-      inlineSpacerValue: "none",
+      typeOfCode: "operator",
+      inlineSpacerValue: "inline",
     },
     {
       element: "rightIndex",
@@ -182,8 +182,8 @@ const codeLineForMergeFunc = {
     },
     {
       element: "<",
-      typeOfCode: "inline",
-      inlineSpacerValue: "none",
+      typeOfCode: "operator",
+      inlineSpacerValue: "inline",
     },
     {
       element: "secondArray",
@@ -739,7 +739,416 @@ const codeLineForMergeFunc = {
   ],
 };
 
-const codeLineForMergeSortFunc = {};
+const codeLineForMergeSortFunc = {
+  one: [
+    {
+      element: "function",
+      typeOfCode: "keyword",
+      inlineSpacerValue: "inline-end",
+    },
+    {
+      element: "mergeSort",
+      typeOfCode: "variable",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: "(",
+      typeOfCode: "curly",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: "array",
+      typeOfCode: "source",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: ")",
+      typeOfCode: "curly",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: "{",
+      typeOfCode: "curly",
+      inlineSpacerValue: "none",
+    },
+  ],
+  two: [
+    {
+      element: "if",
+      typeOfCode: "keyword",
+      inlineSpacerValue: "inline-end",
+    },
+    {
+      element: "(",
+      typeOfCode: "parentheses",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: "array",
+      typeOfCode: "obj-dot-access",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: ".",
+      typeOfCode: "operator",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: "length",
+      typeOfCode: "obj-dot-access",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: "<=",
+      typeOfCode: "operator",
+      inlineSpacerValue: "inline",
+    },
+    {
+      element: "1",
+      typeOfCode: "number",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: ")",
+      typeOfCode: "parentheses",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: "return",
+      typeOfCode: "keyword",
+      inlineSpacerValue: "inline",
+    },
+    {
+      element: "array",
+      typeOfCode: "source",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: ";",
+      typeOfCode: "source",
+      inlineSpacerValue: "none",
+    },
+  ],
+  three: [
+    {
+      element: "const",
+      typeOfCode: "keyword",
+      inlineSpacerValue: "inline-end",
+    },
+    {
+      element: "middle",
+      typeOfCode: "variable",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: "=",
+      typeOfCode: "operator",
+      inlineSpacerValue: "inline",
+    },
+    {
+      element: "Math",
+      typeOfCode: "obj-dot-access",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: ".",
+      typeOfCode: "operator",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: "floor",
+      typeOfCode: "variable",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: "(",
+      typeOfCode: "parentheses",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: "array",
+      typeOfCode: "obj-dot-access",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: ".",
+      typeOfCode: "operator",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: "length",
+      typeOfCode: "obj-dot-access",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: "/",
+      typeOfCode: "operator",
+      inlineSpacerValue: "inline",
+    },
+    {
+      element: "2",
+      typeOfCode: "number",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: ")",
+      typeOfCode: "parentheses",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: ";",
+      typeOfCode: "source",
+      inlineSpacerValue: "none",
+    },
+  ],
+  four: [
+    {
+      element: "const",
+      typeOfCode: "keyword",
+      inlineSpacerValue: "inline-end",
+    },
+    {
+      element: "leftSide",
+      typeOfCode: "variable",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: "=",
+      typeOfCode: "operator",
+      inlineSpacerValue: "inline",
+    },
+    {
+      element: "array",
+      typeOfCode: "obj-dot-access",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: ".",
+      typeOfCode: "operator",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: "slice",
+      typeOfCode: "variable",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: "(",
+      typeOfCode: "parentheses",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: "0",
+      typeOfCode: "number",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: ",",
+      typeOfCode: "source",
+      inlineSpacerValue: "inline-end",
+    },
+    {
+      element: "middle",
+      typeOfCode: "source",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: ")",
+      typeOfCode: "parentheses",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: ";",
+      typeOfCode: "source",
+      inlineSpacerValue: "none",
+    },
+  ],
+  five: [
+    {
+      element: "const",
+      typeOfCode: "keyword",
+      inlineSpacerValue: "inline-end",
+    },
+    {
+      element: "rightSide",
+      typeOfCode: "variable",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: "=",
+      typeOfCode: "operator",
+      inlineSpacerValue: "inline",
+    },
+    {
+      element: "array",
+      typeOfCode: "obj-dot-access",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: ".",
+      typeOfCode: "operator",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: "slice",
+      typeOfCode: "variable",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: "(",
+      typeOfCode: "parentheses",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: "middle",
+      typeOfCode: "source",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: ")",
+      typeOfCode: "parentheses",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: ";",
+      typeOfCode: "source",
+      inlineSpacerValue: "none",
+    },
+  ],
+  six: [
+    {
+      element: "const",
+      typeOfCode: "keyword",
+      inlineSpacerValue: "inline-end",
+    },
+    {
+      element: "sortedLeftside",
+      typeOfCode: "variable",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: "=",
+      typeOfCode: "operator",
+      inlineSpacerValue: "inline",
+    },
+    {
+      element: "mergeSort",
+      typeOfCode: "variable",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: "(",
+      typeOfCode: "parentheses",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: "leftSide",
+      typeOfCode: "source",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: ")",
+      typeOfCode: "parentheses",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: ";",
+      typeOfCode: "source",
+      inlineSpacerValue: "none",
+    },
+  ],
+  seven: [
+    {
+      element: "const",
+      typeOfCode: "keyword",
+      inlineSpacerValue: "inline-end",
+    },
+    {
+      element: "sortedRightside",
+      typeOfCode: "variable",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: "=",
+      typeOfCode: "operator",
+      inlineSpacerValue: "inline",
+    },
+    {
+      element: "mergeSort",
+      typeOfCode: "variable",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: "(",
+      typeOfCode: "parentheses",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: "rightSide",
+      typeOfCode: "source",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: ")",
+      typeOfCode: "parentheses",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: ";",
+      typeOfCode: "source",
+      inlineSpacerValue: "none",
+    },
+  ],
+  eight: [
+    {
+      element: "return",
+      typeOfCode: "keyword",
+      inlineSpacerValue: "inline-end",
+    },
+    {
+      element: "merge",
+      typeOfCode: "variable",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: "(",
+      typeOfCode: "parentheses",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: "sortedLeftside",
+      typeOfCode: "source",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: ",",
+      typeOfCode: "source",
+      inlineSpacerValue: "inline-end",
+    },
+    {
+      element: "sortedRightside",
+      typeOfCode: "source",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: ")",
+      typeOfCode: "parentheses",
+      inlineSpacerValue: "none",
+    },
+    {
+      element: ";",
+      typeOfCode: "source",
+      inlineSpacerValue: "none",
+    },
+  ],
+  nine: [
+    {
+      element: "}",
+      typeOfCode: "curly",
+      inlineSpacerValue: "none",
+    },
+  ],
+};
 
 export default function MergeSort({ children, ...props }) {
   return (
@@ -780,7 +1189,25 @@ export default function MergeSort({ children, ...props }) {
         <CodeLine>{codeLineForMergeFunc.twentyThree}</CodeLine>
       </code>
       <div style={spacer}></div>
-      <code></code>
+      <code>
+        <CodeLine>{codeLineForMergeSortFunc.one}</CodeLine>
+        <CodeLine indent="one-level">{codeLineForMergeSortFunc.two}</CodeLine>
+        <CodeLine indent="one-level" blockSpacerValue="block-start">
+          {codeLineForMergeSortFunc.three}
+        </CodeLine>
+        <CodeLine indent="one-level" blockSpacerValue="block-start">
+          {codeLineForMergeSortFunc.four}
+        </CodeLine>
+        <CodeLine indent="one-level">{codeLineForMergeSortFunc.five}</CodeLine>
+        <CodeLine indent="one-level" blockSpacerValue="block-start">
+          {codeLineForMergeSortFunc.six}
+        </CodeLine>
+        <CodeLine indent="one-level">{codeLineForMergeSortFunc.seven}</CodeLine>
+        <CodeLine indent="one-level" blockSpacerValue="block-start">
+          {codeLineForMergeSortFunc.eight}
+        </CodeLine>
+        <CodeLine>{codeLineForMergeSortFunc.nine}</CodeLine>
+      </code>
     </React.Fragment>
   );
 }
