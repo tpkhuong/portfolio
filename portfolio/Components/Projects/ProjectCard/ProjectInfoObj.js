@@ -15,8 +15,8 @@ export const arrayOfObjForProjectCard = [
     description:
       "Simple accordion style FAQ section component. Clicking on a question will reveal the answer.",
     links: {
-      viewProject: "http:stuff",
-      viewCode: "http:coolstuff",
+      viewProject: "https://tpkhuong.github.io/faq-accordion-card/",
+      viewCode: "https://github.com/tpkhuong/faq-accordion-card",
     },
     level: "novice",
   },
