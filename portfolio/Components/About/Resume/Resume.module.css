@@ -159,6 +159,11 @@
   transform: translateY(1px);
 }
 
+.email-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 .redirect-to-info-selector {
   position: relative;
 }
@@ -216,8 +221,8 @@
 @media screen and (min-width: 90rem) {
   .resume-container {
     display: grid;
-    grid-template-columns: 249.2px 1fr;
-    padding-inline-start: 55px;
+    grid-template-columns: 262.2px 1fr;
+    padding-inline-start: 42px;
   }
   .learn-more-contact-container {
     border-inline-start: var(--border-lines);
@@ -237,19 +242,10 @@
     margin-block-start: 10px;
   }
 
-  /* .desktop-spacer {
-    display: block;
-    height: 456px;
-  } */
-
   .resume-sections-container {
     position: relative;
     border-inline: var(--border-lines);
     height: 777px;
-  }
-
-  .resume-container {
-    /* height: 33.2%; */
   }
 
   .select-file-arrow-btn-wrapper {

@@ -126,7 +126,9 @@ function SentMessageModal({ children, hideModalFuncObj }) {
         <h2 className="visually-hidden">Message Sent</h2>
         <h2 className={InputsStyles[`title`]}>Thank You!</h2>
         <p className={InputsStyles[`description`]}>
-          Your message has been accepted. You will receive answer really soon!
+          Our algorithm for the submit button only make it SEEMS like the
+          message is sent. However, clicking 'submit' does not send your message
+          any where or to anyone. Have a great day!!!
         </p>
         <button
           onClick={(event) => {

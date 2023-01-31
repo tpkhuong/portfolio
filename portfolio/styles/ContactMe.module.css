@@ -55,6 +55,11 @@
   gap: 10px;
 }
 
+.email-content {
+  display: flex;
+  flex-direction: column;
+}
+
 /* desktop */
 @media screen and (min-width: 90rem) {
   .contact-input-display-container {
@@ -69,7 +74,7 @@
   }
 
   .contact-tab-container {
-    border-inline: var(--border-lines);
+    border-inline-end: var(--border-lines);
   }
 
   .tab-content {

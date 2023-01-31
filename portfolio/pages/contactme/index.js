@@ -52,12 +52,13 @@ export default function Contact({ children }) {
               >
                 <MdEmail className={ContactStyles[`email-icon`]} />
                 <span className={ContactStyles[`email-content`]}>
-                  user@gmail.com
+                  <span>webInclusiveDeveloper</span>
+                  <span>@toankhuong.com</span>
                 </span>
               </a>
               <a
                 className={ContactStyles[`phone-container`]}
-                href="888-888-7888"
+                href="tel:8888887888"
               >
                 <FaPhoneAlt className={ContactStyles[`phone-icon`]} />
                 <span className={ContactStyles[`phone-content`]}>

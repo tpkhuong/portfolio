@@ -201,5 +201,3 @@ export default function MessageDisplay({ children }) {
     </div>
   );
 }
-
-// ${DisplayStyles[`margin-inline-end`]}

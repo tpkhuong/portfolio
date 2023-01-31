@@ -11,10 +11,10 @@ import {
   TopScreenSpan,
   isScrolledElementInView,
 } from "../../../Components/Shared/BackTop/BackTop";
-import { server } from "../../../config/index";
 import { GoTriangleDown, GoLinkExternal, GoMarkGithub } from "react-icons/go";
 import { IoClose } from "react-icons/io5";
-import axios from "axios";
+import data from "../../../utils/data.json";
+// import axios from "axios";
 // data-backtopbtnshown
 export default function SingleProject({ children, data }) {
   // console.log(data, "app in single project component");
@@ -698,15 +698,27 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  const response = await fetch(
-    `${server}/api/projects/${context.params.project}`
-  );
+  // const response = await fetch(
+  //   `${server}/api/projects/${context.params.project}`
+  // );
   // console.log(response, "response");
 
-  const data = await response.json();
-  // const data = response.data;
+  // const data = await response.json();
+
+  /**
+   * without api call
+   * **/
+
+  const projects = data.projects;
   // console.log(data, "frontend");
   return {
-    props: { data },
+    props: {
+      data: {
+        flow: projects.workflow,
+        tableContent: projects.sidebar.toc,
+        brief: projects.instructions,
+        project: projects[context.params.project],
+      },
+    },
   };
 }
