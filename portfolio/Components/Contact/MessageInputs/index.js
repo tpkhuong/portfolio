@@ -124,7 +124,9 @@ function SentMessageModal({ children, hideModalFuncObj }) {
       {/* modal */}
       <div role="dialog" aria-modal="true" aria-labelledby="sent-message-modal">
         <h2 className="visually-hidden">Message Sent</h2>
-        <h2 className={InputsStyles[`title`]}>Thank You!</h2>
+        <h2 id="sent-message-modal" className={InputsStyles[`title`]}>
+          Thank You!
+        </h2>
         <p className={InputsStyles[`description`]}>
           Our algorithm for the submit button only make it SEEMS like the
           message is sent. However, clicking 'submit' does not send your message

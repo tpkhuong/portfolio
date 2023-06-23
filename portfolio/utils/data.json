@@ -125,9 +125,12 @@
         }
       },
       "images": [
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image1" },
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "images2" },
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image3" },
+        { "imgSrc": "/newbie/faq/desktop-design.jpg", "imgText": "image1" },
+        { "imgSrc": "/newbie/faq/mobile-design.jpg", "imgText": "images2" },
+        {
+          "imgSrc": "/newbie/faq/previewImages/active-states.jpg",
+          "imgText": "image3"
+        },
         { "imgSrc": "/tipcalculator2.jpg", "imgText": "image4" }
       ]
     },
@@ -544,8 +547,8 @@
       "title": "_Audiophile e-commerce website",
       "sidebar": {
         "projectlinks": {
-          "live": "https://someplacecool.io",
-          "code": "https://github/projectURL.com"
+          "live": "https://audiophile-ecommerce-website-fsnc.vercel.app/",
+          "code": "https://github.com/tpkhuong/audiophile-ecommerce-website"
         }
       },
       "main": {
