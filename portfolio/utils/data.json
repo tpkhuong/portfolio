@@ -130,8 +130,7 @@
         {
           "imgSrc": "/newbie/faq/previewImages/active-states.jpg",
           "imgText": "image3"
-        },
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image4" }
+        }
       ]
     },
     "second": {
@@ -198,14 +197,22 @@
         }
       },
       "images": [
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image1" },
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "images2" },
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image3" },
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image4" }
+        {
+          "imgSrc": "/newbie/introForm/desktop-design.jpg",
+          "imgText": "images2"
+        },
+        {
+          "imgSrc": "/newbie/introForm/mobile-design.jpg",
+          "imgText": "image3"
+        },
+        {
+          "imgSrc": "/newbie/introForm/previewImages/active-states.jpg",
+          "imgText": "image1"
+        }
       ]
     },
     "third": {
-      "title": "_Intro component with Sign-up Form",
+      "title": "_Crowdfunding Product Page",
       "sidebar": {
         "projectlinks": {
           "live": "https://someplacecool.io",
@@ -267,10 +274,22 @@
         }
       },
       "images": [
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image1" },
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "images2" },
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image3" },
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image4" }
+        {
+          "imgSrc": "/junior/crowdfunding/desktop-design.jpg",
+          "imgText": "image1"
+        },
+        {
+          "imgSrc": "/junior/crowdfunding/mobile-design.jpg",
+          "imgText": "images2"
+        },
+        {
+          "imgSrc": "/junior/crowdfunding/previewImages/desktop-design-modal-selected.jpg",
+          "imgText": "image3"
+        },
+        {
+          "imgSrc": "/junior/crowdfunding/previewImages/mobile-menu.jpg",
+          "imgText": "image3"
+        }
       ]
     },
     "fourth": {
@@ -331,10 +350,18 @@
         }
       },
       "images": [
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image1" },
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "images2" },
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image3" },
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image4" }
+        {
+          "imgSrc": "/junior/tipCalculator/desktop-design.jpg",
+          "imgText": "image1"
+        },
+        {
+          "imgSrc": "/junior/tipCalculator/mobile-design.jpg",
+          "imgText": "images2"
+        },
+        {
+          "imgSrc": "/junior/tipCalculator/previewImages/active-states.jpg",
+          "imgText": "image3"
+        }
       ]
     },
     "fifth": {
@@ -393,10 +420,18 @@
         }
       },
       "images": [
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image1" },
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "images2" },
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image3" },
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image4" }
+        {
+          "imgSrc": "/junior/interactivePricing/desktop-design.jpg",
+          "imgText": "image1"
+        },
+        {
+          "imgSrc": "/junior/interactivePricing/mobile-design.jpg",
+          "imgText": "images2"
+        },
+        {
+          "imgSrc": "/junior/interactivePricing/previewImages/active-states.jpg",
+          "imgText": "image3"
+        }
       ]
     },
     "sixth": {
@@ -470,10 +505,18 @@
         }
       },
       "images": [
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image1" },
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "images2" },
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image3" },
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image4" }
+        {
+          "imgSrc": "/intermediate/todoApp/desktop-design.jpg",
+          "imgText": "image1"
+        },
+        {
+          "imgSrc": "/intermediate/todoApp/mobile-design.jpg",
+          "imgText": "images2"
+        },
+        {
+          "imgSrc": "/intermediate/todoApp/previewImages/active-states-dark.jpg",
+          "imgText": "image3"
+        }
       ]
     },
     "seventh": {
@@ -537,10 +580,18 @@
         }
       },
       "images": [
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image1" },
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "images2" },
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image3" },
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image4" }
+        {
+          "imgSrc": "/advanced/rockGame/desktop-design.jpg",
+          "imgText": "image1"
+        },
+        {
+          "imgSrc": "/advanced/rockGame/mobile-design.jpg",
+          "imgText": "images2"
+        },
+        {
+          "imgSrc": "/advanced/rockGame/previewImages/desktop-rules-modal.jpg",
+          "imgText": "image3"
+        }
       ]
     },
     "eighth": {
@@ -622,10 +673,18 @@
         }
       },
       "images": [
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image1" },
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "images2" },
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image3" },
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image4" }
+        {
+          "imgSrc": "/advanced/audiophile/desktop-design.jpg",
+          "imgText": "image1"
+        },
+        {
+          "imgSrc": "/advanced/audiophile/mobile-design.jpg",
+          "imgText": "images2"
+        },
+        {
+          "imgSrc": "/advanced/audiophile/previewImages/Desktop-Checkout.png",
+          "imgText": "image3"
+        }
       ]
     },
     "ninth": {
@@ -688,10 +747,12 @@
         }
       },
       "images": [
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image1" },
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "images2" },
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image3" },
-        { "imgSrc": "/tipcalculator2.jpg", "imgText": "image4" }
+        { "imgSrc": "/advanced/arch/desktop-design.jpg", "imgText": "image1" },
+        { "imgSrc": "/advanced/arch/mobile-design.jpg", "imgText": "images2" },
+        {
+          "imgSrc": "/advanced/arch/previewImages/Desktop-Home.png",
+          "imgText": "image3"
+        }
       ]
     }
   }
