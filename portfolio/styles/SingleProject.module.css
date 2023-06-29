@@ -201,6 +201,7 @@
 .image-container {
   border-radius: 8px;
   overflow: hidden;
+  width: max-content;
 }
 
 /* desktop */

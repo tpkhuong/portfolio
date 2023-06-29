@@ -683,7 +683,17 @@ export async function getStaticPaths() {
   //   fallback: false,
   // };
 
-  const projectPaths = ["first", "second", "third", "fourth", "fifth"];
+  const projectPaths = [
+    "first",
+    "second",
+    "third",
+    "fourth",
+    "fifth",
+    "sixth",
+    "seventh",
+    "eighth",
+    "ninth",
+  ];
   const paths = projectPaths.map(function makgeProjectPaths(path) {
     // const [project] = path;
     return {
